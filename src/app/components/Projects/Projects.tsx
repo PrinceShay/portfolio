@@ -2,6 +2,7 @@ import { ProjectCard } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 async function getData() {
   const query = `
@@ -27,15 +28,17 @@ export default async function () {
   return (
     <section className="flex flex-wrap group-odd:w-1/3">
       {data.map((post, idx) => (
-        <div className="group" key={idx}>
-          <Image
-            width={500}
-            height={500}
-            alt="{post.title}"
-            src={urlFor(post.titleImage).url()}
-          ></Image>
-          <h2>{post.title}</h2>
-        </div>
+        <Link href={`/projekt/${post.currentSlug}`}>
+          <div className="group" key={idx}>
+            <Image
+              width={500}
+              height={500}
+              alt="{post.title}"
+              src={urlFor(post.titleImage).url()}
+            ></Image>
+            <h2>{post.title}</h2>
+          </div>
+        </Link>
       ))}
     </section>
   );
