@@ -28,8 +28,8 @@ export default async function () {
   return (
     <section className="flex flex-wrap group-odd:w-1/3">
       {data.map((post, idx) => (
-        <Link href={`/projekt/${post.currentSlug}`}>
-          <div className="group" key={idx}>
+        <Link key={idx} href={`/projekte/${post.currentSlug}`}>
+          <div className="group">
             <Image
               width={500}
               height={500}
