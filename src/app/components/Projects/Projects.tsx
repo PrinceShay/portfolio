@@ -26,17 +26,22 @@ export default async function () {
   }
   console.log(data);
   return (
-    <section className="flex flex-wrap group-odd:w-1/3">
+    <section className=" max-w-screen m-auto py-52 flex flex-wrap group-odd:w-1/3">
       {data.map((post, idx) => (
-        <Link key={idx} href={`/projekte/${post.currentSlug}`}>
-          <div className="group">
+        <Link
+          className="group"
+          key={idx}
+          href={`/projekte/${post.currentSlug}`}
+        >
+          <div>
             <Image
+              className="rounded-xl"
               width={500}
               height={500}
               alt={post.title}
               src={urlFor(post.titleImage).url()}
             ></Image>
-            <h2>{post.title}</h2>
+            <h2 className="text-2xl mt-4">{post.title}</h2>
           </div>
         </Link>
       ))}
