@@ -33,7 +33,7 @@ export default async function () {
             <Image
               width={500}
               height={500}
-              alt="{post.title}"
+              alt={post.title}
               src={urlFor(post.titleImage).url()}
             ></Image>
             <h2>{post.title}</h2>
