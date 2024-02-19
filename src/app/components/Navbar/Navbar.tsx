@@ -12,12 +12,12 @@ var Hover = {
 
 function Navbar() {
   return (
-    <div className="flex justify-center">
+    <div className="relative z-50 flex justify-center">
       <motion.div
         animate={{ y: 0 }}
         initial={{ y: -100 }}
         transition={{ delay: 1, ease: "circOut" }}
-        className=" max-w-4xl w-full  transition-all duration-700 ease-out items-center gap-16 fixed my-5 mx-16 py-5 px-16 flex justify-between backdrop-blur-lg bg-slate-900 bg-opacity-20 rounded-2xl overflow-hidden hover:bg-slate-600 hover:bg-opacity-20"
+        className=" max-w-screen w-full transition-all duration-700 ease-out items-center gap-16 fixed my-5 mx-16 py-5 px-16 flex justify-between backdrop-blur-lg bg-slate-900 bg-opacity-20 rounded-2xl overflow-hidden hover:bg-slate-600 hover:bg-opacity-20"
       >
         <motion.div
           whileHover={Hover}

@@ -24,7 +24,6 @@ export default async function () {
   if (!data) {
     return <p>Loading...</p>; // Handle loading state
   }
-  console.log(data);
   return (
     <section className=" max-w-screen m-auto py-52 flex flex-wrap group-odd:w-1/3">
       {data.map((post, idx) => (
@@ -41,7 +40,7 @@ export default async function () {
               alt={post.title}
               src={urlFor(post.titleImage).url()}
             ></Image>
-            <h2 className="text-2xl mt-4">{post.title}</h2>
+            <h2 className="text-xl mt-4">{post.title}</h2>
           </div>
         </Link>
       ))}

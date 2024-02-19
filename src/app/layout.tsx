@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import SmoothScroll from "./components/Functions/SmoothScroller";
-
-const inter = Inter({ subsets: ["latin"] });
+import Gsap from "./components/Functions/Gsap";
 
 export const metadata: Metadata = {
   title: "Dosenbier, oh Dosenbier. Scheiß warmes Dosenbier",
@@ -17,9 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="de">
       <SmoothScroll />
-      <body className={inter.className}>
+      <Gsap />
+      <body>
         <Navbar />
         {children}
       </body>
