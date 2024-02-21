@@ -4,7 +4,7 @@ import Service from "./components/Service";
 
 export default function Home() {
   return (
-    <main>
+    <main className="ml-12 mr-12">
       <Hero />
       <Projects />
       <Service />

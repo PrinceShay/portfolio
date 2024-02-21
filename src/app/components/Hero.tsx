@@ -69,7 +69,7 @@ export default function Hero() {
   }, [splineLoaded]);
 
   return (
-    <header className="container_hero w-full h-screen relative flex justify-center items-center bg-primary-900 overflow-hidden">
+    <header className="mt-32 rounded-3xl container_hero w-full h-screen relative flex justify-center items-center bg-primary-800 overflow-hidden">
       {!splineLoaded && <Intro />}
       <Spline
         onLoad={() => setSplineLoaded(true)}
