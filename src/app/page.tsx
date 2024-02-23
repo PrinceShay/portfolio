@@ -1,13 +1,15 @@
 import Hero from "./components/Hero";
+import Introduction from "./components/Introduction";
 import Projects from "./components/Projects/Projects";
 import Service from "./components/Service";
 
 export default function Home() {
   return (
-    <main className="ml-12 mr-12">
+    <main>
       <Hero />
       <Projects />
       <Service />
+      <Introduction />
     </main>
   );
 }

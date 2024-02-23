@@ -28,6 +28,9 @@ const config: Config = {
           800: '#3a004c',
           900: '#130019',
         },
+      },
+      fontFamily: {
+        'amador': ['amador']
       }
     },
   },
