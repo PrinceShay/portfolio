@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="de">
       <SmoothScroll />
       <Gsap />
-      <body className="bg-primary-900 ">
+      <body className="bg-primary-800 ">
         <Navbar />
         {children}
       </body>

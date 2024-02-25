@@ -5,7 +5,7 @@ import Service from "./components/Service";
 
 export default function Home() {
   return (
-    <main>
+    <main className="px-12">
       <Hero />
       <Projects />
       <Service />

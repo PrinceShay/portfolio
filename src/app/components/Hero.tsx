@@ -37,7 +37,7 @@ export default function Hero() {
   }, []); // Empty dependency array ensures this effect runs only once after the initial render
 
   return (
-    <header className="pb-32 mt-32 rounded-3xl container_hero w-full h-screen relative flex justify-center items-center bg-primary-800 overflow-hidden">
+    <header className="pb-32 mt-32 rounded-3xl container_hero w-full h-screen relative flex justify-center items-center bg-primary-900 overflow-hidden">
       <div className="z-1 relative">
         <h1 className="text-hero uppercase text-primary-200">
           Jannis <br /> Röstel
