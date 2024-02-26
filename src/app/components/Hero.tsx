@@ -2,17 +2,15 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
+import Image from "next/image";
+import HeroImage from "/assets/images/Hero.jpg";
 
 export default function Hero() {
-  function TextFinished() {
-    console.log("Ich bin fertig");
-  }
-
   useEffect(() => {
     // This will run after the component has mounted
     const text = new SplitType(".text-hero", { types: "chars" });
 
-    var tl = gsap.timeline({ autoAlpha: 0, onComplete: TextFinished });
+    var tl = gsap.timeline({ autoAlpha: 0 });
 
     tl.from(".text-hero .char", {
       opacity: 0,
@@ -38,6 +36,12 @@ export default function Hero() {
 
   return (
     <header className="pb-32 mt-32 rounded-3xl container_hero w-full h-screen relative flex justify-center items-center bg-primary-900 overflow-hidden">
+      <Image
+        alt="Hallo"
+        src={HeroImage}
+        fill={true}
+        className="object-cover object-top"
+      ></Image>
       <div className="z-1 relative">
         <h1 className="text-hero uppercase text-primary-200">
           Jannis <br /> Röstel
