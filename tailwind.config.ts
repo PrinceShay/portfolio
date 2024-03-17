@@ -31,6 +31,7 @@ const config: Config = {
       },
       fontFamily: {
         'amador': ['amador']
+        sans: ['var(--font-poppins)']
       }
     },
   },

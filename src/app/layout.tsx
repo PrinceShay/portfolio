@@ -3,6 +3,29 @@ import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Gsap from "./components/Functions/Gsap";
+import localFont from "@next/font/local";
+
+const humane = localFont({
+  src: [
+    {
+      path: "/public/fonts/Humane-Light.woff2",
+      weight: "300",
+    },
+    {
+      path: "/public/fonts/Humane-Regular.woff2",
+      weight: "400",
+    },
+    {
+      path: "/public/fonts/Humane-Medium.woff2",
+      weight: "500",
+    },
+    {
+      path: "/public/fonts/Humane-Bold.woff2",
+      weight: "700",
+    },
+  ],
+  variable: "--font-Humane",
+});
 
 export const metadata: Metadata = {
   title: "Dosenbier, oh Dosenbier. Scheiß warmes Dosenbier",
