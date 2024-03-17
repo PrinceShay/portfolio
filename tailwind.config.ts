@@ -30,8 +30,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        'amador': ['amador']
-        sans: ['var(--font-poppins)']
+        'amador': ['amador'],
+        'humane': ['Humane'],
       }
     },
   },
