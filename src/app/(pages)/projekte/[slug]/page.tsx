@@ -7,7 +7,7 @@ export const revalidate = 30;
 
 async function getData(slug: string) {
   const query = `
-    *[_type == "Project" && slug.current =="${slug}"] {
+    *[_type == "project" && slug.current =="${slug}"] {
         "currentSlug": slug.current,
           title,
           content,
@@ -26,7 +26,7 @@ export default async function BlogArticle({
   const data: fullProject = await getData(params.slug);
 
   return (
-    <div className="mt-8">
+    <div className="mt-48">
       <h1>
         <span className="block text-base text-center text-primary font-semibold tracking-wide uppercase">
           Miau
@@ -35,19 +35,20 @@ export default async function BlogArticle({
           {data.title}
         </span>
       </h1>
+      <div className="grid grid-cols-12 grid-flow-row">
+        <Image
+          src={urlFor(data.titleImage).url()}
+          width={0}
+          height={0}
+          sizes="100vw"
+          alt="Title Image"
+          priority
+          className=" col-start-2 col-end-12 rounded-lg mt-8 w-full h-auto max-h-[80vh] object-cover"
+        />
 
-      <Image
-        src={urlFor(data.titleImage).url()}
-        width={0}
-        height={0}
-        sizes="100vw"
-        alt="Title Image"
-        priority
-        className="rounded-lg mt-8 w-full h-auto max-h-Main object-cover border"
-      />
-
-      <div className="mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary">
-        <PortableText value={data.content} />
+        <div className="col-start-2 col-end-12 mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary">
+          <PortableText value={data.content} />
+        </div>
       </div>
     </div>
   );

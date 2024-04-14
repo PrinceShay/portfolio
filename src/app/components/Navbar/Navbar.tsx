@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NavLink from "./NavLink";
+import OpenForWork from "./OpenForWork";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -36,13 +37,7 @@ function Navbar() {
           <NavLink url="/" title="Projekt" />
         </ul>
 
-        <Link
-          href={"/Kontakt"}
-          className="col-start-10 col-end-12 justify-self-end flex  items-center gap-3 px-4 py-3"
-        >
-          <div className="GreenCircle w-3 h-3 rounded-full bg-green-500"></div>
-          <p className="text-xl">Offen für Aufträge</p>
-        </Link>
+        <OpenForWork />
       </div>
     </>
   );

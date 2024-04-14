@@ -21,11 +21,12 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
     exit: { scale: 0.7, opacity: 0 },
   };
 
+  const categories = post.categories || [];
+
   return (
     <Link
-      className="ProjectCard col-start-2 col-end-12 sticky top-[10vh]"
-      key={idx}
       href={`/projekte/${post.currentSlug}`}
+      className="ProjectCard col-start-2 col-end-12 sticky top-[10vh]"
     >
       <motion.div
         ref={ref}
@@ -36,20 +37,22 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         variants={variants}
       >
         <Image
-          className="rounded-xl object-cover absolute"
           fill={true}
           alt={post.title}
           src={urlFor(post.titleImage).url()}
+          className="rounded-xl object-cover absolute"
         />
         <div className="flex justify-between w-full items-center">
           <h2 className="ProjectCard-Heading mt-4 relative">{post.title}</h2>
           <div className="flex justify-start gap-2">
-            <div className="py-3 px-6 relative bg-primary-900 rounded-full backdrop-blur-lg bg-opacity-10">
-              Branding
-            </div>
-            <div className="py-3 px-6 relative bg-primary-900 rounded-full backdrop-blur-lg bg-opacity-10">
-              Webdesign
-            </div>
+            {categories.map((category: string, index: number) => (
+              <div
+                key={index}
+                className="py-3 px-6 relative bg-primary-900 rounded-full backdrop-blur-lg bg-opacity-10"
+              >
+                {category}
+              </div>
+            ))}
           </div>
         </div>
       </motion.div>

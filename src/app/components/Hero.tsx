@@ -4,13 +4,13 @@ function Hero() {
   return (
     <section className="HeroWrapper">
       <div className="h-screen items-center grid grid-cols-12">
-        <div className=" col-start-2 col-span-7">
+        <div className="col-start-2 col-span-7">
           <p className="text-2xl mb-8">Hey, mein Name ist</p>
           <h1 className="Section_Headline">Jannis Röstel</h1>
         </div>
       </div>
       <div className="h-screen items-center grid grid-cols-12">
-        <div className=" col-span-6 col-start-6 justify-self-end">
+        <div className="col-span-6 col-start-6 justify-self-end">
           <p className="text-2xl mb-8">Und ich bin</p>
           <h1 className="Section_Headline leading-tight">
             Web- und Motiondesigner

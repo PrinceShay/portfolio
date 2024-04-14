@@ -4,6 +4,8 @@ export interface ProjectCard {
     currentSlug: string;
     titleImage: any;
     id: string;
+    categories: string[];
+
 }
 
 export interface fullProject {
