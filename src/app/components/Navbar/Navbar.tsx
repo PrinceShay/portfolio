@@ -3,8 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Logo from "../../../../public/Logo.svg";
-import FullscreenNav from "./FullscreenNav";
+import NavLink from "./NavLink";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -15,27 +14,36 @@ function Navbar() {
 
   return (
     <>
-      <div className="relative z-50 flex justify-center">
-        <div className="max-w-screen w-full items-center gap-16 fixed my-5 mx-16 py-5 px-16 flex justify-between backdrop-blur-lg bg-primary-900 bg-opacity-20 rounded-3xl overflow-hidden">
-          <div className="basis-auto flex justify-start">
-            <Link href={"/"}>
-              <Image src={Logo} width={50} height={50} alt="Logo" />
-            </Link>
+      <div className=" z-50 fixed top-8 w-full grid grid-cols-12">
+        <Link
+          href={"/"}
+          className=" col-start-2 col-end-4 flex items-center gap-4"
+        >
+          <div className="relative w-16 rounded-full h-16 overflow-hidden">
+            <img
+              className="absolute top-6 left-1 transform scale-[2]"
+              src="/Navigation/ProfilePic.jpg"
+              alt="Meow"
+            />
           </div>
+          <p>Jannis Röstel</p>
+        </Link>
 
-          <div
-            className="flex flex-col items-center justify-end basis-auto text-2xl font-light cursor-pointer uppercase"
-            onClick={handleButtonClick}
-          >
-            <div className="overflow-hidden">
-              <div>Menü</div>
-              <div>Close</div>
-            </div>
-          </div>
-        </div>
+        <ul className=" text-xl col-start-4 col-end-10 justify-self-center flex gap-8  items-center">
+          <NavLink url="/" title="Projekt" />
+          <NavLink url="/" title="Profil" />
+          <NavLink url="/" title="Projekt" />
+          <NavLink url="/" title="Projekt" />
+        </ul>
+
+        <Link
+          href={"/Kontakt"}
+          className="col-start-10 col-end-12 justify-self-end flex  items-center gap-3 px-4 py-3"
+        >
+          <div className="GreenCircle w-3 h-3 rounded-full bg-green-500"></div>
+          <p className="text-xl">Offen für Aufträge</p>
+        </Link>
       </div>
-
-      {showMenu && <FullscreenNav />}
     </>
   );
 }

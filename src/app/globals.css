@@ -6,37 +6,42 @@
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Light.woff2'); 
+  src: url('/public/fonts/Humane-Light.woff2') format('woff2'); 
   font-weight: Light; 
-  font-style: normal; 
+  font-style: normal;
+  text-rendering: optimizeLegibility; 
 } 
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Regular.woff2'); 
+  src: url('/public/fonts/Humane-Regular.woff2') format('woff2'); 
   font-weight: normal; 
-  font-style: normal; 
+  font-style: normal;
+  text-rendering: optimizeLegibility; 
 }
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Medium.woff2'); 
+  src: url('/public/fonts/Humane-Medium.woff2') format('woff2'); 
   font-weight: Medium; 
-  font-style: normal; 
+  font-style: normal;
+  text-rendering: optimizeLegibility; 
 } 
   
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Bold.woff2'); 
+  src: url('/public/fonts/Humane-Bold.woff2') format('woff2'); 
   font-weight: bold; 
-  font-style: normal; 
+  font-style: normal;
+  text-rendering: optimizeLegibility; 
 }
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Bkack.woff2'); 
+  src: url('/public/fonts/Humane-Black.woff2') format('woff2'); 
   font-weight: black; 
-  font-style: normal; 
+  font-style: normal;
+  text-rendering: optimizeLegibility; 
 }
   
 
@@ -80,22 +85,28 @@ body {
 
 /* Non TW Rules */
 
-.text-hero{
-  text-align: center;
-  font-size: 10vw;
-  font-weight: 900;
-  line-height: 1.2;
-  font-kerning: none;
+.Section_Headline{
+  font-family: Humane;
+  font-size: 14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 80%;
+  letter-spacing: 2.5px;
 }
 
-.text-hero .char{
-  line-height: 0;
+.HeroWrapper{
+
+  min-height: 200vh;
+  background-image: url("/assets/images/Hero.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.hero-highlight{
-  width: 80vw;
-  height: 20vh;
-  position: absolute;
-  bottom: 0%;
-  filter: blur(275px);
+.ProjectCard-Heading{
+  font-family: Humane;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 80%;
+  letter-spacing: 2.5px;
 }

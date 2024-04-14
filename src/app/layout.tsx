@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
 import SmoothScroll from "./components/Functions/SmoothScroller";
-import Gsap from "./components/Functions/Gsap";
+import Noise from "./components/Functions/Noise";
 
 export const metadata: Metadata = {
   title: "Dosenbier, oh Dosenbier. Scheiß warmes Dosenbier",
@@ -17,8 +17,8 @@ export default function RootLayout({
   return (
     <html lang="de">
       <SmoothScroll />
-      <Gsap />
-      <body className="bg-primary-900 font-humane">
+      <body className="bg-primary-900">
+        <Noise />
         <Navbar />
         {children}
       </body>

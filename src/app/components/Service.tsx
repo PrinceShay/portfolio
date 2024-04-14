@@ -1,7 +1,7 @@
 import React from "react";
 
 function Service() {
-  return <div>Service</div>;
+  return <h1 className="Section_Headline">Service</h1>;
 }
 
 export default Service;

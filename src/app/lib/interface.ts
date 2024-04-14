@@ -3,6 +3,7 @@ export interface ProjectCard {
     smallDescription: string;
     currentSlug: string;
     titleImage: any;
+    id: string;
 }
 
 export interface fullProject {

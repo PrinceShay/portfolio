@@ -1,53 +1,31 @@
-"use client";
-import { useEffect, useState } from "react";
-import gsap from "gsap";
-import SplitType from "split-type";
-import Image from "next/image";
-import HeroImage from "/assets/images/Hero.jpg";
+import React from "react";
 
-export default function Hero() {
-  useEffect(() => {
-    // This will run after the component has mounted
-    const text = new SplitType(".text-hero", { types: "chars" });
-
-    var tl = gsap.timeline({ autoAlpha: 0 });
-
-    tl.from(".text-hero .char", {
-      opacity: 0,
-      y: 100,
-      color: "#c300ff",
-      duration: 1.35,
-      ease: "power2.out",
-      stagger: 0.1,
-      delay: 0.5,
-    });
-
-    tl.from(
-      ".text-hero .char",
-      {
-        fontFamily: "amador, sans-serif",
-        duration: 1,
-        ease: "power2.out",
-        stagger: 0.1,
-      },
-      "<-0.8"
-    );
-  }, []); // Empty dependency array ensures this effect runs only once after the initial render
-
+function Hero() {
   return (
-    <header className="pb-32 mt-32 rounded-3xl container_hero w-full h-screen relative flex justify-center items-center bg-primary-900 overflow-hidden">
-      <Image
-        alt="Hallo"
-        src={HeroImage}
-        fill={true}
-        className="object-cover object-top"
-      ></Image>
-      <div className="z-1 relative">
-        <h1 className="text-hero uppercase text-primary-200">
-          Jannis <br /> Röstel
-        </h1>
+    <section className="HeroWrapper">
+      <div className="h-screen items-center grid grid-cols-12">
+        <div className=" col-start-2 col-span-7">
+          <p className="text-2xl mb-8">Hey, mein Name ist</p>
+          <h1 className="Section_Headline">Jannis Röstel</h1>
+        </div>
       </div>
-      <div className="hero-highlight bg-primary-300"></div>
-    </header>
+      <div className="h-screen items-center grid grid-cols-12">
+        <div className=" col-span-6 col-start-6 justify-self-end">
+          <p className="text-2xl mb-8">Und ich bin</p>
+          <h1 className="Section_Headline leading-tight">
+            Web- und Motiondesigner
+          </h1>
+          <p className="text-xl mt-8">
+            An independent creative agency for all your branding, advertising
+            and film production needs. With our signature style of
+            Aanstekelijk-ness® we create advertising that is as entertaining as
+            it's effective. Team up with us to grow your business value through
+            contagious creativity.
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
+
+export default Hero;

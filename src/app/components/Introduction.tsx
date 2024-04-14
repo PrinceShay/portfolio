@@ -3,7 +3,8 @@ import Link from "next/link";
 export default function Introduction() {
   return (
     <section className="pt-32 pb-32 max-w-screen mx-auto">
-      <p className="text-2xl ">
+      <h1 className="Section_Headline">Who the fuck is Jannis</h1>
+      <p className="text-3xl ">
         Bist du auch die endlosen Reihen von langweiligen, vorgefertigten
         Template-Seiten leid, auf denen eine genauso aussieht wie die andere?
         Ich definitiv! Ich bin{" "}
