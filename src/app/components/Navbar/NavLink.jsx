@@ -21,7 +21,7 @@ function NavLink({ url, title }) {
     >
       <Link href={url} className="flex">
         <motion.div
-          className="absolute inset-0 flex flex-col"
+          className="absolute inset-0 flex flex-col "
           initial="initial"
           whileHover="hover"
           variants={containerVariants}

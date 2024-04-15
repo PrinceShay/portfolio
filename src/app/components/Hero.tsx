@@ -16,11 +16,11 @@ function Hero() {
             Web- und Motiondesigner
           </h1>
           <p className="text-xl mt-8">
-            An independent creative agency for all your branding, advertising
+            "An independent creative agency for all your branding, advertising
             and film production needs. With our signature style of
             Aanstekelijk-ness® we create advertising that is as entertaining as
-            it's effective. Team up with us to grow your business value through
-            contagious creativity.
+            it&apos;s effective. Team up with us to grow your business value
+            through contagious creativity."
           </p>
         </div>
       </div>
