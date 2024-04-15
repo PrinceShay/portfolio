@@ -3,7 +3,7 @@ import BenefitCard from "./BenefitCard";
 
 function CustomerBenefits() {
   return (
-    <section className="py-64">
+    <section className="pt-64">
       <div className="text-center pb-24">
         <h1 className="Section_Headline">
           Warum Kunden mit <br /> mir arbeiten

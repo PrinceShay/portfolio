@@ -58,6 +58,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
         padding: "2px",
         borderRadius: "10px",
         overflow: "hidden",
+        filter: "blur()",
       }}
     >
       <motion.div
