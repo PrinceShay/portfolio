@@ -30,7 +30,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
     >
       <motion.div
         ref={ref}
-        className="relative min-h-[80vh] w-full h-auto p-6 flex items-end"
+        className="relative min-h-[80vh] w-full h-auto p-6 flex items-end shadow-2xl"
         initial="visible"
         animate={isInView ? "visible" : "hidden"}
         exit="exit"

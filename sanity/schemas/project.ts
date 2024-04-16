@@ -27,6 +27,11 @@ export default {
             title: 'Small Description',
         },
         {
+            name: 'introText',
+            type: 'text',
+            title: 'Introduction Text',
+        },
+        {
             name: 'content',
             type: 'array',
             title: 'Content',

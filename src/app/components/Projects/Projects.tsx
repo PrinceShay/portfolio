@@ -10,7 +10,8 @@ async function getData() {
     smallDescription,
     "currentSlug": slug.current,
     titleImage,
-    "categories": categories[]->title
+    "categories": categories[]->title,
+    introText
   }`;
   const data = await client.fetch(query);
   return data;
