@@ -26,7 +26,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
   return (
     <Link
       href={`/projekte/${post.currentSlug}`}
-      className="ProjectCard col-start-2 col-end-12 sticky top-[10vh]"
+      className="ProjectCard col-start-1 col-end-13 sticky top-[10vh]"
     >
       <motion.div
         ref={ref}

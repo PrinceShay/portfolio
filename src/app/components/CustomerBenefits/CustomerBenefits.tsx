@@ -3,7 +3,7 @@ import BenefitCard from "./BenefitCard";
 
 function CustomerBenefits() {
   return (
-    <section className="pt-64">
+    <section className="pt-64 px-48">
       <div className="text-center pb-24">
         <h1 className="Section_Headline">
           Warum Kunden mit <br /> mir arbeiten
@@ -13,7 +13,7 @@ function CustomerBenefits() {
           film production needs.
         </p>
         <div className="grid grid-cols-12 mt-24">
-          <ul className="col-start-2 col-end-12 grid grid-cols-3 gap-4">
+          <ul className="col-start-1 col-end-13 grid grid-cols-3 gap-4">
             <BenefitCard
               title="Keine versteckten Kosten"
               content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten

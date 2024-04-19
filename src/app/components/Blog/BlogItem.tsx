@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/app/lib/sanity";
 import { motion, useInView } from "framer-motion";
@@ -31,12 +30,11 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
   return (
     <Link href={`/blog/${post.currentSlug}`} className="">
       <motion.div initial="initial" animate="initial" whileHover="animate">
-        <div className="w-full aspect-video relative">
-          <Image
-            fill={true}
+        <div className="w-full aspect-video relative overflow-hidden">
+          <img
             alt={post.title}
             src={urlFor(post.titleImage).url()}
-            className="rounded-xl object-cover absolute"
+            className="rounded-xl object-cover absolute w-full h-full"
           />
         </div>
         <div className="mt-6">

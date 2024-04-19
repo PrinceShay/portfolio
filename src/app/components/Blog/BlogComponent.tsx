@@ -24,7 +24,7 @@ export default async function () {
     return <p>Loading...</p>;
   }
   return (
-    <section className="pt-64 flex flex-col items-center">
+    <section className="pt-64 flex flex-col items-center px-48">
       <div className="text-center pb-24">
         <h1 className="Section_Headline">
           Aktuelle <br /> News
@@ -34,8 +34,8 @@ export default async function () {
           film production needs.
         </p>
       </div>
-      <div className="grid grid-cols-12">
-        <div className=" col-start-2 col-end-12 grid grid-cols-3 grid-flow-row gap-8 relative">
+      <div className="grid grid-cols-12 w-full">
+        <div className=" col-start-1 col-end-13 grid grid-cols-3 grid-flow-row gap-8 relative">
           {data.map((post, idx) => (
             <BlogItem key={post.id} post={post} idx={idx} />
           ))}

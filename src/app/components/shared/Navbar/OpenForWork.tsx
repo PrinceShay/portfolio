@@ -15,7 +15,7 @@ function OpenForWork() {
   return (
     <Link
       href={"/Kontakt"}
-      className=" self-center col-start-10 col-end-12 justify-self-end flex items-center gap-2 px-4 py-3 h-8 relative w-64 overflow-hidden"
+      className=" self-center col-start-3 justify-self-end flex items-center gap-2 px-4 py-3 h-8 relative w-64 overflow-hidden"
     >
       <div className="GreenCircle w-3 h-3 rounded-full bg-green-500"></div>
       <motion.div

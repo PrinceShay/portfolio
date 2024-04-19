@@ -15,11 +15,8 @@ function Navbar() {
 
   return (
     <>
-      <div className=" z-50 fixed top-8 w-full grid grid-cols-12">
-        <Link
-          href={"/"}
-          className=" col-start-2 col-end-4 flex items-center gap-4"
-        >
+      <div className=" z-50 fixed top-8 px-48 w-full grid grid-cols-3">
+        <Link href={"/"} className=" col-start-1 flex items-center gap-4">
           <div className="relative w-16 rounded-full h-16 overflow-hidden">
             <img
               className="absolute top-6 left-1 transform scale-[2]"
@@ -30,7 +27,7 @@ function Navbar() {
           <p>Jannis Röstel</p>
         </Link>
 
-        <ul className=" text-xl col-start-4 col-end-10 justify-self-center flex gap-8  items-center">
+        <ul className=" text-xl col-start-2 justify-self-center flex gap-8  items-center">
           <NavLink url="/" title="Projekt" />
           <NavLink url="/" title="Profil" />
           <NavLink url="/" title="Projekt" />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/shared/Navbar/Navbar";
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Noise from "./components/Functions/Noise";
 
