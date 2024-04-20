@@ -57,11 +57,11 @@ function ProfileNav() {
             }}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-20 translate-y-full"
           >
-            <div className="w-full h-full relative bg-primary-700 flex justify-center items-center">
+            <div className="w-full h-full relative bg-gradient-to-tr from-primary-500 to-primary-800 flex justify-center items-center">
               <img
                 src="/Navigation/Logo.svg"
                 alt="Logo"
-                className="w-8 relative right-[0.5]"
+                className="w-7 relative right-[0.5]"
               />
             </div>
           </motion.div>

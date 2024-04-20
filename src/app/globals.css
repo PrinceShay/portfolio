@@ -110,3 +110,11 @@ body {
   line-height: 80%;
   letter-spacing: 2.5px;
 }
+
+.Highlight_CTA{
+  width: 50em;
+  position: absolute;
+  filter: blur(200px);
+  height: 50em;
+  border-radius: 100%;
+}

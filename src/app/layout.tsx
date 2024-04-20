@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/shared/Navbar/Navbar";
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Noise from "./components/Functions/Noise";
+import Footer from "./components/shared/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "Jannis Röstel",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Noise />
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
