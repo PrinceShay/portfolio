@@ -2,7 +2,7 @@ import React from "react";
 import { ProjectCard } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
 import BlogItem from "./BlogItem";
-import PrimaryButton from "../shared/ui/PrimaryButton";
+import PrimaryButton from "../../shared/ui/PrimaryButton";
 
 async function getData() {
   const query = `

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { urlFor } from "@/app/lib/sanity";
 import { motion, useInView } from "framer-motion";
 import { ChevronRight } from "lucide-react";
+import { circOut } from "framer-motion";
 
 function BlogItem({ post, idx }: { post: any; idx: number }) {
   const ref = React.useRef(null);
@@ -27,14 +28,24 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
     animate: { x: 10 },
   };
 
+  const ImageAnimate = {
+    initial: { scale: 1 },
+    animate: { scale: 1.1 },
+  };
+
   return (
     <Link href={`/blog/${post.currentSlug}`} className="">
       <motion.div initial="initial" animate="initial" whileHover="animate">
-        <div className="w-full aspect-video relative overflow-hidden">
-          <img
+        <div className="rounded-xl w-full aspect-video relative overflow-hidden">
+          <motion.img
             alt={post.title}
             src={urlFor(post.titleImage).url()}
-            className="rounded-xl object-cover absolute w-full h-full"
+            className=" object-cover absolute w-full h-full"
+            variants={ImageAnimate}
+            transition={{
+              ease: "circOut",
+              duration: 0.5,
+            }}
           />
         </div>
         <div className="mt-6">

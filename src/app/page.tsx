@@ -1,7 +1,7 @@
-import BlogComponent from "./components/Blog/BlogComponent";
-import CustomerBenefits from "./components/CustomerBenefits/CustomerBenefits";
-import Hero from "./components/Hero";
-import Projects from "./components/Projects/Projects";
+import BlogComponent from "./components/Main_Page/Blog/BlogComponent";
+import CustomerBenefits from "./components/Main_Page/CustomerBenefits/CustomerBenefits";
+import Hero from "./components/Main_Page/Hero";
+import Projects from "./components/Main_Page/Projects/Projects";
 export default function Home() {
   return (
     <main className="">
