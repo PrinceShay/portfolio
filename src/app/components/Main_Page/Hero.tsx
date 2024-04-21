@@ -1,13 +1,40 @@
 "use client";
 import AnimatedText from "../Functions/AnimatedText";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function Hero() {
+  gsap.registerPlugin(useGSAP);
+  const container = useRef(null);
+  const image = useRef(null);
+  useGSAP(
+    () => {
+      gsap.to(image.current, {
+        scale: 1.2,
+        opacity: 0.5,
+        yPercent: 20,
+        scrollTrigger: {
+          trigger: container.current,
+          toggleActions: "play pause resume reset",
+          start: "top 40vh",
+          end: "bottom top",
+          scrub: true,
+        },
+      }); // <-- automatically reverted
+    },
+    { scope: container }
+  ); // <-- scope is for selector text (optional)
   return (
-    <section className="relative px-48 overflow-hidden HeroSection">
+    <section
+      ref={container}
+      className="relative px-48 overflow-hidden HeroSection"
+    >
       <img
         className="w-full h-full absolute object-cover left-0 z-0 object-top"
         src="/assets/images/Hero.jpg"
         alt="Jannis Röstel"
+        ref={image}
       />
       <div className="relative z-10">
         <div className="h-screen items-center grid grid-cols-12">

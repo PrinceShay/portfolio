@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/app/lib/sanity";
 import { motion, useInView } from "framer-motion";
+import AnimatedText from "../../Functions/AnimatedText";
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
   const ref = React.useRef(null);

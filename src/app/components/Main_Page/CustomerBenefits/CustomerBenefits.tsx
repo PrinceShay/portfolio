@@ -1,7 +1,31 @@
+"use client";
 import React from "react";
 import BenefitCard from "./BenefitCard";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function CustomerBenefits() {
+  gsap.registerPlugin(useGSAP);
+  const container = useRef(null);
+  useGSAP(
+    () => {
+      gsap.from("li", {
+        scale: 0,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 2,
+        ease: "elastic.out(1,0.8)",
+        scrollTrigger: {
+          trigger: container.current,
+          toggleActions: "play pause resume reset",
+          start: "top bottom",
+        },
+      }); // <-- automatically reverted
+    },
+    { scope: container }
+  ); // <-- scope is for selector text (optional)
+
   return (
     <section className="pt-64 px-48">
       <div className="text-center pb-24">
@@ -13,7 +37,10 @@ function CustomerBenefits() {
           film production needs.
         </p>
         <div className="grid grid-cols-12 mt-24">
-          <ul className="col-start-1 col-end-13 grid grid-cols-3 gap-4">
+          <ul
+            ref={container}
+            className="col-start-1 col-end-13 grid grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-4"
+          >
             <BenefitCard
               title="Keine versteckten Kosten"
               content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
