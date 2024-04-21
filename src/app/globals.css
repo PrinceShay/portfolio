@@ -99,10 +99,10 @@ body {
 }
 
 .Highlight_CTA{
-  width: 50em;
+  width: 80em;
   position: absolute;
   filter: blur(200px);
-  height: 50em;
+  height: 80em;
   border-radius: 100%;
 }
 

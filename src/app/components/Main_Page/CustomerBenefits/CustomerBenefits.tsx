@@ -5,8 +5,9 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
+gsap.registerPlugin(useGSAP);
+
 function CustomerBenefits() {
-  gsap.registerPlugin(useGSAP);
   const container = useRef(null);
   useGSAP(
     () => {
