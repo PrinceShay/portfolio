@@ -21,7 +21,6 @@ const AnimatedText = ({ text, className, triggerStart, animationType, as = 'div'
             start: triggerStart,
             end: "bottom top",
             toggleActions: "play pause resume reset",
-            markers: true,
           }
         });
       }
