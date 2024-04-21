@@ -6,22 +6,20 @@ import { urlFor } from "@/app/lib/sanity";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref);
-
   const object = useRef(null);
   const image = useRef(null);
-
   const titleRef = useRef(null);
+
   useGSAP(
     () => {
       gsap.to(object.current, {
-        scale: 0.9,
+        scale: 0.7,
         opacity: 0,
         scrollTrigger: {
           trigger: object.current,
@@ -32,22 +30,6 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         },
       });
 
-      gsap.to(image.current, {
-        scale: 1.4,
-        scrollTrigger: {
-          trigger: object.current,
-          toggleActions: "play pause resume reset",
-          start: "top 5vh",
-          end: "",
-          scrub: true,
-        },
-      });
-    },
-    { scope: object }
-  );
-
-  useGSAP(
-    () => {
       gsap.from(".category", {
         scale: 0,
         opacity: 0,
@@ -57,7 +39,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         scrollTrigger: {
           trigger: object.current,
           toggleActions: "play pause resume reset",
-          start: "80% 80%",
+          start: "80% 90%",
         },
       });
 
@@ -73,8 +55,19 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           start: "80% 80%",
         },
       });
-    },
 
+      // Add hover effects
+      object.current.addEventListener("mouseenter", () => {
+        gsap.to(image.current, {
+          scale: 1.2,
+          ease: "power4.out",
+          duration: 2.5,
+        });
+      });
+      object.current.addEventListener("mouseleave", () => {
+        gsap.to(image.current, { scale: 1, ease: "power4.out", duration: 1.5 });
+      });
+    },
     { scope: object }
   );
 
@@ -100,13 +93,15 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       <div
         ref={object}
         className="rounded-xl relative min-h-[80vh] overflow-hidden w-full h-auto p-14 flex items-end shadow-2xl"
+        onMouseEnter={() => gsap.to(image.current, { scale: 1.2 })}
+        onMouseLeave={() => gsap.to(image.current, { scale: 1 })}
       >
         <Image
           fill={true}
           ref={image}
           alt={post.title}
           src={urlFor(post.titleImage).url()}
-          className=" object-cover absolute"
+          className="object-cover absolute"
         />
         <div className="flex justify-between w-full items-center">
           <h2 ref={titleRef} className="ProjectCard-Heading mt-4 relative">

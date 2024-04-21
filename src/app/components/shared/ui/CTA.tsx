@@ -4,6 +4,7 @@ import PrimaryButton from "./PrimaryButton";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import AnimatedText from "../../Functions/AnimatedText";
 
 gsap.registerPlugin(useGSAP);
 
@@ -30,21 +31,37 @@ function CTA() {
   return (
     <section
       ref={container}
-      className="relative min-h-screen w-full px-48 py-24 bg-primary-900 flex items-center justify-center flex-col"
+      className="relative min-h-screen w-full px-48  flex items-center justify-center flex-col"
     >
-      <div className="flex items-center justify-center flex-col z-20">
-        <h1 className="Section_Headline text-center">
-          Mach jetzt irgendwas.
-          <br /> Wirklich irgendwas.
-        </h1>
-        <p className="text-xl mt-6">
-          An independent creative agency for all your branding, advertising, and
-          film production needs.
-        </p>
+      <video
+        className=" z-0 absolute w-full h-full object-cover"
+        src="/assets/videos/cow.webm"
+        autoPlay
+        loop
+        muted
+      ></video>
+      <div className="absolute w-full h-full bg-primary-800 mix-blend-multiply opacity-50"></div>
+
+      <div className="overflow-hidden relative py-36 rounded-3xl bg-primary-500 bg-opacity-0  w-full h-full flex items-center justify-center flex-col">
+        <AnimatedText
+          text="Mach jetzt irgendwas. Wirklich irgendwas."
+          className="Section_Headline text-center z-20 max-w-[1500]"
+          triggerStart="top 90%"
+          animationType="fadeUp"
+          as="h1"
+        />
+
+        <AnimatedText
+          text="An independent creative agency for all your branding, advertising, and
+          film production needs."
+          className="text-xl mt-6 z-20"
+          triggerStart="top 90%"
+          animationType="lineStagger"
+          as="div"
+        />
 
         <PrimaryButton link="/blog" title="Alle Beiträge anschauen" />
       </div>
-      <div ref={light} className="Highlight_CTA bg-primary-700 top"></div>
     </section>
   );
 }
