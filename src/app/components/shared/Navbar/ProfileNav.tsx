@@ -45,8 +45,8 @@ function ProfileNav() {
           <motion.div
             variants={MainVariants}
             transition={{
-              ease: "circOut",
-              duration: 0.5,
+              ease: "easeInOut",
+              duration: 0.4,
             }}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"
           >
@@ -60,8 +60,8 @@ function ProfileNav() {
           <motion.div
             variants={SecondVariants}
             transition={{
-              ease: "circOut",
-              duration: 0.5,
+              ease: "easeInOut",
+              duration: 0.4,
             }}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-20 translate-y-full"
           >

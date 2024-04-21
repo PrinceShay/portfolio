@@ -1,20 +1,19 @@
+// SplitText.jsx
 import React from "react";
 import SplitType from "split-type";
 
-const SplitText = ({ text }) => {
-  // Referenz auf das Element, das den Text enthält
+const SplitText = ({ text, onSplitComplete }) => {
   const textRef = React.useRef(null);
 
-  // Konstante für die SplitType-Optionen
-  const options = { type: "words, chars, lines" };
-
-  // Effekt, der SplitType ausführt, wenn sich der Text ändert
   React.useEffect(() => {
     if (textRef.current) {
-      const split = new SplitType(textRef.current, options);
-      return () => split.revert(); // Bereinigen, um Lecks zu vermeiden
+      const split = new SplitType(textRef.current, {
+        type: "words, chars, lines",
+      });
+      onSplitComplete(); // Notify when split is complete
+      return () => split.revert(); // Cleanup to avoid memory leaks
     }
-  }, [text]);
+  }, [text, onSplitComplete]); // React to changes in text or the completion callback
 
   return <div ref={textRef}>{text}</div>;
 };
