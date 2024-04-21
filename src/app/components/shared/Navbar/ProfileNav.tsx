@@ -7,10 +7,14 @@ function ProfileNav() {
     initial: {
       translateY: "0%",
       translateX: "0%",
+      scale: 1,
+      rotate: 0,
     },
     animate: {
       translateY: "-100%",
       translateX: "50%",
+      scale: 1.5,
+      rotate: -50,
     },
   };
 
@@ -18,10 +22,14 @@ function ProfileNav() {
     initial: {
       translateY: "100%",
       translateX: "-50%",
+      scale: 1.5,
+      rotate: 50,
     },
     animate: {
       translateY: "0%",
       translateX: "0%", // Move up by 100% of its height
+      scale: 1,
+      rotate: 0,
     },
   };
 
@@ -37,8 +45,8 @@ function ProfileNav() {
           <motion.div
             variants={MainVariants}
             transition={{
-              ease: "circOut",
-              duration: 0.35,
+              ease: "easeInOut",
+              duration: 0.4,
             }}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"
           >
@@ -52,8 +60,8 @@ function ProfileNav() {
           <motion.div
             variants={SecondVariants}
             transition={{
-              ease: "circOut",
-              duration: 0.35,
+              ease: "easeInOut",
+              duration: 0.4,
             }}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-20 translate-y-full"
           >
