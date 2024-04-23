@@ -1,36 +1,68 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function NavLink({ url, title }) {
-  // Defining the animation variants for the container
-  const containerVariants = {
-    initial: {
-      translateY: "0%",
-    },
-    hover: {
-      translateY: "-100%", // Move up by 100% of its height
-    },
-  };
+  const navlinkRef = useRef();
+  const titleRef = useRef();
+  const shadowRef = useRef();
+
+  useGSAP(() => {
+    // Hover-Effekt initialisieren
+    gsap.set([titleRef.current, shadowRef.current], { yPercent: 0 });
+
+    // Mouseenter-Handler
+    const onMouseEnter = () => {
+      gsap.to(titleRef.current, {
+        yPercent: -100,
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+      gsap.to(shadowRef.current, {
+        yPercent: -100,
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+    };
+
+    // Mouseleave-Handler
+    const onMouseLeave = () => {
+      gsap.to(titleRef.current, {
+        yPercent: 0,
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+      gsap.to(shadowRef.current, {
+        yPercent: 0,
+        duration: 0.5,
+        ease: "power4.inOut",
+      });
+    };
+
+    // Event-Listener hinzufügen
+    navlinkRef.current.addEventListener("mouseenter", onMouseEnter);
+    navlinkRef.current.addEventListener("mouseleave", onMouseLeave);
+
+    return () => {
+      // Event-Listener aufräumen
+      navlinkRef.current.removeEventListener("mouseenter", onMouseEnter);
+      navlinkRef.current.removeEventListener("mouseleave", onMouseLeave);
+    };
+  }, []);
 
   return (
-    <li
-      className="p-2 relative overflow-hidden w-16 h-8"
-      onMouseEnter={() => {}}
-      onMouseLeave={() => {}}
-    >
-      <Link href={url} className="flex">
-        <motion.div
-          className="absolute inset-0 flex flex-col "
-          initial="initial"
-          whileHover="hover"
-          variants={containerVariants}
+    <li ref={navlinkRef} className="p-2">
+      <Link href={url} className="flex relative overflow-hidden">
+        <p ref={titleRef} className="Navlink_Title">
+          {title}
+        </p>
+        <p
+          ref={shadowRef}
+          className="Navlink_Shadow absolute top-0 translate-y-full text-primary-200"
         >
-          <p className="Navlink_Title w-full text-center">{title}</p>
-          <p className="Navlink_Shadow w-full text-center absolute top-full text-primary-200">
-            {title}
-          </p>
-        </motion.div>
+          {title}
+        </p>
       </Link>
     </li>
   );

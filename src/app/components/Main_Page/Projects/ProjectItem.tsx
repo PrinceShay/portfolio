@@ -12,9 +12,9 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
-  const object = useRef(null);
-  const image = useRef(null);
-  const titleRef = useRef(null);
+  const object = useRef<HTMLDivElement>(null);
+  const image = useRef<HTMLImageElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
@@ -57,14 +57,14 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       });
 
       // Add hover effects
-      object.current.addEventListener("mouseenter", () => {
+      object.current?.addEventListener("mouseenter", () => {
         gsap.to(image.current, {
-          scale: 1.2,
-          ease: "power4.out",
-          duration: 2.5,
+          scale: 1.1,
+          ease: "power2.out",
+          duration: 1.5,
         });
       });
-      object.current.addEventListener("mouseleave", () => {
+      object.current?.addEventListener("mouseleave", () => {
         gsap.to(image.current, { scale: 1, ease: "power4.out", duration: 1.5 });
       });
     },
