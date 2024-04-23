@@ -24,7 +24,7 @@ export default async function () {
     return <p>Loading...</p>;
   }
   return (
-    <section className="pt-64 flex flex-col items-center px-48">
+    <section className="py-64 flex flex-col items-center px-48">
       <div className="text-center pb-24">
         <h1 className="Section_Headline">
           Aktuelle <br /> News

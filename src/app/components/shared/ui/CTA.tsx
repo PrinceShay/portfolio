@@ -44,7 +44,7 @@ function CTA() {
 
       <div className="overflow-hidden relative py-36 rounded-3xl bg-primary-500 bg-opacity-0  w-full h-full flex items-center justify-center flex-col">
         <AnimatedText
-          text="Mach jetzt irgendwas. Wirklich irgendwas."
+          text="Bereit, wenn du es bist"
           className="Section_Headline text-center z-20 max-w-[1500]"
           triggerStart="top 90%"
           animationType="fadeUp"
@@ -52,8 +52,7 @@ function CTA() {
         />
 
         <AnimatedText
-          text="An independent creative agency for all your branding, advertising, and
-          film production needs."
+          text="Schreib mir eine kurze Mail und ich melde mich bei dir."
           className="text-xl mt-6 z-20"
           triggerStart="top 90%"
           animationType="lineStagger"
