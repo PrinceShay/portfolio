@@ -46,5 +46,21 @@ export default {
             title: 'Categories',
             of: [{type: 'reference', to: [{type: 'category'}]}]
         },
+        {
+            name: 'mediaCollection',
+            type: 'array',
+            title: 'Media Collection',
+            of: [
+                {type: 'image', title: 'Image'},
+                {
+                    type: 'file',
+                    title: 'Video',
+                    options: {
+                        accept: 'video/*' // Erlaubt das Hochladen von Video-Dateien
+                    }
+                }
+            ]
+        },
     ]
 }
+

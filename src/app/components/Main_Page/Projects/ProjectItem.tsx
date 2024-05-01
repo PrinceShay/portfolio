@@ -39,7 +39,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         scrollTrigger: {
           trigger: object.current,
           toggleActions: "play pause resume reset",
-          start: "80% 90%",
+          start: "80% 95%",
         },
       });
 
@@ -52,7 +52,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         scrollTrigger: {
           trigger: object.current,
           toggleActions: "play pause resume reset",
-          start: "80% 80%",
+          start: "80% 95%",
         },
       });
 

@@ -9,6 +9,7 @@ export interface ProjectCard {
 }
 
 export interface fullProject {
+    mediaCollection: any;
     introText: string;
     currentSlug: string;
     title: string;

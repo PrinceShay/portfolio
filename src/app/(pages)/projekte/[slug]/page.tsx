@@ -1,26 +1,36 @@
 import { fullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import Image from "next/image";
+import Hero from "@/app/components/Project_Page/Hero";
+import ProjectContent from "@/app/components/Project_Page/ProjectContent";
 
 export const revalidate = 30;
 
 async function getData(slug: string) {
   const query = `
-    *[_type == "project" && slug.current =="${slug}"] {
-        "currentSlug": slug.current,
-          title,
-          content,
-          titleImage,
-          introText,
-          "categories": categories[]->title,
-      } [0]`;
+  *[_type == "project" && slug.current == "${slug}"] {
+    "currentSlug": slug.current,
+    title,
+    content,
+    titleImage,
+    introText,
+    "categories": categories[]->title,
+    "mediaCollection": mediaCollection[] {
+        ...,
+        asset->{
+            _id,
+            url,
+            mimeType
+        }
+    },
+  } [0]
+  `;
 
   const data = await client.fetch(query);
   return data;
 }
 
-export default async function BlogArticle({
+export default async function ProjectPage({
   params,
 }: {
   params: { slug: string };
@@ -29,24 +39,7 @@ export default async function BlogArticle({
 
   return (
     <main className="">
-      {/* Hero */}
-
-      <header className="min-h-[80vh] grid grid-cols-12 ">
-        <div className="col-start-2 col-end-12 flex flex-col items-center justify-center">
-          <p className="text-2xl block text-center text-primary font-semibold tracking-wide uppercase">
-            {data.title}
-          </p>
-          <h1 className="mt-8 block  text-center Section_Headline">
-            {data.introText}
-          </h1>
-        </div>
-      </header>
-      <div className="w-full h-screen relative">
-        <img
-          src="/assets/images/Hero.jpg"
-          className="w-full h-full object-cover absolute top-0 object-top"
-        ></img>
-      </div>
+      <Hero title={data.title} introText={data.introText} />
 
       {/* Challenge */}
 
@@ -118,18 +111,7 @@ export default async function BlogArticle({
           <PortableText value={data.content} />
         </div>
       </div>
+      <ProjectContent mediaCollection={data.mediaCollection} />
     </main>
   );
 }
-
-/*<div className="grid grid-cols-12 grid-flow-row">
-        <Image
-          src={urlFor(data.titleImage).url()}
-          width={0}
-          height={0}
-          sizes="100vw"
-          alt="Title Image"
-          priority
-          className=" col-start-2 col-end-12 rounded-lg mt-8 w-full h-auto max-h-[80vh] object-cover"
-        />
-      </div>*/

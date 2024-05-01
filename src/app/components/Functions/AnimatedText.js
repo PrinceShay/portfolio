@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitText from '../../hooks/SplitText';
 
+
 const AnimatedText = ({ text, className, triggerStart, animationType, as = 'div' }) => {
     const textRef = useRef(null);
     const [splitComplete, setSplitComplete] = React.useState(false);
@@ -57,8 +58,8 @@ function getAnimationConfig(type, chars, lines) {
     case 'lineStagger':
       return {
         target: lines,  // Targeting lines instead of characters
-        from: { y: 50, opacity: 0 },
-        to: { y: 0, opacity: 1, stagger: 0.15, duration: 0.8 }
+        from: { y: 50, opacity: 0, rotate: 5 },
+        to: { y: 0, opacity: 1, stagger: 0.15,ease: "power4.out", duration: 0.8, rotate: 0 }
       };
     default:
       return {  // Default animation
