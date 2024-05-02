@@ -40,7 +40,7 @@ function CustomerBenefits() {
         <div className="grid grid-cols-12 mt-24">
           <ul
             ref={container}
-            className="col-start-1 col-end-13 grid grid-cols-3 xl:grid-cols-4 md:grid-cols-2 gap-4"
+            className="col-start-1 col-end-13 grid grid-cols-3 xl:grid-cols-3 md:grid-cols-2 gap-4"
           >
             <BenefitCard
               title="Keine versteckten Kosten"

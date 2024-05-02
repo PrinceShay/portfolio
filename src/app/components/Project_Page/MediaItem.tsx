@@ -29,7 +29,7 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
       scrollTrigger: {
         trigger: MediaItemRef.current,
         toggleActions: "play pause resume reset",
-        start: "top 105%",
+        start: "-5% 105%",
         end: "",
         scrub: true,
       },

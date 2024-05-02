@@ -10,8 +10,6 @@ function ServiceItem() {
   const RefText = useRef(null);
   const [splitComplete, setSplitComplete] = useState(false);
 
-  new SplitType("#meow");
-
   useGSAP(
     () => {
       if (splitComplete) {
