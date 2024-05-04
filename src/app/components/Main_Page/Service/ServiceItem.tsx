@@ -12,6 +12,7 @@ function ServiceItem() {
 
   const title = useRef<HTMLHeadingElement>(null);
   const refText = useRef<HTMLParagraphElement>(null);
+  const divider = useRef<HTMLDivElement>(null);
   const [isSplit, setSplit] = useState(false);
 
   useEffect(() => {
@@ -66,7 +67,7 @@ function ServiceItem() {
           "<25%"
         )
         .from(
-          ".divider",
+          divider.current,
           {
             width: 0,
             duration: 1,
@@ -100,7 +101,10 @@ function ServiceItem() {
           </div>
           <div className="flex basis-1/3 justify-end">Meow</div>
         </div>
-        <div className="divider w-full h-[1.5px] bg-primary-100 mt-12"></div>
+        <div
+          ref={divider}
+          className="divider w-full h-[1.5px] bg-primary-100 mt-12"
+        ></div>
       </div>
     </div>
   );
