@@ -4,8 +4,6 @@ import PrimaryButton from "./PrimaryButton";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import AnimatedText from "../../Functions/AnimatedText";
-
 gsap.registerPlugin(useGSAP);
 
 function CTA() {
@@ -43,21 +41,12 @@ function CTA() {
       <div className="absolute w-full h-full bg-primary-800 mix-blend-multiply opacity-50"></div>
 
       <div className="overflow-hidden relative py-36 rounded-3xl bg-primary-500 bg-opacity-0  w-full h-full flex items-center justify-center flex-col">
-        <AnimatedText
-          text="Bereit, wenn du es bist"
-          className="Section_Headline text-center z-20 max-w-[1500]"
-          triggerStart="top 90%"
-          animationType="fadeUp"
-          as="h1"
-        />
-
-        <AnimatedText
-          text="Schreib mir eine kurze Mail und ich melde mich bei dir."
-          className="text-xl mt-6 z-20"
-          triggerStart="top 90%"
-          animationType="lineStagger"
-          as="div"
-        />
+        <h1 className="Section_Headline text-center z-20 max-w-[1500]">
+          Bereit, wenn du es bist
+        </h1>
+        <p className="text-xl mt-6 z-20">
+          Schreib mir eine kurze Mail und ich melde mich bei dir.
+        </p>
 
         <PrimaryButton link="/blog" title="Alle Beiträge anschauen" />
       </div>
