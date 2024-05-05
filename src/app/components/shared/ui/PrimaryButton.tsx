@@ -23,7 +23,7 @@ function PrimaryButton({ link, title }: { link: string; title: string }) {
         variants={ButtonVariants}
         initial="initial"
         whileHover="hover"
-        className="bg-primary-500 px-8 py-4 rounded-full mt-16  "
+        className="bg-primary-600 px-8 py-4 rounded-full mt-16  "
       >
         <div className="overflow-hidden h-7 flex self-center relative w-64">
           <motion.div
