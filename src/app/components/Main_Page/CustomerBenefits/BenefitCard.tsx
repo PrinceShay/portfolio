@@ -1,6 +1,6 @@
-"use client";
 import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 interface BenefitCardProps {
   title: string;
@@ -8,43 +8,56 @@ interface BenefitCardProps {
 }
 
 function BenefitCard({ title, content }: BenefitCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
   const borderRef = useRef<HTMLLIElement>(null);
-  const [highlightStyle, setHighlightStyle] = useState<React.CSSProperties>({});
   const [isHovered, setIsHovered] = useState(false);
 
-  const updateHighlight = (x: number, y: number): React.CSSProperties => ({
-    background: `radial-gradient(circle at ${x}% ${y}%, rgba(237, 179, 255,0.6), rgba(237, 179, 255,0) 55%)`,
-  });
-
-  const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
-    if (borderRef.current) {
-      const { left, top, width, height } =
-        borderRef.current.getBoundingClientRect();
-      const x = ((event.clientX - left) / width) * 100;
-      const y = ((event.clientY - top) / height) * 100;
-      setIsHovered(true);
-      setHighlightStyle({
-        ...updateHighlight(x, y),
-        transition: "background 2s ease-out",
+  useGSAP(() => {
+    if (isHovered && cardRef.current) {
+      gsap.to(cardRef.current, {
+        backgroundColor: "rgb(4, 4, 18)",
+        duration: 0.5,
+      });
+    } else if (cardRef.current) {
+      gsap.to(cardRef.current, {
+        backgroundColor: "rgb(0, 0, 14)",
+        duration: 0.5,
       });
     }
+  }, [isHovered]);
+
+  const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
+    setIsHovered(true);
+    updateBackground(event);
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLLIElement>) => {
-    if (!isHovered || !borderRef.current) return;
+    if (!isHovered) return;
+    updateBackground(event);
+  };
+
+  const updateBackground = (event: React.MouseEvent<HTMLLIElement>) => {
+    if (!borderRef.current) return;
     const { left, top, width, height } =
       borderRef.current.getBoundingClientRect();
     const x = ((event.clientX - left) / width) * 100;
     const y = ((event.clientY - top) / height) * 100;
-    setHighlightStyle(updateHighlight(x, y));
+
+    gsap.to(borderRef.current, {
+      background: `radial-gradient(circle at ${x}% ${y}%, rgba(177, 122, 255, 0.6), rgba(177, 122, 255, 0) 80%)`,
+      duration: 0.1,
+    });
   };
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setHighlightStyle({
-      transition: "background 2s ease-out",
-      background: "none",
-    });
+    if (borderRef.current) {
+      gsap.to(borderRef.current, {
+        background: "none",
+        duration: 0.5,
+        ease: "power4.out", // Smooth transition using Power4.out easing
+      });
+    }
   };
 
   return (
@@ -54,28 +67,21 @@ function BenefitCard({ title, content }: BenefitCardProps) {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
-        ...highlightStyle,
         padding: "2px",
         borderRadius: "10px",
         overflow: "hidden",
-        filter: "blur()",
       }}
     >
-      <motion.div
+      <div
+        ref={cardRef}
         className="p-12 text-left rounded-lg shadow-lg h-full"
-        initial={{ opacity: 0.6 }}
-        animate={{
+        style={{
           opacity: 1,
-          backgroundColor: isHovered ? "rgb(8, 0, 10)" : "rgb(4, 0, 5)",
-        }}
-        transition={{
-          opacity: { duration: 0.3 },
-          backgroundColor: { duration: 0.3 },
         }}
       >
         <h2 className="text-4xl font-bold text-primary-100">{title}</h2>
         <p className="mt-8 text-lg text-primary-100">{content}</p>
-      </motion.div>
+      </div>
     </li>
   );
 }

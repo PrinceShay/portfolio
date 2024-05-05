@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="de">
       <SmoothScroll />
 
-      <body className=" bg-darkBlue ">
+      <body className=" bg-darkBlue-500 ">
         <Noise />
         <Grain />
         <Navbar />

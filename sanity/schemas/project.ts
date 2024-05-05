@@ -22,6 +22,15 @@ export default {
             title: 'Title Image',
         },
         {
+            name: 'titleVideo',
+            type: 'file',
+            title: 'Title Video',
+            options: {
+                    accept: 'video/*' // Erlaubt das Hochladen von Video-Dateien
+                }
+            
+        },
+        {
             name: 'smallDescription',
             type: 'text',
             title: 'Small Description',

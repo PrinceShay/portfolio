@@ -10,6 +10,7 @@ async function getData() {
     smallDescription,
     "currentSlug": slug.current,
     titleImage,
+    titleVideo{asset->{url,_id}},
     "categories": categories[]->title,
     introText
   }`;

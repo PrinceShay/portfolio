@@ -152,6 +152,7 @@ function Hero() {
           </div>
         </div>
       </div>
+      <div className="w-full h-[50vh] absolute bg-gradient-to-t from-darkBlue-500 to-transparent bottom-0 left-0"></div>
     </section>
   );
 }

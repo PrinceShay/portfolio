@@ -1,10 +1,6 @@
 "use client";
-import React from "react";
-import Image from "next/image";
+import React, { useRef } from "react";
 import Link from "next/link";
-import { urlFor } from "@/app/lib/sanity";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -13,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
   const object = useRef<HTMLDivElement>(null);
-  const image = useRef<HTMLImageElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null); // Updated to HTMLVideoElement
   const titleRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -58,14 +54,18 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
 
       // Add hover effects
       object.current?.addEventListener("mouseenter", () => {
-        gsap.to(image.current, {
+        gsap.to(videoRef.current, {
           scale: 1.1,
           ease: "power2.out",
           duration: 1.5,
         });
       });
       object.current?.addEventListener("mouseleave", () => {
-        gsap.to(image.current, { scale: 1, ease: "power4.out", duration: 1.5 });
+        gsap.to(videoRef.current, {
+          scale: 1,
+          ease: "power4.out",
+          duration: 1.5,
+        });
       });
     },
     { scope: object }
@@ -74,14 +74,6 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
   if (!post) {
     return <div>Post not available</div>;
   }
-
-  const variants = {
-    visible: {
-      scale: 1,
-      opacity: 1,
-    },
-    exit: { scale: 0.7, opacity: 0 },
-  };
 
   const categories = post.categories || [];
 
@@ -93,16 +85,23 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       <div
         ref={object}
         className="rounded-xl relative min-h-[80vh] overflow-hidden w-full h-auto p-14 flex items-end shadow-2xl"
-        onMouseEnter={() => gsap.to(image.current, { scale: 1.2 })}
-        onMouseLeave={() => gsap.to(image.current, { scale: 1 })}
+        onMouseEnter={() =>
+          gsap.to(videoRef.current, { scale: 1.2, ease: "Power2.out" })
+        }
+        onMouseLeave={() =>
+          gsap.to(videoRef.current, { scale: 1, ease: "Power2.out" })
+        }
       >
-        <Image
-          fill={true}
-          ref={image}
-          alt={post.title}
-          src={urlFor(post.titleImage).url()}
-          className="object-cover absolute"
-        />
+        {post.titleVideo && post.titleVideo.asset && (
+          <video
+            ref={videoRef} // Correctly assigned ref for the video element
+            className="w-full h-full absolute left-0 top-0 object-cover"
+            src={post.titleVideo.asset.url}
+            autoPlay
+            muted
+            loop
+          ></video>
+        )}
         <div className="flex justify-between w-full items-center">
           <h2 ref={titleRef} className="ProjectCard-Heading mt-4 relative">
             {post.title}
