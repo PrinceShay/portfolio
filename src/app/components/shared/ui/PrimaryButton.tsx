@@ -23,7 +23,7 @@ function PrimaryButton({ link, title }: { link: string; title: string }) {
         variants={ButtonVariants}
         initial="initial"
         whileHover="hover"
-        className="bg-primary-600 px-8 py-4 rounded-full mt-16  "
+        className="bg-primary-500 px-8 py-4 rounded-full mt-16  "
       >
         <div className="overflow-hidden h-7 flex self-center relative w-64">
           <motion.div
@@ -33,7 +33,7 @@ function PrimaryButton({ link, title }: { link: string; title: string }) {
             variants={containerVariants}
           >
             <p className="text-xl w-full text-center">Offen für Aufträge</p>
-            <p className="text-xl w-full text-center absolute top-full text-primary-200">
+            <p className="text-xl w-full text-center absolute top-full text-primary-100">
               Jetzt kontaktieren
             </p>
           </motion.div>
