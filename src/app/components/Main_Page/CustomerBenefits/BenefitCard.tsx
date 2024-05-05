@@ -79,7 +79,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
           opacity: 1,
         }}
       >
-        <h2 className="text-4xl font-bold text-primary-100">{title}</h2>
+        <h2 className="text-4xl font-bold text-primary-500">{title}</h2>
         <p className="mt-8 text-lg text-primary-100">{content}</p>
       </div>
     </li>

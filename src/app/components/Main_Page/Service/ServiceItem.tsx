@@ -25,6 +25,7 @@ const ServiceItem: FC<ServiceItemProps> = ({
 }) => {
   const container = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const HeadlineRef = useRef<HTMLHeadingElement>(null);
   const refText = useRef<HTMLParagraphElement>(null);
   const divider = useRef<HTMLDivElement>(null);
   const [isSplit, setSplit] = useState(false);
@@ -39,7 +40,13 @@ const ServiceItem: FC<ServiceItemProps> = ({
   }, []);
 
   useGSAP(() => {
-    if (isSplit && container.current && titleRef.current && refText.current) {
+    if (
+      isSplit &&
+      container.current &&
+      titleRef.current &&
+      HeadlineRef.current &&
+      refText.current
+    ) {
       const serviceTL = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
@@ -49,13 +56,27 @@ const ServiceItem: FC<ServiceItemProps> = ({
       });
 
       serviceTL
-        .from(titleRef.current?.children, {
-          yPercent: 20,
+        .from(titleRef.current?.querySelectorAll(".word"), {
+          y: 50,
           opacity: 0,
-          rotate: -10,
+          rotate: 5,
           duration: 1,
+          stagger: 0.05,
           ease: "power4.out",
         })
+
+        .from(
+          HeadlineRef.current?.querySelectorAll(".word"),
+          {
+            y: 50,
+            opacity: 0,
+            rotate: 5,
+            duration: 1,
+            stagger: 0.05,
+            ease: "power4.out",
+          },
+          "<25%"
+        )
         .from(
           refText.current?.children,
           {
@@ -99,13 +120,15 @@ const ServiceItem: FC<ServiceItemProps> = ({
       <div className="col-start-5 col-end-13 flex flex-col w-full">
         <div className="flex justify-between w-full">
           <div className="basis-3/4 w-full">
-            <h3 className="split text-2xl">{Headline}</h3>
+            <h3 ref={HeadlineRef} className="split text-2xl">
+              {Headline}
+            </h3>
             <p ref={refText} className="split text-lg mt-6">
               {Text}
             </p>
             <ul className="mt-24">
               {items.map((item, index) => (
-                <li key={index} className="text-lg text-primary-200">
+                <li key={index} className="list-disc text-lg text-primary-200">
                   {item}
                 </li>
               ))}

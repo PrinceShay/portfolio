@@ -12,10 +12,10 @@ function CustomerBenefits() {
   useGSAP(
     () => {
       gsap.from("li", {
-        scale: 0,
+        scale: 0.5,
         opacity: 0,
         stagger: 0.15,
-        duration: 2,
+        duration: 1.75,
         ease: "elastic.out(1,0.8)",
         scrollTrigger: {
           trigger: container.current,
