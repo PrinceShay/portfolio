@@ -5,7 +5,7 @@ import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger); // Register once outside component
+gsap.registerPlugin(ScrollTrigger);
 
 function ServiceItem() {
   const container = useRef<HTMLDivElement>(null);
