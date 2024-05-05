@@ -17,14 +17,13 @@ const containerVariants = {
 };
 
 function PrimaryButton({ link, title }: { link: string; title: string }) {
-  console.log("Rendering PrimaryButton");
   return (
     <Link href={link} className="">
       <motion.div
         variants={ButtonVariants}
         initial="initial"
         whileHover="hover"
-        className="bg-primary-800 px-8 py-4 rounded-full mt-16  "
+        className="bg-primary-500 px-8 py-4 rounded-full mt-16  "
       >
         <div className="overflow-hidden h-7 flex self-center relative w-64">
           <motion.div

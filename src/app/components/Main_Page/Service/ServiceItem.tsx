@@ -1,32 +1,45 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, FC } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
+// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
-function ServiceItem() {
-  const container = useRef<HTMLDivElement>(null);
+// Defining an interface for component props
+interface ServiceItemProps {
+  title: string;
+  Headline: string;
+  Text: string;
+  items: string[];
+}
 
-  const title = useRef<HTMLHeadingElement>(null);
+// ServiceItem component definition using the props interface
+const ServiceItem: FC<ServiceItemProps> = ({
+  title,
+  Headline,
+  Text,
+  items,
+}) => {
+  const container = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const refText = useRef<HTMLParagraphElement>(null);
   const divider = useRef<HTMLDivElement>(null);
   const [isSplit, setSplit] = useState(false);
 
   useEffect(() => {
-    // Assume `useSplitType` can accept a callback to set `isSplit` true after completion
+    // Splitting text elements
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
       new SplitType(element as HTMLElement, { types: "lines,words,chars" });
     });
-
-    setSplit(true); // Set split state to true after all elements are split
+    setSplit(true);
   }, []);
 
   useGSAP(() => {
-    if (isSplit && container.current && title.current && refText.current) {
+    if (isSplit && container.current && titleRef.current && refText.current) {
       const serviceTL = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
@@ -36,7 +49,7 @@ function ServiceItem() {
       });
 
       serviceTL
-        .from(title.current.children, {
+        .from(titleRef.current?.children, {
           yPercent: 20,
           opacity: 0,
           rotate: -10,
@@ -44,7 +57,7 @@ function ServiceItem() {
           ease: "power4.out",
         })
         .from(
-          refText.current.children,
+          refText.current?.children,
           {
             yPercent: 20,
             opacity: 0,
@@ -76,27 +89,26 @@ function ServiceItem() {
           "<25%"
         );
     }
-  }, [isSplit]); // Depend on isSplit
+  }, [isSplit]);
 
   return (
     <div ref={container} className="grid grid-cols-12 mb-36">
-      <h2 ref={title} className="split text-6xl">
-        Web
+      <h2 ref={titleRef} className="split text-6xl col-span-3">
+        {title}
       </h2>
       <div className="col-start-5 col-end-13 flex flex-col w-full">
         <div className="flex justify-between w-full">
           <div className="basis-3/4 w-full">
-            <h3 className="split text-2xl">Meow</h3>
-            <p ref={refText} className="split text-xl mt-8">
-              Dies ist ein Beispiel für einen Blindtext, der auf Deutsch
-              geschrieben ist. Es gibt noch viele weitere Arten des Hauses,
-              wobei die ersten Menschen heute
+            <h3 className="split text-2xl">{Headline}</h3>
+            <p ref={refText} className="split text-lg mt-6">
+              {Text}
             </p>
             <ul className="mt-24">
-              <li className="text-xl text-primary-200">Point 1</li>
-              <li className="text-xl text-primary-200">Point 2</li>
-              <li className="text-xl text-primary-200">Point 3</li>
-              <li className="text-xl text-primary-200">Point 4</li>
+              {items.map((item, index) => (
+                <li key={index} className="text-lg text-primary-200">
+                  {item}
+                </li>
+              ))}
             </ul>
           </div>
           <div className="flex basis-1/3 justify-end">Meow</div>
@@ -108,6 +120,6 @@ function ServiceItem() {
       </div>
     </div>
   );
-}
+};
 
 export default ServiceItem;

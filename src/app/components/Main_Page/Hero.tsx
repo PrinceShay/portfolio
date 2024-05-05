@@ -65,7 +65,7 @@ function Hero() {
         opacity: 0,
         stagger: 0.05,
         rotate: 5,
-        duration: 1,
+        duration: 1.4,
         scrollTrigger: {
           trigger: TagRef2.current,
           start: "top 80%",
@@ -78,7 +78,7 @@ function Hero() {
         opacity: 0,
         stagger: 0.05,
         rotate: 5,
-        duration: 1,
+        duration: 1.4,
         scrollTrigger: {
           trigger: NameRef2.current,
           start: "top 80%",
@@ -90,7 +90,7 @@ function Hero() {
         opacity: 0,
         stagger: 0.05,
         rotate: 5,
-        duration: 1,
+        duration: 1.4,
         scrollTrigger: {
           trigger: TextRef.current,
           start: "top 80%",
