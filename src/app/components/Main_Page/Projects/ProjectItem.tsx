@@ -103,7 +103,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           ></video>
         )}
         <div className="w-full h-3/4 bg-gradient-to-t from-primary-600 to-transparent absolute left-0 bottom-0"></div>
-        <div className="flex justify-between w-full items-center">
+        <div className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between w-full items-center">
           <h2 ref={titleRef} className="ProjectCard-Heading mt-4 relative">
             {post.title}
           </h2>

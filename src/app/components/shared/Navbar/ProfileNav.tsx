@@ -74,7 +74,7 @@ function ProfileNav() {
             </div>
           </motion.div>
         </div>
-        <p>Jannis Röstel</p>
+        <p className="hidden xl:block">Jannis Röstel</p>
       </Link>
     </motion.div>
   );

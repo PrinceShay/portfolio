@@ -29,7 +29,7 @@ function CustomerBenefits() {
   ); // <-- scope is for selector text (optional)
 
   return (
-    <section className="pt-64 px-48">
+    <section className="pt-64 px-12 xl:px-48">
       <ProjectText
         title="Warum kunden mit mir arbeiten"
         text="An independent creative agency for all your branding, advertising, and film production needs."
@@ -37,7 +37,7 @@ function CustomerBenefits() {
       <div className="grid grid-cols-12 mt-24">
         <ul
           ref={container}
-          className="col-start-1 col-end-13 grid grid-cols-3 xl:grid-cols-3 md:grid-cols-2 gap-4"
+          className="col-start-1 col-end-13 grid grid-cols-1 xl:grid-cols-2 md:grid-cols-2 gap-4"
         >
           <BenefitCard
             title="Keine versteckten Kosten"

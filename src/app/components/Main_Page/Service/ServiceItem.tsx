@@ -113,12 +113,12 @@ const ServiceItem: FC<ServiceItemProps> = ({
   }, [isSplit]);
 
   return (
-    <div ref={container} className="grid grid-cols-12 mb-36">
-      <h2 ref={titleRef} className="split text-6xl col-span-3">
+    <div ref={container} className="md:grid flex flex-col grid-cols-12 mb-36">
+      <h2 ref={titleRef} className="split mb-8 md:mb-0 text-6xl col-span-3">
         {title}
       </h2>
       <div className="col-start-5 col-end-13 flex flex-col w-full">
-        <div className="flex justify-between w-full">
+        <div className="flex flex-col md:flex-row justify-between w-full">
           <div className="basis-3/4 w-full">
             <h3 ref={HeadlineRef} className="split text-2xl">
               {Headline}

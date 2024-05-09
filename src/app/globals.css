@@ -88,6 +88,12 @@ body {
   letter-spacing: 2.5px;
 }
 
+@media only screen and (max-width: 768px) {
+  .Section_Headline{
+    font-size: 8em;
+  }
+}
+
 .Section_Headline.small{
 
   font-size: 6em;

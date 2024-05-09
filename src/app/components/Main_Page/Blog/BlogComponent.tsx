@@ -24,7 +24,7 @@ export default async function () {
     return <p>Loading...</p>;
   }
   return (
-    <section className="py-64 flex flex-col items-center px-48">
+    <section className="py-64 flex flex-col items-center px-12 xl:px-48">
       <div className="text-center pb-24">
         <h1 className="Section_Headline">
           Aktuelle <br /> News
@@ -35,7 +35,7 @@ export default async function () {
         </p>
       </div>
       <div className="grid grid-cols-12 w-full">
-        <div className=" col-start-1 col-end-13 grid grid-cols-3 grid-flow-row gap-8 relative">
+        <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
           {data.map((post, idx) => (
             <BlogItem key={post.id} post={post} idx={idx} />
           ))}

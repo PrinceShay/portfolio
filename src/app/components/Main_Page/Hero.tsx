@@ -115,7 +115,7 @@ function Hero() {
   return (
     <section
       ref={container}
-      className="relative px-48 overflow-hidden HeroSection"
+      className="relative px-12 xl:px-48 overflow-hidden HeroSection"
     >
       <img
         className="w-full h-full absolute object-cover left-0 z-0 object-top"
@@ -125,7 +125,7 @@ function Hero() {
       />
       <div className="relative z-10">
         <div className="h-screen items-center grid grid-cols-12">
-          <div className="col-start-1 col-span-7">
+          <div className="col-start-1 col-span-full md:col-span-7">
             <p ref={TagRef} className="text-2xl mb-8 split">
               Hey, mein Name ist
             </p>
@@ -135,7 +135,7 @@ function Hero() {
           </div>
         </div>
         <div className="h-screen items-center grid grid-cols-12">
-          <div className="col-span-6 col-start-7 justify-self-end">
+          <div className="col-span-9 md:col-span-6 md:col-start-7 col-start-4 justify-self-end">
             <p ref={TagRef2} className="split text-2xl mb-8">
               Und ich bin
             </p>

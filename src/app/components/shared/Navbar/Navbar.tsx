@@ -6,6 +6,7 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 import OpenForWork from "./OpenForWork";
 import ProfileNav from "./ProfileNav";
+import MobileMenu from "./MobileMenu";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,10 +17,11 @@ function Navbar() {
 
   return (
     <>
-      <div className=" z-50 fixed top-8 px-48 w-full ">
-        <nav className=" max-w-7xl mx-auto grid grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2">
+      <MobileMenu />
+      <div className=" z-50 fixed hidden md:block md:top-8 px-12 xl:px-48 w-full ">
+        <nav className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2">
           <ProfileNav />
-          <ul className=" text-xl col-start-2 justify-self-center flex gap-8  items-center">
+          <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">
             <NavLink url="/" title="Projekt" />
             <NavLink url="/" title="Profil" />
             <NavLink url="/" title="Projekt" />
