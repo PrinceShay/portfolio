@@ -27,7 +27,7 @@ export default async function () {
   return (
     <section className="pt-64">
       <div className="text-center pb-24">
-        <h1 className="Section_Headline">Aktuelle Cases</h1>
+        <h1 className="font-humane">Aktuelle Cases</h1>
         <p className="text-xl mt-6">
           An independent creative agency for all your branding, advertising, and
           film production needs.

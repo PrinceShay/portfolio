@@ -35,7 +35,7 @@ const config: Config = {
       },
       fontFamily: {
         'amador': ['amador'],
-        'humane': ['Humane'],
+        'humane': ['var(--font-Humane)'],
       }
     },
   },

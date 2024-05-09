@@ -36,6 +36,7 @@ const Humane = localFont({
       style: "normal",
     },
   ],
+  variable: "--font-Humane",
 });
 
 export const metadata: Metadata = {
@@ -51,7 +52,7 @@ export default function RootLayout({
     <html lang="de">
       <SmoothScroll />
 
-      <body className=" bg-darkBlue-500 ">
+      <body className={`${Humane.variable} bg-darkBlue-500 `}>
         <Noise />
         <Grain />
         <Navbar />

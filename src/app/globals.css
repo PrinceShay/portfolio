@@ -6,7 +6,7 @@
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Light.woff2') format('woff2'); 
+  src: url('/fonts/Humane-Light.woff2') format('woff2'); 
   font-weight: Light; 
   font-style: normal;
   text-rendering: optimizeLegibility; 
@@ -14,7 +14,7 @@
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Regular.woff2') format('woff2'); 
+  src: url('/fonts/Humane-Regular.woff2') format('woff2'); 
   font-weight: normal; 
   font-style: normal;
   text-rendering: optimizeLegibility; 
@@ -22,7 +22,7 @@
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Medium.woff2') format('woff2'); 
+  src: url('/fonts/Humane-Medium.woff2') format('woff2'); 
   font-weight: Medium; 
   font-style: normal;
   text-rendering: optimizeLegibility; 
@@ -30,7 +30,7 @@
   
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Bold.woff2') format('woff2'); 
+  src: url('/fonts/Humane-Bold.woff2') format('woff2'); 
   font-weight: bold; 
   font-style: normal;
   text-rendering: optimizeLegibility; 
@@ -38,7 +38,7 @@
 
 @font-face { 
   font-family: "Humane"; 
-  src: url('/public/fonts/Humane-Black.woff2') format('woff2'); 
+  src: url('/fonts/Humane-Black.woff2') format('woff2'); 
   font-weight: black; 
   font-style: normal;
   text-rendering: optimizeLegibility; 
