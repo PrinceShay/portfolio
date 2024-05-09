@@ -3,12 +3,15 @@ import SplitType from "split-type";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ProjectList from "./ProjectList";
-import ProjectText from "./ProjectText";
+import ProjectText from "../../shared/ui/SectionText";
 
 function Projects() {
   return (
     <section className="pt-64">
-      <ProjectText />
+      <ProjectText
+        title="Aktuelle Cases"
+        text="An independent creative agency for all your branding, advertising, and film production needs."
+      />
       <ProjectList />
     </section>
   );

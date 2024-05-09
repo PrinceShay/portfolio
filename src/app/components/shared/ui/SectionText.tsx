@@ -4,9 +4,9 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 
-function ProjectText() {
+function ProjectText({ title, text }: { title: string; text: string }) {
   const headline = useRef<HTMLHeadingElement>(null);
-  const text = useRef<HTMLParagraphElement>(null);
+  const textRef = useRef<HTMLParagraphElement>(null);
 
   const [isSplit, setSplit] = useState(false);
 
@@ -20,7 +20,7 @@ function ProjectText() {
   }, []);
 
   useGSAP(() => {
-    if (isSplit && headline.current && text.current) {
+    if (isSplit && headline.current && textRef.current) {
       gsap.from(headline.current.querySelectorAll(".char"), {
         yPercent: 30,
         opacity: 0,
@@ -34,14 +34,14 @@ function ProjectText() {
         ease: "back.out(2)",
       });
 
-      gsap.from(text.current.querySelectorAll(".line"), {
+      gsap.from(textRef.current.querySelectorAll(".line"), {
         yPercent: 30,
         opacity: 0,
         stagger: 0.05,
         rotate: 5,
         duration: 1.4,
         scrollTrigger: {
-          trigger: text.current,
+          trigger: textRef.current,
           start: "top 80%",
         },
         ease: "back.out(2)",
@@ -50,12 +50,11 @@ function ProjectText() {
   }, [isSplit]);
   return (
     <div className="text-center pb-24">
-      <h1 ref={headline} className="split Section_Headline">
-        Aktuelle Cases
+      <h1 ref={headline} className=" max-w-5xl mx-auto split Section_Headline">
+        {title}
       </h1>
-      <p ref={text} className="split text-xl mt-6">
-        An independent creative agency for all your branding, advertising, and
-        film production needs.
+      <p ref={textRef} className="split text-xl mt-6">
+        {text}
       </p>
     </div>
   );
