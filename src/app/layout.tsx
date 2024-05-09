@@ -49,10 +49,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
+    <html className={`${Humane.variable} `} lang="de">
       <SmoothScroll />
 
-      <body className={`${Humane.variable} bg-darkBlue-500 `}>
+      <body className="bg-darkBlue-500">
         <Noise />
         <Grain />
         <Navbar />
