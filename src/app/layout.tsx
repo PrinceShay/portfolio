@@ -1,10 +1,42 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar/Navbar";
+import localFont from "next/font/local";
+
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Noise from "./components/Functions/Noise";
 import Grain from "./components/Functions/Grain";
 import Footer from "./components/shared/Footer/Footer";
+
+const Humane = localFont({
+  src: [
+    {
+      path: "fonts/Humane-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "fonts/Humane-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "fonts/Humane-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "fonts/Humane-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "fonts/Humane-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Jannis Röstel",

@@ -30,12 +30,12 @@ function NavLink({ url, title }) {
     const onMouseLeave = () => {
       gsap.to(titleRef.current, {
         yPercent: 0,
-        duration: 0.4,
+        duration: 0.65,
         ease: "power4.inOut",
       });
       gsap.to(shadowRef.current, {
         yPercent: 0,
-        duration: 0.4,
+        duration: 0.65,
         ease: "power4.inOut",
       });
     };
@@ -52,7 +52,7 @@ function NavLink({ url, title }) {
   }, []);
 
   return (
-    <li ref={navlinkRef} className="p-2">
+    <li ref={navlinkRef} className="p-2 text-lg">
       <Link href={url} className="flex relative overflow-hidden">
         <p ref={titleRef} className="Navlink_Title">
           {title}

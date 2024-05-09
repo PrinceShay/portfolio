@@ -112,3 +112,7 @@ body {
   border-radius: 100%;
 }
 
+.line{
+  overflow: hidden
+}
+

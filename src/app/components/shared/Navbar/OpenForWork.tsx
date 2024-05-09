@@ -20,7 +20,7 @@ function OpenForWork() {
 
     // GSAP Timeline setup
     const tl = gsap.timeline({
-      defaults: { ease: "power4.inOut", duration: 0.75 },
+      defaults: { ease: "power4.inOut", duration: 0.65 },
       paused: true,
     });
 
@@ -47,7 +47,7 @@ function OpenForWork() {
   return (
     <Link
       href={"/Kontakt"}
-      className="self-center col-start-3 justify-self-end"
+      className="self-center col-start-3 justify-self-end h-full"
     >
       <div
         ref={containerRef}
