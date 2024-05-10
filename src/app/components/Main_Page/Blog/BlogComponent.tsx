@@ -3,6 +3,7 @@ import { ProjectCard } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
 import BlogItem from "./BlogItem";
 import PrimaryButton from "../../shared/ui/PrimaryButton";
+import SectionText from "../../shared/ui/SectionText";
 
 async function getData() {
   const query = `
@@ -25,15 +26,11 @@ export default async function () {
   }
   return (
     <section className="py-64 flex flex-col items-center px-12 xl:px-48">
-      <div className="text-center pb-24">
-        <h1 className="Section_Headline">
-          Aktuelle <br /> News
-        </h1>
-        <p className="text-xl mt-6">
-          An independent creative agency for all your branding, advertising, and
-          film production needs.
-        </p>
-      </div>
+      <SectionText
+        title="Aktuelle News"
+        text="An independent creative agency for all your branding, advertising, and
+          film production needs."
+      />
       <div className="grid grid-cols-12 w-full">
         <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
           {data.map((post, idx) => (
