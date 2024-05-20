@@ -7,7 +7,7 @@ import ProjectText from "../../shared/ui/SectionText";
 
 function Projects() {
   return (
-    <section className="pt-64">
+    <section className="pt-32">
       <ProjectText
         title="Aktuelle Cases"
         text="An independent creative agency for all your branding, advertising, and film production needs."

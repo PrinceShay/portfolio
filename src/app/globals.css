@@ -100,6 +100,12 @@ body {
   line-height: 95%;
 }
 
+.Section_Headline.smaller{
+
+  font-size: 4em;
+  line-height: 95%;
+}
+
 
 .ProjectCard-Heading{
   font-family: Humane;
@@ -116,4 +122,10 @@ body {
   filter: blur(200px);
   height: 80em;
   border-radius: 100%;
+}
+
+footer{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3,auto);
 }

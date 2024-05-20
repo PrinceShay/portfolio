@@ -1,69 +1,75 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap"; // Import the correct type for the GSAP timeline
 
 function ProfileNav() {
-  const MainVariants = {
-    initial: {
-      translateY: "0%",
-      translateX: "0%",
-      scale: 1,
-      rotate: 0,
-    },
-    animate: {
-      translateY: "-100%",
-      translateX: "50%",
+  const Main = useRef<HTMLDivElement>(null);
+  const Second = useRef<HTMLDivElement>(null);
+  const ProfileTL = useRef<any | null>(null); // Use the Timeline type
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ paused: true });
+
+    tl.to(Main.current, {
+      yPercent: -100,
+      xPercent: 50,
       scale: 1.5,
       rotate: -50,
-    },
+      ease: "power4.inOut",
+      duration: 1,
+    });
+
+    tl.from(
+      Second.current,
+      {
+        yPercent: 100,
+        xPercent: -50,
+        scale: 1.5,
+        rotate: 50,
+        ease: "power4.inOut",
+        duration: 1,
+      },
+      "<"
+    );
+
+    ProfileTL.current = tl;
+  });
+
+  const handleMouseEnter = () => {
+    if (ProfileTL.current) {
+      ProfileTL.current.play(); // Ensure it's not null before calling play
+    }
   };
 
-  const SecondVariants = {
-    initial: {
-      translateY: "100%",
-      translateX: "-50%",
-      scale: 1.5,
-      rotate: 50,
-    },
-    animate: {
-      translateY: "0%",
-      translateX: "0%", // Move up by 100% of its height
-      scale: 1,
-      rotate: 0,
-    },
+  const handleMouseLeave = () => {
+    if (ProfileTL.current) {
+      ProfileTL.current.reverse(); // Ensure it's not null before calling reverse
+    }
   };
 
   return (
-    <motion.div
-      initial="initial"
-      animate="initial"
-      whileHover="animate" // This will now control the hover state for all nested animations
-      className="col-start-1"
-    >
-      <Link href={"/"} className="gap-4 flex items-center">
-        <div className="relative w-16 rounded-full h-16 overflow-hidden">
-          <motion.div
-            variants={MainVariants}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.4,
-            }}
+    <div className="col-start-1">
+      <Link href="/" className="gap-4 flex items-center">
+        <div
+          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleMouseEnter}
+          className="relative w-16 rounded-full h-16 overflow-hidden"
+        >
+          <div
+            ref={Main}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"
           >
             <img
               className="relative top-6 left-1 transform scale-[2]"
               src="/Navigation/ProfilePic.jpg"
-              alt="Meow"
+              alt="Profile"
             />
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={SecondVariants}
-            transition={{
-              ease: "easeInOut",
-              duration: 0.4,
-            }}
-            className="absolute w-16 rounded-full h-16 overflow-hidden z-20 translate-y-full"
+          <div
+            ref={Second}
+            className="absolute w-16 rounded-full h-16 overflow-hidden z-20"
           >
             <div className="w-full h-full relative bg-gradient-to-tr from-primary-500 to-primary-800 flex justify-center items-center">
               <img
@@ -72,11 +78,11 @@ function ProfileNav() {
                 className="w-7 relative right-[0.5]"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
         <p className="hidden xl:block">Jannis Röstel</p>
       </Link>
-    </motion.div>
+    </div>
   );
 }
 

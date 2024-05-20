@@ -63,12 +63,12 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
   };
 
   return (
-    <Link href={`/blog/${post.currentSlug}`} className="">
+    <Link href={`/blog/${post.currentSlug}`} className="w-full ">
       <div
         ref={ref}
-        className="cursor-pointer border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 rounded-xl overflow-hidden p-5"
+        className="cursor-pointer flex items-center gap-8 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 rounded-xl overflow-hidden p-5"
       >
-        <div className="rounded-xl w-full aspect-video relative overflow-hidden">
+        <div className=" basis-1/2 rounded-xl aspect-video relative overflow-hidden">
           <img
             alt={post.title}
             src={urlFor(post.titleImage).url()}
@@ -76,9 +76,10 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
             ref={imageRef}
           />
         </div>
-        <div className="mt-6">
+        <div className=" basis-1/2">
           <p className="">{formatDate(post.publishDate)}</p>
-          <h2 className="text-xl mt-2">{post.title}</h2>
+          <h2 className="text-5xl font-bold mt-2">{post.title}</h2>
+          <p className="text-lg mt-8">{post.smallDescription}</p>
           <div className="mt-2 flex gap-1 items-center">
             Mehr lesen
             <div ref={chevronRef}>
