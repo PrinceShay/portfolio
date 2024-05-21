@@ -57,7 +57,6 @@ export default async function BlogPage() {
             ))}
           </div>
         </div>
-        <PrimaryButton link="/blog" title="Alle Beiträge anschauen" />
       </section>
     );
   } catch (error) {

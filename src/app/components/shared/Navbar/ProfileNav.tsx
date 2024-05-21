@@ -17,7 +17,7 @@ function ProfileNav() {
       scale: 1.5,
       rotate: -50,
       ease: "power4.inOut",
-      duration: 1,
+      duration: 0.75,
     });
 
     tl.from(
@@ -28,7 +28,7 @@ function ProfileNav() {
         scale: 1.5,
         rotate: 50,
         ease: "power4.inOut",
-        duration: 1,
+        duration: 0.75,
       },
       "<"
     );
@@ -49,13 +49,13 @@ function ProfileNav() {
   };
 
   return (
-    <div className="col-start-1">
+    <div
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleMouseEnter}
+      className="col-start-1"
+    >
       <Link href="/" className="gap-4 flex items-center">
-        <div
-          onMouseLeave={handleMouseLeave}
-          onMouseEnter={handleMouseEnter}
-          className="relative w-16 rounded-full h-16 overflow-hidden"
-        >
+        <div className="relative w-16 rounded-full h-16 overflow-hidden">
           <div
             ref={Main}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"

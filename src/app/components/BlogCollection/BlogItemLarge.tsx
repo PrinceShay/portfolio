@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 
-function BlogItem({ post, idx }: { post: any; idx: number }) {
+function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const chevronRef = useRef<HTMLDivElement>(null);
@@ -66,7 +66,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
     <Link href={`/blog/${post.currentSlug}`} className="w-full ">
       <div
         ref={ref}
-        className="cursor-pointer flex items-center gap-8 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 rounded-xl overflow-hidden p-5"
+        className="cursor-pointer flex items-center gap-8 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
       >
         <div className=" basis-1/2 rounded-xl aspect-video relative overflow-hidden">
           <img
@@ -92,4 +92,4 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
   );
 }
 
-export default BlogItem;
+export default BlogItemLarge;

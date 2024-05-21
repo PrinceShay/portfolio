@@ -66,7 +66,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
     <Link href={`/blog/${post.currentSlug}`} className="">
       <div
         ref={ref}
-        className="cursor-pointer border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 rounded-xl overflow-hidden p-5"
+        className="cursor-pointer border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
       >
         <div className="rounded-xl w-full aspect-video relative overflow-hidden">
           <img
