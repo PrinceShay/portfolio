@@ -26,10 +26,10 @@ function Navbar() {
         <nav className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2">
           <ProfileNav />
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">
-            <NavLink url="/" title="Projekte" />
-            <NavLink url="/" title="Profil" />
+            <NavLink url="/projekte" title="Projekte" />
+            <NavLink url="/profil" title="Profil" />
             <NavLink url="blog" title="Blog" />
-            <NavLink url="/" title="Projekt" />
+            <NavLink url="/" title="Kontakt" />
           </ul>
 
           <OpenForWork />

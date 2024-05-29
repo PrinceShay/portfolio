@@ -129,3 +129,8 @@ footer{
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3,auto);
 }
+
+.TextTransform{
+  transform: perspective(1500px);
+
+}

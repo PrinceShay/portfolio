@@ -24,12 +24,15 @@ function ProjectText({ title, text }: { title: string; text: string }) {
       gsap.from(headline.current.querySelectorAll(".char"), {
         yPercent: 30,
         opacity: 0,
+        rotateX: 80,
         stagger: 0.05,
         rotate: 5,
         duration: 1.4,
         scrollTrigger: {
           trigger: headline.current,
-          start: "top 80%",
+          start: "top 70%",
+          scrub: true,
+          end: "top 10%",
         },
         ease: "back.out(2)",
       });
@@ -39,17 +42,20 @@ function ProjectText({ title, text }: { title: string; text: string }) {
         opacity: 0,
         stagger: 0.05,
         rotate: 5,
+        rotateX: 80,
         duration: 1.4,
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 80%",
+          start: "top 70%",
+          scrub: true,
+          end: "top 10%",
         },
         ease: "back.out(2)",
       });
     }
   }, [isSplit]);
   return (
-    <div className="text-center pb-24 px-12 xl:px-48">
+    <div className="TextTransform text-center pb-24 px-12 xl:px-48">
       <h1 ref={headline} className=" max-w-5xl mx-auto split Section_Headline">
         {title}
       </h1>

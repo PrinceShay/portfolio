@@ -17,6 +17,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       gsap.to(object.current, {
         scale: 0.7,
         opacity: 0,
+        rotate: -2.5,
         scrollTrigger: {
           trigger: object.current,
           toggleActions: "play pause resume reset",
@@ -55,7 +56,8 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       // Add hover effects
       object.current?.addEventListener("mouseenter", () => {
         gsap.to(videoRef.current, {
-          scale: 1.1,
+          scale: 1.25,
+          rotate: 5,
           ease: "power2.out",
           duration: 1.5,
         });
@@ -63,6 +65,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       object.current?.addEventListener("mouseleave", () => {
         gsap.to(videoRef.current, {
           scale: 1,
+          rotate: 0,
           ease: "power4.out",
           duration: 1.5,
         });

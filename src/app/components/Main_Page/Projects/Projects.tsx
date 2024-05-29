@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ProjectList from "./ProjectList";
 import ProjectText from "../../shared/ui/SectionText";
+import PrimaryButton from "../../shared/ui/PrimaryButton";
 
 function Projects() {
   return (
@@ -13,6 +14,9 @@ function Projects() {
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
       <ProjectList />
+      <div className=" flex justify-center">
+        <PrimaryButton title="Alle Projekte" link="/projekte" />
+      </div>
     </section>
   );
 }

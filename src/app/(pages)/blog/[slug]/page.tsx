@@ -74,7 +74,7 @@ export default async function ProjectPage({
   const randomPosts = getRandomPosts(allPosts, 4);
 
   return (
-    <section className="min-h-screen pt-64 px-48">
+    <section className="min-h-screen pt-64 px-12 xl:px-48">
       <section>
         <h1 className="Section_Headline text-center">{data.title}</h1>
         <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video">
@@ -86,15 +86,15 @@ export default async function ProjectPage({
         </div>
       </section>
 
-      <section className="grid grid-cols-12 gap-8 relative">
-        <div className="mt-24 max-w-4xl md:col-span-9">
+      <section className="grid grid-cols-1 xl:grid-cols-12 gap-8 relative">
+        <div className="mt-32 max-w-4xl md:col-span-9">
           <PortableText
             value={data.content}
             components={ptComponents}
           ></PortableText>
         </div>
-        <div className="col-span-3 mt-24 ">
-          <div className="sticky top-48">
+        <div className="col-span-3 xl:mt-32 ">
+          <div className="xl:sticky xl:top-48">
             <p className="text-xl text-center">
               Das könnte dich auch interessieren
             </p>
