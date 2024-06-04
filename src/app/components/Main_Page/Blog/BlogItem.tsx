@@ -16,7 +16,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
     tl.to(imageRef.current, {
       scale: 1.1,
       duration: 0.5,
-      ease: "power4.inOut",
+      ease: "power2.inOut",
     });
 
     const chevronTl = gsap.timeline({ paused: true });

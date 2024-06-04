@@ -16,13 +16,13 @@ function NavLink({ url, title }) {
     const onMouseEnter = () => {
       gsap.to(titleRef.current, {
         yPercent: -100,
-        duration: 0.5,
-        ease: "power3.inOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
       gsap.to(shadowRef.current, {
         yPercent: -100,
-        duration: 0.5,
-        ease: "power3.inOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
     };
 
@@ -30,13 +30,13 @@ function NavLink({ url, title }) {
     const onMouseLeave = () => {
       gsap.to(titleRef.current, {
         yPercent: 0,
-        duration: 0.65,
-        ease: "power4.inOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
       gsap.to(shadowRef.current, {
         yPercent: 0,
-        duration: 0.65,
-        ease: "power4.inOut",
+        duration: 0.7,
+        ease: "power4.out",
       });
     };
 
