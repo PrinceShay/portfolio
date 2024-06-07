@@ -46,8 +46,9 @@ function OpenForWork() {
 
   return (
     <Link
-      href={"/Kontakt"}
+      href={"/kontakt"}
       className="self-center col-start-3 justify-self-end h-full"
+      id="OpenForWork"
     >
       <div
         ref={containerRef}

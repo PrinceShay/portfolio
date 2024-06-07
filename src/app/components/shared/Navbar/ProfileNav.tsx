@@ -54,7 +54,7 @@ function ProfileNav() {
       onMouseEnter={handleMouseEnter}
       className="col-start-1"
     >
-      <Link href="/" className="gap-4 flex items-center">
+      <Link id="Profile" href="/" className="gap-4 flex items-center">
         <div className="relative w-16 rounded-full h-16 overflow-hidden">
           <div
             ref={Main}

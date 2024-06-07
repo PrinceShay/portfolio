@@ -17,8 +17,27 @@ function Navbar() {
   };
 
   useGSAP(() => {
-    var tl = gsap.timeline({});
-    tl.from(NavContainer.current, { width: 0, y: -50 });
+    var tl = gsap.timeline({ delay: 1 });
+    tl.from(NavContainer.current, { width: 0, opacity: 0, ease: "power4.out" });
+    tl.from("li", { opacity: 0, y: 50, ease: "power4.out", stagger: 0.05 });
+    tl.from(
+      "#OpenForWork",
+      {
+        opacity: 0,
+        x: 50,
+        ease: "power4.out",
+      },
+      "<"
+    );
+    tl.from(
+      "#Profile",
+      {
+        opacity: 0,
+        x: -50,
+        ease: "power4.out",
+      },
+      "<"
+    );
   }, {});
 
   return (
@@ -27,7 +46,7 @@ function Navbar() {
       <div className=" z-50 fixed hidden md:block md:top-8 px-12 xl:px-48 w-full ">
         <nav
           ref={NavContainer}
-          className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2"
+          className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
         >
           <ProfileNav />
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">
