@@ -12,6 +12,8 @@ function Page() {
   const [isSplit, setSplit] = useState(false);
 
   const ScrollText = useRef<HTMLParagraphElement>(null);
+  const ImageRef = useRef<HTMLImageElement>(null);
+
   const ScrollTextContainer = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,7 +65,10 @@ function Page() {
           elit. Cum eum dolore error ex perspiciatis aperiam, suscipit corrupti,
           debitis eius numquam enim.
         </p>
-        <div className="bg-primary-500 col-start-6 col-end-13 h-screen mt-32 rounded-xl overflow-hidden">
+        <div
+          ref={ImageRef}
+          className="bg-primary-500 col-start-6 col-end-13 h-screen mt-32 rounded-xl overflow-hidden"
+        >
           <img
             src="/assets/images/_MG_4682-cutout-bg-with-light-web.jpg"
             alt="Jannis Röstel"
@@ -77,7 +82,7 @@ function Page() {
           <p className="text-xl uppercase mb-8 tracking-wider split">
             Was gibts noch zu sagen
           </p>
-          <p ref={ScrollText} className="text-5xl split">
+          <p ref={ScrollText} className="text-6xl split leading-[120%]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             corrupti velit harum facilis nihil impedit adipisci voluptatem
             ipsam, vero deserunt? Corporis libero blanditiis temporibus impedit

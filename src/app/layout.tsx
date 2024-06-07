@@ -52,7 +52,7 @@ export default function RootLayout({
     <html className={`${Humane.variable} `} lang="de">
       <SmoothScroll />
 
-      <body className="bg-darkBlue-500">
+      <body className="bg-darkBlue-500 text-white">
         <Noise />
         <Grain />
         <Navbar />
