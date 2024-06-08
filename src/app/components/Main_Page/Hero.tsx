@@ -36,7 +36,7 @@ function Hero() {
       NameRef2.current &&
       TextRef.current
     ) {
-      const HeroTL = gsap.timeline({});
+      const HeroTL = gsap.timeline({ delay: 1.8 });
 
       HeroTL.from(TagRef.current.querySelectorAll(".word"), {
         yPercent: 30,

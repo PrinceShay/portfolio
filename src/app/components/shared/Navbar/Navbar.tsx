@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   useGSAP(() => {
-    var tl = gsap.timeline({ delay: 1 });
+    var tl = gsap.timeline({ delay: 2, autoAlpha: 0 });
     tl.from(NavContainer.current, { width: 0, opacity: 0, ease: "power4.out" });
     tl.from("li", { opacity: 0, y: 50, ease: "power4.out", stagger: 0.05 });
     tl.from(

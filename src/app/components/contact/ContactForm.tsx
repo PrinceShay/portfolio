@@ -5,6 +5,7 @@ import { useForm, FormProvider, useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -235,12 +236,12 @@ const ContactForm: React.FC = () => {
     }
   };
 
-  useEffect(() => {
+  useGSAP(() => {
     if (formRef.current) {
       gsap.fromTo(
         formRef.current,
-        { opacity: 0, x: -50 },
-        { opacity: 1, x: 0, duration: 0.5 }
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }
       );
     }
   }, [step]);
