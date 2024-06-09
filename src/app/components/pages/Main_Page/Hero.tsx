@@ -4,6 +4,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
+import CTA from "../../shared/ui/CTA";
+import PrimaryButton from "../../shared/ui/PrimaryButton";
 
 gsap.registerPlugin(useGSAP);
 
@@ -128,11 +130,14 @@ function Hero() {
           <div className="Highlight_CTA w-24 h-24 absolute bg-primary-500 top-80 -right-[35vw] opacity-30"></div>
           <div className="col-start-1 col-span-full md:col-span-7">
             <p ref={TagRef} className="text-2xl mb-8 split">
-              Hey, mein Name ist
+              Hey👋, mein Name ist <strong>Jannis Röstel</strong>. Ich bin
             </p>
             <h1 ref={NameRef} className="Section_Headline split">
-              Jannis Röstel
+              Web- und <br /> Motiondesigner
             </h1>
+            <div className="flex">
+              <PrimaryButton link={"/projekte"} title={"Text"} />
+            </div>
           </div>
         </div>
         <div className="h-screen items-center grid grid-cols-12">

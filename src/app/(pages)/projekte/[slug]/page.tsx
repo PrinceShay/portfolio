@@ -13,6 +13,7 @@ async function getData(slug: string) {
     title,
     content,
     titleImage,
+    titleVideo{asset->{url,_id}},
     introText,
     "categories": categories[]->title,
     "mediaCollection": mediaCollection[] {
@@ -39,7 +40,11 @@ export default async function ProjectPage({
 
   return (
     <main className="">
-      <Hero title={data.title} introText={data.introText} />
+      <Hero
+        title={data.title}
+        introText={data.introText}
+        titleVideo={data.titleVideo.asset.url}
+      />
 
       {/* Challenge */}
 

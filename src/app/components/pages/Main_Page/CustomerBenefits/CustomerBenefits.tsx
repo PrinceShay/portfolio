@@ -12,7 +12,7 @@ function CustomerBenefits() {
   const container = useRef(null);
   useGSAP(
     () => {
-      gsap.from("li", {
+      gsap.from(".BenefitCard", {
         scale: 0.5,
         opacity: 0,
         stagger: 0.15,

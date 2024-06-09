@@ -80,7 +80,7 @@ function ProfileNav() {
             </div>
           </div>
         </div>
-        <p className="hidden xl:block">Jannis Röstel</p>
+        <p className="hidden xl:block uppercase">Jannis Röstel</p>
       </Link>
     </div>
   );

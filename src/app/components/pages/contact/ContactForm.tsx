@@ -265,7 +265,7 @@ const ContactForm: React.FC = () => {
             <button
               type="button"
               onClick={prevStep}
-              className="bg-gray-500 text-white py-2 px-4 rounded-lg"
+              className="bg-primary-400 text-white py-2 px-4 rounded-lg"
             >
               Previous
             </button>
@@ -274,7 +274,7 @@ const ContactForm: React.FC = () => {
             <button
               type="button"
               onClick={nextStep}
-              className="bg-blue-500 text-white py-2 px-4 rounded-lg"
+              className="bg-primary-500 text-white py-2 px-4 rounded-lg"
             >
               Next
             </button>
