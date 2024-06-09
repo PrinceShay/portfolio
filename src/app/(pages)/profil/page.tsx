@@ -1,5 +1,5 @@
 "use client";
-import CV from "@/app/components/Profile/CV";
+import CV from "@/app/components/pages/Profile/CV";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

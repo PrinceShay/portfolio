@@ -1,7 +1,7 @@
 import React from "react";
 import { ProjectCard } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
-import ProjectItem from "@/app/components/Main_Page/Projects/ProjectItem";
+import ProjectItem from "@/app/components/pages/Main_Page/Projects/ProjectItem";
 import ProjectText from "@/app/components/shared/ui/SectionText";
 
 async function getData() {

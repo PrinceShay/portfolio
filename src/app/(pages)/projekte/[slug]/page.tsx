@@ -1,8 +1,8 @@
 import { fullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import Hero from "@/app/components/Project_Page/Hero";
-import ProjectContent from "@/app/components/Project_Page/ProjectContent";
+import Hero from "@/app/components/pages/Project_Page/Hero";
+import ProjectContent from "@/app/components/pages/Project_Page/ProjectContent";
 
 export const revalidate = 30;
 

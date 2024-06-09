@@ -4,7 +4,7 @@ import BenefitCard from "./BenefitCard";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import ProjectText from "../../shared/ui/SectionText";
+import ProjectText from "../../../shared/ui/SectionText";
 
 gsap.registerPlugin(useGSAP);
 

@@ -25,7 +25,7 @@ export default async function () {
     return <p>Loading...</p>; // Handle loading state
   }
   return (
-    <div className="px-12 xl:px-48 grid grid-cols-12 grid-flow-row gap-8 relative">
+    <div className="px-12 xl:px-48 max-w-[124em] mx-auto grid grid-cols-12 grid-flow-row gap-8 relative">
       {data.map((post, idx) => (
         <ProjectItem key={post.id} post={post} idx={idx} />
       ))}

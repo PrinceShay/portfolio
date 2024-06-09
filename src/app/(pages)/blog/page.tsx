@@ -1,10 +1,10 @@
-import BlogItemLarge from "@/app/components/BlogCollection/BlogItemLarge";
+import BlogItemLarge from "@/app/components/pages/BlogCollection/BlogItemLarge";
 import React from "react";
 import { ProjectCard } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
 import SectionText from "@/app/components/shared/ui/SectionText";
 import PrimaryButton from "@/app/components/shared/ui/PrimaryButton";
-import BlogItem from "@/app/components/Main_Page/Blog/BlogItem";
+import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
 
 // Function to fetch data items
 async function getDataItems(): Promise<ProjectCard[]> {

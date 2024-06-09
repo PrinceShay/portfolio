@@ -1,54 +1,57 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { compileFunction } from "vm";
 
 function Preloader({}) {
   const [progress, setProgress] = useState(0);
+  const loadingContainerRef = useRef(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({
-      delay: 0.25,
-      onComplete: CompleteFunction,
-    });
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        delay: 0.25,
+        onComplete: CompleteFunction,
+      });
 
-    tl.to("#loading-banner", {
-      height: 0,
-      ease: "power4.out",
-      duration: 1.5,
-    });
-
-    tl.to("#progressPercent", {
-      opacity: 0,
-      scale: 1.2,
-      ease: "power4.out",
-      duration: 1.5,
-    });
-
-    tl.to(
-      ".Banner",
-      {
-        yPercent: 100,
+      tl.to("#loading-banner", {
+        height: 0,
         ease: "power4.out",
-        stagger: 0.1,
-        duration: 1.25,
-      },
-      "-=1.1"
-    );
-
-    const progressTl = gsap.timeline();
-    progressTl.to(
-      {},
-      {
         duration: 1.5,
-        onUpdate: () => {
-          const value = Math.round(progressTl.progress() * 100);
-          setProgress(value);
+      });
+
+      tl.to("#progressPercent", {
+        opacity: 0,
+        scale: 1.2,
+        ease: "power4.out",
+        duration: 1.5,
+      });
+
+      tl.to(
+        ".Banner",
+        {
+          yPercent: 100,
+          ease: "power4.out",
+          stagger: 0.1,
+          duration: 1.25,
         },
-      }
-    );
-  }, []);
+        "-=1.1"
+      );
+
+      const progressTl = gsap.timeline();
+      progressTl.to(
+        {},
+        {
+          duration: 1.5,
+          onUpdate: () => {
+            const value = Math.round(progressTl.progress() * 100);
+            setProgress(value);
+          },
+        }
+      );
+    },
+    { scope: loadingContainerRef }
+  );
 
   function CompleteFunction() {
     const loadingContainer = document.getElementById("loading_container");
@@ -59,6 +62,7 @@ function Preloader({}) {
 
   return (
     <div
+      ref={loadingContainerRef}
       id="loading_container"
       className="w-full h-screen flex justify-center items-center fixed left-0 top-0 z-[60]"
     >
