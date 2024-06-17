@@ -1,5 +1,5 @@
 import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
-import { fullProject } from "@/app/lib/interface";
+import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 
@@ -60,7 +60,7 @@ export default async function ProjectPage({
 }: {
   params: { slug: string };
 }) {
-  const data: fullProject = await getData(params.slug);
+  const data: FullProject = await getData(params.slug);
 
   if (!data) {
     return (
