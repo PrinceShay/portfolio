@@ -6,8 +6,6 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ProjectText from "../../../shared/ui/SectionText";
 
-gsap.registerPlugin(useGSAP);
-
 function CustomerBenefits() {
   const container = useRef(null);
   useGSAP(
@@ -23,10 +21,10 @@ function CustomerBenefits() {
           toggleActions: "play pause resume reset",
           start: "top bottom",
         },
-      }); // <-- automatically reverted
+      });
     },
     { scope: container }
-  ); // <-- scope is for selector text (optional)
+  );
 
   return (
     <section className="pt-64 px-12 xl:px-48">

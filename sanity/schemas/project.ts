@@ -26,9 +26,8 @@ export default {
             type: 'file',
             title: 'Title Video',
             options: {
-                    accept: 'video/*' // Erlaubt das Hochladen von Video-Dateien
-                }
-            
+                accept: 'video/*' // Erlaubt das Hochladen von Video-Dateien
+            }
         },
         {
             name: 'smallDescription',
@@ -39,6 +38,40 @@ export default {
             name: 'introText',
             type: 'text',
             title: 'Introduction Text',
+        },
+        {
+            name: 'challengeTitle',
+            type: 'string',
+            title: 'Challenge Title',
+        },
+        {   name: 'challengeContent',
+            type: 'array',
+            title: 'Challenge Content',
+            of: [
+                {type: 'block'},
+            ]
+        },
+        {
+            name: 'challengeImage',
+            type: 'image',
+            title: 'Challenge Image',
+        },
+        {
+            name: 'solutionTitle',
+            type: 'string',
+            title: 'Solution Title',
+        },
+        {   name: 'solutionContent',
+            type: 'array',
+            title: 'Solution Content',
+            of: [
+                {type: 'block'},
+            ]
+        },
+        {
+            name: 'solutionImage',
+            type: 'image',
+            title: 'Solution Image',
         },
         {
             name: 'content',
@@ -69,7 +102,6 @@ export default {
                     }
                 }
             ]
-        },
+        }
     ]
 }
-

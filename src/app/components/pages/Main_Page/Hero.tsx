@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
-import CTA from "../../shared/ui/CTA";
 import PrimaryButton from "../../shared/ui/PrimaryButton";
 
 gsap.registerPlugin(useGSAP);
