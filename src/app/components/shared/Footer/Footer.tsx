@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="w-full px-48  py-16 gap-8">
+    <footer className="w-full px-12 md:px-24 lg:px-48  py-16 gap-8">
       <img
         src="/Navigation/Logo.svg"
         alt="Logo"

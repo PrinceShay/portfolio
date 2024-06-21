@@ -29,7 +29,7 @@ function CTA() {
   return (
     <section
       ref={container}
-      className="relative min-h-screen w-full px-48  flex items-center justify-center flex-col"
+      className="relative min-h-screen w-full px-12 md:px-24 lg:px-48  flex items-center justify-center flex-col"
     >
       <video
         className=" z-0 absolute w-full h-full object-cover"

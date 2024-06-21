@@ -27,7 +27,7 @@ const MotionData = {
 
 function Service() {
   return (
-    <section className=" px-12 xl:px-48">
+    <section className=" px-12 md:px-24 lg:px-48">
       <ServiceItem
         title={WebData.title}
         Headline={WebData.Headline}

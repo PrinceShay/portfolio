@@ -31,7 +31,7 @@ export default async function () {
         title="Aktuelle Cases"
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
-      <div className="px-12 xl:px-48 grid grid-cols-12 grid-flow-row gap-8 relative">
+      <div className="px-12 md:px-24 lg:px-48 grid grid-cols-12 grid-flow-row gap-8 relative">
         {data.map((post, idx) => (
           <ProjectItem key={post.id} post={post} idx={idx} />
         ))}

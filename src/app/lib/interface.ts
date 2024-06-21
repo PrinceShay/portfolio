@@ -29,3 +29,6 @@ export interface FullProject {
   solutionImage: any; // Adjust this type based on your actual data structure
 }
 
+export interface NextProjectProps {
+  projects: ProjectCard[];
+}

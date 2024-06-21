@@ -116,7 +116,7 @@ function Hero() {
   return (
     <section
       ref={container}
-      className="relative px-12 xl:px-48 overflow-hidden HeroSection"
+      className="relative px-12 md:px-24 lg:px-48 overflow-hidden HeroSection"
     >
       <img
         className="w-full h-full absolute object-cover left-0 z-0 object-top"

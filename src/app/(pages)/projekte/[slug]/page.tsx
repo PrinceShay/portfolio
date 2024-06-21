@@ -1,13 +1,13 @@
-import { FullProject } from "@/app/lib/interface";
-import { client, urlFor } from "@/app/lib/sanity";
-import { PortableText } from "@portabletext/react";
+import { FullProject, ProjectCard } from "@/app/lib/interface";
+import { client } from "@/app/lib/sanity";
 import Hero from "@/app/components/pages/Project_Page/Hero";
 import ProjectContent from "@/app/components/pages/Project_Page/ProjectContent";
 import Challenge from "@/app/components/pages/Project_Page/Challenge";
+import NextProject from "@/app/components/pages/Project_Page/NextProject";
 
 export const revalidate = 30;
 
-async function getData(slug: string) {
+async function getData(slug: string): Promise<FullProject> {
   const query = `
   *[_type == "project" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
@@ -38,12 +38,29 @@ async function getData(slug: string) {
   return data;
 }
 
+async function getDataNext(currentSlug: string): Promise<ProjectCard[]> {
+  const query = `
+  *[_type == 'project' && slug.current != "${currentSlug}"] | order(_createdAt desc) {
+    title,
+    smallDescription,
+    "currentSlug": slug.current,
+    titleImage,
+    id,
+    "categories": categories[]->title
+  }
+  `;
+
+  const dataNext = await client.fetch(query);
+  return dataNext;
+}
+
 export default async function ProjectPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const data: FullProject = await getData(params.slug);
+  const nextProjects: ProjectCard[] = await getDataNext(params.slug);
 
   return (
     <main className="">
@@ -60,12 +77,9 @@ export default async function ProjectPage({
         solutionContent={data.solutionContent}
         solutionImage={data.solutionImage}
       />
-      <div className="grid grid-cols-12 grid-flow-row">
-        <div className="col-start-2 col-end-12 mt-16 prose prose-blue prose-lg dark:prose-invert prose-li:marker:text-primary">
-          <PortableText value={data.content} />
-        </div>
-      </div>
+
       <ProjectContent mediaCollection={data.mediaCollection} />
+      <NextProject projects={nextProjects} />
     </main>
   );
 }

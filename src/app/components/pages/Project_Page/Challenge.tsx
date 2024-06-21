@@ -224,7 +224,20 @@ const Challenge: React.FC<ChallengeProps> = ({
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row gap-16 py-24">
+      <section className="flex flex-col justify-between md:flex-row gap-16 py-24">
+        <div
+          ref={solutionImageWrapperRef}
+          className="basis-1/2 xl:basis-1/3 overflow-hidden rounded-md max-h-[70vh]"
+        >
+          {solutionImage && (
+            <img
+              ref={solutionImageRef}
+              className="h-full w-full object-cover"
+              src={urlFor(solutionImage).url()}
+              alt="Solution"
+            />
+          )}
+        </div>
         <div className="basis-1/2 content-center">
           <p className="text-lg solution-tag">Die Lösung</p>
           <h1 ref={solutionheadline} className="split mt-8 text-5xl">
@@ -238,19 +251,6 @@ const Challenge: React.FC<ChallengeProps> = ({
               <PortableText value={solutionContent} />
             </div>
           </div>
-        </div>
-        <div
-          ref={solutionImageWrapperRef}
-          className="basis-1/2 xl:basis-1/3 overflow-hidden rounded-md max-h-[70vh]"
-        >
-          {solutionImage && (
-            <img
-              ref={solutionImageRef}
-              className="h-full w-full object-cover"
-              src={urlFor(solutionImage).url()}
-              alt="Solution"
-            />
-          )}
         </div>
       </section>
     </div>

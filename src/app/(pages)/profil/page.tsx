@@ -47,7 +47,7 @@ function Page() {
   }, [isSplit]);
 
   return (
-    <section className="min-h-screen pt-64 px-12 xl:px-48">
+    <section className="min-h-screen pt-64 px-12 md:px-24 lg:px-48">
       <h1 className="Section_Headline">Profil</h1>
       <div className="mt-48 grid grid-cols-12">
         <h2 className="text-3xl uppercase col-span-3">Über mich</h2>

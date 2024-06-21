@@ -48,7 +48,7 @@ export default async function BlogPage() {
     }
 
     return (
-      <section className="py-64 flex flex-col items-center px-12 xl:px-48">
+      <section className="py-64 flex flex-col items-center px-12 md:px-24 lg:px-48">
         <BlogItemLarge post={dataFeature} idx={0} /> {/* Handle single item */}
         <div className="mt-12 grid grid-cols-12 w-full">
           <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
