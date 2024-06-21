@@ -3,10 +3,10 @@
 import { useRef, useState } from "react";
 import NavLink from "./NavLink";
 import gsap from "gsap";
-import OpenForWork from "./OpenForWork";
 import ProfileNav from "./ProfileNav";
 import MobileMenu from "./MobileMenu";
 import { useGSAP } from "@gsap/react";
+import ButtonSecondary from "./ButtonSecondary";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -16,29 +16,36 @@ function Navbar() {
     setShowMenu(!showMenu);
   };
 
-  useGSAP(() => {
-    var tl = gsap.timeline({ delay: 2, autoAlpha: 0 });
-    tl.from(NavContainer.current, { width: 0, opacity: 0, ease: "power4.out" });
-    tl.from("li", { opacity: 0, y: 50, ease: "power4.out", stagger: 0.05 });
-    tl.from(
-      "#OpenForWork",
-      {
+  useGSAP(
+    () => {
+      var tl = gsap.timeline({ delay: 2, autoAlpha: 0 });
+      tl.from(NavContainer.current, {
+        width: 0,
         opacity: 0,
-        x: 50,
         ease: "power4.out",
-      },
-      "<"
-    );
-    tl.from(
-      "#Profile",
-      {
-        opacity: 0,
-        x: -50,
-        ease: "power4.out",
-      },
-      "<"
-    );
-  }, {});
+      });
+      tl.from("li", { opacity: 0, y: 50, ease: "power4.out", stagger: 0.05 });
+      tl.from(
+        "#OpenForWork",
+        {
+          opacity: 0,
+          x: 50,
+          ease: "power4.out",
+        },
+        "<"
+      );
+      tl.from(
+        "#Profile",
+        {
+          opacity: 0,
+          x: -50,
+          ease: "power4.out",
+        },
+        "<"
+      );
+    },
+    { scope: NavContainer }
+  );
 
   return (
     <>
@@ -55,8 +62,13 @@ function Navbar() {
             <NavLink url="blog" title="Blog" />
             <NavLink url="/" title="Kontakt" />
           </ul>
-
-          <OpenForWork />
+          <div className="self-center col-start-3 justify-self-end">
+            <ButtonSecondary
+              firstTitle="Offen für Aufträge"
+              secondTitle="Jetzt kontaktieren"
+              link="/kontakt"
+            />
+          </div>
         </nav>
       </div>
     </>

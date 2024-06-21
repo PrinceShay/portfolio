@@ -65,7 +65,7 @@
 }
 
 body {
-  font-family: poppins, sans-serif;
+  font-family: "sofia-pro", sans-serif;
   color: rgb(var(--foreground-rgb));
 }
 
@@ -122,12 +122,6 @@ body {
   filter: blur(200px);
   height: 80em;
   border-radius: 100%;
-}
-
-footer{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3,auto);
 }
 
 .TextTransform{

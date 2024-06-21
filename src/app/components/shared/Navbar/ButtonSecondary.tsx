@@ -1,9 +1,20 @@
+"use client";
 import Link from "next/link";
 import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-function OpenForWork() {
+interface ButtonSecondaryProps {
+  firstTitle: string;
+  secondTitle?: string;
+  link: string;
+}
+
+const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
+  firstTitle,
+  secondTitle,
+  link,
+}) => {
   const topTextRef = useRef<HTMLParagraphElement>(null);
   const bottomTextRef = useRef<HTMLParagraphElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,11 +56,7 @@ function OpenForWork() {
   }, []);
 
   return (
-    <Link
-      href={"/kontakt"}
-      className="self-center col-start-3 justify-self-end h-full"
-      id="OpenForWork"
-    >
+    <Link href={link} className=" h-full" id="ButtonSecondary">
       <div
         ref={containerRef}
         className="flex justify-center items-center gap-4 px-6 py-3 relative overflow-hidden rounded-full h-full"
@@ -57,18 +64,18 @@ function OpenForWork() {
         <div className="GreenCircle w-3 h-3 rounded-full bg-primary-500"></div>
         <div className="relative inset-0 flex flex-col overflow-hidden">
           <p ref={topTextRef} className="text-xl w-full text-center">
-            Offen für Aufträge
+            {firstTitle}
           </p>
           <p
             ref={bottomTextRef}
-            className="text-xl w-full text-center absolute top-full text-primary-200"
+            className="text-xl w-full text-center absolute top-full text-primary-200 text-nowrap"
           >
-            Jetzt kontaktieren
+            {secondTitle || firstTitle}
           </p>
         </div>
       </div>
     </Link>
   );
-}
+};
 
-export default OpenForWork;
+export default ButtonSecondary;
