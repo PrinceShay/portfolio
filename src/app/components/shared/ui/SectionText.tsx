@@ -55,7 +55,7 @@ function ProjectText({ title, text }: { title: string; text: string }) {
     }
   }, [isSplit]);
   return (
-    <div className="TextTransform text-center pb-24 px-12 md:px-24 lg:px-48">
+    <div className="TextTransform text-center pb-24 ">
       <h1 ref={headline} className=" max-w-5xl mx-auto split Section_Headline">
         {title}
       </h1>

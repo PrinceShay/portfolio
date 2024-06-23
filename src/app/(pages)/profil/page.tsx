@@ -49,7 +49,7 @@ function Page() {
   return (
     <section className="min-h-screen pt-64 px-12 md:px-24 lg:px-48">
       <h1 className="Section_Headline">Profil</h1>
-      <div className="mt-48 grid grid-cols-12">
+      <div className="mt-48 flex gap-12 flex-col md:grid grid-cols-12">
         <h2 className="text-3xl uppercase col-span-3">Über mich</h2>
         <p className="col-start-6 col-end-13 text-2xl split">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum
@@ -57,13 +57,7 @@ function Page() {
           numquam enim. Incidunt nesciunt odit ullam adipisci iure harum sit
           placeat?Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
           eum dolore error ex perspiciatis aperiam, suscipit corrupti, debitis
-          eius numquam enim. Incidunt nesciunt odit ullam adipisci iure harum
-          sit placeat?Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Cum eum dolore error ex perspiciatis aperiam, suscipit corrupti,
-          debitis eius numquam enim. Incidunt nesciunt odit ullam adipisci iure
-          harum sit placeat? Lorem ipsum dolor sit amet consectetur adipisicing
-          elit. Cum eum dolore error ex perspiciatis aperiam, suscipit corrupti,
-          debitis eius numquam enim.
+          eius numquam enim.
         </p>
         <div
           ref={ImageRef}
@@ -82,7 +76,10 @@ function Page() {
           <p className="text-xl uppercase mb-8 tracking-wider split">
             Was gibts noch zu sagen
           </p>
-          <p ref={ScrollText} className="text-6xl split leading-[120%]">
+          <p
+            ref={ScrollText}
+            className="text-[5vw] sm:text-[3.5vw] md:text-[3vw] lg:text-[2.8vw] split leading-[120%]"
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
             corrupti velit harum facilis nihil impedit adipisci voluptatem
             ipsam, vero deserunt? Corporis libero blanditiis temporibus impedit
