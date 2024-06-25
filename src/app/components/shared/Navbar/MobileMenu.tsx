@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
+import ButtonSecondary from "./ButtonSecondary";
 
 function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,17 +52,26 @@ function MobileMenu() {
         ref={MenuContainer}
         className=" translate-y-full fixed w-full h-screen flex gap-8 flex-col justify-center items-center top-0 left-0 bg-gradient-to-b from-primary-500 to-primary-700 z-40"
       >
-        <Link className="MobileLink text-7xl uppercase font-bold" href="/">
+        <Link className="MobileLink text-4xl uppercase font-bold" href="/">
           Home
         </Link>
-        <Link className="MobileLink text-7xl uppercase font-bold" href="/about">
-          About
+        <Link
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/projekte"
+        >
+          Projekte
         </Link>
         <Link
-          className="MobileLink text-7xl uppercase font-bold"
-          href="/contact"
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/profil"
         >
-          Contact
+          Profil
+        </Link>
+        <Link className="MobileLink text-4xl uppercase font-bold" href="/blog">
+          Blog
+        </Link>
+        <Link className="MobileLink text-4xl uppercase font-bold" href="/blog">
+          Kontakt
         </Link>
       </div>
     </div>

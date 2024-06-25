@@ -26,12 +26,12 @@ export default async function () {
     return <p>Loading...</p>; // Handle loading state
   }
   return (
-    <section className="pt-72">
+    <section className="pt-32 px-12 md:px-24 lg:px-48">
       <ProjectText
         title="Aktuelle Cases"
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
-      <div className="px-12 md:px-24 lg:px-48 grid grid-cols-12 grid-flow-row gap-8 relative">
+      <div className="max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
         {data.map((post, idx) => (
           <ProjectItem key={post.id} post={post} idx={idx} />
         ))}

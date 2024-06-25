@@ -132,7 +132,9 @@ function Hero() {
               Hey👋, mein Name ist <strong>Jannis Röstel</strong>. Ich bin
             </p>
             <h1 ref={NameRef} className="Section_Headline split">
-              Web- und <br /> Motiondesigner
+              Web- und <br /> Motion
+              <wbr />
+              designer
             </h1>
             <div className="flex">
               <PrimaryButton link={"/projekte"} title={"Text"} />
