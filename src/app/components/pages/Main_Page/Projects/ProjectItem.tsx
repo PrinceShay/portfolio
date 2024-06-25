@@ -98,7 +98,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         {post.titleVideo && post.titleVideo.asset && (
           <video
             ref={videoRef} // Correctly assigned ref for the video element
-            className="w-full h-full absolute left-0 top-0 object-cover"
+            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none"
             src={post.titleVideo.asset.url}
             autoPlay
             typeof="video/webm"
