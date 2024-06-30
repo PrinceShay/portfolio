@@ -1,16 +1,13 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
-import ButtonSecondary from "./ButtonSecondary";
 
 function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  // Declare useRef with a specific type that can be null or gsap.core.Timeline
   const MenuContainer = useRef<HTMLDivElement>(null);
   const menuTL = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
-    // Ensure that menuTL is correctly typed and checks are in place before assignment
     if (MenuContainer.current && menuTL.current === null) {
       menuTL.current = gsap
         .timeline({ paused: true })
@@ -29,7 +26,6 @@ function MobileMenu() {
   }, []);
 
   useEffect(() => {
-    // Use optional chaining to safely call methods on potentially null objects
     if (menuTL.current) {
       isOpen ? menuTL.current.play() : menuTL.current.reverse();
     }
@@ -37,6 +33,10 @@ function MobileMenu() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -50,27 +50,41 @@ function MobileMenu() {
 
       <div
         ref={MenuContainer}
-        className=" translate-y-full fixed w-full h-screen flex gap-8 flex-col justify-center items-center top-0 left-0 bg-gradient-to-b from-primary-500 to-primary-700 z-40"
+        className=" translate-y-[100lvh] fixed w-full h-screen flex gap-8 flex-col justify-center items-center top-0 left-0 bg-gradient-to-b bg-primary-700 bg-opacity-80 backdrop-blur-md z-40"
       >
-        <Link className="MobileLink text-4xl uppercase font-bold" href="/">
+        <Link
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/"
+          onClick={handleLinkClick}
+        >
           Home
         </Link>
         <Link
           className="MobileLink text-4xl uppercase font-bold"
           href="/projekte"
+          onClick={handleLinkClick}
         >
           Projekte
         </Link>
         <Link
           className="MobileLink text-4xl uppercase font-bold"
           href="/profil"
+          onClick={handleLinkClick}
         >
           Profil
         </Link>
-        <Link className="MobileLink text-4xl uppercase font-bold" href="/blog">
+        <Link
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/blog"
+          onClick={handleLinkClick}
+        >
           Blog
         </Link>
-        <Link className="MobileLink text-4xl uppercase font-bold" href="/blog">
+        <Link
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/kontakt"
+          onClick={handleLinkClick}
+        >
           Kontakt
         </Link>
       </div>

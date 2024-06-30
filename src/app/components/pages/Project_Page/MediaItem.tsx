@@ -57,8 +57,9 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
       >
         <video
           autoPlay
-          muted
           loop
+          muted
+          playsInline
           src={item.asset.url}
           className="w-full object-cover rounded-lg shadow-md"
         />

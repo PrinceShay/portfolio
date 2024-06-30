@@ -19,7 +19,7 @@ function page() {
 
         <h2 className="font-bold">Kontakt:</h2>
         <p className="mb-5">
-          Telefon:{" "}
+          Telefon:
           <a
             className=" text-primary-300 hover:text-primary-500 transition-colors"
             href="tel:+4917666811884"

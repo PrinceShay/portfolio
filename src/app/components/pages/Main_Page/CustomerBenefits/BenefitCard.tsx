@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 interface BenefitCardProps {
-  title: string;
+  title: React.ReactNode;
   content: string;
 }
 
@@ -11,6 +11,18 @@ function BenefitCard({ title, content }: BenefitCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const borderRef = useRef<HTMLLIElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Set the initial state for isMobile on the client side
+    setIsMobile(window.innerWidth < 768);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useGSAP(() => {
     if (isHovered && cardRef.current) {
@@ -26,13 +38,30 @@ function BenefitCard({ title, content }: BenefitCardProps) {
     }
   }, [isHovered]);
 
+  useEffect(() => {
+    if (isMobile && borderRef.current) {
+      gsap.to(borderRef.current, {
+        background:
+          "radial-gradient(circle, rgba(177, 122, 255, 0.6), rgba(177, 122, 255, 0) 80%)",
+        duration: 0.5,
+      });
+    } else if (!isMobile && borderRef.current) {
+      gsap.to(borderRef.current, {
+        background: "none",
+        duration: 0.5,
+      });
+    }
+  }, [isMobile]);
+
   const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
-    setIsHovered(true);
-    updateBackground(event);
+    if (!isMobile) {
+      setIsHovered(true);
+      updateBackground(event);
+    }
   };
 
   const handleMouseMove = (event: React.MouseEvent<HTMLLIElement>) => {
-    if (!isHovered) return;
+    if (!isHovered || isMobile) return;
     updateBackground(event);
   };
 
@@ -50,13 +79,15 @@ function BenefitCard({ title, content }: BenefitCardProps) {
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (borderRef.current) {
-      gsap.to(borderRef.current, {
-        background: "none",
-        duration: 0.5,
-        ease: "power4.out", // Smooth transition using Power4.out easing
-      });
+    if (!isMobile) {
+      setIsHovered(false);
+      if (borderRef.current) {
+        gsap.to(borderRef.current, {
+          background: "none",
+          duration: 0.5,
+          ease: "power4.out",
+        });
+      }
     }
   };
 
@@ -80,7 +111,9 @@ function BenefitCard({ title, content }: BenefitCardProps) {
           opacity: 1,
         }}
       >
-        <h2 className="text-4xl font-bold text-primary-500">{title}</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
+          {title}
+        </h2>
         <p className="mt-8 text-lg text-primary-100">{content}</p>
       </div>
     </li>

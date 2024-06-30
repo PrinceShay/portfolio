@@ -38,22 +38,36 @@ function CustomerBenefits() {
           className="col-start-1 col-end-13 grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4 "
         >
           <BenefitCard
-            title="Keine versteckten Kosten"
+            title={
+              <>
+                Keine versteckten
+                <wbr /> Kosten
+              </>
+            }
             content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
                        Kosten gibt. Du weißt genau, was du für dein Budget erhältst, ohne
                        unangenehme Überraschungen."
           />
           <BenefitCard
-            title="Persönlicher Ansprechpartner"
+            title={
+              <>
+                Persönlicher
+                <wbr /> Ansprechpartner
+              </>
+            }
             content="Während des gesamten Projekts hast du stets einen festen Ansprechpartner – mich. Das garantiert klare Kommunikation, schnelle Antworten auf deine Fragen und individuelle Betreuung."
           />
           <BenefitCard
-            title="Kosteneffizienz"
+            title={<>Kosteneffizienz</>}
             content="Als Freelancer kann ich qualitativ hochwertige Webdesign-Dienstleistungen zu einem günstigeren Preis anbieten als größere Agenturen. Du sparst Geld, ohne Kompromisse bei der Qualität einzugehen."
           />
-
           <BenefitCard
-            title="Freiheit im Design"
+            title={
+              <>
+                Freiheit im
+                <wbr /> Design
+              </>
+            }
             content="Durch die Verwendung von Webflow als Plattform bin ich in der Lage, einzigartige und maßgeschneiderte Webseiten zu erstellen. Deine Seite wird sich von der Masse abheben und genau deine Vorstellungen entsprechen."
           />
         </ul>

@@ -61,7 +61,7 @@ function Page() {
         </p>
         <div
           ref={ImageRef}
-          className="bg-primary-500 col-start-6 col-end-13 h-screen mt-32 rounded-xl overflow-hidden"
+          className="bg-primary-500 col-start-6 col-end-13 md:h-screen mt-32 rounded-xl overflow-hidden"
         >
           <img
             src="/assets/images/_MG_4682-cutout-bg-with-light-web.jpg"

@@ -4,12 +4,14 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { urlFor } from "@/app/lib/sanity"; // Import urlFor
 
 gsap.registerPlugin(ScrollTrigger);
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
   const object = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null); // Updated to HTMLVideoElement
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
@@ -61,9 +63,21 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           ease: "power2.out",
           duration: 1.5,
         });
+        gsap.to(imageRef.current, {
+          scale: 1.25,
+          rotate: 5,
+          ease: "power2.out",
+          duration: 1.5,
+        });
       });
       object.current?.addEventListener("mouseleave", () => {
         gsap.to(videoRef.current, {
+          scale: 1,
+          rotate: 0,
+          ease: "power4.out",
+          duration: 1.5,
+        });
+        gsap.to(imageRef.current, {
           scale: 1,
           rotate: 0,
           ease: "power4.out",
@@ -88,23 +102,25 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       <div
         ref={object}
         className="rounded-xl relative min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-end shadow-2xl"
-        onMouseEnter={() =>
-          gsap.to(videoRef.current, { scale: 1.2, ease: "Power2.out" })
-        }
-        onMouseLeave={() =>
-          gsap.to(videoRef.current, { scale: 1, ease: "Power2.out" })
-        }
       >
         {post.titleVideo && post.titleVideo.asset && (
           <video
-            ref={videoRef} // Correctly assigned ref for the video element
-            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none"
+            ref={videoRef}
+            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none hidden md:block"
             src={post.titleVideo.asset.url}
             autoPlay
-            typeof="video/webm"
-            muted
             loop
+            muted
+            playsInline
           ></video>
+        )}
+        {post.titleImage && (
+          <img
+            ref={imageRef}
+            src={urlFor(post.titleImage).url()} // Use urlFor for image URL
+            alt={post.title}
+            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none md:hidden"
+          />
         )}
         <div className="w-full h-3/4 bg-gradient-to-t from-primary-600 to-transparent absolute left-0 bottom-0"></div>
         <div className="text-center md:text-left flex flex-col gap-6 md:gap-0 md:flex-row justify-between w-full items-center">

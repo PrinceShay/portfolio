@@ -3,6 +3,8 @@ import { ProjectCard } from "@/app/lib/interface";
 import { client } from "@/app/lib/sanity";
 import ProjectItem from "./ProjectItem";
 
+export const revalidate = 30;
+
 async function getData() {
   const query = `
   *[_type == 'project'] | order(_createdAt desc) {

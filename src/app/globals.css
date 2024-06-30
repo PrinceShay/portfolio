@@ -92,11 +92,19 @@ body {
   .Section_Headline{
     font-size: 10em;
   }
+  .Section_Headline.small{
+
+    font-size: 5em;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .Section_Headline{
-    font-size: 8em;
+    font-size: 6.5em;
+  }
+  .Section_Headline.small{
+
+    font-size: 4em;
   }
 }
 
