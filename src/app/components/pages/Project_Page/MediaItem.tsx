@@ -11,6 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export interface MediaItemProps {
   _type: string;
+  title?: string;
   alt?: string;
   url: string;
   asset?: {
@@ -43,7 +44,7 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
       >
         <img
           src={urlFor(item).url()}
-          alt={item.alt || "Project image"}
+          alt={item.title || "Project image"}
           className="w-full h-full object-cover"
         />
       </div>

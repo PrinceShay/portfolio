@@ -2,7 +2,7 @@ import React from "react";
 
 function page() {
   return (
-    <section className="min-h-screen pt-64 px-12 md:px-24 lg:px-48 flex flex-col">
+    <section className="min-h-screen pt-64 px-6 md:px-24 lg:px-48 flex flex-col">
       <h1 className="Section_Headline mb-12">Datenschutz</h1>
       <div className="text-xl max-w-5xl">
         <h2 className="font-bold">

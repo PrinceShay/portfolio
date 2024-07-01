@@ -1,9 +1,10 @@
 import { FullProject, ProjectCard } from "@/app/lib/interface";
-import { client } from "@/app/lib/sanity";
+import { client, urlFor } from "@/app/lib/sanity";
 import Hero from "@/app/components/pages/Project_Page/Hero";
 import ProjectContent from "@/app/components/pages/Project_Page/ProjectContent";
 import Challenge from "@/app/components/pages/Project_Page/Challenge";
 import NextProject from "@/app/components/pages/Project_Page/NextProject";
+import { Metadata } from "next";
 
 export const revalidate = 30;
 
@@ -36,6 +37,37 @@ async function getData(slug: string): Promise<FullProject> {
 
   const data = await client.fetch(query);
   return data;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const data: FullProject = await getData(params.slug);
+  const titleImageUrl = urlFor(data.titleImage).url();
+
+  return {
+    title: `${data.title} - Your Site Name`,
+    description: data.introText,
+    openGraph: {
+      title: `${data.title} - Your Site Name`,
+      description: data.introText,
+      images: [
+        {
+          url: titleImageUrl,
+          alt: `${data.title} Image`,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${data.title} - Your Site Name`,
+      description: data.introText,
+      images: titleImageUrl,
+    },
+  };
 }
 
 async function getDataNext(currentSlug: string): Promise<ProjectCard[]> {

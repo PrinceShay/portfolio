@@ -8,7 +8,7 @@ type ProjectContentProps = {
 
 function ProjectContent({ mediaCollection }: ProjectContentProps) {
   return (
-    <section className="flex flex-col lg:grid grid-cols-12 w-full py-24 px-12 md:px-24 lg:px-48 gap-16 justify-between">
+    <section className="flex flex-col lg:grid grid-cols-12 w-full py-24 px-6 md:px-24 lg:px-48 gap-16 justify-between">
       <div className="col-span-4">
         <div className="sticky top-1/3">
           <h1 className="Section_Headline small mb-6">
@@ -25,7 +25,7 @@ function ProjectContent({ mediaCollection }: ProjectContentProps) {
       </div>
       <div className="col-span-8 col-start-5 gap-16 flex flex-col items-end">
         {mediaCollection.map((item, index) => (
-          <MediaItem key={index} item={item} /> // Ensure each 'item' has a '_type' property
+          <MediaItem key={index} item={item} />
         ))}
       </div>
     </section>

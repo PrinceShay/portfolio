@@ -193,7 +193,7 @@ const Challenge: React.FC<ChallengeProps> = ({
     }
   }, [isSplit]);
   return (
-    <div className="px-12 md:px-24 lg:px-48">
+    <div className="px-6 md:px-24 lg:px-48">
       <section className="flex flex-col justify-between md:flex-row gap-16 py-24">
         <div className="basis-1/2 content-center">
           <p className="text-lg challenge-tag">Die Challenge</p>

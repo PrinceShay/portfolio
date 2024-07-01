@@ -25,7 +25,7 @@ export default async function () {
     return <p>Loading...</p>;
   }
   return (
-    <section className="py-64 flex flex-col items-center px-12 md:px-24 lg:px-48">
+    <section className="py-64 flex flex-col items-center px-6 md:px-24 lg:px-48">
       <SectionText
         title="Aktuelle News"
         text="An independent creative agency for all your branding, advertising, and

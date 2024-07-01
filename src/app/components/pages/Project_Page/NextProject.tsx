@@ -37,7 +37,7 @@ function NextProject({ projects }: NextProjectProps) {
   }, [projects]);
 
   return (
-    <section className="px-12 md:px-24 lg:px-48 py-24">
+    <section className="px-6 md:px-24 lg:px-48 py-24">
       <h1 className="Section_Headline small mb-12">Nächses Projekt</h1>
 
       <Swiper
