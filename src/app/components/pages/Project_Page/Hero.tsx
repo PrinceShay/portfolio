@@ -88,6 +88,7 @@ function Hero({
           className="w-full h-full object-cover absolute top-0 object-top"
           src={titleVideo}
           autoPlay
+          playsInline
           muted
           loop
         ></video>

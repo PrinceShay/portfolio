@@ -97,11 +97,11 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
   return (
     <Link
       href={`/projekte/${post.currentSlug}`}
-      className="ProjectCard col-start-1 col-end-13 sticky top-[10vh] max-w-full"
+      className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full"
     >
       <div
         ref={object}
-        className="rounded-xl relative min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-end shadow-2xl"
+        className="rounded-xl relative min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-end shadow-2xl"
       >
         {post.titleVideo && post.titleVideo.asset && (
           <video

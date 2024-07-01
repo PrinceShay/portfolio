@@ -66,7 +66,6 @@ function Hero2() {
             start: "0 0",
             end: "100% 100%",
             scrub: true,
-            markers: true,
           },
         },
         "<"
@@ -82,7 +81,6 @@ function Hero2() {
             start: "0 0",
             end: "100% 100%",
             scrub: true,
-            markers: true,
           },
         },
         "<"
@@ -94,7 +92,7 @@ function Hero2() {
     <section ref={container}>
       <div
         ref={container}
-        className=" bg-darkBlue-500 bg-opacity-85 backdrop-blur-lg relative z-20 min-h-[80vh] px-12 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
+        className=" md:pt-36 bg-darkBlue-500 bg-opacity-85 backdrop-blur-lg relative z-20 min-h-[80vh] px-12 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
       >
         <p ref={TagRef} className="text-xl md:text-2xl mb-8 split">
           Hey👋, mein Name ist

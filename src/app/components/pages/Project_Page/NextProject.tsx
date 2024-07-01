@@ -43,10 +43,17 @@ function NextProject({ projects }: NextProjectProps) {
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
-        slidesPerView={2}
+        slidesPerView={3}
         navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+          1280: { slidesPerView: 3 },
+        }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >

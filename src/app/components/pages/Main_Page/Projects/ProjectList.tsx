@@ -27,7 +27,7 @@ export default async function () {
     return <p>Loading...</p>; // Handle loading state
   }
   return (
-    <div className=" max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
+    <div className="flex flex-col max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
       {data.map((post, idx) => (
         <ProjectItem key={post.id} post={post} idx={idx} />
       ))}
