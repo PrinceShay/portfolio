@@ -71,7 +71,7 @@ function Page() {
 
       <div ref={ScrollTextContainer} className="h-[200vh] relative">
         <div className="min-h-screen py-48 sticky top-0 flex flex-col justify-center">
-          <p className="text-xl uppercase mb-8 tracking-wider split">
+          <p className="text-sm sm:text-md md:text-lg lg:text-xl uppercase mb-8 tracking-wider split">
             Was gibts noch zu sagen
           </p>
           <p
