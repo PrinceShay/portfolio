@@ -82,11 +82,22 @@ export default {
                 {type: 'image'}
             ]
         },
+
         {
             name: 'categories',
             type: 'array',
             title: 'Categories',
             of: [{type: 'reference', to: [{type: 'category'}]}]
+        },
+        {
+            name: 'collectionTitle',
+            type: 'string',
+            title: 'Collection Title',
+        },
+        {
+            name: 'collectionText',
+            type: 'string',
+            title: 'Collection Text',
         },
         {
             name: 'mediaCollection',

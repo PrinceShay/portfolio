@@ -27,15 +27,15 @@ function CustomerBenefits() {
   );
 
   return (
-    <section className="pt-64 px-6 md:px-24 lg:px-48">
+    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-800">
       <ProjectText
         title="Warum kunden mit mir arbeiten"
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
-      <div className="grid grid-cols-12 mt-24">
+      <div className="mt-24">
         <ul
           ref={container}
-          className="col-start-1 col-end-13 grid grid-cols-1 xl:grid-cols-3 md:grid-cols-2 gap-4 "
+          className="grid grid-cols-1 md:grid-cols-[auto,auto] gap-4 justify-center"
         >
           <BenefitCard
             title={

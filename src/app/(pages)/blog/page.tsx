@@ -49,8 +49,10 @@ export default async function BlogPage() {
 
     return (
       <section className="py-64 flex flex-col items-center px-6 md:px-24 lg:px-48">
+        <SectionText title="Blogbeiträge" text="Lorem" />
         <BlogItemLarge post={dataFeature} idx={0} /> {/* Handle single item */}
         <div className="mt-12 grid grid-cols-12 w-full">
+          <h2 className="text-4xl col-span-12 mb-6">Alle Beiträge</h2>
           <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
             {dataItem.map((post: ProjectCard, idx: number) => (
               <BlogItem key={post.currentSlug} post={post} idx={idx} />

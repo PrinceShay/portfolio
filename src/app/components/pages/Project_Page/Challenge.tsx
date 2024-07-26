@@ -85,9 +85,9 @@ const Challenge: React.FC<ChallengeProps> = ({
         opacity: 0,
         scrollTrigger: {
           trigger: challengetextRef.current,
-          start: "top 90%",
+          start: "top 95%",
           scrub: true,
-          end: "top 30%",
+          end: "top 40%",
         },
         ease: "power4.out",
       });
@@ -143,9 +143,9 @@ const Challenge: React.FC<ChallengeProps> = ({
         opacity: 0,
         scrollTrigger: {
           trigger: solutiontextRef.current,
-          start: "top 90%",
+          start: "top 95%",
           scrub: true,
-          end: "top 30%",
+          end: "top 40%",
         },
         ease: "power4.out",
       });

@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        // added new 4 column grid as new4
+        'Benefit': 'repeat(2, minmax(200px, auto))'
+        },
+
+
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

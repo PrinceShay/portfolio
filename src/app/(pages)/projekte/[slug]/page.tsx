@@ -31,7 +31,9 @@ async function getData(slug: string): Promise<FullProject> {
     challengeImage,
     solutionTitle,
     solutionContent,
-    solutionImage
+    solutionImage,
+    collectionTitle,
+    collectionText
   } [0]
   `;
 
@@ -48,10 +50,10 @@ export async function generateMetadata({
   const titleImageUrl = urlFor(data.titleImage).url();
 
   return {
-    title: `${data.title} - Your Site Name`,
+    title: `${data.title} - Jannis Röstel`,
     description: data.introText,
     openGraph: {
-      title: `${data.title} - Your Site Name`,
+      title: `${data.title} - Jannis Röstels`,
       description: data.introText,
       images: [
         {
@@ -95,7 +97,7 @@ export default async function ProjectPage({
   const nextProjects: ProjectCard[] = await getDataNext(params.slug);
 
   return (
-    <main className="">
+    <section className="">
       <Hero
         title={data.title}
         introText={data.introText}
@@ -110,8 +112,12 @@ export default async function ProjectPage({
         solutionImage={data.solutionImage}
       />
 
-      <ProjectContent mediaCollection={data.mediaCollection} />
+      <ProjectContent
+        title={data.collectionTitle}
+        text={data.collectionText}
+        mediaCollection={data.mediaCollection}
+      />
       <NextProject projects={nextProjects} />
-    </main>
+    </section>
   );
 }

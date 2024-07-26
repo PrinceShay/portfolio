@@ -26,7 +26,7 @@ export default async function () {
     return <p>Loading...</p>; // Handle loading state
   }
   return (
-    <section className="pt-32 px-6 md:px-24 lg:px-48">
+    <section className="pt-64 px-6 md:px-24 lg:px-48">
       <ProjectText
         title="Aktuelle Cases"
         text="An independent creative agency for all your branding, advertising, and film production needs."

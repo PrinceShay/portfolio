@@ -7,6 +7,7 @@ import Service from "./components/pages/Main_Page/Service/Service";
 import CTA from "./components/shared/ui/CTA";
 import Preloader from "./components/shared/Preloader";
 import Hero2 from "./components/pages/Main_Page/Hero2";
+import CTAWindow from "./components/shared/ui/CTAWindow";
 
 export default function Home() {
   return (
@@ -15,6 +16,10 @@ export default function Home() {
       <Hero2 />
       <Projects />
       <CustomerBenefits />
+      <CTAWindow
+        text="Schreib mir eine kurze Mail und ich melde mich bei dir."
+        title="Bereit, wenn du es bist"
+      />
       <BlogComponent />
       <Service />
       <CTA />

@@ -10,6 +10,7 @@ import PrimaryButton from "../../shared/ui/PrimaryButton";
 function Hero2() {
   const container = useRef<HTMLDivElement>(null);
   const VideoContainer = useRef<HTMLDivElement>(null);
+  const TextContainer = useRef<HTMLDivElement>(null);
   const NameRef = useRef<HTMLHeadingElement>(null);
   const TagRef = useRef<HTMLParagraphElement>(null);
   const VideoRef = useRef<HTMLVideoElement>(null);
@@ -31,7 +32,8 @@ function Hero2() {
       TagRef.current &&
       NameRef.current &&
       VideoRef &&
-      VideoContainer
+      VideoContainer &&
+      TextContainer
     ) {
       const HeroTL = gsap.timeline({ delay: 1.8 });
 
@@ -71,6 +73,21 @@ function Hero2() {
         "<"
       );
 
+      HeroTL.to(
+        TextContainer.current,
+        {
+          yPercent: -50,
+          ease: "none",
+          scrollTrigger: {
+            trigger: container.current,
+            start: "0 0",
+            end: "100% 100%",
+            scrub: true,
+          },
+        },
+        "<"
+      );
+
       HeroTL.from(
         VideoRef.current,
         {
@@ -91,7 +108,7 @@ function Hero2() {
   return (
     <section ref={container}>
       <div
-        ref={container}
+        ref={TextContainer}
         className=" md:pt-36 bg-darkBlue-500 bg-opacity-85 backdrop-blur-lg relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
       >
         <p ref={TagRef} className="text-xl md:text-2xl mb-8 split">

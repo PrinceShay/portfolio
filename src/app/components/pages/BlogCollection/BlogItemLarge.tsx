@@ -66,7 +66,7 @@ function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
     <Link href={`/blog/${post.currentSlug}`} className="w-full ">
       <div
         ref={ref}
-        className="cursor-pointer flex items-center gap-8 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
+        className="cursor-pointer flex items-center gap-16 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
       >
         <div className=" basis-1/2 rounded-xl aspect-video relative overflow-hidden">
           <img
@@ -76,7 +76,7 @@ function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
             ref={imageRef}
           />
         </div>
-        <div className=" basis-1/2">
+        <div className=" basis-1/2 max-w-3xl">
           <p className="">{formatDate(post.publishDate)}</p>
           <h2 className="text-5xl font-bold mt-2">{post.title}</h2>
           <p className="text-lg mt-8">{post.smallDescription}</p>

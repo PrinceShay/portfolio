@@ -26,7 +26,9 @@ export interface FullProject {
   challengeImage: any; // Adjust this type based on your actual data structure
   solutionTitle: string;
   solutionContent: any;
-  solutionImage: any; // Adjust this type based on your actual data structure
+  solutionImage: any;
+  collectionTitle: string;
+  collectionText: string;
 }
 
 export interface NextProjectProps {
