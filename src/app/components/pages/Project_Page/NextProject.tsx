@@ -62,11 +62,11 @@ function NextProject({ projects }: NextProjectProps) {
             <Link
               ref={(el) => {
                 hoverRef.current[index] = el;
-                // Do not return anything from this callback
+                // Make sure nothing is returned
               }}
               href={`/projekte/${project.currentSlug}`}
             >
-              <div className=" h-96 relative overflow-hidden rounded-xl">
+              <div className="h-96 relative overflow-hidden rounded-xl">
                 <img
                   className="NextProject_Image w-full h-full absolute object-cover z-10"
                   src={urlFor(project.titleImage).url()}
