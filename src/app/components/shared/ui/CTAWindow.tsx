@@ -32,9 +32,9 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
         duration: 1.4,
         scrollTrigger: {
           trigger: headline.current,
-          start: "top 70%",
+          start: "top 90%",
           scrub: true,
-          end: "top 10%",
+          end: "top 30%",
         },
         ease: "back.out(2)",
       });
@@ -48,9 +48,9 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
         duration: 1.4,
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 70%",
+          start: "top 90%",
           scrub: true,
-          end: "top 10%",
+          end: "top 30%",
         },
         ease: "back.out(2)",
       });
@@ -67,11 +67,17 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
           >
             {title}
           </h1>
-          <p ref={textRef} className="split text-xl mt-6">
+          <p ref={textRef} className="split text-2xl mt-6">
             {text}
           </p>
         </div>
-        <ButtonSecondary link="/" firstTitle="Meow" />
+        <div className="mx-auto flex justify-center mt-16 text-2xl">
+          <ButtonSecondary
+            inverted={true}
+            link="/"
+            firstTitle="Termin vereinbaren"
+          />
+        </div>
       </div>
     </section>
   );

@@ -11,15 +11,15 @@ function CustomerBenefits() {
   useGSAP(
     () => {
       gsap.from(".BenefitCard", {
-        scale: 0.5,
+        y: 50,
+        rotateX: -70,
         opacity: 0,
         stagger: 0.15,
         duration: 1.75,
         ease: "elastic.out(1,0.8)",
         scrollTrigger: {
           trigger: container.current,
-          toggleActions: "play pause resume reset",
-          start: "top bottom",
+          start: "top 90%",
         },
       });
     },

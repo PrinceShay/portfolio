@@ -29,6 +29,8 @@ export interface FullProject {
   solutionImage: any;
   collectionTitle: string;
   collectionText: string;
+  collectionHeadline: string;
+  collectionBigText: string;
 }
 
 export interface NextProjectProps {

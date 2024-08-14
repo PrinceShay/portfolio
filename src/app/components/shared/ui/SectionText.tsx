@@ -30,9 +30,9 @@ function ProjectText({ title, text }: { title: string; text: string }) {
         duration: 1.4,
         scrollTrigger: {
           trigger: headline.current,
-          start: "top 70%",
+          start: "top 90%",
           scrub: true,
-          end: "top 10%",
+          end: "top 30%",
         },
         ease: "back.out(2)",
       });
@@ -46,9 +46,9 @@ function ProjectText({ title, text }: { title: string; text: string }) {
         duration: 1.4,
         scrollTrigger: {
           trigger: textRef.current,
-          start: "top 70%",
+          start: "top 90%",
           scrub: true,
-          end: "top 10%",
+          end: "top 30%",
         },
         ease: "back.out(2)",
       });
@@ -59,7 +59,7 @@ function ProjectText({ title, text }: { title: string; text: string }) {
       <h1 ref={headline} className=" max-w-5xl mx-auto split Section_Headline">
         {title}
       </h1>
-      <p ref={textRef} className="split text-xl mt-6">
+      <p ref={textRef} className="split text-xl mt-6 max-w-6xl mx-auto">
         {text}
       </p>
     </div>

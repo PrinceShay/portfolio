@@ -93,7 +93,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
 
   return (
     <li
-      className="BenefitCard max-w-2xl"
+      className="BenefitCard max-w-2xl TextTransform"
       ref={borderRef}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}

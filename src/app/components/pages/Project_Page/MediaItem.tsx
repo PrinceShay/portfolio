@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { urlFor } from "@/app/lib/sanity";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,18 +22,29 @@ export interface MediaItemProps {
 const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
   const MediaItemRef = useRef(null);
 
-  useGSAP(() => {
-    gsap.to(MediaItemRef.current, {
-      rotate: "random(-4,4,0.5)",
-      scrollTrigger: {
-        trigger: MediaItemRef.current,
-        toggleActions: "play pause resume reset",
-        start: "-5% 105%",
-        end: "",
-        scrub: true,
+  useEffect(() => {
+    gsap.fromTo(
+      MediaItemRef.current,
+      {
+        opacity: 1,
+        scale: 1,
+        rotate: 0, // Start without rotation
       },
-    });
-  });
+      {
+        opacity: 0,
+        scale: 0.8,
+        rotate: () => `random(-5, 5, 1)`, // Random rotation on scroll
+        ease: "none",
+        scrollTrigger: {
+          trigger: MediaItemRef.current,
+          start: "center center", // Starts when the center of the element reaches the center of the viewport
+          end: "bottom top", // Ends when the bottom of the element reaches the top of the viewport
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
   if (item._type === "image") {
     return (
       <div
@@ -46,6 +55,7 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
           src={urlFor(item).url()}
           alt={item.title || "Project image"}
           className="w-full h-full object-cover"
+          loading="eager"
         />
       </div>
     );

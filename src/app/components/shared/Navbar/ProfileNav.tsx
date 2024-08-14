@@ -55,7 +55,7 @@ function ProfileNav() {
       className="col-start-1"
     >
       <Link id="Profile" href="/" className="gap-4 flex items-center">
-        <div className="relative w-16 rounded-full h-16 overflow-hidden">
+        <div className="ml-1 relative w-16 rounded-full h-16 overflow-hidden">
           <div
             ref={Main}
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"
@@ -80,7 +80,7 @@ function ProfileNav() {
             </div>
           </div>
         </div>
-        <p className="hidden xl:block uppercase">Jannis Röstel</p>
+        <p className="hidden xl:block text-lg ">Jannis Röstel</p>
       </Link>
     </div>
   );

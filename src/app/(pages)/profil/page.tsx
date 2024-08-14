@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,12 +60,13 @@ function Page() {
         </p>
         <div
           ref={ImageRef}
-          className="bg-primary-500 col-start-6 col-end-13 md:h-screen mt-32 rounded-xl overflow-hidden"
+          className="bg-primary-500 col-start-6 col-end-13 md:h-screen mt-32 rounded-xl overflow-hidden relative"
         >
-          <img
+          <Image
             src="/assets/images/_MG_4682-cutout-bg-with-light-web.jpg"
             alt="Jannis Röstel"
-            className="w-full h-full object-cover object-top"
+            fill={true}
+            style={{ objectFit: "cover" }}
           />
         </div>
       </div>

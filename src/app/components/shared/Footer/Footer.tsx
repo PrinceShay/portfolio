@@ -27,7 +27,7 @@ function Footer() {
         </div>
         <div className="flex sm:flex-row flex-col  gap-12 sm:gap-24">
           <div>
-            <h2 className=" text-md mb-4 uppercase">Navigation</h2>
+            <h2 className=" text-md mb-4 opacity-60 uppercase">Navigation</h2>
             <ul className="text-2xl flex flex-col gap-2">
               <FooterLink url="/projekte" title="Projekte" />
               <FooterLink url="/profil" title="Profil" />
@@ -37,7 +37,7 @@ function Footer() {
           </div>
 
           <div>
-            <h2 className=" text-md mb-4 uppercase">Social</h2>
+            <h2 className=" text-md mb-4 opacity-60 uppercase">Social</h2>
             <ul className="text-2xl flex flex-col gap-2">
               <FooterLink url="/" title="Instagram" />
               <FooterLink url="/" title="LinkedIn" />

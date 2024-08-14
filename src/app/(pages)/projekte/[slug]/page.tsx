@@ -5,6 +5,7 @@ import ProjectContent from "@/app/components/pages/Project_Page/ProjectContent";
 import Challenge from "@/app/components/pages/Project_Page/Challenge";
 import NextProject from "@/app/components/pages/Project_Page/NextProject";
 import { Metadata } from "next";
+import ProjectText from "@/app/components/shared/ui/SectionText";
 
 export const revalidate = 30;
 
@@ -18,7 +19,9 @@ async function getData(slug: string): Promise<FullProject> {
     titleVideo{asset->{url,_id}},
     introText,
     "categories": categories[]->title,
-    "mediaCollection": mediaCollection[] {
+    collectionHeadline,
+    collectionBigText,
+    mediaCollection[] {
         ...,
         asset->{
             _id,
@@ -53,7 +56,7 @@ export async function generateMetadata({
     title: `${data.title} - Jannis Röstel`,
     description: data.introText,
     openGraph: {
-      title: `${data.title} - Jannis Röstels`,
+      title: `${data.title} - Jannis Röstel`,
       description: data.introText,
       images: [
         {
@@ -111,6 +114,12 @@ export default async function ProjectPage({
         solutionContent={data.solutionContent}
         solutionImage={data.solutionImage}
       />
+      <div className="px-6 md:px-24 lg:px-48">
+        <ProjectText
+          title={data.collectionHeadline}
+          text={data.collectionBigText}
+        />
+      </div>
 
       <ProjectContent
         title={data.collectionTitle}

@@ -45,7 +45,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           scale: 0,
           opacity: 0,
           duration: 1.75,
-          stagger: 0.2,
+          stagger: 0.1,
           ease: "elastic.out(1,0.7)",
           scrollTrigger: {
             trigger: object.current,

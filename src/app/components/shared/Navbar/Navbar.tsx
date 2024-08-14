@@ -62,7 +62,7 @@ function Navbar() {
             <NavLink url="blog" title="Blog" />
             <NavLink url="/" title="Kontakt" />
           </ul>
-          <div className="self-center col-start-3 justify-self-end">
+          <div className="self-center col-start-3 justify-self-end text-xl">
             <ButtonSecondary
               firstTitle="Offen für Aufträge"
               secondTitle="Jetzt kontaktieren"
