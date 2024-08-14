@@ -60,7 +60,10 @@ function NextProject({ projects }: NextProjectProps) {
         {projects.map((project: ProjectCard, index) => (
           <SwiperSlide key={project.currentSlug}>
             <Link
-              ref={(el) => (hoverRef.current[index] = el)}
+              ref={(el) => {
+                hoverRef.current[index] = el;
+                // Do not return anything from this callback
+              }}
               href={`/projekte/${project.currentSlug}`}
             >
               <div className=" h-96 relative overflow-hidden rounded-xl">

@@ -93,7 +93,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
 
   return (
     <li
-      className="BenefitCard max-w-2xl TextTransform"
+      className="BenefitCard max-w-2xl"
       ref={borderRef}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
@@ -102,6 +102,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
         padding: "2px",
         borderRadius: "10px",
         overflow: "hidden",
+        transform: "perspective(500px)",
       }}
     >
       <div
