@@ -118,7 +118,7 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
           <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
             {title}
           </h2>
-          <p className="mt-6 text-lg max-w-2xl text-primary-100">{content}</p>
+          <p className="mt-6 text-xl max-w-2xl text-primary-100">{content}</p>
         </div>
       </div>
     </li>
