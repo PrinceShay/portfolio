@@ -22,7 +22,7 @@ const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const circleRef = useRef<HTMLDivElement>(null);
 
-  const backgroundColor = inverted ? "#000017" : "#231833";
+  const backgroundColor = inverted ? "#35254D" : "#231833";
   const textColor = inverted ? "#ffffff" : "#FFFFFF";
   const circleColor = inverted ? "#B17AFF" : "#00FF00"; // Assuming bg-primary-500 is green
 
@@ -75,7 +75,7 @@ const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
       <div
         ref={containerRef}
         className="flex justify-center items-center gap-4 px-9 py-5 relative overflow-hidden rounded-full h-full"
-        style={{ backgroundColor: inverted ? "#000017" : "" }} // Set initial background color
+        style={{ backgroundColor: inverted ? "#231833" : "" }} // Set initial background color
       >
         <div
           ref={circleRef}

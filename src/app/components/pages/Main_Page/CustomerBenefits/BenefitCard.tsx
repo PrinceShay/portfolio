@@ -93,7 +93,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
 
   return (
     <li
-      className="BenefitCard max-w-2xl"
+      className="BenefitCard h-full"
       ref={borderRef}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
@@ -107,7 +107,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
     >
       <div
         ref={cardRef}
-        className="p-12 text-left rounded-lg shadow-lg h-full"
+        className="p-12 text-left rounded-lg shadow-lg h-full flex flex-col justify-end"
         style={{
           opacity: 1,
         }}
@@ -115,7 +115,7 @@ function BenefitCard({ title, content }: BenefitCardProps) {
         <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
           {title}
         </h2>
-        <p className="mt-8 text-lg text-primary-100">{content}</p>
+        <p className="mt-6 text-lg max-w-2xl text-primary-100">{content}</p>
       </div>
     </li>
   );

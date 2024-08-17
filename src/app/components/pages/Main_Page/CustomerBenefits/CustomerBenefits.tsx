@@ -32,44 +32,53 @@ function CustomerBenefits() {
         title="Warum kunden mit mir arbeiten"
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
-      <div className="mt-24">
+      <div className="mt-24 max-w-[1600px] mx-auto">
         <ul
           ref={container}
-          className="grid grid-cols-1 md:grid-cols-[auto,auto] gap-4 justify-center"
+          className="flex flex-col md:grid grid-cols-12 gap-4 justify-center min-h-[65vh]"
         >
-          <BenefitCard
-            title={
-              <>
-                Keine versteckten
-                <wbr /> Kosten
-              </>
-            }
-            content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
+          <div className="col-span-5">
+            <BenefitCard
+              title={
+                <>
+                  Keine versteckten
+                  <wbr /> Kosten
+                </>
+              }
+              content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
                        Kosten gibt. Du weißt genau, was du für dein Budget erhältst, ohne
                        unangenehme Überraschungen."
-          />
-          <BenefitCard
-            title={
-              <>
-                Persönlicher
-                <wbr /> Ansprechpartner
-              </>
-            }
-            content="Während des gesamten Projekts hast du stets einen festen Ansprechpartner – mich. Das garantiert klare Kommunikation, schnelle Antworten auf deine Fragen und individuelle Betreuung."
-          />
-          <BenefitCard
-            title={<>Kosteneffizienz</>}
-            content="Als Freelancer kann ich qualitativ hochwertige Webdesign-Dienstleistungen zu einem günstigeren Preis anbieten als größere Agenturen. Du sparst Geld, ohne Kompromisse bei der Qualität einzugehen."
-          />
-          <BenefitCard
-            title={
-              <>
-                Freiheit im
-                <wbr /> Design
-              </>
-            }
-            content="Durch die Verwendung von Webflow als Plattform bin ich in der Lage, einzigartige und maßgeschneiderte Webseiten zu erstellen. Deine Seite wird sich von der Masse abheben und genau deine Vorstellungen entsprechen."
-          />
+            />
+          </div>
+          <div className="col-span-7">
+            <BenefitCard
+              title={
+                <>
+                  Persönlicher
+                  <wbr /> Ansprechpartner
+                </>
+              }
+              content="Während des gesamten Projekts hast du stets einen festen Ansprechpartner – mich. Das garantiert klare Kommunikation, schnelle Antworten auf deine Fragen und individuelle Betreuung."
+            />
+          </div>
+
+          <div className="col-span-8">
+            <BenefitCard
+              title={<>Kosteneffizienz</>}
+              content="Als Freelancer kann ich qualitativ hochwertige Webdesign-Dienstleistungen zu einem günstigeren Preis anbieten als größere Agenturen. Du sparst Geld, ohne Kompromisse bei der Qualität einzugehen."
+            />
+          </div>
+          <div className="col-span-4">
+            <BenefitCard
+              title={
+                <>
+                  Freiheit im
+                  <wbr /> Design
+                </>
+              }
+              content="Durch die Verwendung von Webflow als Plattform bin ich in der Lage, einzigartige und maßgeschneiderte Webseiten zu erstellen. Deine Seite wird sich von der Masse abheben und genau deine Vorstellungen entsprechen."
+            />
+          </div>
         </ul>
       </div>
     </section>

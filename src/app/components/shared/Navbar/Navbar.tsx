@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import NavLink from "./NavLink";
 import gsap from "gsap";
 import ProfileNav from "./ProfileNav";
@@ -10,11 +10,37 @@ import ButtonSecondary from "./ButtonSecondary";
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const NavContainer = useRef(null);
+  const lastScrollTop = useRef(0);
+  const scrollThreshold = 50; // Schwellenwert in Pixel
 
   const handleButtonClick = () => {
     setShowMenu(!showMenu);
   };
+
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollDifference = Math.abs(scrollTop - lastScrollTop.current);
+
+    if (scrollDifference > scrollThreshold) {
+      if (scrollTop > lastScrollTop.current) {
+        // Wenn nach unten gescrollt wird
+        setIsVisible(false);
+      } else {
+        // Wenn nach oben gescrollt wird
+        setIsVisible(true);
+      }
+      lastScrollTop.current = scrollTop <= 0 ? 0 : scrollTop; // ScrollTop speichern
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useGSAP(
     () => {
@@ -50,10 +76,14 @@ function Navbar() {
   return (
     <>
       <MobileMenu />
-      <div className=" z-50 fixed hidden md:block md:top-8 px-6 md:px-24 lg:px-48 w-full ">
+      <div
+        className={`z-50 fixed hidden md:block md:top-8 px-6 md:px-24 lg:px-48 w-full transition-transform duration-500 ease-out ${
+          isVisible ? "translate-y-0" : "-translate-y-[150%]"
+        }`}
+      >
         <nav
           ref={NavContainer}
-          className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
+          className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
         >
           <ProfileNav />
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">

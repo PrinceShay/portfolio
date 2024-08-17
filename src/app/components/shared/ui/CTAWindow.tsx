@@ -9,6 +9,7 @@ import ButtonSecondary from "../Navbar/ButtonSecondary";
 function CTAWindow({ title, text }: { title: string; text: string }) {
   const headline = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const container = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
 
@@ -55,11 +56,24 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
         ease: "back.out(2)",
       });
     }
+
+    gsap.from(container.current, {
+      scaleX: 0.5,
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 100%",
+        scrub: true,
+        end: "top 50%",
+      },
+    });
   }, [isSplit]);
 
   return (
     <section className=" py-32 px-6 md:px-24 lg:px-48">
-      <div className="py-64 flex-row justify-center items-center bg-primary-500 w-full  min-h-48 mx-auto rounded-2xl">
+      <div
+        ref={container}
+        className="py-64 px-12 flex-row justify-center items-center bg-primary-500 w-full max-w-[1600px]  min-h-48 mx-auto rounded-2xl"
+      >
         <div className="TextTransform text-center ">
           <h1
             ref={headline}
@@ -71,7 +85,7 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
             {text}
           </p>
         </div>
-        <div className="mx-auto flex justify-center mt-16 text-2xl">
+        <div className="mx-auto flex justify-center mt-16 text-lg md:text-2xl">
           <ButtonSecondary
             inverted={true}
             link="/"

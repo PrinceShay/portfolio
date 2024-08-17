@@ -2,7 +2,7 @@ import React from "react";
 
 function Service2() {
   return (
-    <section className="px-6 md:px-24 lg:px-48">
+    <section className="py-32 px-6 md:px-24 lg:px-48">
       <h1 className="Section_Headline text-center mb-16">Service</h1>
       <div className=" flex gap-8 min-h-[85vh]">
         <div className="bg-primary-500 p-12 basis-1/2 hover:basis-3/4 transition-all ease-inout duration-700 rounded-2xl flex flex-col items-center">
