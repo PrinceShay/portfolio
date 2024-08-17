@@ -12,14 +12,14 @@ function CustomerBenefits() {
     () => {
       gsap.from(".BenefitCard", {
         y: 50,
-        rotateX: -70,
+        rotateX: -40,
         opacity: 0,
-        stagger: 0.15,
-        duration: 1.75,
+        stagger: 0.2,
+        duration: 2,
         ease: "elastic.out(1,0.8)",
         scrollTrigger: {
           trigger: container.current,
-          start: "top 90%",
+          start: "top 70%",
         },
       });
     },
@@ -39,6 +39,7 @@ function CustomerBenefits() {
         >
           <div className="col-span-5">
             <BenefitCard
+              imageSrc="/assets/images/main/Benefits/badge-euro.svg"
               title={
                 <>
                   Keine versteckten
@@ -52,6 +53,7 @@ function CustomerBenefits() {
           </div>
           <div className="col-span-7">
             <BenefitCard
+              imageSrc="/assets/images/main/Benefits/phone-call.svg"
               title={
                 <>
                   Persönlicher
@@ -64,12 +66,14 @@ function CustomerBenefits() {
 
           <div className="col-span-8">
             <BenefitCard
+              imageSrc="/assets/images/main/Benefits/chart-no-axes-combined.svg"
               title={<>Kosteneffizienz</>}
               content="Als Freelancer kann ich qualitativ hochwertige Webdesign-Dienstleistungen zu einem günstigeren Preis anbieten als größere Agenturen. Du sparst Geld, ohne Kompromisse bei der Qualität einzugehen."
             />
           </div>
           <div className="col-span-4">
             <BenefitCard
+              imageSrc="/assets/images/main/Benefits/brush.svg"
               title={
                 <>
                   Freiheit im

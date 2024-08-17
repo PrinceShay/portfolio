@@ -49,12 +49,12 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
     return (
       <div
         ref={MediaItemRef}
-        className="w-full h-auto max-h-[80vh] rounded-lg overflow-hidden sticky top-10 max-w-[64em] MediaItem"
+        className="w-auto max-h-[100vh] rounded-lg overflow-hidden sticky top-10 MediaItem"
       >
         <img
           src={urlFor(item).url()}
           alt={item.title || "Project image"}
-          className="w-full h-full object-cover"
+          className="w-auto h-full object-cover"
           loading="eager"
         />
       </div>
@@ -64,7 +64,7 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
     return (
       <div
         ref={MediaItemRef}
-        className="w-full h-auto rounded-lg overflow-hidden sticky top-10 max-w-[64em] MediaItem"
+        className="w-auto max-h-[100vh] rounded-lg overflow-hidden sticky top-10 MediaItem"
       >
         <video
           autoPlay

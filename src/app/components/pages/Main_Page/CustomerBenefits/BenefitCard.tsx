@@ -5,9 +5,10 @@ import { useGSAP } from "@gsap/react";
 interface BenefitCardProps {
   title: React.ReactNode;
   content: string;
+  imageSrc: string;
 }
 
-function BenefitCard({ title, content }: BenefitCardProps) {
+function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const borderRef = useRef<HTMLLIElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -107,15 +108,18 @@ function BenefitCard({ title, content }: BenefitCardProps) {
     >
       <div
         ref={cardRef}
-        className="p-12 text-left rounded-lg shadow-lg h-full flex flex-col justify-end"
+        className="p-12 text-left rounded-lg shadow-lg h-full flex flex-col justify-between relative"
         style={{
           opacity: 1,
         }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
-          {title}
-        </h2>
-        <p className="mt-6 text-lg max-w-2xl text-primary-100">{content}</p>
+        <img src={imageSrc} alt="" className="max-w-36 min-w-12 mb-16" />
+        <div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
+            {title}
+          </h2>
+          <p className="mt-6 text-lg max-w-2xl text-primary-100">{content}</p>
+        </div>
       </div>
     </li>
   );

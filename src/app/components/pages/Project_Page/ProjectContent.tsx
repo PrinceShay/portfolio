@@ -10,14 +10,14 @@ type ProjectContentProps = {
 
 function ProjectContent({ title, text, mediaCollection }: ProjectContentProps) {
   return (
-    <section className="flex flex-col lg:grid grid-cols-12 w-full py-24 px-6 md:px-24 lg:px-48 gap-16 justify-between">
-      <div className="col-span-5 3xl:col-span-4">
-        <div className="sticky top-1/4 3xl:top-1/3">
+    <section className="flex flex-col  grid-cols-12 w-full py-24 px-6 md:px-24 lg:px-48 gap-16 justify-between">
+      <div className="col-span-5 ">
+        <div className="sticky top-1/4 ">
           <h1 className="Section_Headline small mb-12">{title}</h1>
           <p className="text-xl">{text}</p>
         </div>
       </div>
-      <div className="col-span-6 col-start-7 xl:col-span-7 xl:col-start-6 3xl:col-span-8 3xl:col-start-5 gap-16 flex flex-col items-end">
+      <div className=" gap-16 flex flex-col items-center">
         {mediaCollection.map((item, index) => (
           <MediaItem key={index} item={item} />
         ))}
