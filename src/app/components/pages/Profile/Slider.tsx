@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
+import React from "react";
 
-export default () => {
+function Slider() {
   return (
     <Swiper
       grabCursor={true}
@@ -54,4 +55,6 @@ export default () => {
       </SwiperSlide>
     </Swiper>
   );
-};
+}
+
+export default Slider;
