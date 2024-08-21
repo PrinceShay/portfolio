@@ -51,7 +51,7 @@ function CV() {
         <JobItem
           jobTitle="Webdesigner und Entwickler"
           company="Accenty"
-          JobDate="Oktober 2023 - Heute"
+          JobDate="Oktober 2023 - September 2024"
         />
         <JobItem
           jobTitle="Grafikdesign und Marketing"

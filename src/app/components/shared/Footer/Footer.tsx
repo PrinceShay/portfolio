@@ -12,7 +12,7 @@ function Footer() {
             Projekt im Kopf? Du bist nur eine kleine Nachricht von deinem Glück
             entfernt!😉
           </p>
-          <div className="w-full flex flex-col md:flex-row gap-4 mt-10">
+          <div className="w-full flex flex-col md:flex-row gap-4 mt-10 text-2xl">
             <ButtonSecondary
               firstTitle="j.roestel@jannisroestel.de"
               secondTitle="Jetzt kontaktieren"

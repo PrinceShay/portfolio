@@ -83,7 +83,7 @@ function Navbar() {
       >
         <nav
           ref={NavContainer}
-          className="hidden max-w-5xl mx-auto md:grid xl:grid-cols-3 border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
+          className="hidden items-center max-w-5xl mx-auto md:grid xl:grid-cols-3 border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
         >
           <ProfileNav />
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">

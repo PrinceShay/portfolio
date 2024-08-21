@@ -77,10 +77,10 @@ function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
           />
         </div>
         <div className=" basis-1/2 max-w-3xl">
-          <p className="">{formatDate(post.publishDate)}</p>
+          <p className="opacity-70">{formatDate(post.publishDate)}</p>
           <h2 className="text-5xl font-bold mt-2">{post.title}</h2>
           <p className="text-lg mt-8">{post.smallDescription}</p>
-          <div className="mt-2 flex gap-1 items-center">
+          <div className="mt-6 flex gap-1 items-center opacity-70">
             Mehr lesen
             <div ref={chevronRef}>
               <ChevronRight />

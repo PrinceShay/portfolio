@@ -4,6 +4,7 @@ import { client } from "@/app/lib/sanity";
 import BlogItem from "./BlogItem";
 import SectionText from "../../../shared/ui/SectionText";
 import PrimaryButton from "../../../shared/ui/PrimaryButton";
+import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
 
 async function getData() {
   const query = `
@@ -32,13 +33,15 @@ export default async function () {
           film production needs."
       />
       <div className="grid grid-cols-12 w-full">
-        <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
+        <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative max-w-[1600px] mx-auto">
           {data.map((post, idx) => (
             <BlogItem key={post.id} post={post} idx={idx} />
           ))}
         </div>
       </div>
-      <PrimaryButton link="/blog" title="Alle Beiträge anschauen" />
+      <div className="text-xl mt-12">
+        <ButtonSecondary firstTitle="Alle Blogbeiträge" link="/blog" />
+      </div>
     </section>
   );
 }

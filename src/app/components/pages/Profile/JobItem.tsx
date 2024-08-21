@@ -99,7 +99,7 @@ const JobItem: React.FC<JobItemProps> = ({ jobTitle, company, JobDate }) => {
 
   return (
     <li ref={ItemRef} className="mb-8">
-      <div className="flex w-full gap-4 justify-between items-end pb-8">
+      <div className="flex flex-col sm:flex-row w-full gap-10 sm:gap-6 justify-between sm:items-end pb-8">
         <div className="flex flex-col">
           <h3 ref={jobTitleRef} className="text-2xl mb-2 split TextTransform">
             {jobTitle}

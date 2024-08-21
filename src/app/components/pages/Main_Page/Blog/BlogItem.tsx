@@ -78,7 +78,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
         </div>
         <div className="mt-6">
           <p className=" opacity-70">{formatDate(post.publishDate)}</p>
-          <h2 className="text-2xl mt-2">{post.title}</h2>
+          <h2 className="text-xl mt-2">{post.title}</h2>
           <div className="mt-2 flex gap-1 items-center opacity-70">
             Mehr lesen
             <div ref={chevronRef}>

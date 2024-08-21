@@ -142,3 +142,7 @@ body {
   transform: perspective(1500px);
 
 }
+
+.swiper-slide {
+  width: auto !important;
+}

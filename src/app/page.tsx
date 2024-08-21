@@ -23,7 +23,6 @@ export default function Home() {
       />
       <BlogComponent />
       <Service2 />
-      <Service />
     </main>
   );
 }
