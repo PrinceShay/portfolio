@@ -35,16 +35,26 @@ function Hero2() {
       VideoContainer &&
       TextContainer
     ) {
-      const HeroTL = gsap.timeline({ delay: 1.8 });
+      const HeroTL = gsap.timeline({ delay: 2.5 });
 
-      HeroTL.from(TagRef.current.querySelectorAll(".word"), {
-        yPercent: 30,
-        opacity: 0,
-        stagger: 0.05,
-        rotate: 5,
-        duration: 1,
-        ease: "back.out(2)",
+      HeroTL.from(TextContainer.current, {
+        scaleY: 0,
+        duration: 2,
+        ease: "power4.out",
       });
+
+      HeroTL.from(
+        TagRef.current.querySelectorAll(".word"),
+        {
+          yPercent: 30,
+          opacity: 0,
+          stagger: 0.05,
+          rotate: 5,
+          duration: 1,
+          ease: "back.out(2)",
+        },
+        "<25%"
+      );
 
       HeroTL.from(
         NameRef.current.querySelectorAll(".char"),
@@ -56,7 +66,7 @@ function Hero2() {
           duration: 1,
           ease: "back.out(2)",
         },
-        "<25%"
+        "<"
       );
       HeroTL.from(
         VideoContainer.current,
@@ -109,7 +119,7 @@ function Hero2() {
     <section ref={container}>
       <div
         ref={TextContainer}
-        className=" md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
+        className=" origin-top md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
       >
         <p ref={TagRef} className="text-xl md:text-2xl mb-8 split">
           Hey👋, mein Name ist

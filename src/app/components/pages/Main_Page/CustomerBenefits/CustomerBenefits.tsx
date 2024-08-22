@@ -12,7 +12,8 @@ function CustomerBenefits() {
     () => {
       gsap.from(".BenefitCard", {
         y: 50,
-        rotateX: -40,
+        rotateX: -20,
+        scale: 1.3,
         opacity: 0,
         stagger: 0.2,
         duration: 2,
@@ -27,7 +28,7 @@ function CustomerBenefits() {
   );
 
   return (
-    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-800">
+    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-800 overflow-x-hidden">
       <ProjectText
         title="Warum kunden mit mir arbeiten"
         text="An independent creative agency for all your branding, advertising, and film production needs."

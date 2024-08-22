@@ -76,10 +76,10 @@ function Preloader({}) {
       </p>
 
       <div id="BannerWrapper" className="w-full h-full absolute flex z-[59]">
-        <div id="Banner-1" className="Banner bg-primary-700 basis-1/4"></div>
-        <div id="Banner-2" className="Banner bg-primary-700 basis-1/4"></div>
-        <div id="Banner-3" className="Banner bg-primary-700 basis-1/4"></div>
-        <div id="Banner-4" className="Banner bg-primary-700 basis-1/4"></div>
+        <div id="Banner-1" className="Banner bg-darkBlue-500 basis-1/4"></div>
+        <div id="Banner-2" className="Banner bg-darkBlue-500 basis-1/4"></div>
+        <div id="Banner-3" className="Banner bg-darkBlue-500 basis-1/4"></div>
+        <div id="Banner-4" className="Banner bg-darkBlue-500 basis-1/4"></div>
       </div>
     </div>
   );

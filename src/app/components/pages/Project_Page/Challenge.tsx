@@ -75,7 +75,7 @@ const Challenge: React.FC<ChallengeProps> = ({
           trigger: challengeheadline.current,
           start: "top 90%",
           scrub: true,
-          end: "top 40%",
+          end: "top 65%",
         },
         ease: "back.out(2)",
       });
@@ -87,7 +87,7 @@ const Challenge: React.FC<ChallengeProps> = ({
           trigger: challengetextRef.current,
           start: "top 95%",
           scrub: true,
-          end: "top 40%",
+          end: "top 55%",
         },
         ease: "power4.out",
       });
@@ -133,7 +133,7 @@ const Challenge: React.FC<ChallengeProps> = ({
           trigger: solutionheadline.current,
           start: "top 90%",
           scrub: true,
-          end: "top 40%",
+          end: "top 65%",
         },
         ease: "back.out(2)",
       });
@@ -145,7 +145,7 @@ const Challenge: React.FC<ChallengeProps> = ({
           trigger: solutiontextRef.current,
           start: "top 95%",
           scrub: true,
-          end: "top 40%",
+          end: "top 55%",
         },
         ease: "power4.out",
       });
