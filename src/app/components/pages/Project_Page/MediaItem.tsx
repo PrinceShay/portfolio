@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from "react";
 import { urlFor } from "@/app/lib/sanity";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,39 +23,18 @@ export interface MediaItemProps {
 const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
   const MediaItemRef = useRef(null);
 
-  useEffect(() => {
-    gsap.fromTo(
-      MediaItemRef.current,
-      {
-        opacity: 1,
-        scale: 1,
-        rotate: 0, // Start without rotation
-      },
-      {
-        opacity: 0,
-        scale: 0.8,
-        rotate: () => `random(-5, 5, 1)`, // Random rotation on scroll
-        ease: "none",
-        scrollTrigger: {
-          trigger: MediaItemRef.current,
-          start: "center center", // Starts when the center of the element reaches the center of the viewport
-          end: "bottom top", // Ends when the bottom of the element reaches the top of the viewport
-          scrub: true,
-        },
-      }
-    );
-  }, []);
+  useGSAP(() => {}, []);
 
   if (item._type === "image") {
     return (
       <div
         ref={MediaItemRef}
-        className="w-auto max-h-[100vh] rounded-lg overflow-hidden sticky top-10 MediaItem"
+        className="w-full max-h-[100vh] aspect-video max-w-[1600px] rounded-lg overflow-hidden  MediaItem"
       >
         <img
           src={urlFor(item).url()}
           alt={item.title || "Project image"}
-          className="w-auto h-full object-cover"
+          className="w-full h-full object-cover "
           loading="eager"
         />
       </div>
@@ -64,7 +44,7 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
     return (
       <div
         ref={MediaItemRef}
-        className="w-auto max-h-[100vh] rounded-lg overflow-hidden sticky top-10 MediaItem"
+        className="w-full max-h-[100vh] rounded-lg overflow-hidden MediaItem aspect-video"
       >
         <video
           autoPlay

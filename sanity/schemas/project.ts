@@ -1,3 +1,5 @@
+import { Comment } from "postcss";
+
 export default {
     name: 'project',
     type: 'document',
@@ -22,6 +24,12 @@ export default {
             title: 'Title Image',
         },
         {
+            name: 'publishDate',
+            type: 'string',
+            title: 'Date'
+        },
+
+        {
             name: 'titleVideo',
             type: 'file',
             title: 'Title Video',
@@ -29,15 +37,20 @@ export default {
                 accept: 'video/*' // Allows uploading video files
             }
         },
+        
         {
-            name: 'smallDescription',
+            name: 'heroText',
             type: 'text',
-            title: 'Small Description',
+            title: 'Hero Text',
         },
         {
-            name: 'introText',
-            type: 'text',
-            title: 'Introduction Text',
+            name: 'smallDescription',
+            type: 'array',
+            title: 'Small Description',
+            of: [
+                {type: 'block',}
+                
+            ]
         },
         {
             name: 'challengeTitle',
@@ -50,6 +63,7 @@ export default {
             title: 'Challenge Content',
             of: [
                 {type: 'block'},
+                
             ]
         },
         {
@@ -76,15 +90,6 @@ export default {
             title: 'Solution Image',
         },
         {
-            name: 'content',
-            type: 'array',
-            title: 'Content',
-            of: [
-                {type: 'block'},
-                {type: 'image'}
-            ]
-        },
-        {
             name: 'categories',
             type: 'array',
             title: 'Categories',
@@ -99,16 +104,6 @@ export default {
             name: 'collectionBigText',
             type: 'string',
             title: 'Collection Big Text',
-        },
-        {
-            name: 'collectionTitle',
-            type: 'string',
-            title: 'Collection Title',
-        },
-        {
-            name: 'collectionText',
-            type: 'string',
-            title: 'Collection Text',
         },
         {
             name: 'mediaCollection',

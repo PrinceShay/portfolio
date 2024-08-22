@@ -30,9 +30,9 @@ function Preloader({}) {
       tl.to(
         ".Banner",
         {
-          yPercent: 100,
+          yPercent: -100,
           ease: "power4.out",
-          stagger: 0.1,
+          stagger: { amount: 0.1, from: "random" },
           duration: 1.25,
         },
         "-=1.1"

@@ -6,16 +6,21 @@ import SplitType from "split-type";
 
 function Hero({
   title,
-  introText,
+  heroText,
   titleVideo,
+  categories,
+  publishDate,
 }: {
   title: string;
-  introText: string;
+  heroText: string;
   titleVideo: string;
+  categories: string[];
+  publishDate: string;
 }) {
   const NameRef = useRef<HTMLHeadingElement>(null);
   const introTextRef = useRef<HTMLParagraphElement>(null);
   const HeaderRef = useRef(null);
+  const infoRef = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
 
@@ -30,7 +35,7 @@ function Hero({
 
   useGSAP(() => {
     if (isSplit && NameRef.current && introTextRef.current) {
-      var tl = gsap.timeline({});
+      const tl = gsap.timeline({});
       tl.from(NameRef.current.querySelectorAll(".char"), {
         yPercent: 30,
         opacity: 0,
@@ -54,6 +59,18 @@ function Hero({
         },
         "<25%"
       );
+
+      tl.from(
+        infoRef.current,
+        {
+          opacity: 0,
+          ease: "power4.out",
+          duration: 1.4,
+          y: 30,
+        },
+        "<25%"
+      );
+
       tl.from(
         HeaderRef.current,
         {
@@ -65,6 +82,7 @@ function Hero({
       );
     }
   }, [isSplit]);
+
   return (
     <>
       <header ref={HeaderRef} className="min-h-[80vh] grid grid-cols-12">
@@ -79,8 +97,25 @@ function Hero({
             ref={introTextRef}
             className="mt-8 block text-center Section_Headline split"
           >
-            {introText}
+            {heroText}
           </h1>
+
+          <div ref={infoRef} className="flex flex-col sm:flex-row gap-16  mt-8">
+            <div className=" items-center">
+              <p className="opacity-50 mb-4 text-lg uppercase">Zeitraum</p>
+              <p className="text-xl max-w-48">{publishDate}</p>
+            </div>
+            <div className=" items-center">
+              <p className="opacity-50 mb-4 text-lg uppercase">Leistungen</p>
+              <ul className="flex-col items-center text-xl">
+                {categories.map((category: string) => (
+                  <li key={category} className="">
+                    {category}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
       </header>
       <div className="w-full h-screen relative">

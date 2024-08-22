@@ -9,9 +9,11 @@ export interface ProjectCard {
 
 export interface FullProject {
   mediaCollection: any; // Adjust this type based on your actual data structure
-  introText: string;
+  heroText: string;
   currentSlug: string;
   title: string;
+  publishDate: string;
+  smallDescription: any;
   content: any; // Adjust this type based on your actual data structure
   titleImage: any; // Adjust this type based on your actual data structure
   titleVideo: {

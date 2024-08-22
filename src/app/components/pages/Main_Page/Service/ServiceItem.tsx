@@ -1,148 +1,96 @@
 "use client";
-import { useRef, useEffect, useState, FC } from "react";
-import gsap from "gsap";
-import SplitType from "split-type";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import React, { useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger);
-
-// Defining an interface for component props
+// Define the props type
 interface ServiceItemProps {
   title: string;
-  Headline: string;
-  Text: string;
+  description: string;
   items: string[];
+  tools: { name: string; logo: string }[];
 }
 
-// ServiceItem component definition using the props interface
-const ServiceItem: FC<ServiceItemProps> = ({
-  title,
-  Headline,
-  Text,
-  items,
-}) => {
-  const container = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const HeadlineRef = useRef<HTMLHeadingElement>(null);
-  const refText = useRef<HTMLParagraphElement>(null);
-  const divider = useRef<HTMLDivElement>(null);
-  const [isSplit, setSplit] = useState(false);
+function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemRef = useRef<HTMLLIElement>(null);
 
-  useEffect(() => {
-    // Splitting text elements
-    const elements = document.getElementsByClassName("split");
-    Array.from(elements).forEach((element) => {
-      new SplitType(element as HTMLElement, { types: "lines,words,chars" });
-    });
-    setSplit(true);
-  }, []);
-
-  useGSAP(() => {
-    if (
-      isSplit &&
-      container.current &&
-      titleRef.current &&
-      HeadlineRef.current &&
-      refText.current
-    ) {
-      const serviceTL = gsap.timeline({
-        scrollTrigger: {
-          trigger: container.current,
-          start: "0 90%",
-          end: "bottom 10%",
-        },
+  useGSAP(
+    () => {
+      let tl = gsap.timeline({
+        scrollTrigger: { trigger: containerRef.current, start: "0% 90%" },
+      });
+      tl.from(containerRef.current, {
+        opacity: 0,
+        duration: 2,
+        yPercent: 20,
+        ease: "power4.out",
       });
 
-      serviceTL
-        .from(titleRef.current?.querySelectorAll(".word"), {
-          y: 50,
+      tl.from(
+        ".ServiceItemText",
+        {
           opacity: 0,
-          rotate: 5,
-          duration: 1,
-          stagger: 0.05,
+          y: 50,
           ease: "power4.out",
-        })
+          duration: 0.8,
+        },
+        "<25%"
+      );
 
-        .from(
-          HeadlineRef.current?.querySelectorAll(".word"),
-          {
-            y: 50,
-            opacity: 0,
-            rotate: 5,
-            duration: 1,
-            stagger: 0.05,
-            ease: "power4.out",
-          },
-          "<25%"
-        )
-        .from(
-          refText.current?.children,
-          {
-            yPercent: 20,
-            opacity: 0,
-            rotate: -2,
-            stagger: 0.1,
-            duration: 1,
-            ease: "power4.out",
-          },
-          "<25%"
-        )
-        .from(
-          container.current.querySelectorAll("li"),
-          {
-            xPercent: -5,
-            opacity: 0,
-            stagger: 0.1,
-            duration: 1,
-            ease: "power4.out",
-          },
-          "<25%"
-        )
-        .from(
-          divider.current,
-          {
-            width: 0,
-            duration: 1,
-            ease: "power4.out",
-          },
-          "<25%"
-        );
-    }
-  }, [isSplit]);
+      tl.from(
+        ".listItemService",
+        {
+          opacity: 0,
+          scale: 0,
+          ease: "back.out",
+          duration: 1.3,
+          stagger: 0.2,
+        },
+        "<25%"
+      );
+    },
+    { scope: containerRef }
+  );
 
   return (
-    <div ref={container} className="md:grid flex flex-col grid-cols-12 mb-36">
-      <h2 ref={titleRef} className="split mb-8 md:mb-0 text-6xl col-span-3">
-        {title}
-      </h2>
-      <div className="col-start-5 col-end-13 flex flex-col w-full">
-        <div className="flex flex-col md:flex-row justify-between w-full">
-          <div className="basis-3/4 w-full">
-            <h3 ref={HeadlineRef} className="split text-2xl">
-              {Headline}
-            </h3>
-            <p ref={refText} className="split text-lg mt-6">
-              {Text}
-            </p>
-            <ul className="mt-24">
-              {items.map((item, index) => (
-                <li key={index} className="list-disc text-lg text-primary-200">
-                  {item}
+    <div
+      ref={containerRef}
+      className="bg-primary-600 z-10 p-8 flex flex-col items-center justify-center rounded-2xl"
+    >
+      <div className="text-center ServiceItemText">
+        <h3 className="Section_Headline small">{title}</h3>
+        <p className="mt-4 text-lg">{description}</p>
+      </div>
+      <div className="flex flex-col">
+        <ul className="mt-24 flex flex-wrap justify-center gap-2 text-lg">
+          {items.map((item: string, index: number) => (
+            <li
+              key={index}
+              ref={itemRef}
+              className="py-3 px-4 bg-primary-800 bg-opacity-75 rounded-full listItemService"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="mt-12">
+          <p className="text-center opacity-50 uppercase mb-3">Tools</p>
+          <ul className="flex flex-col sm:flex-row justify-center gap-4 text-xl items-center">
+            {tools.map(
+              (tool: { name: string; logo: string }, index: number) => (
+                <li key={index} className="flex gap-1 items-center">
+                  <img src={tool.logo} alt={tool.name} title={tool.name} />
+                  {tool.name}
                 </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex basis-1/3 justify-end">Meow</div>
+              )
+            )}
+          </ul>
         </div>
-        <div
-          ref={divider}
-          className="divider w-full h-[1.5px] bg-primary-100 mt-12"
-        ></div>
       </div>
     </div>
   );
-};
+}
 
 export default ServiceItem;

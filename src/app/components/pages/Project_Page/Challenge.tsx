@@ -5,7 +5,6 @@ import { PortableText } from "@portabletext/react";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { start } from "repl";
 
 interface ChallengeProps {
   challengeTitle: string;
@@ -197,13 +196,13 @@ const Challenge: React.FC<ChallengeProps> = ({
       <section className="flex flex-col justify-between md:flex-row gap-16 py-24">
         <div className="basis-1/2 content-center">
           <p className="text-lg challenge-tag">Die Challenge</p>
-          <h1 ref={challengeheadline} className="split mt-8 text-5xl">
+          <h1 ref={challengeheadline} className="split mt-6 upp text-5xl">
             {challengeTitle}
           </h1>
-          <div className="mt-16 grid grid-cols-12">
+          <div className="mt-12 grid grid-cols-12">
             <div
               ref={challengetextRef}
-              className="text-xl col-span-12 col-start-2"
+              className="text-xl col-span-12 col-start-1"
             >
               <PortableText value={challengeContent} />
             </div>
@@ -240,13 +239,13 @@ const Challenge: React.FC<ChallengeProps> = ({
         </div>
         <div className="basis-1/2 content-center">
           <p className="text-lg solution-tag">Die Lösung</p>
-          <h1 ref={solutionheadline} className="split mt-8 text-5xl">
+          <h1 ref={solutionheadline} className="split mt-6 text-5xl">
             {solutionTitle}
           </h1>
-          <div className="mt-16 grid grid-cols-12">
+          <div className="mt-12 grid grid-cols-12">
             <div
               ref={solutiontextRef}
-              className="split text-xl col-span-12 col-start-2"
+              className="split text-xl col-span-12 col-start-1"
             >
               <PortableText value={solutionContent} />
             </div>

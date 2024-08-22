@@ -6,6 +6,7 @@ import Challenge from "@/app/components/pages/Project_Page/Challenge";
 import NextProject from "@/app/components/pages/Project_Page/NextProject";
 import { Metadata } from "next";
 import ProjectText from "@/app/components/shared/ui/SectionText";
+import ProjectInfo from "@/app/components/pages/Project_Page/ProjectInfo";
 
 export const revalidate = 30;
 
@@ -16,8 +17,9 @@ async function getData(slug: string): Promise<FullProject> {
     title,
     content,
     titleImage,
+    smallDescription,
     titleVideo{asset->{url,_id}},
-    introText,
+    heroText,
     "categories": categories[]->title,
     collectionHeadline,
     collectionBigText,
@@ -36,7 +38,8 @@ async function getData(slug: string): Promise<FullProject> {
     solutionContent,
     solutionImage,
     collectionTitle,
-    collectionText
+    collectionText,
+    publishDate
   } [0]
   `;
 
@@ -54,10 +57,10 @@ export async function generateMetadata({
 
   return {
     title: `${data.title} - Jannis Röstel`,
-    description: data.introText,
+    description: data.heroText,
     openGraph: {
       title: `${data.title} - Jannis Röstel`,
-      description: data.introText,
+      description: data.heroText,
       images: [
         {
           url: titleImageUrl,
@@ -69,7 +72,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${data.title} - Your Site Name`,
-      description: data.introText,
+      description: data.heroText,
       images: titleImageUrl,
     },
   };
@@ -103,9 +106,18 @@ export default async function ProjectPage({
     <section className="">
       <Hero
         title={data.title}
-        introText={data.introText}
+        heroText={data.heroText}
         titleVideo={data.titleVideo.asset.url}
+        categories={data.categories}
+        publishDate={data.publishDate}
       />
+
+      <ProjectInfo
+        smallDescription={data.smallDescription}
+        categories={data.categories}
+        publishDate={data.publishDate}
+      />
+
       <Challenge
         challengeTitle={data.challengeTitle}
         challengeContent={data.challengeContent}
@@ -114,18 +126,14 @@ export default async function ProjectPage({
         solutionContent={data.solutionContent}
         solutionImage={data.solutionImage}
       />
-      <div className="px-6 md:px-24 lg:px-48">
+      <div className="px-6 md:px-24 lg:px-48 mb-24">
         <ProjectText
           title={data.collectionHeadline}
           text={data.collectionBigText}
         />
       </div>
 
-      <ProjectContent
-        title={data.collectionTitle}
-        text={data.collectionText}
-        mediaCollection={data.mediaCollection}
-      />
+      <ProjectContent mediaCollection={data.mediaCollection} />
       <NextProject projects={nextProjects} />
     </section>
   );

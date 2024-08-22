@@ -35,7 +35,7 @@ function Hero2() {
       VideoContainer &&
       TextContainer
     ) {
-      const HeroTL = gsap.timeline({ delay: 2.5 });
+      const HeroTL = gsap.timeline({ delay: 2.2 });
 
       HeroTL.from(TextContainer.current, {
         scaleY: 0,
@@ -53,17 +53,17 @@ function Hero2() {
           duration: 1,
           ease: "back.out(2)",
         },
-        "<25%"
+        "<35%"
       );
 
       HeroTL.from(
         NameRef.current.querySelectorAll(".char"),
         {
-          yPercent: 30,
+          yPercent: 10,
+          rotateX: 90,
           opacity: 0,
-          stagger: 0.05,
-          rotate: 5,
-          duration: 1,
+          stagger: { amount: 0.5, from: "random" },
+          duration: 1.7,
           ease: "back.out(2)",
         },
         "<"
@@ -119,13 +119,16 @@ function Hero2() {
     <section ref={container}>
       <div
         ref={TextContainer}
-        className=" origin-top md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
+        className="TextTransform origin-top md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
       >
-        <p ref={TagRef} className="text-xl md:text-2xl mb-8 split">
+        <p ref={TagRef} className="text-xl 2xl:text-2xl mb-8 split">
           Hey👋, mein Name ist
           <strong className="text-primary-500"> Jannis Röstel</strong>. Ich bin
         </p>
-        <h1 ref={NameRef} className="Section_Headline split">
+        <h1
+          ref={NameRef}
+          className="font-humane uppercase font-[700] text-[25vw] md:text-[20vw] xl:text-[14vw] 2xl:text-[9vw] leading-[85%]  split "
+        >
           Web- und <br />
           Motion
           <wbr />

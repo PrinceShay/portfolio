@@ -3,21 +3,13 @@ import MediaItem from "./MediaItem"; // Make sure the path is correct
 import { MediaItemProps } from "./MediaItem"; // Import the interface if it's exported from MediaItem.tsx
 
 type ProjectContentProps = {
-  title: string; // Add title prop
-  text: string; // Add text prop
   mediaCollection: MediaItemProps[]; // Use the imported MediaItemProps type
 };
 
-function ProjectContent({ title, text, mediaCollection }: ProjectContentProps) {
+function ProjectContent({ mediaCollection }: ProjectContentProps) {
   return (
-    <section className="flex flex-col  grid-cols-12 w-full py-24 px-6 md:px-24 lg:px-48 gap-16 justify-between">
-      <div className="col-span-5 ">
-        <div className="sticky top-1/4 ">
-          <h1 className="Section_Headline small mb-12">{title}</h1>
-          <p className="text-xl">{text}</p>
-        </div>
-      </div>
-      <div className=" gap-16 flex flex-col items-center">
+    <section className="px-6 md:px-24 lg:px-48">
+      <div className="gap-32 md:gap-64 lg:gap-96 flex flex-col items-center ">
         {mediaCollection.map((item, index) => (
           <MediaItem key={index} item={item} />
         ))}

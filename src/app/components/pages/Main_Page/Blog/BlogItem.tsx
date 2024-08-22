@@ -5,6 +5,7 @@ import { urlFor } from "@/app/lib/sanity";
 import { ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function BlogItem({ post, idx }: { post: any; idx: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -17,6 +18,17 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
       scale: 1.1,
       duration: 0.5,
       ease: "power2.inOut",
+    });
+
+    gsap.from("ref.current", {
+      yPercent: 20,
+      opacity: 0,
+      ease: "power4.out",
+      ScrollTrigger: {
+        trigger: ref.current,
+        start: "top 90%",
+        markers: true,
+      },
     });
 
     const chevronTl = gsap.timeline({ paused: true });
@@ -63,7 +75,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
   };
 
   return (
-    <Link href={`/blog/${post.currentSlug}`} className="">
+    <Link href={`/blog/${post.currentSlug}`}>
       <div
         ref={ref}
         className="cursor-pointer border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
