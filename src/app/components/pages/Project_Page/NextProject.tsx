@@ -42,7 +42,7 @@ function NextProject({ projects }: NextProjectProps) {
 
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
+        spaceBetween={32}
         slidesPerView={3}
         navigation
         breakpoints={{
@@ -62,9 +62,9 @@ function NextProject({ projects }: NextProjectProps) {
             <Link
               ref={(el) => {
                 hoverRef.current[index] = el;
-                // Make sure nothing is returned
               }}
               href={`/projekte/${project.currentSlug}`}
+              className="w-full"
             >
               <div className="h-96 relative overflow-hidden rounded-xl">
                 <img

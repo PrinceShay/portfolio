@@ -5,6 +5,7 @@ import { client } from "@/app/lib/sanity";
 import SectionText from "@/app/components/shared/ui/SectionText";
 import PrimaryButton from "@/app/components/shared/ui/PrimaryButton";
 import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
+import CTAWindow from "@/app/components/shared/ui/CTAWindow";
 
 // Function to fetch data items
 async function getDataItems(): Promise<ProjectCard[]> {
@@ -48,8 +49,11 @@ export default async function BlogPage() {
     }
 
     return (
-      <section className="py-64 flex flex-col items-center px-6 md:px-24 lg:px-48">
-        <SectionText title="Blogbeiträge" text="Lorem" />
+      <section className="py-64 flex flex-col px-6 md:px-24 lg:px-48">
+        <SectionText
+          title="Blogbeiträge"
+          text="Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!"
+        />
         <BlogItemLarge post={dataFeature} idx={0} /> {/* Handle single item */}
         <div className="mt-12 grid grid-cols-12 w-full">
           <h2 className="text-4xl col-span-12 mb-6">Alle Beiträge</h2>
@@ -59,6 +63,10 @@ export default async function BlogPage() {
             ))}
           </div>
         </div>
+        <CTAWindow
+          title="Bereit, wenn du es bist"
+          text="Schreib mir eine kurze Mail und ich melde mich bei dir."
+        />
       </section>
     );
   } catch (error) {

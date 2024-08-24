@@ -14,12 +14,12 @@ export default function Home() {
       <Hero2 />
       <Projects />
       <CustomerBenefits />
+      <Service2 />
       <CTAWindow
         text="Schreib mir eine kurze Mail und ich melde mich bei dir."
         title="Bereit, wenn du es bist"
       />
       <BlogComponent />
-      <Service2 />
     </main>
   );
 }

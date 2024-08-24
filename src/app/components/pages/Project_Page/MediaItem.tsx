@@ -23,7 +23,19 @@ export interface MediaItemProps {
 const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
   const MediaItemRef = useRef(null);
 
-  useGSAP(() => {}, []);
+  useGSAP(() => {
+    gsap.from(MediaItemRef.current, {
+      scale: 1.1,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: MediaItemRef.current,
+        start: "0% 90%",
+        end: "0% 70%",
+        scrub: true,
+        markers: true,
+      },
+    });
+  }, {});
 
   if (item._type === "image") {
     return (
