@@ -14,6 +14,7 @@ function Hero2() {
   const NameRef = useRef<HTMLHeadingElement>(null);
   const TagRef = useRef<HTMLParagraphElement>(null);
   const VideoRef = useRef<HTMLVideoElement>(null);
+  const HeroButton = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
 
@@ -99,6 +100,17 @@ function Hero2() {
       );
 
       HeroTL.from(
+        HeroButton.current,
+        {
+          opacity: 0,
+          yPercent: 70,
+          duration: 2,
+          ease: "power4.out",
+        },
+        "<75%"
+      );
+
+      HeroTL.from(
         VideoRef.current,
         {
           scale: 1.2,
@@ -134,7 +146,9 @@ function Hero2() {
           <wbr />
           designer
         </h1>
-        <PrimaryButton link={"/projekte"} title={"Text"} />
+        <div className="mt-8 text-xl" ref={HeroButton}>
+          <PrimaryButton title="Projekte anschauen" link="/projekte" />
+        </div>
       </div>
       <div
         ref={VideoContainer}

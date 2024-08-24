@@ -85,11 +85,11 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
             {text}
           </p>
         </div>
-        <div className="mx-auto flex justify-center mt-16 text-lg md:text-2xl">
+        <div className="mx-auto flex justify-center mt-16 text-lg md:text-xl">
           <ButtonSecondary
             inverted={true}
-            link="/"
-            firstTitle="Termin vereinbaren"
+            link="mailto:j.roestel@jannisroestel.de"
+            firstTitle="Jetzt kontaktieren"
           />
         </div>
       </div>

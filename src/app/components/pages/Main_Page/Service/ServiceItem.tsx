@@ -77,11 +77,16 @@ function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
         </ul>
         <div className="mt-12">
           <p className="text-center opacity-50 uppercase mb-3">Tools</p>
-          <ul className="flex flex-col sm:flex-row justify-center gap-4 text-xl items-center">
+          <ul className="flex flex-col flex-wrap sm:flex-row justify-center gap-4 text-xl items-center">
             {tools.map(
               (tool: { name: string; logo: string }, index: number) => (
-                <li key={index} className="flex gap-1 items-center">
-                  <img src={tool.logo} alt={tool.name} title={tool.name} />
+                <li key={index} className="flex gap-2 items-center">
+                  <img
+                    className="h-5"
+                    src={tool.logo}
+                    alt={tool.name}
+                    title={tool.name}
+                  />
                   {tool.name}
                 </li>
               )

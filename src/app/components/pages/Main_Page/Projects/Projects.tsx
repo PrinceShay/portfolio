@@ -11,7 +11,7 @@ function Projects() {
         text="An independent creative agency for all your branding, advertising, and film production needs."
       />
       <ProjectList />
-      <div className=" flex justify-center">
+      <div className=" flex justify-center mt-8">
         <PrimaryButton title="Alle Projekte" link="/projekte" />
       </div>
     </section>
