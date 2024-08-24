@@ -29,10 +29,9 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
       opacity: 0,
       scrollTrigger: {
         trigger: MediaItemRef.current,
-        start: "0% 90%",
-        end: "0% 70%",
+        start: "0% 95%",
+        end: "0% 65%",
         scrub: true,
-        markers: true,
       },
     });
   }, {});
