@@ -7,6 +7,7 @@ import ProjectText from "@/app/components/shared/ui/SectionText";
 async function getData() {
   const query = `
   *[_type == 'project'] | order(_createdAt desc) {
+    _id, // Make sure you're selecting an ID or unique identifier for the key
     title,
     smallDescription,
     "currentSlug": slug.current,
@@ -19,12 +20,13 @@ async function getData() {
   return data;
 }
 
-export default async function () {
+const ProjectSection = async () => {
   const data: ProjectCard[] = await getData();
 
   if (!data) {
     return <p>Loading...</p>; // Handle loading state
   }
+
   return (
     <section className="pt-64 px-6 md:px-24 lg:px-48">
       <ProjectText
@@ -38,4 +40,9 @@ export default async function () {
       </div>
     </section>
   );
-}
+};
+
+// Adding display name to the component to resolve the warning
+ProjectSection.displayName = "ProjectSection";
+
+export default ProjectSection;

@@ -20,7 +20,7 @@ async function getData() {
   return data;
 }
 
-export default async function () {
+const ProjectList = async () => {
   const data: ProjectCard[] = await getData();
 
   if (!data) {
@@ -33,4 +33,9 @@ export default async function () {
       ))}
     </div>
   );
-}
+};
+
+// Adding the display name to the component
+ProjectList.displayName = "ProjectList";
+
+export default ProjectList;
