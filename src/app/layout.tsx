@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar/Navbar";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Noise from "./components/Functions/Noise";
@@ -53,6 +54,7 @@ export default function RootLayout({
       <SmoothScroll />
 
       <body className="bg-darkBlue-500 text-white scroll-smooth">
+        <GoogleAnalytics gaId="G-T3JQ8R8YRC" />
         <Noise />
         <Grain />
         <Navbar />
