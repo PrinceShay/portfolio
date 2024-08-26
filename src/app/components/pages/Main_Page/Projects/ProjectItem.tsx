@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { urlFor } from "@/app/lib/sanity"; // Import urlFor
+import { urlFor } from "@/app/lib/sanity";
 import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -28,6 +28,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
   useEffect(() => {
     if (isSplit && titleRef.current) {
       const ctx = gsap.context(() => {
+        // Scale and opacity animation for the project card
         gsap.to(object.current, {
           scale: 0.7,
           opacity: 0,
@@ -41,6 +42,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           },
         });
 
+        // Animation for the category elements
         gsap.from(".category", {
           scale: 0,
           opacity: 0,
@@ -54,6 +56,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           },
         });
 
+        // Animation for the title characters
         const chars = titleRef.current?.querySelectorAll(".char");
         if (chars) {
           gsap.from(chars, {
@@ -73,7 +76,28 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           });
         }
 
-        // Add hover effects
+        // Video play/pause based on scroll position
+        if (videoRef.current) {
+          ScrollTrigger.create({
+            trigger: object.current,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => {
+              videoRef.current?.play();
+            },
+            onLeave: () => {
+              videoRef.current?.pause();
+            },
+            onEnterBack: () => {
+              videoRef.current?.play();
+            },
+            onLeaveBack: () => {
+              videoRef.current?.pause();
+            },
+          });
+        }
+
+        // Hover effects for the video and image
         object.current?.addEventListener("mouseenter", () => {
           gsap.to(videoRef.current, {
             scale: 1.25,
@@ -88,6 +112,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             duration: 1.5,
           });
         });
+
         object.current?.addEventListener("mouseleave", () => {
           gsap.to(videoRef.current, {
             scale: 1,
@@ -128,16 +153,15 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             ref={videoRef}
             className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none hidden md:block"
             src={post.titleVideo.asset.url}
-            autoPlay
-            loop
             muted
             playsInline
+            loop
           ></video>
         )}
         {post.titleImage && (
           <img
             ref={imageRef}
-            src={urlFor(post.titleImage).url()} // Use urlFor for image URL
+            src={urlFor(post.titleImage).url()}
             alt={post.title}
             className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none md:hidden"
           />
