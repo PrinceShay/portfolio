@@ -97,7 +97,7 @@ function Page() {
         className="mt-48 flex gap-12 flex-col md:grid grid-cols-12"
       >
         <h2 className="text-xl uppercase col-span-3">Über mich</h2>
-        <p className="col-start-6 col-end-13 text-3xl split">
+        <p className="col-start-6 col-end-13 text-lg lg:text-3xl split">
           Jannis Röstel (*2000) ist Designer und Entwickler aus Karlsruhe.
           Bereits mit 15 Jahren begann er sich intensiv mit Fotografie zu
           beschäftigen, wodurch er frühzeitig mit gestalterischen Prinzipien in
