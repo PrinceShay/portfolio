@@ -46,11 +46,11 @@ export default function CookieBanner() {
           <div className="text-center">
             <p className="text-2xl mb-4 font-semibold">Cookies</p>
             <p>
-              Indem Sie auf 'Akzeptieren' klicken, stimmen Sie der Speicherung
-              von Cookies auf Ihrem Gerät zu, um die Seitennavigation zu
-              verbessern, die Nutzung der Website zu analysieren und unsere
+              Indem Sie auf Akzeptieren klicken, stimmen Sie der Speicherung von
+              Cookies auf Ihrem Gerät zu, um die Seitennavigation zu verbessern,
+              die Nutzung der Website zu analysieren und unsere
               Marketingbemühungen zu unterstützen. Weitere Informationen finden
-              Sie in unserer{" "}
+              Sie in unserer
               <a className="underline" href="/datenschutz">
                 Datenschutzrichtlinie
               </a>
