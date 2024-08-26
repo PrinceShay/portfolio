@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
+import React, { Suspense } from "react";
 import "./globals.css";
 import Navbar from "./components/shared/Navbar/Navbar";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from "@next/third-parties/google";
 
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import Noise from "./components/Functions/Noise";
 import Grain from "./components/Functions/Grain";
 import Footer from "./components/shared/Footer/Footer";
+import CookieBanner from "./components/shared/cookie-banner";
+import GoogleAnalytics from "./components/shared/google-analytics";
 
 const Humane = localFont({
   src: [
@@ -51,14 +53,18 @@ export default function RootLayout({
 }>) {
   return (
     <html className={`${Humane.variable} `} lang="de">
+      <Suspense fallback={null}>
+        <GoogleAnalytics GA_MEASUREMENT_ID="G-T3JQ8R8YRC" />
+      </Suspense>
       <SmoothScroll />
 
       <body className="bg-darkBlue-500 text-white scroll-smooth">
-        <GoogleAnalytics gaId={"G-T3JQ8R8YRC"} />
+        <CookieBanner />
         <Noise />
         <Grain />
         <Navbar />
         {children}
+
         <Footer />
       </body>
     </html>
