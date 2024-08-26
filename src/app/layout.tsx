@@ -54,7 +54,7 @@ export default function RootLayout({
       <SmoothScroll />
 
       <body className="bg-darkBlue-500 text-white scroll-smooth">
-        <GoogleAnalytics gaId="G-T3JQ8R8YRC" />
+        <GoogleAnalytics gaId={"G-T3JQ8R8YRC"} />
         <Noise />
         <Grain />
         <Navbar />
