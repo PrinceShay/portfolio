@@ -162,7 +162,7 @@ function Hero2() {
           loop
           className="w-full h-screen absolute top-0 object-cover"
         >
-          <source src="/assets/videos/meow.mp4" type="video/mp4" />
+          <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
         </video>
       </div>
     </section>
