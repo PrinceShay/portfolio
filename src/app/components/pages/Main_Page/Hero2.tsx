@@ -146,7 +146,7 @@ function Hero2() {
           <wbr />
           designer
         </h1>
-        <div className="mt-8 text-xl" ref={HeroButton}>
+        <div className="mt-8 text-lg md:text-xl" ref={HeroButton}>
           <PrimaryButton title="Projekte anschauen" link="/projekte" />
         </div>
       </div>

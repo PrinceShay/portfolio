@@ -39,11 +39,11 @@ export default function CookieBanner() {
 
   return (
     <div
-      className={`fixed bottom-12 w-full px-6 md:px-24 lg:px-48 mx-auto z-50 ${cookieConsent == null ? "visible" : "hidden"}`}
+      className={`fixed bottom-24 md:bottom-12 w-full px-6 md:px-24 lg:px-48 mx-auto z-50 ${cookieConsent == null ? "visible" : "hidden"}`}
     >
-      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full p-8 max-w-7xl mx-auto ">
+      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-2xl md:rounded-full p-8 max-w-7xl mx-auto ">
         <div className="flex flex-col items-center">
-          <div className="text-center">
+          <div className="text-center overflow-auto">
             <p className="text-2xl mb-4 font-semibold">Cookies</p>
             <p>
               Indem Sie auf Akzeptieren klicken, stimmen Sie der Speicherung von
