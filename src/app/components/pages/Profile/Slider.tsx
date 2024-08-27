@@ -2,9 +2,33 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import React from "react";
+import Image from "next/image";
 import { EffectCoverflow, Navigation, Pagination } from "swiper/modules";
 
 function Slider() {
+  const images = [
+    {
+      src: "/assets/images/_MG_4682-cutout-bg-with-light-web.jpg",
+      alt: "Jannis Röstel 1",
+    },
+    {
+      src: "/assets/images/profile/slider/_MG_3012_web.jpg",
+      alt: "Jannis Röstel 2",
+    },
+    {
+      src: "/assets/images/profile/slider/_MG_5540-Frei-bg_web.jpg",
+      alt: "Jannis Röstel 3",
+    },
+    {
+      src: "/assets/images/profile/slider/_MG_5650--web.jpg",
+      alt: "Jannis Röstel 4",
+    },
+    {
+      src: "/assets/images/profile/slider/_MG_6417-web.jpg",
+      alt: "Jannis Röstel 5",
+    },
+  ];
+
   return (
     <Swiper
       modules={[Navigation, EffectCoverflow, Pagination]}
@@ -27,45 +51,18 @@ function Slider() {
       loop={true}
       className="mySwiper mt-36"
     >
-      <SwiperSlide className="">
-        <img
-          src="/assets/images/_MG_4682-cutout-bg-with-light-web.jpg"
-          alt="Jannis Röstel"
-          className="h-[75vh] object-cover overflow-hidden rounded-xl"
-        />
-      </SwiperSlide>
-
-      <SwiperSlide className="">
-        <img
-          src="/assets/images/profile/slider/_MG_3012_web.jpg"
-          alt="Jannis Röstel"
-          className="h-[75vh] object-cover overflow-hidden rounded-xl"
-        />
-      </SwiperSlide>
-
-      <SwiperSlide className="">
-        <img
-          src="/assets/images/profile/slider/_MG_5540-Frei-bg_web.jpg"
-          alt="Jannis Röstel"
-          className="h-[75vh] object-cover overflow-hidden rounded-xl"
-        />
-      </SwiperSlide>
-
-      <SwiperSlide className="">
-        <img
-          src="/assets/images/profile/slider/_MG_5650--web.jpg"
-          alt="Jannis Röstel"
-          className="h-[75vh] object-cover overflow-hidden rounded-xl"
-        />
-      </SwiperSlide>
-
-      <SwiperSlide className="">
-        <img
-          src="/assets/images/profile/slider/_MG_6417-web.jpg"
-          alt="Jannis Röstel"
-          className="h-[75vh] object-cover overflow-hidden rounded-xl"
-        />
-      </SwiperSlide>
+      {images.map((image, index) => (
+        <SwiperSlide key={index} className="">
+          <div className="h-[75vh] object-cover overflow-hidden rounded-xl">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }
