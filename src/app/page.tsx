@@ -42,7 +42,6 @@ export async function generateMetadata({
 export default function Home() {
   return (
     <main className="">
-      <Preloader />
       <Hero2 />
       <Projects />
       <CustomerBenefits />
