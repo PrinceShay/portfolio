@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProjectList from "./ProjectList";
 import ProjectText from "../../../shared/ui/SectionText";
 import PrimaryButton from "../../../shared/ui/PrimaryButton";
+import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
 
 function Projects() {
   return (

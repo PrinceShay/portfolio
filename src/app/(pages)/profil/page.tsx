@@ -1,5 +1,5 @@
 import CV from "@/app/components/pages/Profile/CV";
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import CTAWindow from "@/app/components/shared/ui/CTAWindow";
 import { Metadata } from "next";
 import Biography from "@/app/components/pages/Profile/Biography";

@@ -31,6 +31,7 @@ function Footer() {
             <ul className="text-2xl flex flex-col gap-2">
               <FooterLink url="/projekte" title="Projekte" />
               <FooterLink url="/profil" title="Profil" />
+              <FooterLink url="#service" title="Service" />
               <FooterLink url="/blog" title="Blog" />
               <FooterLink url="/kontakt" title="Kontakt" />
             </ul>
@@ -39,9 +40,18 @@ function Footer() {
           <div>
             <h2 className=" text-md mb-4 opacity-60 uppercase">Social</h2>
             <ul className="text-2xl flex flex-col gap-2">
-              <FooterLink url="/" title="Instagram" />
-              <FooterLink url="/" title="LinkedIn" />
-              <FooterLink url="/" title="Behance" />
+              <FooterLink
+                url="https://www.instagram.com/jannis_roestel"
+                title="Instagram"
+              />
+              <FooterLink
+                url="https://www.linkedin.com/in/jannis-r%C3%B6stel-a4a261251/"
+                title="LinkedIn"
+              />
+              <FooterLink
+                url="https://www.behance.net/jannisroestel"
+                title="Behance"
+              />
             </ul>
           </div>
         </div>
