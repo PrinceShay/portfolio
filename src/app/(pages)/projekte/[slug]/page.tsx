@@ -120,6 +120,7 @@ export default async function ProjectPage({
 
       <Challenge
         challengeTitle={data.challengeTitle}
+        title={data.title}
         challengeContent={data.challengeContent}
         challengeImage={data.challengeImage}
         solutionTitle={data.solutionTitle}

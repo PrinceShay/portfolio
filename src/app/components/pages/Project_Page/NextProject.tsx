@@ -66,11 +66,12 @@ function NextProject({ projects }: NextProjectProps) {
               href={`/projekte/${project.currentSlug}`}
               className="w-full"
             >
-              <div className="h-96 relative overflow-hidden rounded-xl">
+              <div className="h-96 md:min-w-96 relative overflow-hidden rounded-xl">
                 <img
                   className="NextProject_Image w-full h-full absolute object-cover z-10"
                   src={urlFor(project.titleImage).url()}
                   alt={project.title}
+                  title={project.title}
                 />
                 <div className="absolute h-full w-full z-20 bg-gradient-to-t from-primary-900 to-transparent bg-opacity-60"></div>
                 <div className="relative z-30 w-full h-full flex flex-col justify-end gap-6 p-6">

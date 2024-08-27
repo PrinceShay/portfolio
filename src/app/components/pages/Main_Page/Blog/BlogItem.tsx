@@ -83,6 +83,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
         <div className="rounded-xl w-full aspect-video relative overflow-hidden">
           <img
             alt={post.title}
+            title={post.title}
             src={urlFor(post.titleImage).url()}
             className="object-cover absolute w-full h-full"
             ref={imageRef}

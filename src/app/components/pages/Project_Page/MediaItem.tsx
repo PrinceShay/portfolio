@@ -44,7 +44,8 @@ const MediaItem: React.FC<{ item: MediaItemProps }> = ({ item }) => {
       >
         <img
           src={urlFor(item).url()}
-          alt={item.title || "Project image"}
+          alt={item.title || "Jannis Röstel"}
+          title={item.title || "Project image"}
           className="w-full h-full object-cover "
           loading="eager"
         />

@@ -3,7 +3,7 @@ import MediaItem from "./MediaItem"; // Make sure the path is correct
 import { MediaItemProps } from "./MediaItem"; // Import the interface if it's exported from MediaItem.tsx
 
 type ProjectContentProps = {
-  mediaCollection: MediaItemProps[]; // Use the imported MediaItemProps type
+  mediaCollection: MediaItemProps[];
 };
 
 function ProjectContent({ mediaCollection }: ProjectContentProps) {

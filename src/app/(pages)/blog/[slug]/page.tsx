@@ -2,6 +2,7 @@ import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
 import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
+import { Metadata } from "next";
 
 export const revalidate = 30;
 
@@ -55,6 +56,38 @@ function getRandomPosts(posts: any[], count: number) {
   return shuffled.slice(0, count);
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const data: FullProject = await getData(params.slug);
+  const titleImageUrl = urlFor(data.titleImage).url();
+
+  return {
+    title: `${data.title} - Jannis Röstel`,
+    description: data.smallDescription,
+    openGraph: {
+      title: `${data.title} - Jannis Röstel`,
+      description: data.smallDescription,
+      images: [
+        {
+          url: titleImageUrl,
+          alt: `${data.title} Image`,
+        },
+      ],
+      type: "article",
+      authors: "Jannis Röstel",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${data.title} - Your Site Name`,
+      description: data.smallDescription,
+      images: titleImageUrl,
+    },
+  };
+}
+
 export default async function ProjectPage({
   params,
 }: {
@@ -80,6 +113,7 @@ export default async function ProjectPage({
         <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video">
           <img
             className="w-full h-full object-cover"
+            title={data.title}
             src={urlFor(data.titleImage).url()}
             alt={data.title}
           />

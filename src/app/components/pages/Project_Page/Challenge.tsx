@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 interface ChallengeProps {
+  title: string;
   challengeTitle: string;
   challengeContent: any;
   challengeImage: any; // Adjust this type based on your actual data structure
@@ -16,6 +17,7 @@ interface ChallengeProps {
 }
 
 const Challenge: React.FC<ChallengeProps> = ({
+  title,
   challengeTitle,
   challengeContent,
   challengeImage,
@@ -217,7 +219,8 @@ const Challenge: React.FC<ChallengeProps> = ({
               ref={challengeImageRef}
               className="h-full w-full object-cover absolute"
               src={urlFor(challengeImage).url()}
-              alt="Challenge"
+              alt={"Challenge"}
+              title={title}
             />
           )}
         </div>
@@ -234,6 +237,7 @@ const Challenge: React.FC<ChallengeProps> = ({
               className="h-full w-full object-cover"
               src={urlFor(solutionImage).url()}
               alt="Solution"
+              title={title}
             />
           )}
         </div>
