@@ -53,7 +53,7 @@ function Slider() {
     >
       {images.map((image, index) => (
         <SwiperSlide key={index} className="">
-          <div className="h-[75vh] min-w-96 w-auto object-cover overflow-hidden rounded-xl">
+          <div className="h-[75vh] min-w-[33vw] w-auto object-cover overflow-hidden rounded-xl">
             <Image
               src={image.src}
               alt={image.alt}
