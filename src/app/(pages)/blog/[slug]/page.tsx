@@ -9,16 +9,18 @@ export const revalidate = 30;
 const ptComponents = {
   block: {
     h2: ({ children }: any) => {
-      return <h2 className="text-5xl mb-10">{children}</h2>;
+      return (
+        <h2 className="text-3xl md:text-5xl md:mb-12 mb-10">{children}</h2>
+      );
     },
     h3: ({ children }: any) => {
-      return <h3 className="text-4xl mb-10">{children}</h3>;
+      return <h3 className="md:text-4xl text-2xl mb-10 md:mb-8">{children}</h3>;
     },
     h4: ({ children }: any) => {
-      return <h4 className="text-3xl mb-10">{children}</h4>;
+      return <h4 className="md:text-3xl text-2xl md:mb-8 mb-6">{children}</h4>;
     },
     normal: ({ children }: any) => {
-      return <p className="text-xl mb-16">{children}</p>;
+      return <p className="text-xl mb-24 md:mb-36 ">{children}</p>;
     },
   },
 };
@@ -64,26 +66,29 @@ export async function generateMetadata({
   const data: FullProject = await getData(params.slug);
   const titleImageUrl = urlFor(data.titleImage).url();
 
+  const metaDescription = `${data.smallDescription} - Erfahre mehr über ${data.title}, geschrieben von Jannis Röstel.`;
+
   return {
-    title: `${data.title} - Jannis Röstel`,
-    description: data.smallDescription,
+    title: `${data.title} - Blog von Jannis Röstel`,
+    description: metaDescription,
+    keywords: `${data.title}, Blog, Jannis Röstel, ${params.slug.replace("-", " ")}, Artikel, ${data.smallDescription || "Zusammenfassung"}`,
     openGraph: {
-      title: `${data.title} - Jannis Röstel`,
-      description: data.smallDescription,
+      title: `${data.title} - Blog von Jannis Röstel`,
+      description: metaDescription,
       images: [
         {
           url: titleImageUrl,
-          alt: `${data.title} Image`,
+          alt: `${data.title} - Feature Image`,
         },
       ],
       type: "article",
-      authors: "Jannis Röstel",
+      authors: ["Jannis Röstel"],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${data.title} - Your Site Name`,
-      description: data.smallDescription,
-      images: titleImageUrl,
+      title: `${data.title} - Blog von Jannis Röstel`,
+      description: metaDescription,
+      images: [titleImageUrl],
     },
   };
 }

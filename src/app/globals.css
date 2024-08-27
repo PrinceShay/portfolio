@@ -131,6 +131,14 @@ body {
   letter-spacing: 2.5px;
 }
 
+@media only screen and (max-width: 768px) {
+  .ProjectCard-Heading{
+    font-size: 25vw;
+    line-height: 80%;
+    letter-spacing: 2.5px;
+  }
+}
+
 .Highlight_CTA{
   width: 80em;
   position: absolute;

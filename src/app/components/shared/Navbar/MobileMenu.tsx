@@ -57,7 +57,7 @@ function MobileMenu() {
           href="/"
           onClick={handleLinkClick}
         >
-          Home
+          Startseite
         </Link>
         <Link
           className="MobileLink text-4xl uppercase font-bold"
@@ -72,6 +72,13 @@ function MobileMenu() {
           onClick={handleLinkClick}
         >
           Profil
+        </Link>
+        <Link
+          className="MobileLink text-4xl uppercase font-bold"
+          href="/#service"
+          onClick={handleLinkClick}
+        >
+          Service
         </Link>
         <Link
           className="MobileLink text-4xl uppercase font-bold"
