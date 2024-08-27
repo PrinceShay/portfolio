@@ -9,23 +9,23 @@ function Slider() {
   const images = [
     {
       src: "/assets/images/_MG_4682-cutout-bg-with-light-web.jpg",
-      alt: "Jannis Röstel 1",
+      alt: "Jannis Röstel",
     },
     {
       src: "/assets/images/profile/slider/_MG_3012_web.jpg",
-      alt: "Jannis Röstel 2",
+      alt: "Jannis Röstel",
     },
     {
       src: "/assets/images/profile/slider/_MG_5540-Frei-bg_web.jpg",
-      alt: "Jannis Röstel 3",
+      alt: "Jannis Röstel",
     },
     {
       src: "/assets/images/profile/slider/_MG_5650--web.jpg",
-      alt: "Jannis Röstel 4",
+      alt: "Jannis Röstel",
     },
     {
       src: "/assets/images/profile/slider/_MG_6417-web.jpg",
-      alt: "Jannis Röstel 5",
+      alt: "Jannis Röstel",
     },
   ];
 
@@ -53,10 +53,11 @@ function Slider() {
     >
       {images.map((image, index) => (
         <SwiperSlide key={index} className="">
-          <div className="h-[75vh] min-w-[33vw] w-auto object-cover overflow-hidden rounded-xl">
+          <div className="h-[75vh] min-w-[80vw] sm:min-w-[33vw] w-auto object-cover overflow-hidden rounded-xl">
             <Image
               src={image.src}
               alt={image.alt}
+              title={image.alt}
               layout="fill"
               objectFit="cover"
             />
