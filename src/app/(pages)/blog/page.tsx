@@ -6,6 +6,7 @@ import SectionText from "@/app/components/shared/ui/SectionText";
 import PrimaryButton from "@/app/components/shared/ui/PrimaryButton";
 import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
 import CTAWindow from "@/app/components/shared/ui/CTAWindow";
+import { Metadata } from "next";
 
 // Function to fetch data items
 async function getDataItems(): Promise<ProjectCard[]> {
@@ -20,6 +21,37 @@ async function getDataItems(): Promise<ProjectCard[]> {
   const dataItem = await client.fetch(query);
   // Return all except the first item
   return dataItem.slice(1);
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  return {
+    title: `Blog – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+    description:
+      "Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!",
+    openGraph: {
+      title: `Blog – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+      description:
+        "Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!",
+      images: [
+        {
+          url: "/assets/images/Hero.jpg",
+          alt: `Blog – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+        },
+      ],
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `Blog – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+      description:
+        "Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!",
+      images: "",
+    },
+  };
 }
 
 // Function to fetch featured data

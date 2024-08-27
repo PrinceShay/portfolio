@@ -8,11 +8,11 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  company: z.string().min(1, "Company is required"),
-  email: z.string().email("Invalid email address"),
+  name: z.string().min(1, "Pflichtfeld"),
+  company: z.string().min(1, "Pflichtfeld"),
+  email: z.string().email("Ungültige E-Mail-Adresse"),
   phone: z.string().optional(),
-  projectDescription: z.string().min(1, "Please describe your project"),
+  projectDescription: z.string().min(1, "Bitte beschreibe dein Projekt"),
   projectType: z.enum(["Motion Design", "Webdesign", "Branding"]),
   budget: z.enum([
     "Less than 500€",
@@ -34,8 +34,8 @@ const Step1 = () => {
 
   return (
     <div className="step">
-      <div className="mb-4">
-        <label className="block text-gray-200">Name</label>
+      <div className="mb-6">
+        <label className="block text-gray-200 mb-2 text-xl">Name</label>
         <input
           type="text"
           {...register("name")}
@@ -46,7 +46,7 @@ const Step1 = () => {
         )}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-200">Company</label>
+        <label className="block text-gray-200 mb-2 text-xl">Unternehmen</label>
         <input
           type="text"
           {...register("company")}
@@ -69,7 +69,7 @@ const Step2 = () => {
   return (
     <div className="step">
       <div className="mb-4">
-        <label className="block text-gray-200">Email</label>
+        <label className="block text-gray-200 mb-2 text-xl">E-Mail</label>
         <input
           type="email"
           {...register("email")}
@@ -80,7 +80,9 @@ const Step2 = () => {
         )}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-200">Phone (optional)</label>
+        <label className="block text-gray-200 mb-2 text-xl">
+          Telefon <span className="text-sm opacity-50">(optional)</span>
+        </label>
         <input
           type="text"
           {...register("phone")}
@@ -103,7 +105,9 @@ const Step3 = () => {
   return (
     <div className="step">
       <div className="mb-4">
-        <label className="block text-gray-200">Project Description</label>
+        <label className="block text-gray-200 mb-2 text-xl">
+          Beschreibe dein Projekt
+        </label>
         <textarea
           {...register("projectDescription")}
           className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
@@ -115,7 +119,7 @@ const Step3 = () => {
         )}
       </div>
       <div className="mb-4">
-        <label className="block text-gray-200">Project Type</label>
+        <label className="block text-gray-200 mb-2 text-xl">Projektart</label>
         <div className="flex flex-col">
           <label className="inline-flex items-center">
             <input
@@ -164,7 +168,7 @@ const Step4 = () => {
   return (
     <div className="step">
       <div className="mb-4">
-        <label className="block text-gray-200">Budget</label>
+        <label className="block text-gray-200 mb-2 text-xl">Budget</label>
         <select
           {...register("budget")}
           className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
@@ -240,8 +244,8 @@ const ContactForm: React.FC = () => {
     if (formRef.current) {
       gsap.fromTo(
         formRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.5, ease: "power4.out" }
+        { opacity: 0, scale: 0.75 },
+        { opacity: 1, scale: 1, duration: 0.75, ease: "power4.out" }
       );
     }
   }, [step]);
@@ -251,40 +255,40 @@ const ContactForm: React.FC = () => {
       <form
         ref={formRef}
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="max-w-lg mx-auto"
+        className="mx-auto border w-full sm:w-auto border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md p-8 sm:p-16 rounded-2xl shadow-2xl"
       >
-        <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
+        <div className="max-w-lg sm:min-w-72 mx-auto min-h-36">
+          {step === 1 && <Step1 />}
+          {step === 2 && <Step2 />}
+          {step === 3 && <Step3 />}
+          {step === 4 && <Step4 />}
+        </div>
 
-        {step === 1 && <Step1 />}
-        {step === 2 && <Step2 />}
-        {step === 3 && <Step3 />}
-        {step === 4 && <Step4 />}
-
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-center gap-2 mt-8 max-w-lg mx-auto  ">
           {step > 1 && (
             <button
               type="button"
               onClick={prevStep}
-              className="bg-primary-400 text-white py-2 px-4 rounded-lg"
+              className=" hover:text-primary-400 transition-colors text-white py-3 px-7 rounded-lg"
             >
-              Previous
+              Zurück
             </button>
           )}
           {step < 4 && (
             <button
               type="button"
               onClick={nextStep}
-              className="bg-primary-500 text-white py-2 px-4 rounded-lg"
+              className="bg-primary-500 text-white py-3 px-7 hover:bg-primary-400 transition-colors rounded-lg"
             >
-              Next
+              Weiter
             </button>
           )}
           {step === 4 && (
             <button
               type="submit"
-              className="bg-green-500 text-white py-2 px-4 rounded-lg"
+              className="bg-green-500 hover:bg-green-400 transition-colors text-white py-3 px-7 rounded-lg"
             >
-              Submit
+              Absenden
             </button>
           )}
         </div>

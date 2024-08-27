@@ -10,7 +10,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   return {
-    title: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
+    title: `Profil – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
     description:
       "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
     openGraph: {
