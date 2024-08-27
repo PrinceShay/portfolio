@@ -1,6 +1,6 @@
 "use client";
 // components/ContactForm.tsx
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useForm, FormProvider, useFormContext } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -195,6 +195,11 @@ const ContactForm: React.FC = () => {
     resolver: zodResolver(schema),
   });
   const [step, setStep] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submissionResult, setSubmissionResult] = useState<
+    "success" | "error" | null
+  >(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const nextStep = async () => {
@@ -221,6 +226,7 @@ const ContactForm: React.FC = () => {
   };
 
   const onSubmit = async (data: FormData) => {
+    setIsLoading(true);
     try {
       const response = await fetch("/api/send-email", {
         method: "POST",
@@ -230,13 +236,12 @@ const ContactForm: React.FC = () => {
         body: JSON.stringify(data),
       });
 
-      if (response.ok) {
-        alert("Email sent successfully!");
-      } else {
-        alert("Failed to send email.");
-      }
+      setSubmissionResult(response.ok ? "success" : "error");
     } catch (error) {
-      alert("Failed to send email.");
+      setSubmissionResult("error");
+    } finally {
+      setIsLoading(false);
+      setIsSubmitted(true);
     }
   };
 
@@ -249,6 +254,29 @@ const ContactForm: React.FC = () => {
       );
     }
   }, [step]);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        {/* Replace this with your preferred loading spinner/animation */}
+        <div className="loader">Loading...</div>
+      </div>
+    );
+  }
+
+  if (isSubmitted) {
+    return (
+      <div className="text-center">
+        {submissionResult === "success" ? (
+          <p className="text-green-500 text-xl">E-Mail erfolgreich gesendet!</p>
+        ) : (
+          <p className="text-red-500 text-xl">
+            E-Mail konnte nicht gesendet werden.
+          </p>
+        )}
+      </div>
+    );
+  }
 
   return (
     <FormProvider {...methods}>
