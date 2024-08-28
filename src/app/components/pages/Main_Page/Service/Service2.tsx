@@ -31,6 +31,7 @@ function Service2() {
     { name: "React.js", logo: "/assets/images/main/Service/Logo2.svg" },
     { name: "Next.js", logo: "/assets/images/main/Service/Logo3.svg" },
     { name: "Figma", logo: "/assets/images/main/Service/figma.svg" },
+    { name: "TypeScript", logo: "/assets/images/main/Service/Typescript.svg" },
   ];
 
   const toolsMotion = [
