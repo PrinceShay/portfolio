@@ -36,7 +36,7 @@ function Hero2() {
       VideoContainer &&
       TextContainer
     ) {
-      const HeroTL = gsap.timeline({ delay: 0.8 });
+      const HeroTL = gsap.timeline({ delay: 0.4 });
 
       HeroTL.from(TextContainer.current, {
         scaleY: 0,
