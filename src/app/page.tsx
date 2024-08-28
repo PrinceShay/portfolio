@@ -3,7 +3,7 @@ import BlogComponent from "./components/pages/Main_Page/Blog/BlogComponent";
 import CustomerBenefits from "./components/pages/Main_Page/CustomerBenefits/CustomerBenefits";
 import Projects from "./components/pages/Main_Page/Projects/Projects";
 import Preloader from "./components/shared/Preloader";
-import Hero2 from "./components/pages/Main_Page/Hero2";
+import Hero2 from "./components/pages/Main_Page/Hero/Hero2";
 import CTAWindow from "./components/shared/ui/CTAWindow";
 import Service2 from "./components/pages/Main_Page/Service/Service2";
 import { Metadata } from "next";

@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
-import { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
-import PrimaryButton from "../../shared/ui/PrimaryButton";
+import PrimaryButton from "../../../shared/ui/PrimaryButton";
 
 function Hero2() {
   const container = useRef<HTMLDivElement>(null);
@@ -17,6 +16,7 @@ function Hero2() {
   const HeroButton = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const elements = document.getElementsByClassName("split");
@@ -25,6 +25,25 @@ function Hero2() {
     });
 
     setSplit(true);
+  }, []);
+
+  useEffect(() => {
+    const videoElement = VideoRef.current;
+
+    const handleVideoLoad = () => {
+      setVideoLoaded(true);
+    };
+
+    if (videoElement) {
+      videoElement.addEventListener("canplaythrough", handleVideoLoad);
+      videoElement.load(); // Ensure the video starts loading immediately
+    }
+
+    return () => {
+      if (videoElement) {
+        videoElement.removeEventListener("canplaythrough", handleVideoLoad);
+      }
+    };
   }, []);
 
   useGSAP(() => {
@@ -154,13 +173,23 @@ function Hero2() {
         ref={VideoContainer}
         className="w-full h-screen relative bg-slate-900 overflow-hidden"
       >
+        {!videoLoaded && (
+          <img
+            src="/assets/images/low-res-placeholder.jpg"
+            alt="Loading..."
+            className="w-full h-screen absolute top-0 object-cover"
+          />
+        )}
         <video
           ref={VideoRef}
           autoPlay
           playsInline
           muted
           loop
-          className="w-full h-screen absolute top-0 object-cover"
+          className={`w-full h-screen absolute top-0 object-cover transition-opacity duration-500 ${
+            videoLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          preload="auto"
         >
           <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
         </video>
