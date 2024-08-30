@@ -89,7 +89,10 @@ function Navbar() {
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">
             <NavLink url="/projekte" title="Projekte" />
             <NavLink url="/profil" title="Profil" />
-            <NavLink url="/#service" title="Service" />
+            <NavLink
+              url="https://www.jannisroestel.de/#service"
+              title="Service"
+            />
             <NavLink url="blog" title="Blog" />
           </ul>
           <div className="self-center col-start-3 justify-self-end text-xl">

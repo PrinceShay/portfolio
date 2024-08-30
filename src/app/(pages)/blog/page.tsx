@@ -86,7 +86,9 @@ export default async function BlogPage() {
           title="Blogbeiträge"
           text="Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!"
         />
-        <BlogItemLarge post={dataFeature} idx={0} /> {/* Handle single item */}
+
+        <BlogItemLarge post={dataFeature} idx={0} />
+
         <div className="mt-12 grid grid-cols-12 w-full">
           <h2 className="text-4xl col-span-12 mb-6">Alle Beiträge</h2>
           <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
