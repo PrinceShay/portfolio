@@ -24,7 +24,7 @@ function Preloader({}) {
         opacity: 0,
         scale: 1.2,
         ease: "power4.out",
-        duration: 1.5,
+        duration: 1,
       });
 
       tl.to(
@@ -33,7 +33,7 @@ function Preloader({}) {
           yPercent: -100,
           ease: "power4.out",
           stagger: { amount: 0.1, from: "random" },
-          duration: 1.25,
+          duration: 0.75,
         },
         "-=1.1"
       );
@@ -42,7 +42,7 @@ function Preloader({}) {
       progressTl.to(
         {},
         {
-          duration: 1.5,
+          duration: 1,
           onUpdate: () => {
             const value = Math.round(progressTl.progress() * 100);
             setProgress(value);

@@ -31,7 +31,10 @@ function Footer() {
             <ul className="text-2xl flex flex-col gap-2">
               <FooterLink url="/projekte" title="Projekte" />
               <FooterLink url="/profil" title="Profil" />
-              <FooterLink url="#service" title="Service" />
+              <FooterLink
+                url="https://www.jannisroestel.de/#service"
+                title="Service"
+              />
               <FooterLink url="/blog" title="Blog" />
               <FooterLink url="/kontakt" title="Kontakt" />
             </ul>
