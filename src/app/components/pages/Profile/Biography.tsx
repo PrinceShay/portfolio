@@ -80,7 +80,7 @@ function Biography() {
     <>
       <div
         ref={BioRef}
-        className=" mt-12 md:mt-48 flex gap-12 flex-col-reverse md:grid grid-cols-12"
+        className=" mt-12 md:mt-48 flex gap-12 flex-col-reverse md:grid grid-cols-12 px-6 md:px-24 lg:px-48"
       >
         <div className="col-start-6 col-end-13">
           <h2 className="text-2xl uppercase col-span-3 mb-8">Über mich</h2>
@@ -155,7 +155,10 @@ function Biography() {
 
       <Slider />
 
-      <div ref={ScrollTextContainer} className="h-[200vh] relative">
+      <div
+        ref={ScrollTextContainer}
+        className="h-[200vh] relative px-6 md:px-24 lg:px-48"
+      >
         <div className="min-h-screen py-48 sticky top-0 flex flex-col justify-center">
           <p className="text-sm sm:text-md md:text-lg lg:text-xl uppercase mb-8 tracking-wider split">
             Zitat

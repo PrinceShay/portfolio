@@ -69,10 +69,10 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
   }, [isSplit]);
 
   return (
-    <section className=" py-32 px-6 md:px-24 lg:px-48">
+    <section className="py-8 md:py-32 px-6 md:px-24 lg:px-48">
       <div
         ref={container}
-        className="py-64 px-12 flex-row justify-center items-center bg-primary-500 w-full max-w-[1600px]  min-h-48 mx-auto rounded-2xl"
+        className="py-16 md:py-64 px-12 flex-row justify-center items-center bg-primary-500 w-full max-w-[1600px] md:min-h-48 mx-auto rounded-2xl"
       >
         <div className="TextTransform text-center ">
           <h1
