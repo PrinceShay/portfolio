@@ -80,7 +80,7 @@ function Biography() {
     <>
       <div
         ref={BioRef}
-        className="mt-48 flex gap-12 flex-col-reverse md:grid grid-cols-12"
+        className=" mt-12 md:mt-48 flex gap-12 flex-col-reverse md:grid grid-cols-12"
       >
         <div className="col-start-6 col-end-13">
           <h2 className="text-2xl uppercase col-span-3 mb-8">Über mich</h2>
