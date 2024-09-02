@@ -23,7 +23,6 @@ export async function generateMetadata({
           alt: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
         },
       ],
-      type: "article",
     },
     twitter: {
       card: "summary_large_image",
