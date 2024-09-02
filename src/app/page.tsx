@@ -14,6 +14,7 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   return {
+    metadataBase: new URL("https://www.jannisroestel.de"),
     title: `Jannis Röstel - Webdesign & Webentwicklung in Karlsruhe`,
     description:
       "Professionelles Webdesign und Webentwicklung in Karlsruhe – spezialisiert auf React, Next.js und Webflow. Jannis Röstel bietet maßgeschneiderte digitale Lösungen, von modernen Webseiten bis hin zu beeindruckendem Motiondesign. Animierte Logos, Werbung und Reels, die deine Marke ins Rampenlicht rücken. Gemeinsam setzen wir deine kreativen Visionen in die Tat um.",
