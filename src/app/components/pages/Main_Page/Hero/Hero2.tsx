@@ -191,6 +191,7 @@ function Hero2() {
           }`}
           preload="auto"
         >
+          <source src="/assets/videos/heroAnim.webm" type="video/webm" />
           <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
         </video>
       </div>
