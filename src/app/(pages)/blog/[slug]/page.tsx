@@ -7,17 +7,33 @@ import { Metadata } from "next";
 export const revalidate = 30;
 
 const ptComponents = {
-  block: {
-    h2: ({ children }: any) => {
+  types: {
+    image: ({ value }: any) => {
       return (
-        <h2 className="text-3xl md:text-5xl md:mb-12 mb-10">{children}</h2>
+        <figure className="my-12">
+          <img
+            src={urlFor(value).url()}
+            alt={value.alt || "Blog Image"}
+            className="w-full h-auto object-cover rounded-xl"
+          />
+          {value.caption && (
+            <figcaption className="text-center text-sm text-gray-300 mt-2">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
       );
     },
+  },
+  block: {
+    h2: ({ children }: any) => {
+      return <h2 className="text-3xl md:text-5xl md:mb-12 mb-6">{children}</h2>;
+    },
     h3: ({ children }: any) => {
-      return <h3 className="md:text-4xl text-2xl mb-10 md:mb-8">{children}</h3>;
+      return <h3 className="md:text-4xl text-2xl mb-6 md:mb-8">{children}</h3>;
     },
     h4: ({ children }: any) => {
-      return <h4 className="md:text-3xl text-2xl md:mb-8 mb-6">{children}</h4>;
+      return <h4 className="md:text-3xl text-2xl md:mb-8 mb-4">{children}</h4>;
     },
     normal: ({ children }: any) => {
       return <p className="text-xl mb-24 md:mb-36 ">{children}</p>;
@@ -112,7 +128,7 @@ export default async function ProjectPage({
   const randomPosts = getRandomPosts(allPosts, 4);
 
   return (
-    <section className="min-h-screen pt-64 px-6 md:px-24 lg:px-48">
+    <article className="min-h-screen pt-64 px-6 md:px-24 lg:px-48">
       <section>
         <h1 className="Section_Headline text-center">{data.title}</h1>
         <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video">
@@ -143,6 +159,6 @@ export default async function ProjectPage({
           </div>
         </div>
       </section>
-    </section>
+    </article>
   );
 }
