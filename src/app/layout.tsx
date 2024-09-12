@@ -61,12 +61,12 @@ export default function RootLayout({
 
       <body className="bg-darkBlue-500 text-white scroll-smooth">
         <CookieBanner />
-        <Analytics />
         <Noise />
         <Grain />
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
