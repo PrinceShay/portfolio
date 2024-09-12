@@ -10,6 +10,7 @@ import Grain from "./components/Functions/Grain";
 import Footer from "./components/shared/Footer/Footer";
 import CookieBanner from "./components/shared/cookie-banner";
 import GoogleAnalytics from "./components/shared/google-analytics";
+import { Analytics } from "@vercel/analytics/react";
 
 const Humane = localFont({
   src: [
@@ -60,11 +61,11 @@ export default function RootLayout({
 
       <body className="bg-darkBlue-500 text-white scroll-smooth">
         <CookieBanner />
+        <Analytics />
         <Noise />
         <Grain />
         <Navbar />
         {children}
-
         <Footer />
       </body>
     </html>
