@@ -1,14 +1,43 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 function Preloader({}) {
   const [progress, setProgress] = useState(0);
+  const [gridSize, setGridSize] = useState({ columns: 12, rows: 12 });
+  const [bannerCount, setBannerCount] = useState(144); // Anzahl der Banner
   const loadingContainerRef = useRef(null);
 
-  useGSAP(
-    () => {
+  // Dynamische Berechnung der Grid-Größe basierend auf der Bildschirmgröße
+  useLayoutEffect(() => {
+    const updateGridSize = () => {
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      // Berechnung der optimalen Größe für quadratische Zellen
+      const cellSize = Math.min(
+        screenWidth / gridSize.columns,
+        screenHeight / gridSize.rows
+      );
+
+      const columns = Math.floor(screenWidth / cellSize);
+      const rows = Math.floor(screenHeight / cellSize);
+
+      setGridSize({ columns, rows });
+      setBannerCount(columns * rows);
+    };
+
+    updateGridSize();
+    window.addEventListener("resize", updateGridSize);
+
+    return () => {
+      window.removeEventListener("resize", updateGridSize);
+    };
+  }, []);
+
+  useLayoutEffect(() => {
+    if (bannerCount > 0) {
       const tl = gsap.timeline({
         delay: 0.25,
         onComplete: CompleteFunction,
@@ -27,17 +56,23 @@ function Preloader({}) {
         duration: 1,
       });
 
+      // Apply opacity to all ".Banner" elements correctly
       tl.to(
         ".Banner",
         {
-          yPercent: -100,
-          ease: "power4.out",
-          stagger: { amount: 0.1, from: "random" },
-          duration: 0.75,
+          opacity: 0, // ensure this value is correct
+          backgroundColor: "#35254D",
+          ease: "power3.out",
+          stagger: {
+            amount: 0.95,
+            from: "random",
+            grid: [gridSize.columns, gridSize.rows],
+          },
         },
         "-=1.1"
       );
 
+      // Timeline for updating progress
       const progressTl = gsap.timeline();
       progressTl.to(
         {},
@@ -49,9 +84,8 @@ function Preloader({}) {
           },
         }
       );
-    },
-    { scope: loadingContainerRef }
-  );
+    }
+  }, [bannerCount, gridSize.columns, gridSize.rows]);
 
   function CompleteFunction() {
     const loadingContainer = document.getElementById("loading_container");
@@ -75,11 +109,17 @@ function Preloader({}) {
         {progress}%
       </p>
 
-      <div id="BannerWrapper" className="w-full h-full absolute flex z-[59]">
-        <div id="Banner-1" className="Banner bg-darkBlue-500 basis-1/4"></div>
-        <div id="Banner-2" className="Banner bg-darkBlue-500 basis-1/4"></div>
-        <div id="Banner-3" className="Banner bg-darkBlue-500 basis-1/4"></div>
-        <div id="Banner-4" className="Banner bg-darkBlue-500 basis-1/4"></div>
+      <div
+        id="BannerWrapper"
+        className="w-full h-screen absolute grid z-[59]"
+        style={{
+          gridTemplateColumns: `repeat(${gridSize.columns}, 1fr)`,
+          gridTemplateRows: `repeat(${gridSize.rows}, 1fr)`,
+        }}
+      >
+        {Array.from({ length: bannerCount }).map((_, index) => (
+          <div key={index} className="Banner bg-darkBlue-500"></div>
+        ))}
       </div>
     </div>
   );
