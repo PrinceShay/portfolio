@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { ProjectCard } from "@/app/lib/interface"; // Assuming BlogCard is the correct type for blog data
 import { client } from "@/app/lib/sanity";
 import BlogItem from "./BlogItem";
 import SectionText from "../../../shared/ui/SectionText";
 import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
+import BlogItemLoader from "./BlogItemLoader";
 
 async function getData() {
   const query = `
@@ -34,7 +35,9 @@ digitalen Projekte!"
       <div className="grid grid-cols-12 w-full">
         <div className="col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative max-w-[1600px] mx-auto">
           {data.map((post, idx) => (
-            <BlogItem key={post.id} post={post} idx={idx} />
+            <Suspense fallback={<BlogItemLoader />}>
+              <BlogItem key={post.id} post={post} idx={idx} />
+            </Suspense>
           ))}
         </div>
       </div>
