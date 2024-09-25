@@ -3,8 +3,10 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { urlFor } from "@/app/lib/sanity";
 import SplitType from "split-type";
+import Image from "next/image";
+import { urlFor } from "@/app/lib/sanity";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,10 +27,10 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
     setSplit(true);
   }, []);
 
-  useEffect(() => {
-    if (isSplit && titleRef.current) {
-      const ctx = gsap.context(() => {
-        // Scale and opacity animation for the project card
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
+      if (isSplit && titleRef.current) {
         gsap.to(object.current, {
           scale: 0.7,
           opacity: 0,
@@ -37,7 +39,6 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             trigger: object.current,
             toggleActions: "play pause resume reset",
             start: "top 5vh",
-            end: "",
             scrub: true,
           },
         });
@@ -48,7 +49,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           opacity: 0,
           duration: 1.75,
           stagger: 0.1,
-          ease: "elastic.out(1,0.7)",
+          ease: "elastic.out(1, 0.7)",
           scrollTrigger: {
             trigger: object.current,
             toggleActions: "play pause resume reset",
@@ -127,11 +128,10 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             duration: 1.5,
           });
         });
-      }, object);
-
-      return () => ctx.revert();
-    }
-  }, [isSplit]);
+      }
+    },
+    { scope: object, dependencies: [isSplit, titleRef.current] }
+  );
 
   if (!post) {
     return <div>Post not available</div>;
@@ -142,7 +142,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
   return (
     <Link
       href={`/projekte/${post.currentSlug}`}
-      className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full"
+      className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full group"
     >
       <div
         ref={object}
@@ -159,14 +159,16 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
           ></video>
         )}
         {post.titleImage && (
-          <img
+          <Image
             ref={imageRef}
             src={urlFor(post.titleImage).url()}
             alt={post.title}
-            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none md:hidden"
+            fill
+            objectFit="cover"
+            className="touch-none pointer-events-none md:hidden"
           />
         )}
-        <div className="w-full h-3/4 bg-gradient-to-t from-primary-600 to-transparent absolute left-0 bottom-0"></div>
+        <div className="w-full h-full bg-gradient-to-t from-primary-600 to-[#4731662c]  absolute left-0 bottom-0"></div>
         <div className="text-center flex flex-col gap-6  justify-between w-full h-full items-center">
           <h2
             ref={titleRef}

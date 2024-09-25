@@ -1,10 +1,12 @@
+// Hero2.tsx
+
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import PrimaryButton from "../../../shared/ui/PrimaryButton";
+import Image from "next/image";
 
 function Hero2() {
   const container = useRef<HTMLDivElement>(null);
@@ -36,7 +38,7 @@ function Hero2() {
 
     if (videoElement) {
       videoElement.addEventListener("canplaythrough", handleVideoLoad);
-      videoElement.load(); // Ensure the video starts loading immediately
+      videoElement.load(); // Sicherstellen, dass das Video sofort zu laden beginnt
     }
 
     return () => {
@@ -174,10 +176,13 @@ function Hero2() {
         className="w-full h-screen relative bg-slate-900 overflow-hidden"
       >
         {!videoLoaded && (
-          <img
+          <Image
             src="/assets/images/low-res-placeholder.jpg"
             alt="Loading..."
-            className="w-full h-screen absolute top-0 object-cover"
+            fill
+            objectFit="cover"
+            className="absolute top-0"
+            priority
           />
         )}
         <video
@@ -186,7 +191,7 @@ function Hero2() {
           playsInline
           muted
           loop
-          className={`w-full h-screen absolute top-0 object-cover transition-opacity duration-500 ${
+          className={`w-full h-screen pointer-events-none touch-none absolute top-0 object-cover transition-opacity duration-500 ${
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
           preload="auto"

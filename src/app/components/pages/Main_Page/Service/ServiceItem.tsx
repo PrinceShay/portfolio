@@ -2,6 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import React, { useRef } from "react";
+import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Define the props type
@@ -69,7 +70,7 @@ function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
             <li
               key={index}
               ref={itemRef}
-              className="py-3 px-4 bg-primary-800 bg-opacity-75 rounded-full listItemService"
+              className="py-3 px-4 bg-primary-800 bg-opacity-75 rounded-full listItemService "
             >
               {item}
             </li>
@@ -81,12 +82,17 @@ function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
             {tools.map(
               (tool: { name: string; logo: string }, index: number) => (
                 <li key={index} className="flex gap-2 items-center">
-                  <img
-                    className="h-5"
-                    src={tool.logo}
-                    alt={tool.name}
-                    title={tool.name}
-                  />
+                  <div>
+                    <Image
+                      src={tool.logo}
+                      alt={tool.name}
+                      title={tool.name}
+                      width={20}
+                      height={20}
+                      className="h-5"
+                    />
+                  </div>
+
                   {tool.name}
                 </li>
               )

@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { urlFor } from "@/app/lib/sanity";
 import { ChevronRight } from "lucide-react";
@@ -81,11 +82,12 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
         className="cursor-pointer border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
       >
         <div className="rounded-xl w-full aspect-video relative overflow-hidden">
-          <img
+          <Image
             alt={post.title}
             title={post.title}
             src={urlFor(post.titleImage).url()}
-            className="object-cover absolute w-full h-full"
+            fill
+            objectFit="cover"
             ref={imageRef}
           />
         </div>

@@ -58,7 +58,7 @@ function Slider() {
               src={image.src}
               alt={image.alt}
               title={image.alt}
-              layout="fill"
+              fill
               objectFit="cover"
             />
           </div>

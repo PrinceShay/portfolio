@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 interface BenefitCardProps {
   title: React.ReactNode;
@@ -113,7 +114,13 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
           opacity: 1,
         }}
       >
-        <img src={imageSrc} alt="" className="max-w-36 min-w-12 mb-16" />
+        <Image
+          src={imageSrc}
+          alt=""
+          width={144} // Passen Sie die Werte entsprechend an
+          height={144}
+          className="max-w-36 min-w-12 mb-16"
+        />
         <div>
           <h2 className="text-3xl md:text-4xl font-bold text-primary-500 hyphens-auto">
             {title}

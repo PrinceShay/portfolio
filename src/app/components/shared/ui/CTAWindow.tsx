@@ -4,6 +4,7 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import PrimaryButton from "./PrimaryButton";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ButtonSecondary from "../Navbar/ButtonSecondary";
 
 function CTAWindow({ title, text }: { title: string; text: string }) {
@@ -22,51 +23,55 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
     setSplit(true);
   }, []);
 
-  useGSAP(() => {
-    if (isSplit && headline.current && textRef.current) {
-      gsap.from(headline.current.querySelectorAll(".char"), {
-        yPercent: 30,
-        opacity: 0,
-        rotateX: 80,
-        stagger: 0.05,
-        rotate: 5,
-        duration: 1.4,
-        scrollTrigger: {
-          trigger: headline.current,
-          start: "top 90%",
-          scrub: true,
-          end: "top 30%",
-        },
-        ease: "back.out(2)",
-      });
+  useGSAP(
+    () => {
+      if (isSplit && headline.current && textRef.current) {
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.from(headline.current.querySelectorAll(".char"), {
+          yPercent: 30,
+          opacity: 0,
+          rotateX: 80,
+          stagger: 0.05,
+          rotate: 5,
+          duration: 1.4,
+          scrollTrigger: {
+            trigger: headline.current,
+            start: "top 90%",
+            scrub: true,
+            end: "top 30%",
+          },
+          ease: "back.out(2)",
+        });
 
-      gsap.from(textRef.current.querySelectorAll(".line"), {
-        yPercent: 30,
-        opacity: 0,
-        stagger: 0.05,
-        rotate: 5,
-        rotateX: 80,
-        duration: 1.4,
-        scrollTrigger: {
-          trigger: textRef.current,
-          start: "top 90%",
-          scrub: true,
-          end: "top 30%",
-        },
-        ease: "back.out(2)",
-      });
-    }
+        gsap.from(textRef.current.querySelectorAll(".line"), {
+          yPercent: 30,
+          opacity: 0,
+          stagger: 0.05,
+          rotate: 5,
+          rotateX: 80,
+          duration: 1.4,
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 90%",
+            scrub: true,
+            end: "top 30%",
+          },
+          ease: "back.out(2)",
+        });
+      }
 
-    gsap.from(container.current, {
-      scaleX: 0.5,
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top 100%",
-        scrub: true,
-        end: "top 50%",
-      },
-    });
-  }, [isSplit]);
+      gsap.from(container.current, {
+        scaleX: 0.5,
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top 100%",
+          scrub: true,
+          end: "top 50%",
+        },
+      });
+    },
+    { scope: container, dependencies: [isSplit] }
+  );
 
   return (
     <section className="py-8 md:py-32 px-6 md:px-24 lg:px-48">

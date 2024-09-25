@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import Slider from "./Slider";
 
@@ -18,7 +18,7 @@ function Biography() {
 
   const ScrollTextContainer = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
       new SplitType(element as HTMLElement, { types: "lines,words,chars" });

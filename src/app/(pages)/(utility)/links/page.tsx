@@ -13,6 +13,7 @@ function page() {
             alt="Jannis Röstel"
             width={0}
             height={0}
+            placeholder="blur"
             sizes="100vw"
             style={{
               width: "100%",

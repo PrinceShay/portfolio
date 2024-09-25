@@ -27,9 +27,11 @@ function Service2() {
   ];
 
   const toolsWeb = [
-    { name: "", logo: "/assets/images/main/Service/Logo1.svg" },
+    { name: "Webflow", logo: "/assets/images/main/Service/Webflow.svg" },
     { name: "React.js", logo: "/assets/images/main/Service/Logo2.svg" },
     { name: "Next.js", logo: "/assets/images/main/Service/Logo3.svg" },
+    { name: "Vue.js", logo: "/assets/images/main/Service/Vue.svg" },
+    { name: "Nuxt", logo: "/assets/images/main/Service/nuxt.svg" },
     { name: "Figma", logo: "/assets/images/main/Service/figma.svg" },
     { name: "TypeScript", logo: "/assets/images/main/Service/Typescript.svg" },
   ];
