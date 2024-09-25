@@ -43,7 +43,7 @@ export async function generateMetadata({
 export default function Home() {
   return (
     <main className="">
-      <Preloader />
+      {/* <Preloader /> */}
       <Hero2 />
       <Projects />
       <CustomerBenefits />
