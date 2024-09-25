@@ -5,14 +5,9 @@ import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 
 function ProjectText({ title, text }: { title?: string; text?: string }) {
-  // Überprüfen, ob Titel und Text vorhanden sind
-  if (!title || !text) {
-    return null;
-  }
-
+  // Move Hooks to the top level
   const headline = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-
   const [isSplit, setSplit] = useState(false);
 
   useEffect(() => {
@@ -59,6 +54,11 @@ function ProjectText({ title, text }: { title?: string; text?: string }) {
       });
     }
   }, [isSplit]);
+
+  // Now perform the conditional return
+  if (!title || !text) {
+    return null;
+  }
 
   return (
     <div className="TextTransform text-center pb-24">
