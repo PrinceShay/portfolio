@@ -37,36 +37,38 @@ function NextProject({ projects }: NextProjectProps) {
   }, [projects]);
 
   return (
-    <section className="px-6 md:px-24 lg:px-48 py-24">
-      <h1 className="Section_Headline small mb-12">Nächstes Projekt</h1>
+    <section className="px-0 md:px-24 lg:px-48 py-24">
+      <h1 className="px-6 Section_Headline small mb-12">Nächstes Projekt</h1>
 
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={32}
-        slidesPerView={3}
         navigation
+        loop={true}
+        centeredSlides={true}
         breakpoints={{
           0: {
-            slidesPerView: 1,
+            slidesPerView: 1.2,
+            spaceBetween: 16,
           },
           768: {
             slidesPerView: 2,
           },
-          1280: { slidesPerView: 3 },
+          1280: {
+            slidesPerView: 3,
+          },
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
       >
         {projects.map((project: ProjectCard, index) => (
-          <SwiperSlide key={project.currentSlug}>
+          <SwiperSlide className="" key={project.currentSlug}>
             <Link
               ref={(el) => {
                 hoverRef.current[index] = el;
               }}
               href={`/projekte/${project.currentSlug}`}
-              className="w-full"
+              className=""
             >
-              <div className="h-96 md:min-w-96 relative overflow-hidden rounded-xl">
+              <div className="h-[60vh] md:h-[40vh]  relative overflow-hidden rounded-xl">
                 <img
                   className="NextProject_Image w-full h-full absolute object-cover z-10"
                   src={urlFor(project.titleImage).url()}
@@ -78,7 +80,7 @@ function NextProject({ projects }: NextProjectProps) {
                   <h2 className="text-2xl font-bold uppercase">
                     {project.title}
                   </h2>
-                  <div className="flex justify-start gap-2 w-full overflow-auto">
+                  <div className=" inline-flex justify-start gap-2 w-full overflow-auto">
                     {project.categories.map((category: string) => (
                       <div
                         key={category}

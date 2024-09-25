@@ -87,15 +87,18 @@ body {
   font-weight: 700;
   line-height: 90%;
   letter-spacing: 2.5px;
+  
 }
 
 @media only screen and (max-width: 1280px) {
   .Section_Headline{
     font-size: 10em;
+    letter-spacing:normal;
   }
   .Section_Headline.small{
 
     font-size: 5em;
+    letter-spacing:normal;
   }
 }
 
@@ -152,6 +155,18 @@ body {
 
 }
 
-.swiper-slide {
-  width: auto !important;
+
+/* Swiper Arrow Button */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #B17AFF !important;
+  transition: all ease-out 300ms;
 }
+
+.swiper-button-next,
+.swiper-button-prev:hover {
+  color: #D8BDFF !important;
+}
+
+
+

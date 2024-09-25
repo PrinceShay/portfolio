@@ -4,7 +4,12 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 
-function ProjectText({ title, text }: { title: string; text: string }) {
+function ProjectText({ title, text }: { title?: string; text?: string }) {
+  // Überprüfen, ob Titel und Text vorhanden sind
+  if (!title || !text) {
+    return null;
+  }
+
   const headline = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
 
@@ -54,9 +59,10 @@ function ProjectText({ title, text }: { title: string; text: string }) {
       });
     }
   }, [isSplit]);
+
   return (
-    <div className="TextTransform text-center pb-24 ">
-      <h1 ref={headline} className=" max-w-5xl mx-auto split Section_Headline">
+    <div className="TextTransform text-center pb-24">
+      <h1 ref={headline} className="max-w-5xl mx-auto split Section_Headline">
         {title}
       </h1>
       <p ref={textRef} className="split text-xl mt-6 max-w-6xl mx-auto">

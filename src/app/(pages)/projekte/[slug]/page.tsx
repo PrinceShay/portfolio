@@ -108,7 +108,6 @@ export default async function ProjectPage({
         title={data.title}
         heroText={data.heroText}
         titleVideo={data.titleVideo.asset.url}
-        categories={data.categories}
         publishDate={data.publishDate}
       />
 

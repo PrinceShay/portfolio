@@ -8,13 +8,11 @@ function Hero({
   title,
   heroText,
   titleVideo,
-  categories,
   publishDate,
 }: {
   title: string;
   heroText: string;
   titleVideo: string;
-  categories: string[];
   publishDate: string;
 }) {
   const NameRef = useRef<HTMLHeadingElement>(null);
@@ -86,7 +84,7 @@ function Hero({
   return (
     <>
       <header ref={HeaderRef} className="min-h-[80vh] grid grid-cols-12">
-        <div className="px-6 md:px-24 lg:px-48 col-start-1 col-end-13 flex flex-col items-center justify-center">
+        <div className="px-6 md:px-24 lg:px-48 py-12 col-start-1 col-end-13 flex flex-col items-center justify-center text-center">
           <p
             ref={NameRef}
             className="text-2xl block text-center text-primary font-semibold tracking-wide uppercase split"
@@ -104,16 +102,6 @@ function Hero({
             <div className=" items-center">
               <p className="opacity-50 mb-4 text-lg uppercase">Zeitraum</p>
               <p className="text-xl max-w-48">{publishDate}</p>
-            </div>
-            <div className=" items-center">
-              <p className="opacity-50 mb-4 text-lg uppercase">Leistungen</p>
-              <ul className="flex-col items-center text-xl">
-                {categories.map((category: string) => (
-                  <li key={category} className="">
-                    {category}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </div>
