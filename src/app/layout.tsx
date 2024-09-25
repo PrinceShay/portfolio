@@ -7,6 +7,7 @@ import Navbar from "./components/shared/Navbar/Navbar";
 import localFont from "next/font/local";
 
 import SmoothScroll from "./components/Functions/SmoothScroller";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Noise from "./components/Functions/Noise";
 import Grain from "./components/Functions/Grain";
 import Footer from "./components/shared/Footer/Footer";
@@ -83,6 +84,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

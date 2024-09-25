@@ -9,18 +9,17 @@ function page() {
       <div className="flex flex-col items-center mb-24">
         <div className="w-48 h-48 rounded-full overflow-hidden">
           <Image
-            src={"/Navigation/ProfilePic.jpg"}
+            src={"/assets/images/vienna.jpg"}
             alt="Jannis Röstel"
             width={0}
             height={0}
-            placeholder="blur"
             sizes="100vw"
             style={{
               width: "100%",
               height: "100%",
               objectFit: "cover",
-              objectPosition: "top",
-              scale: "1.5",
+              objectPosition: "bottom",
+              scale: "1.4",
             }}
           />
         </div>
