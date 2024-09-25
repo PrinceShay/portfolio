@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { urlFor } from "@/app/lib/sanity";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -28,6 +28,7 @@ interface MediaItemComponentProps {
 
 const MediaItem: React.FC<MediaItemComponentProps> = ({ item, onClick }) => {
   const MediaItemRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useGSAP(
     () => {
@@ -44,6 +45,20 @@ const MediaItem: React.FC<MediaItemComponentProps> = ({ item, onClick }) => {
     },
     { scope: MediaItemRef }
   );
+
+  useGSAP(() => {
+    if (videoRef.current) {
+      ScrollTrigger.create({
+        trigger: MediaItemRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        onEnter: () => videoRef.current?.play(),
+        onLeave: () => videoRef.current?.pause(),
+        onEnterBack: () => videoRef.current?.play(),
+        onLeaveBack: () => videoRef.current?.pause(),
+      });
+    }
+  }, []);
 
   if (item._type === "image") {
     return (
@@ -71,6 +86,7 @@ const MediaItem: React.FC<MediaItemComponentProps> = ({ item, onClick }) => {
         onClick={onClick}
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
