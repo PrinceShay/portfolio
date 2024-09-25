@@ -48,6 +48,15 @@ function Slider() {
       spaceBetween={30}
       centeredSlides={true}
       autoplay={true}
+      breakpoints={{
+        0: {
+          slidesPerView: 1.2,
+          spaceBetween: 16,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+      }}
       loop={true}
       className="mySwiper mt-36"
     >
