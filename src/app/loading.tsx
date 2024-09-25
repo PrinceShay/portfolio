@@ -20,7 +20,7 @@ const Loading = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen bg-darkBlue-500 flex items-center justify-center px-6">
+    <div className="w-full h-screen bg-darkBlue-500 flex items-center justify-center p-6">
       <div className="w-full max-w-64" ref={animationContainer}></div>
     </div>
   );
