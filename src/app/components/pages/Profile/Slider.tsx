@@ -44,7 +44,7 @@ function Slider() {
         stretch: 0,
         depth: 200,
       }}
-      slidesPerView="auto"
+      slidesPerView={3}
       spaceBetween={30}
       centeredSlides={true}
       autoplay={true}
