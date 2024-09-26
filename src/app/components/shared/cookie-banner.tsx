@@ -1,13 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getLocalStorage, setLocalStorage } from "@/app/lib/storage-helper";
 
 // CookieBanner component that displays a banner for cookie consent.
 export default function CookieBanner() {
-  // Specify that cookieConsent can be boolean or null
   const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showBanner, setShowBanner] = useState(false); // Neue State-Variable für die Banneranzeige
+  const cookieContainer = useRef(null);
 
   // Retrieve cookie consent status from local storage on component mount
   useEffect(() => {
@@ -15,6 +16,16 @@ export default function CookieBanner() {
     console.log("Cookie Consent retrieved from storage: ", storedCookieConsent);
     setCookieConsent(storedCookieConsent);
     setIsLoading(false);
+
+    // Wenn keine Zustimmung vorliegt, Banner nach 2-3 Sekunden anzeigen
+    if (storedCookieConsent === null) {
+      const timer = setTimeout(() => {
+        setShowBanner(true);
+      }, 4000); // 2500 Millisekunden = 2,5 Sekunden
+
+      // Timer bereinigen, falls die Komponente unmontiert wird
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   // Update local storage and Google Analytics consent status when cookieConsent changes
@@ -30,18 +41,20 @@ export default function CookieBanner() {
         analytics_storage: newValue,
       });
     }
-  }, [cookieConsent]);
+  }, [cookieConsent]); // Abhängigkeiten hinzugefügt
 
-  // Do not render the banner if loading or consent is already given
-  if (isLoading || cookieConsent !== null) {
+  // Do not render the banner if loading, consent is already given, oder showBanner ist false
+  if (isLoading || cookieConsent !== null || !showBanner) {
     return null;
   }
 
   return (
     <div
-      className={`fixed bottom-24 md:bottom-12 w-full px-6 md:px-24 lg:px-48 mx-auto z-50 ${cookieConsent == null ? "visible" : "hidden"}`}
+      className={`fixed bottom-24 md:bottom-12 w-full px-6 md:px-24 lg:px-48 mx-auto z-50 ${
+        cookieConsent == null ? "visible" : "hidden"
+      }`}
     >
-      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-2xl md:rounded-full p-8 max-w-7xl mx-auto ">
+      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-2xl md:rounded-full p-8 max-w-7xl mx-auto relative ">
         <div className="flex flex-col items-center">
           <div className="text-center overflow-auto">
             <p className="text-2xl mb-4 font-semibold">Cookies</p>
