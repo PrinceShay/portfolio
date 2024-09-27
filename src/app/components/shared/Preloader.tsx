@@ -105,7 +105,10 @@ function Preloader({}) {
         className="absolute top-0 left-0 w-full h-full bg-primary-500 z-[61]"
       ></div>
 
-      <p id="progressPercent" className="Section_Headline relative z-[62]">
+      <p
+        id="progressPercent"
+        className="Section_Headline relative z-[62] text-center w-24"
+      >
         {progress}%
       </p>
 
