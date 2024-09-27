@@ -3,13 +3,13 @@ import lottie from "lottie-web";
 import { useEffect, useRef } from "react";
 
 const Loading = () => {
-  // Specify the ref type as HTMLDivElement or null to accommodate for the initial null state.
   const animationContainer = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (animationContainer.current) {
+    // Check if window object is available to ensure we're in a client environment
+    if (typeof window !== "undefined" && animationContainer.current) {
       const instance = lottie.loadAnimation({
-        container: animationContainer.current, // Safe to use because we checked if it's not null
+        container: animationContainer.current,
         renderer: "svg",
         loop: true,
         autoplay: true,
