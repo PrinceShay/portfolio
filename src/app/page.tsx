@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import BlogComponent from "./components/pages/Main_Page/Blog/BlogComponent";
 import CustomerBenefits from "./components/pages/Main_Page/CustomerBenefits/CustomerBenefits";
 import Projects from "./components/pages/Main_Page/Projects/Projects";
@@ -7,6 +7,8 @@ import Hero2 from "./components/pages/Main_Page/Hero/Hero2";
 import CTAWindow from "./components/shared/ui/CTAWindow";
 import Service2 from "./components/pages/Main_Page/Service/Service2";
 import { Metadata } from "next";
+import LoadingComponent from "./components/shared/ui/loading/LoadingComponent";
+import LoadingAnim from "./components/shared/ui/loading/LoadingAnim";
 
 export async function generateMetadata({
   params,
@@ -45,7 +47,9 @@ export default function Home() {
     <main className="">
       <Preloader />
       <Hero2 />
-      <Projects />
+      <Suspense fallback={<LoadingAnim className="w-full max-w-24" />}>
+        <Projects />
+      </Suspense>
       <CustomerBenefits />
       <Service2 />
       <CTAWindow

@@ -28,7 +28,7 @@ function CustomerBenefits() {
   );
 
   return (
-    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-800 overflow-x-hidden">
+    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-900 overflow-x-hidden">
       <ProjectText title="Warum kunden mit mir arbeiten" text="" />
       <div className=" max-w-[1600px] mx-auto">
         <ul

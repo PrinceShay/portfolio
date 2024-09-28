@@ -164,7 +164,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             src={urlFor(post.titleImage).url()}
             alt={post.title}
             fill
-            className="touch-none pointer-events-none md:hidden"
+            className="touch-none pointer-events-none md:hidden object-cover"
           />
         )}
         <div className="w-full h-full bg-gradient-to-t from-primary-600 to-[#4731662c]  absolute left-0 bottom-0"></div>

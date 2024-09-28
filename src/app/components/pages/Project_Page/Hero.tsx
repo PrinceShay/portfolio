@@ -109,12 +109,13 @@ function Hero({
       <div className="w-full h-screen relative">
         <video
           className="w-full h-full object-cover absolute top-0 object-top"
-          src={titleVideo}
           autoPlay
           playsInline
           muted
           loop
-        ></video>
+        >
+          <source src={titleVideo} type="video/webm" />
+        </video>
       </div>
     </>
   );

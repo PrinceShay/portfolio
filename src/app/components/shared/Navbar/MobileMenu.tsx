@@ -39,18 +39,20 @@ function MobileMenu() {
     setIsOpen(false);
   };
 
+  const menuText = isOpen ? "Schließen" : "Menü";
+
   return (
     <div className="relative flex justify-center md:hidden">
       <div
         onClick={toggleMenu}
-        className="fixed bottom-8 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-full px-10 py-3 text-lg uppercase z-50 cursor-pointer"
+        className="fixed bottom-8 bg-primary-900 bg-opacity-80 backdrop-blur-xl shadow-2xl rounded-full px-10 py-3 text-lg uppercase z-50 cursor-pointer"
       >
-        Menü
+        {menuText}
       </div>
 
       <div
         ref={MenuContainer}
-        className=" translate-y-[100lvh] fixed w-full h-screen flex gap-8 flex-col justify-center items-center top-0 left-0 bg-gradient-to-b bg-primary-700 bg-opacity-80 backdrop-blur-md z-40"
+        className="translate-y-[100lvh] py-12 fixed w-full h-screen flex gap-8 flex-col justify-top items-center top-0 left-0 bg-primary-900 bg-opacity-80 backdrop-blur-xl z-40"
       >
         <Link
           className="MobileLink text-4xl uppercase font-bold"
