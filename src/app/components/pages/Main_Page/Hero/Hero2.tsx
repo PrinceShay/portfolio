@@ -195,7 +195,7 @@ function Hero2() {
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
         >
-          <source src="/assets/videos/heroAnim.webm" type="video/webm" />
+          {/* <source src="/assets/videos/heroAnim.webm" type="video/webm" /> */}
           <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
         </video>
       </div>
