@@ -40,7 +40,7 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
     }
   }, [isHovered]);
 
-  useEffect(() => {
+  useGSAP(() => {
     if (isMobile && borderRef.current) {
       gsap.to(borderRef.current, {
         background:
@@ -117,8 +117,8 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
         <Image
           src={imageSrc}
           alt=""
-          width={144} // Passen Sie die Werte entsprechend an
-          height={144}
+          width={96} // Passen Sie die Werte entsprechend an
+          height={96}
           className="max-w-36 min-w-12 mb-16"
         />
         <div>

@@ -27,15 +27,15 @@ const config: Config = {
       colors: {
         "primary": {
           50: '#fbf8ff',
-          100: '#EFE4FF', //ecdfff
-          200: '#E8D7FF', //ddc5ff
-          300: '#E0CAFF', //ceacff
-          400: '#D8BDFF', //bf93ff
+          100: '#ecdfff', //ecdfff
+          200: '#ddc5ff', //ddc5ff
+          300: '#ceacff', //ceacff
+          400: '#bf93ff', //bf93ff
           500: '#B17AFF', //B17AFF
-          600: '#473166', //8d61cc
-          700: '#35254D', //6a4999
-          800: '#231833', //463066
-          900: '#120C19', //231832
+          600: '#8d61cc', //8d61cc
+          700: '#6a4999', //6a4999
+          800: '#463066', //463066
+          900: '#231832', //231832
         },
         "darkBlue": {
           500: '#000017',
