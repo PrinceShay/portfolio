@@ -49,53 +49,54 @@ function MobileMenu() {
       >
         {menuText}
       </div>
-
-      <div
-        ref={MenuContainer}
-        className="translate-y-[100lvh] py-12 fixed w-full h-screen flex gap-8 flex-col justify-top items-center top-0 left-0 bg-primary-900 bg-opacity-80 backdrop-blur-xl z-40"
-      >
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/"
-          onClick={handleLinkClick}
+      <div>
+        <div
+          ref={MenuContainer}
+          className="translate-y-[100lvh] py-12 fixed w-full h-screen flex gap-8 flex-col justify-top items-center top-0 left-0 bg-primary-900 bg-opacity-80 backdrop-blur-xl z-40"
         >
-          Startseite
-        </Link>
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/projekte"
-          onClick={handleLinkClick}
-        >
-          Projekte
-        </Link>
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/profil"
-          onClick={handleLinkClick}
-        >
-          Profil
-        </Link>
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/#service"
-          onClick={handleLinkClick}
-        >
-          Service
-        </Link>
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/blog"
-          onClick={handleLinkClick}
-        >
-          Blog
-        </Link>
-        <Link
-          className="MobileLink text-4xl uppercase font-bold"
-          href="/kontakt"
-          onClick={handleLinkClick}
-        >
-          Kontakt
-        </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/"
+            onClick={handleLinkClick}
+          >
+            Startseite
+          </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/projekte"
+            onClick={handleLinkClick}
+          >
+            Projekte
+          </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/profil"
+            onClick={handleLinkClick}
+          >
+            Profil
+          </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/#service"
+            onClick={handleLinkClick}
+          >
+            Service
+          </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/blog"
+            onClick={handleLinkClick}
+          >
+            Blog
+          </Link>
+          <Link
+            className="MobileLink text-4xl uppercase font-bold"
+            href="/kontakt"
+            onClick={handleLinkClick}
+          >
+            Kontakt
+          </Link>
+        </div>
       </div>
     </div>
   );

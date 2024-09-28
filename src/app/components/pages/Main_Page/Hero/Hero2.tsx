@@ -189,11 +189,11 @@ function Hero2() {
           autoPlay
           playsInline
           muted
+          preload="auto"
           loop
           className={`w-full h-screen pointer-events-none touch-none absolute top-0 object-cover transition-opacity duration-500 ${
             videoLoaded ? "opacity-100" : "opacity-0"
           }`}
-          preload="auto"
         >
           <source src="/assets/videos/heroAnim.webm" type="video/webm" />
           <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
