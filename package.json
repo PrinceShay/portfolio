@@ -12,7 +12,6 @@
     "@cyriacbr/react-split-text": "^1.0.0",
     "@gsap/react": "^2.1.0",
     "@hookform/resolvers": "^3.6.0",
-    "@next/font": "^14.2.3",
     "@next/third-parties": "^14.2.6",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.52.0",

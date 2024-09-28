@@ -180,8 +180,7 @@ function Hero2() {
             src="/assets/images/low-res-placeholder.jpg"
             alt="Loading..."
             fill
-            objectFit="cover"
-            className="absolute top-0"
+            className="absolute top-0 object-cover"
             priority
           />
         )}

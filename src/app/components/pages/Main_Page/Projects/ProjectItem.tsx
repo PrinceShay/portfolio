@@ -164,7 +164,6 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             src={urlFor(post.titleImage).url()}
             alt={post.title}
             fill
-            objectFit="cover"
             className="touch-none pointer-events-none md:hidden"
           />
         )}

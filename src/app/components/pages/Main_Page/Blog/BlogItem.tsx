@@ -87,7 +87,6 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
             title={post.title}
             src={urlFor(post.titleImage).url()}
             fill
-            objectFit="cover"
             ref={imageRef}
           />
         </div>
