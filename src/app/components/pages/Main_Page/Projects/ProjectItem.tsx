@@ -146,16 +146,17 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         ref={object}
         className="rounded-xl relative min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl"
       >
-        {/* {post.titleVideo && post.titleVideo.asset && (
+        {post.titleVideo && post.titleVideo.asset && (
           <video
             ref={ProjectvideoRef}
             className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none hidden md:block"
-            src={post.titleVideo.asset.url}
             muted
             playsInline
             loop
-          ></video>
-        )} */}
+          >
+            <source src={post.titleVideo.asset.url} type="video/webm" />
+          </video>
+        )}
         {post.titleImage && (
           <Image
             ref={imageRef}
