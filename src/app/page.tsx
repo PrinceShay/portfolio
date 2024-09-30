@@ -47,9 +47,7 @@ export default function Home() {
     <main className="">
       <Preloader />
       <Hero2 />
-      <Suspense fallback={<LoadingAnim className="w-full max-w-24" />}>
-        <Projects />
-      </Suspense>
+      <Projects />
       <CustomerBenefits />
       <Service2 />
       <CTAWindow
