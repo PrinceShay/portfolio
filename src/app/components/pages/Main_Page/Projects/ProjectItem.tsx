@@ -8,13 +8,42 @@ import Image from "next/image";
 import { urlFor } from "@/app/lib/sanity";
 import { useGSAP } from "@gsap/react";
 
-function ProjectItem({ post, idx }: { post: any; idx: number }) {
+interface Post {
+  title: string;
+  currentSlug: string;
+  categories: string[];
+  titleVideo?: {
+    asset: {
+      url: string;
+    };
+  };
+  titleImage?: any;
+}
+
+interface ProjectItemProps {
+  post: Post;
+  idx: number;
+}
+
+function ProjectItem({ post, idx }: ProjectItemProps) {
   const object = useRef<HTMLDivElement>(null);
   const ProjectvideoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
 
   const [isSplit, setSplit] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Set isMobile based on window width
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Adjust breakpoint as needed
+    };
+    handleResize(); // Initial check
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const elements = document.getElementsByClassName("split");
@@ -76,7 +105,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         }
 
         // Video play/pause based on scroll position
-        if (ProjectvideoRef.current) {
+        if (!isMobile && ProjectvideoRef.current) {
           ScrollTrigger.create({
             trigger: object.current,
             start: "top center",
@@ -98,44 +127,52 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
 
         // Hover effects for the video and image
         object.current?.addEventListener("mouseenter", () => {
-          gsap.to(ProjectvideoRef.current, {
-            scale: 1.25,
-            rotate: 5,
-            ease: "power2.out",
-            duration: 1.5,
-          });
-          gsap.to(imageRef.current, {
-            scale: 1.25,
-            rotate: 5,
-            ease: "power2.out",
-            duration: 1.5,
-          });
+          if (!isMobile && ProjectvideoRef.current) {
+            gsap.to(ProjectvideoRef.current, {
+              scale: 1.25,
+              rotate: 5,
+              ease: "power2.out",
+              duration: 1.5,
+            });
+          }
+          if (isMobile && imageRef.current) {
+            gsap.to(imageRef.current, {
+              scale: 1.25,
+              rotate: 5,
+              ease: "power2.out",
+              duration: 1.5,
+            });
+          }
         });
 
         object.current?.addEventListener("mouseleave", () => {
-          gsap.to(ProjectvideoRef.current, {
-            scale: 1,
-            rotate: 0,
-            ease: "power4.out",
-            duration: 1.5,
-          });
-          gsap.to(imageRef.current, {
-            scale: 1,
-            rotate: 0,
-            ease: "power4.out",
-            duration: 1.5,
-          });
+          if (!isMobile && ProjectvideoRef.current) {
+            gsap.to(ProjectvideoRef.current, {
+              scale: 1,
+              rotate: 0,
+              ease: "power4.out",
+              duration: 1.5,
+            });
+          }
+          if (isMobile && imageRef.current) {
+            gsap.to(imageRef.current, {
+              scale: 1,
+              rotate: 0,
+              ease: "power4.out",
+              duration: 1.5,
+            });
+          }
         });
       }
     },
-    { scope: object, dependencies: [isSplit, titleRef.current] }
+    { scope: object, dependencies: [isSplit, titleRef.current, isMobile] }
   );
 
   if (!post) {
     return <div>Post not available</div>;
   }
 
-  const categories = post.categories || [];
+  const categories: string[] = post.categories || [];
 
   return (
     <Link
@@ -146,10 +183,10 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         ref={object}
         className="rounded-xl relative min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl"
       >
-        {post.titleVideo && post.titleVideo.asset && (
+        {!isMobile && post.titleVideo && post.titleVideo.asset && (
           <video
             ref={ProjectvideoRef}
-            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none hidden md:block"
+            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none"
             muted
             playsInline
             loop
@@ -157,13 +194,13 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
             <source src={post.titleVideo.asset.url} type="video/webm" />
           </video>
         )}
-        {post.titleImage && (
+        {isMobile && post.titleImage && (
           <Image
             ref={imageRef}
             src={urlFor(post.titleImage).url()}
             alt={post.title}
             fill
-            className="touch-none pointer-events-none md:hidden object-cover"
+            className="touch-none pointer-events-none object-cover"
           />
         )}
         <div className="w-full h-full bg-gradient-to-t from-primary-600 to-[#4731662c]  absolute left-0 bottom-0"></div>
