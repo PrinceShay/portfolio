@@ -1,5 +1,3 @@
-// Hero2.tsx
-
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
@@ -18,7 +16,6 @@ function Hero2() {
   const HeroButton = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
     const elements = document.getElementsByClassName("split");
@@ -27,28 +24,6 @@ function Hero2() {
     });
 
     setSplit(true);
-  }, []);
-
-  useEffect(() => {
-    const videoElement = VideoRef.current;
-
-    const handleVideoLoad = () => {
-      setVideoLoaded(true);
-      if (videoElement) {
-        videoElement.play();
-      }
-    };
-
-    if (videoElement) {
-      videoElement.addEventListener("canplaythrough", handleVideoLoad);
-      videoElement.load(); // Sicherstellen, dass das Video sofort zu laden beginnt
-    }
-
-    return () => {
-      if (videoElement) {
-        videoElement.removeEventListener("canplaythrough", handleVideoLoad);
-      }
-    };
   }, []);
 
   useGSAP(() => {
@@ -182,6 +157,7 @@ function Hero2() {
           ref={VideoRef}
           playsInline
           muted
+          autoPlay
           preload="auto"
           loop
           className={`w-full h-screen pointer-events-none touch-none absolute top-0 object-cover transition-opacity duration-500
@@ -189,6 +165,7 @@ function Hero2() {
         >
           <source src="/assets/videos/heroAnim.webm" type="video/webm" />
           <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
+          <Image src={"/assets/images/Hero.jpg"} fill alt="Hero" />
         </video>
       </div>
     </section>
