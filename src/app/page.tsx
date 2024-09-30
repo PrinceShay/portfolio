@@ -7,8 +7,6 @@ import Hero2 from "./components/pages/Main_Page/Hero/Hero2";
 import CTAWindow from "./components/shared/ui/CTAWindow";
 import Service2 from "./components/pages/Main_Page/Service/Service2";
 import { Metadata } from "next";
-import LoadingComponent from "./components/shared/ui/loading/LoadingComponent";
-import LoadingAnim from "./components/shared/ui/loading/LoadingAnim";
 
 export async function generateMetadata({
   params,

@@ -12,7 +12,7 @@ export default function page() {
     <main className="">
       <Preloader />
       <Hero2 />
-      <Projects />
+      {/* <Projects /> */}
       <CustomerBenefits />
       <Service2 />
       <CTAWindow

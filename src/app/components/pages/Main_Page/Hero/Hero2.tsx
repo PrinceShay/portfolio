@@ -26,105 +26,108 @@ function Hero2() {
     setSplit(true);
   }, []);
 
-  useGSAP(() => {
-    if (
-      isSplit &&
-      TagRef.current &&
-      NameRef.current &&
-      VideoRef &&
-      VideoContainer &&
-      TextContainer
-    ) {
-      const HeroTL = gsap.timeline({ delay: 1.45 });
+  useGSAP(
+    () => {
+      if (
+        isSplit &&
+        TagRef.current &&
+        NameRef.current &&
+        VideoRef &&
+        VideoContainer &&
+        TextContainer
+      ) {
+        const HeroTL = gsap.timeline({ delay: 1.45 });
 
-      HeroTL.from(TextContainer.current, {
-        scaleY: 0,
-        duration: 1.6,
-        ease: "power4.out",
-      });
-
-      HeroTL.from(
-        TagRef.current.querySelectorAll(".word"),
-        {
-          yPercent: 30,
-          opacity: 0,
-          stagger: 0.05,
-          rotate: 5,
-          duration: 1,
-          ease: "back.out(2)",
-        },
-        "<35%"
-      );
-
-      HeroTL.from(
-        NameRef.current.querySelectorAll(".char"),
-        {
-          yPercent: 10,
-          rotateX: 90,
-          opacity: 0,
-          stagger: { amount: 0.5, from: "random" },
-          duration: 1.7,
-          ease: "back.out(2)",
-        },
-        "<"
-      );
-      HeroTL.from(
-        VideoContainer.current,
-        {
-          yPercent: -80,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container.current,
-            start: "0 0",
-            end: "100% 100%",
-            scrub: true,
-          },
-        },
-        "<"
-      );
-
-      HeroTL.to(
-        TextContainer.current,
-        {
-          yPercent: -50,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container.current,
-            start: "0 0",
-            end: "100% 100%",
-            scrub: true,
-          },
-        },
-        "<"
-      );
-
-      HeroTL.from(
-        HeroButton.current,
-        {
-          opacity: 0,
-          yPercent: 70,
-          duration: 2,
+        HeroTL.from(TextContainer.current, {
+          scaleY: 0,
+          duration: 1.6,
           ease: "power4.out",
-        },
-        "<75%"
-      );
+        });
 
-      HeroTL.from(
-        VideoRef.current,
-        {
-          scale: 1.2,
-          ease: "none",
-          scrollTrigger: {
-            trigger: container.current,
-            start: "0 0",
-            end: "100% 100%",
-            scrub: true,
+        HeroTL.from(
+          TagRef.current.querySelectorAll(".word"),
+          {
+            yPercent: 30,
+            opacity: 0,
+            stagger: 0.05,
+            rotate: 5,
+            duration: 1,
+            ease: "back.out(2)",
           },
-        },
-        "<"
-      );
-    }
-  }, [isSplit]);
+          "<35%"
+        );
+
+        HeroTL.from(
+          NameRef.current.querySelectorAll(".char"),
+          {
+            yPercent: 10,
+            rotateX: 90,
+            opacity: 0,
+            stagger: { amount: 0.5, from: "random" },
+            duration: 1.7,
+            ease: "back.out(2)",
+          },
+          "<"
+        );
+        HeroTL.from(
+          VideoContainer.current,
+          {
+            yPercent: -80,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container.current,
+              start: "0 0",
+              end: "100% 100%",
+              scrub: true,
+            },
+          },
+          "<"
+        );
+
+        HeroTL.to(
+          TextContainer.current,
+          {
+            yPercent: -50,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container.current,
+              start: "0 0",
+              end: "100% 100%",
+              scrub: true,
+            },
+          },
+          "<"
+        );
+
+        HeroTL.from(
+          HeroButton.current,
+          {
+            opacity: 0,
+            yPercent: 70,
+            duration: 2,
+            ease: "power4.out",
+          },
+          "<75%"
+        );
+
+        HeroTL.from(
+          VideoRef.current,
+          {
+            scale: 1.2,
+            ease: "none",
+            scrollTrigger: {
+              trigger: container.current,
+              start: "0 0",
+              end: "100% 100%",
+              scrub: true,
+            },
+          },
+          "<"
+        );
+      }
+    },
+    { scope: container, dependencies: [isSplit] }
+  );
 
   return (
     <section ref={container}>
