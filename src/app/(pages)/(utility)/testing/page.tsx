@@ -5,7 +5,7 @@ import Projects from "@/app/components/pages/Main_Page/Projects/Projects";
 import Service2 from "@/app/components/pages/Main_Page/Service/Service2";
 import Preloader from "@/app/components/shared/Preloader";
 import CTAWindow from "@/app/components/shared/ui/CTAWindow";
-import React, { Suspense } from "react";
+import React from "react";
 
 export default function page() {
   return (

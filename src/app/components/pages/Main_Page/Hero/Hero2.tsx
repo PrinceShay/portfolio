@@ -5,6 +5,7 @@ import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import PrimaryButton from "../../../shared/ui/PrimaryButton";
 import Image from "next/image";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Hero2() {
   const container = useRef<HTMLDivElement>(null);
@@ -36,6 +37,7 @@ function Hero2() {
         VideoContainer &&
         TextContainer
       ) {
+        gsap.registerPlugin(ScrollTrigger);
         const HeroTL = gsap.timeline({ delay: 1.45 });
 
         HeroTL.from(TextContainer.current, {
