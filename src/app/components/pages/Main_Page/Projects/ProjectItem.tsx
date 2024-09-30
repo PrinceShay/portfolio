@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 function ProjectItem({ post, idx }: { post: any; idx: number }) {
   const object = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const ProjectvideoRef = useRef<HTMLVideoElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
@@ -78,29 +78,29 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         }
 
         // Video play/pause based on scroll position
-        if (videoRef.current) {
+        if (ProjectvideoRef.current) {
           ScrollTrigger.create({
             trigger: object.current,
             start: "top center",
             end: "bottom center",
             onEnter: () => {
-              videoRef.current?.play();
+              ProjectvideoRef.current?.play();
             },
             onLeave: () => {
-              videoRef.current?.pause();
+              ProjectvideoRef.current?.pause();
             },
             onEnterBack: () => {
-              videoRef.current?.play();
+              ProjectvideoRef.current?.play();
             },
             onLeaveBack: () => {
-              videoRef.current?.pause();
+              ProjectvideoRef.current?.pause();
             },
           });
         }
 
         // Hover effects for the video and image
         object.current?.addEventListener("mouseenter", () => {
-          gsap.to(videoRef.current, {
+          gsap.to(ProjectvideoRef.current, {
             scale: 1.25,
             rotate: 5,
             ease: "power2.out",
@@ -115,7 +115,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
         });
 
         object.current?.addEventListener("mouseleave", () => {
-          gsap.to(videoRef.current, {
+          gsap.to(ProjectvideoRef.current, {
             scale: 1,
             rotate: 0,
             ease: "power4.out",
@@ -150,7 +150,7 @@ function ProjectItem({ post, idx }: { post: any; idx: number }) {
       >
         {post.titleVideo && post.titleVideo.asset && (
           <video
-            ref={videoRef}
+            ref={ProjectvideoRef}
             className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none hidden md:block"
             src={post.titleVideo.asset.url}
             muted
