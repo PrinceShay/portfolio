@@ -34,6 +34,9 @@ function Hero2() {
 
     const handleVideoLoad = () => {
       setVideoLoaded(true);
+      if (videoElement) {
+        videoElement.play();
+      }
     };
 
     if (videoElement) {
@@ -175,28 +178,17 @@ function Hero2() {
         ref={VideoContainer}
         className="w-full h-screen relative bg-slate-900 overflow-hidden"
       >
-        {!videoLoaded && (
-          <Image
-            src="/assets/images/low-res-placeholder.jpg"
-            alt="Loading..."
-            fill
-            className="absolute top-0 object-cover"
-            priority
-          />
-        )}
         <video
           ref={VideoRef}
-          autoPlay
           playsInline
           muted
           preload="auto"
           loop
-          className={`w-full h-screen pointer-events-none touch-none absolute top-0 object-cover transition-opacity duration-500 ${
-            videoLoaded ? "opacity-100" : "opacity-0"
-          }`}
+          className={`w-full h-screen pointer-events-none touch-none absolute top-0 object-cover transition-opacity duration-500
+          `}
         >
           <source src="/assets/videos/heroAnim.webm" type="video/webm" />
-          {/* <source src="/assets/videos/heroAnim.mp4" type="video/mp4" /> */}
+          <source src="/assets/videos/heroAnim.mp4" type="video/mp4" />
         </video>
       </div>
     </section>
