@@ -306,8 +306,11 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         {/* Tooltip */}
         <div
           ref={tooltipRef}
-          className="hidden sm:block absolute left-0 top-0 pointer-events-none text-lg z-50 shadow-xl text-white bg-primary-500 px-3 py-2 rounded whitespace-nowrap"
-          style={{ left: 0, top: 0 }}
+          className="hidden sm:block absolute left-0 top-0 pointer-events-none ToolTip text-lg z-50 text-white bg-primary-500 px-3 py-2 rounded whitespace-nowrap"
+          style={{
+            left: 0,
+            top: 0,
+          }}
         >
           {`${post.title} anschauen`}
         </div>
