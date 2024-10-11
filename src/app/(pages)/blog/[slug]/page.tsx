@@ -3,6 +3,7 @@ import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
+import { notFound } from "next/navigation"; // importiere notFound
 
 export const revalidate = 30;
 

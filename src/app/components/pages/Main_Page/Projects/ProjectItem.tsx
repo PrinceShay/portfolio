@@ -6,6 +6,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import Image from "next/image";
 import { urlFor } from "@/app/lib/sanity";
+import { useGSAP } from "@gsap/react";
+import { throttle } from "lodash";
 
 interface Post {
   title: string;
@@ -33,28 +35,27 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
 
   const [isSplit, setSplit] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
+  // Überprüfen, ob es sich um ein mobiles Gerät handelt
   useEffect(() => {
-    // Überprüfen, ob es sich um ein mobiles Gerät handelt
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
     handleResize(); // Initiale Überprüfung
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // SplitText mit SplitType
   useEffect(() => {
-    const elements = document.getElementsByClassName("split");
-    Array.from(elements).forEach((element) => {
-      new SplitType(element as HTMLElement, { types: "lines,words,chars" });
-    });
-
-    setSplit(true);
+    if (titleRef.current) {
+      new SplitType(titleRef.current, { types: "lines,words,chars" });
+      setSplit(true);
+    }
   }, []);
 
-  useEffect(() => {
+  useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
 
     if (tooltipRef.current) {
@@ -62,16 +63,19 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     }
 
     if (isSplit && titleRef.current) {
-      gsap.to(object.current, {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: object.current,
+          start: "top 5vh",
+          scrub: true,
+          toggleActions: "play pause resume reset",
+        },
+      });
+
+      tl.to(object.current, {
         scale: 0.7,
         opacity: 0,
         rotate: -2.5,
-        scrollTrigger: {
-          trigger: object.current,
-          toggleActions: "play pause resume reset",
-          start: "top 5vh",
-          scrub: true,
-        },
       });
 
       // Animation für die Kategorien
@@ -83,14 +87,14 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         ease: "elastic.out(1, 0.7)",
         scrollTrigger: {
           trigger: object.current,
-          toggleActions: "play pause resume reset",
           start: "80% 95%",
+          toggleActions: "play pause resume reset",
         },
       });
 
       // Animation für die Titelzeichen
-      const chars = titleRef.current?.querySelectorAll(".char");
-      if (chars) {
+      const chars = titleRef.current.querySelectorAll(".char");
+      if (chars.length > 0) {
         gsap.from(chars, {
           yPercent: 30,
           opacity: 0,
@@ -98,18 +102,29 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
           stagger: 0.05,
           rotate: 5,
           duration: 1.4,
+          ease: "back.out(2)",
           scrollTrigger: {
             trigger: titleRef.current,
             start: "top 70%",
             scrub: true,
             end: "top 10%",
           },
-          ease: "back.out(2)",
         });
       }
 
-      // Video Wiedergabe/Pause basierend auf der Scroll-Position
-      if (!isMobile && ProjectvideoRef.current) {
+      // Video laden, bevor es in den Viewport kommt
+      if (!isMobile && ProjectvideoRef.current && post.titleVideo) {
+        ScrollTrigger.create({
+          trigger: object.current,
+          start: "-10% bottom", // 200px bevor das Element den Viewport erreicht
+          onEnter: () => {
+            if (!videoLoaded) {
+              setVideoLoaded(true);
+            }
+          },
+        });
+
+        // Video Wiedergabe/Pause basierend auf der Scroll-Position
         ScrollTrigger.create({
           trigger: object.current,
           start: "top center",
@@ -129,11 +144,12 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         });
       }
     }
-  }, [isSplit, isMobile]);
+  }, [isSplit, isMobile, videoLoaded]);
 
   // Tooltip-Animation und Event-Handler
   useEffect(() => {
-    // Smoothes Folgen des Mauszeigers
+    if (!tooltipRef.current || !object.current) return;
+
     const tooltipX = gsap.quickTo(tooltipRef.current, "left", {
       duration: 0.5,
       ease: "power3.out",
@@ -143,7 +159,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
       ease: "power3.out",
     });
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = throttle((e: MouseEvent) => {
       const rect = object.current?.getBoundingClientRect();
       if (tooltipRef.current && rect) {
         const offsetX = 15; // Anpassbar
@@ -152,7 +168,6 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         let x = e.clientX - rect.left + offsetX;
         let y = e.clientY - rect.top + offsetY;
 
-        // Tooltip-Größe ermitteln
         const tooltipRect = tooltipRef.current.getBoundingClientRect();
         const containerWidth = rect.width;
         const containerHeight = rect.height;
@@ -177,7 +192,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         tooltipX(x);
         tooltipY(y);
       }
-    };
+    }, 16); // Throttling auf ca. 60fps
 
     const handleMouseEnter = () => {
       if (tooltipRef.current) {
@@ -271,8 +286,11 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             muted
             playsInline
             loop
+            preload="metadata" // Lädt nur Metadaten
           >
-            <source src={post.titleVideo.asset.url} type="video/webm" />
+            {videoLoaded && (
+              <source src={post.titleVideo.asset.url} type="video/webm" />
+            )}
           </video>
         )}
         {isMobile && post.titleImage && (
