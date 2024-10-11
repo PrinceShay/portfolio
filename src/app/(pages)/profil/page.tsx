@@ -41,9 +41,80 @@ function Page() {
       <h1 className="Section_Headline px-6 md:px-24 lg:px-48">Profil</h1>
       <Biography />
 
-      <div className="grid grid-cols-12 px-6 md:px-24 lg:px-48">
+      <section className="grid grid-cols-12 grid-flow-col grid-rows-2 px-6 md:px-24 lg:px-48 mb-24">
         <CV />
-      </div>
+        <div className="col-start-1 col-end-13 md:col-end-8 xl:col-end-6 grid grid-rows-3 gap-4 mt-16">
+          <div className="">
+            <h1 className="text-2xl mb-8">Sprachen</h1>
+            <ul className="flex items-start flex-wrap gap-3">
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                HTML
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                CSS
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                JavaScript
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                TypeScript
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h1 className="text-2xl mb-8">Libraries & Frameworks</h1>
+            <ul className="flex items-start flex-wrap gap-3">
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                React
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Next.js
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Vue.js
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Nuxt
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Tailwind CSS
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                GSAP
+              </li>
+            </ul>
+          </div>
+          <div className="">
+            <h1 className="text-2xl mb-8">Tools & Platformen</h1>
+            <ul className="flex items-start flex-wrap gap-3">
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                GitHub
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Vercel
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Sanity
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Figma
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Photoshop
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                After Effects
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                inDesign
+              </li>
+              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
+                Illustrator
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
       <CTAWindow
         title="Bereit wenn du es bist"
         text="Schreib mir eine kurze Mail und ich melde mich bei dir.

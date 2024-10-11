@@ -133,7 +133,7 @@ function Biography() {
                     "https://www.linkedin.com/in/jannis-r%C3%B6stel-a4a261251/"
                   }
                 >
-                  <Linkedin size={32} />
+                  <Linkedin fill="currentColor" stroke="none" size={32} />
                 </Link>
               </li>
             </ul>
