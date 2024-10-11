@@ -55,96 +55,103 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     }
   }, []);
 
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  useGSAP(
+    () => {
+      gsap.registerPlugin(ScrollTrigger);
 
-    if (tooltipRef.current) {
-      gsap.set(tooltipRef.current, { opacity: 0, scale: 0.8 });
-    }
+      if (tooltipRef.current) {
+        gsap.set(tooltipRef.current, { opacity: 0, scale: 0.8 });
+      }
 
-    if (isSplit && titleRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: object.current,
-          start: "top 5vh",
-          scrub: true,
-          toggleActions: "play pause resume reset",
-        },
-      });
-
-      tl.to(object.current, {
-        scale: 0.7,
-        opacity: 0,
-        rotate: -2.5,
-      });
-
-      // Animation für die Kategorien
-      gsap.from(".category", {
-        scale: 0,
-        opacity: 0,
-        duration: 1.75,
-        stagger: 0.1,
-        ease: "elastic.out(1, 0.7)",
-        scrollTrigger: {
-          trigger: object.current,
-          start: "80% 95%",
-          toggleActions: "play pause resume reset",
-        },
-      });
-
-      // Animation für die Titelzeichen
-      const chars = titleRef.current.querySelectorAll(".char");
-      if (chars.length > 0) {
-        gsap.from(chars, {
-          yPercent: 30,
-          opacity: 0,
-          rotateX: 80,
-          stagger: 0.05,
-          rotate: 5,
-          duration: 1.4,
-          ease: "back.out(2)",
+      if (isSplit && titleRef.current) {
+        const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 70%",
+            trigger: object.current,
+            start: "top 5vh",
             scrub: true,
-            end: "top 10%",
-          },
-        });
-      }
-
-      // Video laden, bevor es in den Viewport kommt
-      if (!isMobile && ProjectvideoRef.current && post.titleVideo) {
-        ScrollTrigger.create({
-          trigger: object.current,
-          start: "-10% bottom", // 200px bevor das Element den Viewport erreicht
-          onEnter: () => {
-            if (!videoLoaded) {
-              setVideoLoaded(true);
-            }
+            toggleActions: "play pause resume reset",
           },
         });
 
-        // Video Wiedergabe/Pause basierend auf der Scroll-Position
-        ScrollTrigger.create({
-          trigger: object.current,
-          start: "top center",
-          end: "bottom center",
-          onEnter: () => {
-            ProjectvideoRef.current?.play();
-          },
-          onLeave: () => {
-            ProjectvideoRef.current?.pause();
-          },
-          onEnterBack: () => {
-            ProjectvideoRef.current?.play();
-          },
-          onLeaveBack: () => {
-            ProjectvideoRef.current?.pause();
+        tl.to(object.current, {
+          scale: 0.7,
+          opacity: 0,
+          rotate: -2.5,
+        });
+
+        // Animation für die Kategorien
+        gsap.from(".category", {
+          scale: 0,
+          opacity: 0,
+          duration: 1.75,
+          stagger: 0.1,
+          ease: "elastic.out(1, 0.7)",
+          scrollTrigger: {
+            trigger: object.current,
+            start: "80% 95%",
+            toggleActions: "play pause resume reset",
           },
         });
+
+        // Animation für die Titelzeichen
+        const chars = titleRef.current.querySelectorAll(".char");
+        if (chars.length > 0) {
+          gsap.from(chars, {
+            yPercent: 30,
+            opacity: 0,
+            rotateX: 80,
+            stagger: 0.05,
+            rotate: 5,
+            duration: 1.4,
+            ease: "back.out(2)",
+            scrollTrigger: {
+              trigger: titleRef.current,
+              start: "top 70%",
+              scrub: true,
+              end: "top 10%",
+            },
+          });
+        }
+
+        // Video laden, bevor es in den Viewport kommt
+        if (!isMobile && ProjectvideoRef.current && post.titleVideo) {
+          ScrollTrigger.create({
+            trigger: object.current,
+            start: "-10% bottom", // 200px bevor das Element den Viewport erreicht
+            onEnter: () => {
+              if (!videoLoaded) {
+                setVideoLoaded(true);
+              }
+            },
+          });
+
+          // Video Wiedergabe/Pause basierend auf der Scroll-Position
+          ScrollTrigger.create({
+            trigger: object.current,
+            start: "top center",
+            end: "bottom center",
+            onEnter: () => {
+              ProjectvideoRef.current?.play();
+            },
+            onLeave: () => {
+              ProjectvideoRef.current?.pause();
+            },
+            onEnterBack: () => {
+              ProjectvideoRef.current?.play();
+            },
+            onLeaveBack: () => {
+              ProjectvideoRef.current?.pause();
+            },
+          });
+        }
       }
+    },
+    {
+      scope: object,
+      dependencies: [isSplit, isMobile, videoLoaded],
+      revertOnUpdate: true,
     }
-  }, [isSplit, isMobile, videoLoaded]);
+  );
 
   // Tooltip-Animation und Event-Handler
   useEffect(() => {
