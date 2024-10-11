@@ -53,7 +53,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
       new SplitType(titleRef.current, { types: "lines,words,chars" });
       setSplit(true);
     }
-  }, []);
+  }, [titleRef.current]);
 
   useGSAP(
     () => {
@@ -75,7 +75,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
 
         tl.to(object.current, {
           scale: 0.7,
-          opacity: 0,
+          opacity: isMobile ? 0 : 1,
           rotate: -2.5,
         });
 
@@ -107,7 +107,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             scrollTrigger: {
               trigger: titleRef.current,
               start: "top 70%",
-              scrub: true,
+              // scrub: true,
               end: "top 10%",
             },
           });
