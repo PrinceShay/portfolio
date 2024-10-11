@@ -75,7 +75,6 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
 
         tl.to(object.current, {
           scale: 0.7,
-          opacity: isMobile ? 0 : 1,
           rotate: -2.5,
         });
 
