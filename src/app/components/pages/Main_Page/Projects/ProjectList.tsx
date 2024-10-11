@@ -7,7 +7,7 @@ export const revalidate = 30;
 
 async function getData() {
   const query = `
-  *[_type == 'project'] | order(_createdAt desc) {
+  *[_type == 'project'] | order(_createdAt desc)[0...3] {
     title,
     smallDescription,
     "currentSlug": slug.current,

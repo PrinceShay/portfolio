@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 
 interface BenefitCardProps {
@@ -9,52 +8,60 @@ interface BenefitCardProps {
   imageSrc: string;
 }
 
+// Define color constants based on Tailwind's color palette
+const colors = {
+  backgroundDefault: "rgb(0, 0, 14)", // Example Tailwind color equivalent
+  backgroundHovered: "rgb(4, 4, 18)", // Example Tailwind color equivalent
+  gradientStart: "rgba(177, 122, 255, 0.6)", // Tailwind primary-500 with opacity
+  gradientEnd: "rgba(177, 122, 255, 0)", // Transparent end for gradient
+};
+
 function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const borderRef = useRef<HTMLLIElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Handle responsive design by updating isMobile state
   useEffect(() => {
-    // Set the initial state for isMobile on the client side
-    setIsMobile(window.innerWidth < 768);
-
-    const handleResize = () => {
+    // Initialize isMobile on component mount
+    const updateIsMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+
+    updateIsMobile(); // Set initial value
+
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
   }, []);
 
-  useGSAP(() => {
-    if (isHovered && cardRef.current) {
+  // Animate background color of the card based on hover state
+  useEffect(() => {
+    if (cardRef.current) {
       gsap.to(cardRef.current, {
-        backgroundColor: "rgb(4, 4, 18)",
+        backgroundColor: isHovered
+          ? colors.backgroundHovered
+          : colors.backgroundDefault,
         duration: 0.5,
-      });
-    } else if (cardRef.current) {
-      gsap.to(cardRef.current, {
-        backgroundColor: "rgb(0, 0, 14)",
-        duration: 0.5,
+        ease: "power2.out",
       });
     }
   }, [isHovered]);
 
-  useGSAP(() => {
-    if (isMobile && borderRef.current) {
+  // Animate border background based on mobile state
+  useEffect(() => {
+    if (borderRef.current) {
       gsap.to(borderRef.current, {
-        background:
-          "radial-gradient(circle, rgba(177, 122, 255, 0.6), rgba(177, 122, 255, 0) 80%)",
+        background: isMobile
+          ? `radial-gradient(circle, ${colors.gradientStart}, ${colors.gradientEnd} 80%)`
+          : "transparent",
         duration: 0.5,
-      });
-    } else if (!isMobile && borderRef.current) {
-      gsap.to(borderRef.current, {
-        background: "none",
-        duration: 0.5,
+        ease: "power2.out",
       });
     }
   }, [isMobile]);
 
+  // Handle mouse enter event
   const handleMouseEnter = (event: React.MouseEvent<HTMLLIElement>) => {
     if (!isMobile) {
       setIsHovered(true);
@@ -62,11 +69,13 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
     }
   };
 
+  // Handle mouse move event to update gradient position
   const handleMouseMove = (event: React.MouseEvent<HTMLLIElement>) => {
     if (!isHovered || isMobile) return;
     updateBackground(event);
   };
 
+  // Update the position of the radial gradient based on mouse position
   const updateBackground = (event: React.MouseEvent<HTMLLIElement>) => {
     if (!borderRef.current) return;
     const { left, top, width, height } =
@@ -75,17 +84,19 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
     const y = ((event.clientY - top) / height) * 100;
 
     gsap.to(borderRef.current, {
-      background: `radial-gradient(circle at ${x}% ${y}%, rgba(177, 122, 255, 0.6), rgba(177, 122, 255, 0) 80%)`,
+      background: `radial-gradient(circle at ${x}% ${y}%, ${colors.gradientStart}, ${colors.gradientEnd} 80%)`,
       duration: 0.1,
+      ease: "power1.out",
     });
   };
 
+  // Handle mouse leave event to smoothly transition out the gradient
   const handleMouseLeave = () => {
     if (!isMobile) {
       setIsHovered(false);
       if (borderRef.current) {
         gsap.to(borderRef.current, {
-          background: "none",
+          background: "transparent",
           duration: 0.5,
           ease: "power4.out",
         });
@@ -105,19 +116,21 @@ function BenefitCard({ title, content, imageSrc }: BenefitCardProps) {
         borderRadius: "10px",
         overflow: "hidden",
         transform: "perspective(500px)",
+        background: "transparent", // Initial background
       }}
     >
       <div
         ref={cardRef}
-        className="p-12 text-left rounded-lg shadow-lg h-full flex flex-col justify-between relative"
+        className="p-12 text-left rounded-lg shadow-lg h-full flex flex-col justify-between relative bg-primary-700 transition-colors duration-500" // Added Tailwind classes for initial background and transitions
         style={{
+          backgroundColor: colors.backgroundDefault, // Ensures GSAP starts from this color
           opacity: 1,
         }}
       >
         <Image
           src={imageSrc}
           alt=""
-          width={96} // Passen Sie die Werte entsprechend an
+          width={96} // Adjust as needed
           height={96}
           className="max-w-36 min-w-12 mb-16"
         />
