@@ -24,7 +24,7 @@ export async function generateMetadata({
         "Professionelles Webdesign und Webentwicklung in Karlsruhe – spezialisiert auf React, Next.js und Webflow. Jannis Röstel bietet maßgeschneiderte digitale Lösungen, von modernen Webseiten bis hin zu beeindruckendem Motiondesign. Animierte Logos, Werbung und Reels, die deine Marke ins Rampenlicht rücken. Gemeinsam setzen wir deine kreativen Visionen in die Tat um.",
       images: [
         {
-          url: "/assets/images/Hero.jpg",
+          url: "/assets/images/OpenGraphImage.jpg",
           alt: `Jannis Röstel - Webdesign & Webentwicklung in Karlsruhe`,
         },
       ],
