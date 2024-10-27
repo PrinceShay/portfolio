@@ -26,6 +26,28 @@ interface ProjectItemProps {
   idx: number;
 }
 
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: typeof window !== "undefined" ? window.innerWidth : 0,
+    height: typeof window !== "undefined" ? window.innerHeight : 0,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+    // Initial call
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowSize;
+}
+
 function ProjectItem({ post, idx }: ProjectItemProps) {
   const object = useRef<HTMLDivElement>(null);
   const ProjectvideoRef = useRef<HTMLVideoElement>(null);
@@ -33,26 +55,53 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
+  const splitInstance = useRef<any>(null); // Keep track of SplitType instance
+
   const [isSplit, setSplit] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Überprüfen, ob es sich um ein mobiles Gerät handelt
+  const windowSize = useWindowSize();
+
+  // Check if it's a mobile device
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    handleResize(); // Initiale Überprüfung
+    handleResize(); // Initial check
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // SplitText mit SplitType
+  // SplitText with SplitType
   useEffect(() => {
-    if (titleRef.current) {
-      new SplitType(titleRef.current, { types: "lines,words,chars" });
-      setSplit(true);
-    }
+    const splitText = () => {
+      if (titleRef.current) {
+        // Revert previous splits
+        if (splitInstance.current) {
+          splitInstance.current.revert();
+        }
+        // Create a new SplitType instance
+        splitInstance.current = new SplitType(titleRef.current, {
+          types: "words,chars",
+        });
+        setSplit(true);
+      }
+    };
+
+    // Initial split
+    splitText();
+
+    // Add resize listener
+    window.addEventListener("resize", splitText);
+
+    return () => {
+      window.removeEventListener("resize", splitText);
+      // Clean up the split instance
+      if (splitInstance.current) {
+        splitInstance.current.revert();
+      }
+    };
   }, [titleRef.current]);
 
   useGSAP(
@@ -78,7 +127,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
           rotate: -2.5,
         });
 
-        // Animation für die Kategorien
+        // Animation for categories
         gsap.from(".category", {
           scale: 0,
           opacity: 0,
@@ -92,7 +141,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
           },
         });
 
-        // Animation für die Titelzeichen
+        // Animation for title characters
         const chars = titleRef.current.querySelectorAll(".char");
         if (chars.length > 0) {
           gsap.from(chars, {
@@ -106,17 +155,16 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             scrollTrigger: {
               trigger: titleRef.current,
               start: "top 70%",
-              // scrub: true,
               end: "top 10%",
             },
           });
         }
 
-        // Video laden, bevor es in den Viewport kommt
+        // Load video before it comes into the viewport
         if (!isMobile && ProjectvideoRef.current && post.titleVideo) {
           ScrollTrigger.create({
             trigger: object.current,
-            start: "-10% bottom", // 200px bevor das Element den Viewport erreicht
+            start: "-10% bottom", // 200px before the element reaches the viewport
             onEnter: () => {
               if (!videoLoaded) {
                 setVideoLoaded(true);
@@ -124,7 +172,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             },
           });
 
-          // Video Wiedergabe/Pause basierend auf der Scroll-Position
+          // Play/Pause video based on scroll position
           ScrollTrigger.create({
             trigger: object.current,
             start: "top center",
@@ -147,12 +195,12 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     },
     {
       scope: object,
-      dependencies: [isSplit, isMobile, videoLoaded],
+      dependencies: [isSplit, isMobile, videoLoaded, windowSize.width],
       revertOnUpdate: true,
     }
   );
 
-  // Tooltip-Animation und Event-Handler
+  // Tooltip animation and event handlers
   useEffect(() => {
     if (!tooltipRef.current || !object.current) return;
 
@@ -168,8 +216,8 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     const handleMouseMove = throttle((e: MouseEvent) => {
       const rect = object.current?.getBoundingClientRect();
       if (tooltipRef.current && rect) {
-        const offsetX = 15; // Anpassbar
-        const offsetY = 15; // Anpassbar
+        const offsetX = 15; // Adjustable
+        const offsetY = 15; // Adjustable
 
         let x = e.clientX - rect.left + offsetX;
         let y = e.clientY - rect.top + offsetY;
@@ -181,7 +229,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         const tooltipWidth = tooltipRect.width;
         const tooltipHeight = tooltipRect.height;
 
-        // Begrenzungen prüfen und anpassen
+        // Check and adjust boundaries
         if (x + tooltipWidth > containerWidth) {
           x = containerWidth - tooltipWidth - offsetX;
         }
@@ -198,7 +246,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         tooltipX(x);
         tooltipY(y);
       }
-    }, 16); // Throttling auf ca. 60fps
+    }, 16); // Throttling to ~60fps
 
     const handleMouseEnter = () => {
       if (tooltipRef.current) {
@@ -292,7 +340,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             muted
             playsInline
             loop
-            preload="metadata" // Lädt nur Metadaten
+            preload="metadata" // Loads only metadata
           >
             {videoLoaded && (
               <source src={post.titleVideo.asset.url} type="video/webm" />

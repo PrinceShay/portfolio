@@ -21,7 +21,7 @@ function Hero2() {
   useEffect(() => {
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
-      new SplitType(element as HTMLElement, { types: "lines,words,chars" });
+      new SplitType(element as HTMLElement, { types: "words,chars" });
     });
 
     setSplit(true);
