@@ -52,7 +52,7 @@ function Navbar() {
       });
       tl.from("li", { opacity: 0, y: 50, ease: "power4.out", stagger: 0.05 });
       tl.from(
-        "#OpenForWork",
+        "#ButtonSecondary",
         {
           opacity: 0,
           x: 50,

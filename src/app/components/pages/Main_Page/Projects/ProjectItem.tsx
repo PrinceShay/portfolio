@@ -137,7 +137,6 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
           scrollTrigger: {
             trigger: object.current,
             start: "80% 95%",
-            toggleActions: "play pause resume reset",
           },
         });
 
@@ -327,11 +326,11 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
   return (
     <Link
       href={`/projekte/${post.currentSlug}`}
-      className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full group"
+      className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full group "
     >
       <div
         ref={object}
-        className="relative rounded-xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl"
+        className="relative rounded-xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl bg-darkBlue-400"
       >
         {!isMobile && post.titleVideo && post.titleVideo.asset && (
           <video

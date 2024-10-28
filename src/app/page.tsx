@@ -7,6 +7,7 @@ import Hero2 from "./components/pages/Main_Page/Hero/Hero2";
 import CTAWindow from "./components/shared/ui/CTAWindow";
 import Service2 from "./components/pages/Main_Page/Service/Service2";
 import { Metadata } from "next";
+import Hero from "./components/pages/Main_Page/Hero/Hero";
 
 export async function generateMetadata({
   params,
@@ -44,7 +45,8 @@ export default function Home() {
   return (
     <main className="">
       <Preloader />
-      <Hero2 />
+      {/* <Hero2 /> */}
+      <Hero />
       <Projects />
       <CustomerBenefits />
       <Service2 />

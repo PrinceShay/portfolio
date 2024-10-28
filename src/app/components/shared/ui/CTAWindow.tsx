@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
@@ -10,11 +10,11 @@ import ButtonSecondary from "../Navbar/ButtonSecondary";
 function CTAWindow({ title, text }: { title: string; text: string }) {
   const headline = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
-  const container = useRef<HTMLDivElement>(null);
+  const CTAcontainer = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
       new SplitType(element as HTMLElement, { types: "words,chars" });
@@ -60,23 +60,23 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
         });
       }
 
-      gsap.from(container.current, {
+      gsap.from(CTAcontainer.current, {
         scaleX: 0.5,
         scrollTrigger: {
-          trigger: container.current,
+          trigger: CTAcontainer.current,
           start: "top 100%",
           scrub: true,
           end: "top 50%",
         },
       });
     },
-    { scope: container, dependencies: [isSplit] }
+    { scope: CTAcontainer, dependencies: [isSplit] }
   );
 
   return (
     <section className="py-8 md:py-32 px-6 md:px-24 lg:px-48">
       <div
-        ref={container}
+        ref={CTAcontainer}
         className="py-16 md:py-64 px-12 flex-row justify-center items-center bg-primary-500 w-full max-w-[1600px] md:min-h-48 mx-auto rounded-2xl"
       >
         <div className="TextTransform text-center ">
