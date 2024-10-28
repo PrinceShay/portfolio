@@ -330,7 +330,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     >
       <div
         ref={object}
-        className="relative rounded-xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl bg-darkBlue-400"
+        className="will-change-transform relative rounded-xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl bg-darkBlue-400"
       >
         {!isMobile && post.titleVideo && post.titleVideo.asset && (
           <video
