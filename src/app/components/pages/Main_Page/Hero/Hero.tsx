@@ -17,6 +17,8 @@ export default function Hero() {
   const heroHeadline = useRef<HTMLHeadingElement>(null);
   const heroParagraph = useRef(null);
   const heroButton = useRef(null);
+  const heroHighlight = useRef(null);
+  const heroSection = useRef(null);
 
   useLayoutEffect(() => {
     const elements = document.getElementsByClassName("split");
@@ -82,9 +84,15 @@ export default function Hero() {
   );
 
   return (
-    <section className="min-h-screen pt-12 sm:pt-48 overflow-x-clip">
+    <section
+      ref={heroSection}
+      className="min-h-screen pt-12 sm:pt-48 overflow-x-clip"
+    >
       <div className="w-full left-0 absolute -top-1/4 flex justify-center">
-        <div className="h-72 bg-primary-300 w-1/2 blur-[512px]"></div>
+        <div
+          ref={heroHighlight}
+          className="h-72 bg-primary-300 w-1/2 blur-[512px]"
+        ></div>
       </div>
       <div className="px-6 md:px-24 lg:px-48 text-center flex flex-col items-center justify-center min-h-[70vh]">
         <h1
@@ -95,8 +103,13 @@ export default function Hero() {
           <br /> die dein Business voranbringen
         </h1>
         <p ref={heroParagraph} className="mt-8 text-2xl mb-16 opacity-80">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam facere
-          id fuga possimus rem voluptate aliquid.
+          Hey🚀✌, mein Name ist{" "}
+          <span className="font-bold text-primary-300"> Jannis Röstel</span>.
+          Ich bin{" "}
+          <span className="font-bold text-primary-300">
+            Web- und Motiondesigner{" "}
+          </span>
+          aus Karlsruhe.
         </p>
         <div ref={heroButton}>
           <PrimaryButton title="Projekte anschauen" link="/projekte" />
@@ -105,13 +118,9 @@ export default function Hero() {
       {isLargeScreen ? (
         <HeroGridAnimation />
       ) : (
-        <video
-          src="/path/to/your/video.mp4"
-          autoPlay
-          muted
-          loop
-          className="w-full h-auto"
-        />
+        <video autoPlay muted loop className="w-full h-auto mt-12">
+          <source type="video/webm" src="/assets/videos/heroAnimNew.webm" />
+        </video>
       )}
     </section>
   );

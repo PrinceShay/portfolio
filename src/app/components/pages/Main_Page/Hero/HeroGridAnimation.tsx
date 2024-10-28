@@ -142,7 +142,7 @@ export default function HeroGridAnimation() {
           </div>
           <div className=" w-screen h-screen bg-primary-500 ">
             <video
-              src="/assets/videos/heroAnim.webm"
+              src="/assets/videos/heroAnimNew.webm"
               className="w-full h-full object-cover"
               loop
               autoPlay
