@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap"; // Import the correct type for the GSAP timeline
+import gsap from "gsap";
 
 function ProfileNav() {
   const Main = useRef<HTMLDivElement>(null);
   const Second = useRef<HTMLDivElement>(null);
-  const ProfileTL = useRef<any | null>(null); // Use the Timeline type
+  const ProfileTL = useRef<any | null>(null);
 
   useGSAP(() => {
     const tl = gsap.timeline({ paused: true });
@@ -75,7 +75,7 @@ function ProfileNav() {
               <img
                 src="/Navigation/Logo.svg"
                 alt="Logo"
-                className="w-7 relative right-[0.5]"
+                className="w-12 relative right-[0.5]"
               />
             </div>
           </div>
