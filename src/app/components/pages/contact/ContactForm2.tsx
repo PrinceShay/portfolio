@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import StepItem from "./StepItem";
 import {
   Blocks,
@@ -45,6 +45,8 @@ type FormData = z.infer<typeof schema>;
 
 export default function ContactForm() {
   const [step, setStep] = useState(1);
+  const previousStepRef = useRef(step); // Neuer Ref zur Speicherung des vorherigen Schritts
+  const formRef = useRef<HTMLFormElement>(null);
 
   const methods = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -114,7 +116,6 @@ export default function ContactForm() {
   const [submissionResult, setSubmissionResult] = useState<
     "success" | "error" | null
   >(null);
-  const formRef = useRef<HTMLFormElement>(null);
 
   const onSubmit = async (data: FormData) => {
     setIsLoading(true);
@@ -136,8 +137,7 @@ export default function ContactForm() {
     }
   };
 
-  // Optional: GSAP-Animationen
-
+  // GSAP-Animationen
   useGSAP(() => {
     if (formRef.current) {
       gsap.fromTo(
@@ -146,6 +146,16 @@ export default function ContactForm() {
         { opacity: 1, scale: 1, duration: 0.75, ease: "power4.out" }
       );
     }
+  }, [step]);
+
+  // useEffect für das Scrollen beim Wechsel von Schritt 2 zu 3
+  useEffect(() => {
+    if (previousStepRef.current === 2 && step === 3) {
+      if (formRef.current) {
+        formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+    previousStepRef.current = step;
   }, [step]);
 
   if (isLoading) {
