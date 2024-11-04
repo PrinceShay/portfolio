@@ -27,7 +27,7 @@ const BlogSection = async () => {
     return <p>Loading...</p>;
   }
   return (
-    <section className="py-32 flex flex-col items-center px-6 md:px-24 lg:px-48">
+    <section className="py-32 flex flex-col items-center page_padding">
       {/* <SectionText
         title="Aktuelle News"
         text="Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine

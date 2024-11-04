@@ -14,7 +14,7 @@ export async function generateMetadata({
 
 function page() {
   return (
-    <section className="min-h-screen pt-64 px-6 md:px-24 lg:px-48 flex flex-col">
+    <section className="min-h-screen pt-64 page_padding flex flex-col">
       <h1 className="Section_Headline mb-12">Impressum</h1>
       <div className="text-xl max-w-5xl">
         <h2 className="font-bold">

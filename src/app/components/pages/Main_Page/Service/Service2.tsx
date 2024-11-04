@@ -50,7 +50,7 @@ function Service2() {
   ];
 
   return (
-    <section className="py-32 px-6 md:px-24 lg:px-48" id="service">
+    <section className="py-32 page_padding" id="service">
       <ProjectText title="Service" text="" />
       <div className="grid max-w-2xl grid-cols-1 2xl:grid-cols-3 gap-8 min-h-[60vh] 2xl:max-w-[1600px] mx-auto relative">
         <ServiceItem

@@ -77,7 +77,7 @@ function Navbar() {
     <>
       <MobileMenu />
       <div
-        className={`z-50 fixed hidden md:block md:top-8 px-6 md:px-24 lg:px-48 w-full transition-transform duration-500 ease-out ${
+        className={`z-50 fixed hidden md:block md:top-8 page_padding w-full transition-transform duration-500 ease-out ${
           isVisible ? "translate-y-0" : "-translate-y-[150%]"
         }`}
       >

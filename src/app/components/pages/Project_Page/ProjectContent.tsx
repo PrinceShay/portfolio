@@ -46,7 +46,7 @@ function ProjectContent({ mediaCollection }: ProjectContentProps) {
   }, [isLightboxOpen]);
 
   return (
-    <section className="px-6 md:px-24 lg:px-48 py-24">
+    <section className="page_padding py-24">
       <div className="gap-16 md:gap-64 lg:gap-96 flex flex-col items-center">
         {mediaCollection.map((item, index) => (
           <MediaItem

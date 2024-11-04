@@ -39,7 +39,7 @@ const Step1 = () => {
         <input
           type="text"
           {...register("name")}
-          className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
+          className="w-full text-gray-300 bg-darkBlue-400 px-3 py-2  rounded-lg"
         />
         {errors.name && (
           <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -50,7 +50,7 @@ const Step1 = () => {
         <input
           type="text"
           {...register("company")}
-          className="text-gray-900 w-full px-3 py-2 border border-gray-300 rounded-lg"
+          className="w-full text-gray-300 bg-darkBlue-400 px-3 py-2  rounded-lg"
         />
         {errors.company && (
           <p className="text-red-500 text-sm mt-1">{errors.company.message}</p>
@@ -73,7 +73,7 @@ const Step2 = () => {
         <input
           type="email"
           {...register("email")}
-          className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
+          className="w-full text-gray-300 bg-darkBlue-400 px-3 py-2  rounded-lg"
         />
         {errors.email && (
           <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -86,7 +86,7 @@ const Step2 = () => {
         <input
           type="text"
           {...register("phone")}
-          className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
+          className="w-full text-gray-300 bg-darkBlue-400 px-3 py-2  rounded-lg"
         />
         {errors.phone && (
           <p className="text-red-500 text-sm mt-1">{errors.phone.message}</p>
@@ -110,7 +110,7 @@ const Step3 = () => {
         </label>
         <textarea
           {...register("projectDescription")}
-          className="w-full text-gray-900 px-3 py-2 border border-gray-300 rounded-lg"
+          className="w-full text-gray-300 bg-darkBlue-400 px-3 py-2  rounded-lg"
         />
         {errors.projectDescription && (
           <p className="text-red-500 text-sm mt-1">
@@ -283,7 +283,7 @@ const ContactForm: React.FC = () => {
       <form
         ref={formRef}
         onSubmit={methods.handleSubmit(onSubmit)}
-        className="mx-auto border w-full sm:w-auto border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md p-8 sm:p-16 rounded-2xl shadow-2xl"
+        className=""
       >
         <div className="max-w-lg sm:min-w-72 mx-auto min-h-36">
           {step === 1 && <Step1 />}

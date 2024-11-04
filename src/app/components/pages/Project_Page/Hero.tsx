@@ -84,7 +84,7 @@ function Hero({
   return (
     <>
       <header ref={HeaderRef} className="min-h-[80vh] grid grid-cols-12">
-        <div className="px-6 md:px-24 lg:px-48 py-12 col-start-1 col-end-13 flex flex-col items-center justify-center text-center">
+        <div className="page_padding py-12 col-start-1 col-end-13 flex flex-col items-center justify-center text-center">
           <p
             ref={NameRef}
             className="text-2xl block text-center text-primary font-semibold tracking-wide uppercase split"

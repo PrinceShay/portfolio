@@ -1,30 +1,27 @@
-import LinkRef from "@/app/components/pages/links/LinkRef";
-import { Instagram, Linkedin } from "lucide-react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Dribbble, Instagram, Linkedin } from "lucide-react";
 
-function page() {
+export default function Header() {
   return (
-    <section className="w-full min-h-screen page_padding py-24 md:py-48 flex flex-col items-center">
-      <div className="flex flex-col items-center mb-24">
-        <div className="w-48 h-48 rounded-full overflow-hidden">
-          <Image
-            src={"/assets/images/vienna.jpg"}
-            alt="Jannis Röstel"
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "bottom",
-              scale: "1.4",
-            }}
-          />
-        </div>
-        <p className="text-2xl mt-6">Jannis Röstel</p>
-        <ul className="flex gap-4 mt-4 ">
+    <header className="w-full p-32 bg-darkBlue-400 bg-gradient-to-t from-[#6a499969] to-darkBlue-400 rounded-2xl max-w-[1600px] flex flex-col xl:flex-row justify-center gap-16 items-center mb-24 border border-primary-700 relative overflow-hidden">
+      <div className=" min-w-64 min-h-64 rounded-full relative overflow-hidden">
+        <Image
+          src={"/Navigation/ProfilePic.jpg"}
+          fill
+          className="object-cover"
+          alt="Jannis Röstel"
+          sizes="16rem"
+        ></Image>
+      </div>
+      <div className="">
+        <h1 className="text-5xl mb-6">Kontakt</h1>
+        <p className="text-xl max-w-md">
+          Danke für dein Interesse! Ich schätze deine Zeit sehr und freu mich
+          schon jetzt von dir zu hören!
+        </p>
+        <ul className="flex gap-4 mt-4">
           <li className=" hover:text-primary-500">
             <Link href={"https://www.instagram.com/jannis_roestel"}>
               <Instagram size={32} />
@@ -49,22 +46,17 @@ function page() {
             <Link
               href={"https://www.linkedin.com/in/jannis-r%C3%B6stel-a4a261251/"}
             >
-              <Linkedin size={32} />
+              <Linkedin fill="currentColor" stroke="none" size={32} />
+            </Link>
+          </li>
+
+          <li className=" hover:text-primary-500 ">
+            <Link href={"https://dribbble.com/jannisroestel"}>
+              <Dribbble size={32} />
             </Link>
           </li>
         </ul>
       </div>
-      <ul className="w-full flex flex-col gap-6 sm:items-center">
-        <LinkRef
-          title="SEE NO EVIL clothing"
-          link="https://seenoevil-clothing.com"
-          image="/assets/images/links/sne.svg"
-        />
-
-        <LinkRef title="Mein Portfolio" link="/" image="" />
-      </ul>
-    </section>
+    </header>
   );
 }
-
-export default page;

@@ -28,12 +28,11 @@ function CustomerBenefits() {
   );
 
   return (
-    <section className="py-32 px-6 md:px-24 lg:px-48 bg-primary-900 overflow-x-hidden">
-      <ProjectText title="Warum kunden mit mir arbeiten" text="" />
+    <section className="py-32 page_padding bg-primary-900 overflow-x-hidden">
       <div className=" max-w-[1600px] mx-auto">
         <ul
           ref={container}
-          className="flex flex-col md:grid grid-cols-12 gap-4 justify-center min-h-[65vh]"
+          className="flex flex-col xl:grid grid-cols-12 gap-4 justify-center min-h-[65vh]"
         >
           <div className="col-span-5">
             <BenefitCard

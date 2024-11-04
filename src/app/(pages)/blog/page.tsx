@@ -81,7 +81,7 @@ export default async function BlogPage() {
     }
 
     return (
-      <section className="py-64 flex flex-col px-6 md:px-24 lg:px-48">
+      <section className="py-64 flex flex-col page_padding">
         <SectionText
           title="Blogbeiträge"
           text="Spannende Beiträge rund um Webdesign, Webentwicklung, Webflow und Motiondesign – Inspiration und Know-how für deine digitalen Projekte!"

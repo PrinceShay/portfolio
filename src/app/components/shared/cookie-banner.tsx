@@ -50,7 +50,7 @@ export default function CookieBanner() {
 
   return (
     <div
-      className={`fixed bottom-24 md:bottom-12 w-full px-6 md:px-24 lg:px-48 mx-auto z-50 ${
+      className={`fixed bottom-24 md:bottom-12 w-full page_padding mx-auto z-50 ${
         cookieConsent == null ? "visible" : "hidden"
       }`}
     >

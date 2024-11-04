@@ -119,7 +119,7 @@ export default async function ProjectPage({
 
   if (!data) {
     return (
-      <section className="min-h-screen pt-64 px-6 md:px-24 lg:px-48">
+      <section className="min-h-screen pt-64 page_padding">
         <h1 className="Section_Headline text-center">Beitrag nicht gefunden</h1>
       </section>
     );
@@ -129,7 +129,7 @@ export default async function ProjectPage({
   const randomPosts = getRandomPosts(allPosts, 4);
 
   return (
-    <article className="min-h-screen pt-64 px-6 md:px-24 lg:px-48">
+    <article className="min-h-screen pt-64 page_padding">
       <section>
         <h1 className="Section_Headline text-center">{data.title}</h1>
         <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video">

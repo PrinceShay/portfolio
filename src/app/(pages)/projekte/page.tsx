@@ -60,7 +60,7 @@ const ProjectSection = async () => {
   }
 
   return (
-    <section className="pt-64 px-6 md:px-24 lg:px-48">
+    <section className="pt-64 page_padding">
       <ProjectText title="Aktuelle Cases" text="" />
       <div className="max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
         {data.map((post, idx) => (

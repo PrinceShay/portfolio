@@ -1,4 +1,7 @@
 import ContactForm from "@/app/components/pages/contact/ContactForm";
+import ContactGrid from "@/app/components/pages/contact/ContactGrid";
+import Header from "@/app/components/pages/contact/Header";
+import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 import { Metadata } from "next";
 import React from "react";
 
@@ -35,15 +38,9 @@ export async function generateMetadata({
 
 function page() {
   return (
-    <section className="min-h-screen pt-36 flex flex-col justify-center items-center px-6 md:px-24 lg:px-48 py-24">
-      <h1 className="Section_Headline font-bold text-center">
-        Kontaktiere mich
-      </h1>
-      <p className="text-xl mt-6 mb-16 text-center">
-        Fülle einfach das Formular aus und ich werde mich in Kürze bei dir
-        melden.
-      </p>
-      <ContactForm />
+    <section className="min-h-screen pt-48 flex flex-col justify-center items-center page_padding py-24">
+      <Header />
+      <ContactGrid />
     </section>
   );
 }

@@ -38,10 +38,10 @@ export async function generateMetadata({
 function Page() {
   return (
     <section className="min-h-screen pt-64  ">
-      <h1 className="Section_Headline px-6 md:px-24 lg:px-48">Profil</h1>
+      <h1 className="Section_Headline page_padding">Profil</h1>
       <Biography />
 
-      <section className="grid grid-cols-12 grid-flow-col grid-rows-2 px-6 md:px-24 lg:px-48 mb-24">
+      <section className="grid grid-cols-12 grid-flow-col grid-rows-2 page_padding mb-24 w-full">
         <CV />
         <div className="col-start-1 col-end-13 md:col-end-8 xl:col-end-6 grid grid-rows-3 gap-4 mt-16">
           <div className="">

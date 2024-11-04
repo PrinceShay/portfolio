@@ -118,6 +118,25 @@ body {
   line-height: 95%;
 }
 
+.page_padding {
+  padding-left: 1.5rem; /* entspricht px-6 */
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .page_padding {
+    padding-left: 4rem; /* entspricht md:px-24 */
+    padding-right: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page_padding {
+    padding-left: 9rem; /* entspricht lg:px-48 */
+    padding-right: 9rem;
+  }
+}
+
 .Section_Headline.smaller{
 
   font-size: 4em;
@@ -172,6 +191,12 @@ body {
 .ToolTip{
   -webkit-box-shadow: inset 0px -6px 20px 5px #bf93ff, 0px 12px 17px -3px rgba(35,24,50,0.5); 
 box-shadow: inset 0px -6px 20px 5px #bf93ff, 0px 12px 17px -3px rgba(35,24,50,0.5);
+}
+
+.ShadowInset{
+  box-shadow: 0px 0px 20px 0px rgba(177,122,255,0.3) inset;
+-webkit-box-shadow: 0px 0px 20px 0px rgba(177,122,255,0.3) inset;
+-moz-box-shadow: 0px 0px 20px 0px rgba(177,122,255,0.3) inset;
 }
 
 

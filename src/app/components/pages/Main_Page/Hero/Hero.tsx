@@ -94,7 +94,7 @@ export default function Hero() {
           className="h-72 bg-primary-300 w-1/2 blur-[512px]"
         ></div>
       </div>
-      <div className="px-6 md:px-24 lg:px-48 text-center flex flex-col items-center justify-center min-h-[70vh]">
+      <div className="page_padding text-center flex flex-col items-center justify-center min-h-[70vh]">
         <h1
           ref={heroHeadline}
           className="split font-humane font-bold uppercase leading-[90%] text-[24vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"

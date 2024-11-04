@@ -126,7 +126,7 @@ export default async function ProjectPage({
         solutionContent={data.solutionContent}
         solutionImage={data.solutionImage}
       />
-      <div className="px-6 md:px-24 lg:px-48 mb-24">
+      <div className="page_padding mb-24">
         <ProjectText
           title={data.collectionHeadline}
           text={data.collectionBigText}

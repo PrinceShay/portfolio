@@ -44,7 +44,7 @@ function ProjectInfo({
   smallDescription: any;
 }) {
   return (
-    <section className="px-6 md:px-24 lg:px-48 min-h-[80vh] flex flex-col justify-center py-24">
+    <section className="page_padding min-h-[80vh] flex flex-col justify-center py-24">
       <div className=" grid grid-cols-12">
         <div className="col-span-12 md:col-span-8 2xl:col-span-5">
           <p className="md:text-lg mb-8">Über das Projekt</p>

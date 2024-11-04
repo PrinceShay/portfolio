@@ -135,7 +135,7 @@ function Hero2() {
     <section ref={container}>
       <div
         ref={TextContainer}
-        className=" TextTransform origin-top md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] px-6 md:px-24 lg:px-48 py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
+        className=" TextTransform origin-top md:pt-36 bg-primary-900 bg-opacity-80 backdrop-blur-xl relative z-20 min-h-[80vh] page_padding py-24 flex flex-col justify-end items-center text-center rounded-b-[3em]"
       >
         <p ref={TagRef} className="text-xl 2xl:text-2xl mb-8 split">
           Hey👋, mein Name ist

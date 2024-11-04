@@ -8,7 +8,6 @@ const SmoothScroll: React.FC = () => {
     const lenis = new Lenis();
 
     const handleScroll = (e: Event) => {
-      console.log(e);
       // Add your custom smooth scrolling logic here
     };
 
@@ -27,7 +26,7 @@ const SmoothScroll: React.FC = () => {
     };
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default SmoothScroll;

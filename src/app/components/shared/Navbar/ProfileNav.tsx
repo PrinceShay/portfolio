@@ -61,8 +61,8 @@ function ProfileNav() {
             className="absolute w-16 rounded-full h-16 overflow-hidden z-10"
           >
             <img
-              className="relative top-6 left-1 transform scale-[2.8]"
-              src="/assets/images/vienna.jpg"
+              className="transform"
+              src="/Navigation/ProfilePic.jpg"
               alt="Profile"
             />
           </div>
