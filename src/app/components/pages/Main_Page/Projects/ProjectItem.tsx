@@ -355,7 +355,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             className="touch-none pointer-events-none object-cover"
           />
         )}
-        <div className="w-full h-full bg-gradient-to-t from-primary-600 to-[#4731662c] absolute left-0 bottom-0"></div>
+        <div className="w-full h-full bg-gradient-to-t from-primary-600 to-[#4731662c] opacity-60 absolute left-0 bottom-0"></div>
         <div className="text-center flex flex-col gap-6 justify-between w-full h-full items-center">
           <h2
             ref={titleRef}
