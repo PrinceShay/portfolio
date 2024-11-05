@@ -47,7 +47,7 @@ function ProjectContent({ mediaCollection }: ProjectContentProps) {
 
   return (
     <section className="page_padding py-24">
-      <div className="gap-16 md:gap-64 lg:gap-96 flex flex-col items-center">
+      <div className="gap-16 md:gap-32 flex flex-col items-center">
         {mediaCollection.map((item, index) => (
           <MediaItem
             key={index}

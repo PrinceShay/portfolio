@@ -223,7 +223,7 @@ const Challenge: React.FC<ChallengeProps> = ({
 
   return (
     <div className="page_padding mb-24 md:mb-48">
-      <section className="flex flex-col-reverse justify-between md:flex-row gap-16 py-24">
+      <section className="flex flex-col-reverse justify-between xl:flex-row gap-16 py-24">
         <div className="basis-1/2 content-center">
           <p className="md:text-lg challenge-tag">Die Challenge</p>
           <h1
@@ -257,7 +257,7 @@ const Challenge: React.FC<ChallengeProps> = ({
         </div>
       </section>
 
-      <section className="flex flex-col justify-between md:flex-row gap-16 py-24">
+      <section className="flex flex-col justify-between xl:flex-row gap-16 py-24">
         <div
           ref={solutionImageWrapperRef}
           className="basis-1/2 xl:basis-1/3 overflow-hidden rounded-md max-h-[70vh]"
