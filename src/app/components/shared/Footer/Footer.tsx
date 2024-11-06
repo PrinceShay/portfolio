@@ -4,7 +4,7 @@ import FooterLink from "./FooterLink";
 
 function Footer() {
   return (
-    <footer className=" mt-48 flex flex-col justify-between items-center xl:items-stretch w-full min-h-[60vh]  bg-gradient-to-b from-primary-600 to-primary-500 page_padding  pt-24 pb-24 gap-24 rounded-t-[3em] relative">
+    <footer className=" mt-48 flex flex-col justify-between items-center xl:items-stretch w-full min-h-[60vh]  bg-gradient-to-b from-primary-900 to-primary-800 page_padding  pt-24 pb-24 gap-24 rounded-t-[3em] relative">
       <div className="flex items-center flex-col xl:flex-row gap-16 xl:gap-8 justify-between">
         <div className="base-1/2 text-center md:text-left">
           <h1 className="text-5xl">Schreib mir eine Nachricht!</h1>

@@ -76,7 +76,7 @@ const FooterLink: React.FC<FooterLinkProps> = ({
         </p>
         <p
           ref={shadowRef}
-          className={`Navlink_Shadow absolute top-0 translate-y-full text-primary-200 ${
+          className={`Navlink_Shadow absolute top-0 translate-y-full text-primary-300 ${
             small ? "text-md" : ""
           }`}
         >

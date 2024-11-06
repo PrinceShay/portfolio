@@ -58,7 +58,7 @@ export default function ContactMethods() {
           ) : (
             <div
               key={method.id}
-              className="ShadowInset w-full border-2 border-primary-600 p-2 sm:p-4 rounded-xl flex items-center gap-4 group cursor-pointer"
+              className="ShadowInset w-full border-2 border-primary-600 p-2 sm:p-4 rounded-xl flex items-center gap-4 group active:scale-95 transition-transform duration-150 ease-out cursor-pointer"
             >
               <div className="sm:w-24 sm:h-24 w-16 h-16 border-2 border-primary-700  rounded-lg flex items-end justify-center p-4 group-hover:bg-primary-700 group-hover:text-primary-100 transition-colors duration-300 ease-out">
                 {method.icon}

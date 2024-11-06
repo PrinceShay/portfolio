@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dribbble, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import Slider from "./Slider";
 
@@ -21,7 +21,7 @@ function Biography() {
   useLayoutEffect(() => {
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
-      new SplitType(element as HTMLElement, { types: "lines,words,chars" });
+      new SplitType(element as HTMLElement, { types: "words,chars" });
     });
 
     setSplit(true);
@@ -34,13 +34,11 @@ function Biography() {
       gsap.fromTo(
         ScrollText.current.querySelectorAll(".char"),
         {
-          opacity: 0.3,
-          color: "#35254D",
+          opacity: 0.2,
         },
         {
           opacity: 1,
           stagger: 0.05,
-          color: "#E8D7FF",
           scrollTrigger: {
             trigger: ScrollTextContainer.current,
             start: "20% center",
@@ -170,7 +168,7 @@ function Biography() {
           </p>
           <p
             ref={ScrollText}
-            className="text-[7vw] md:text-[3vw] lg:text-[3.25vw] xl:text-[3vw] split leading-[120%]"
+            className="text-[7vw] md:text-[3vw] lg:text-[3.25vw] xl:text-[3vw] split leading-[120%] text-primary-200"
           >
             Design is not just what it looks like and feels like. Design is how
             it works. The process of design goes far beyond mere decoration; it

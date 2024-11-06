@@ -10,6 +10,8 @@ function PrimaryButton({ title, link }: { title: string; link: string }) {
   const ButtonRef = useRef<HTMLDivElement>(null);
   const textPriRef = useRef<HTMLParagraphElement>(null);
   const textSecRef = useRef<HTMLParagraphElement>(null);
+  const textParentRef = useRef<HTMLDivElement>(null);
+  const arrowParentRef = useRef<HTMLDivElement>(null);
   const hoverRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -108,12 +110,74 @@ function PrimaryButton({ title, link }: { title: string; link: string }) {
     };
 
     const buttonEl = ButtonRef.current;
+    const textParentEl = textParentRef.current;
+    const arrowParentEl = arrowParentRef.current;
+
+    const handleMouseMove = (event: MouseEvent) => {
+      if (buttonEl && textParentEl && arrowParentEl) {
+        const rect = buttonEl.getBoundingClientRect();
+        const x = event.clientX - rect.left - rect.width / 2;
+        const y = event.clientY - rect.top - rect.height / 2;
+
+        const distance = Math.sqrt(x * x + y * y);
+        const maxDistance = 200; // Erhöhter Effekt-Radius
+
+        const magnetStrength = Math.max(
+          0,
+          (maxDistance - distance) / maxDistance
+        );
+
+        gsap.to(buttonEl, {
+          x: x * magnetStrength * 0.3,
+          y: y * magnetStrength * 0.3,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        gsap.to(textParentEl, {
+          x: x * magnetStrength * 0.2,
+          y: y * magnetStrength * 0.2,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+
+        gsap.to(arrowParentEl, {
+          x: x * magnetStrength * 0.25,
+          y: y * magnetStrength * 0.25,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      }
+    };
+
+    const handleMouseLeave = () => {
+      if (buttonEl && textParentEl && arrowParentEl) {
+        gsap.to([buttonEl, textParentEl, arrowParentEl], {
+          x: 0,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      }
+    };
 
     if (buttonEl) {
       buttonEl.addEventListener("mouseenter", animIn);
       buttonEl.addEventListener("mouseleave", animOut);
+      buttonEl.addEventListener("mousemove", handleMouseMove);
+      buttonEl.addEventListener("mouseleave", handleMouseLeave);
     }
-  }, {});
+
+    // Cleanup-Funktion
+    return () => {
+      if (buttonEl) {
+        buttonEl.removeEventListener("mouseenter", animIn);
+        buttonEl.removeEventListener("mouseleave", animOut);
+        buttonEl.removeEventListener("mousemove", handleMouseMove);
+        buttonEl.removeEventListener("mouseleave", handleMouseLeave);
+      }
+    };
+  }, []);
 
   return (
     <Link href={link}>
@@ -123,9 +187,9 @@ function PrimaryButton({ title, link }: { title: string; link: string }) {
       >
         <div
           ref={hoverRef}
-          className="absolute bg-primary-600 opacity-35 w-24 h-24 rounded-full -left-[50%] z-10"
+          className="absolute bg-primary-800 opacity-35 w-24 h-24 rounded-full -left-[50%] z-10"
         ></div>
-        <div className="relative overflow-hidden z-20">
+        <div ref={textParentRef} className="relative overflow-hidden z-20">
           <p ref={textPriRef} className="relative">
             {title}
           </p>
@@ -133,9 +197,9 @@ function PrimaryButton({ title, link }: { title: string; link: string }) {
             {title}
           </p>
         </div>
-        <div className="overflow-hidden z-20 ">
+        <div className="overflow-hidden z-20" ref={arrowParentRef}>
           <div
-            className="relative -ml-[24px] -mb-[24px] opacity-0" // Setze die Opacity initial auf 0, aber die Margins bleiben erhalten
+            className="relative -ml-[24px] -mb-[24px] opacity-0"
             ref={ArrowRef}
           >
             <ArrowUpRight />
