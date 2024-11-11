@@ -48,7 +48,7 @@ export default function Hero() {
   useGSAP(
     () => {
       if (heroHeadline && isSplit) {
-        const heroIn = gsap.timeline({ delay: 2.2 });
+        const heroIn = gsap.timeline({ delay: 0.3 });
         heroIn.from(heroHeadline.current!.querySelectorAll(".word"), {
           yPercent: 60,
           opacity: 0,

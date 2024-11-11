@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Lock, User, Zap, Cpu } from "lucide-react";
 import PrimaryButton from "@/app/components/shared/ui/PrimaryButton";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import Image from "next/image";
 import gsap from "gsap";
-import Lottie from "lottie-web";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
@@ -25,7 +24,7 @@ export function KeineVerstecktenKosten() {
           playsInline
         ></video>
       </div>
-      <div className="flex flex-col items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
+      <div className="flex w-full flex-col items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
         <div className="bg-primary-500 rounded-lg p-3 mb-8">
           <Lock size={32} />
         </div>
@@ -44,29 +43,28 @@ export function KeineVerstecktenKosten() {
 
 // Persönlicher Ansprechpartner
 export function PersoenlicherAnsprechpartner() {
-  const benefitRef = useRef(null);
+  const benefitRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement[]>([]);
 
-  useGSAP(
-    () => {
-      if (!benefitRef.current) return;
+  // Initialisiere die Refs für die Nachrichten
+  messagesRef.current = [];
 
-      const messages = gsap.utils.toArray(".chat-message");
+  useGSAP(() => {
+    if (!benefitRef.current || messagesRef.current.length === 0) return;
 
-      gsap.from(messages, {
-        x: (index) => (index % 2 === 0 ? -100 : 100),
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1.6,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: benefitRef.current,
-          start: "top 80%",
-          toggleActions: "play pause resume reset",
-        },
-      });
-    },
-    { scope: benefitRef }
-  );
+    gsap.from(messagesRef.current, {
+      x: (index: number) => (index % 2 === 0 ? -100 : 100),
+      opacity: 0,
+      stagger: 0.2,
+      duration: 1.6,
+      ease: "power4.out",
+      scrollTrigger: {
+        trigger: benefitRef.current,
+        start: "top 80%",
+        toggleActions: "play pause resume reset",
+      },
+    });
+  }, []);
 
   return (
     <div
@@ -76,7 +74,12 @@ export function PersoenlicherAnsprechpartner() {
       <div className="w-full h-full absolute overflow-hidden rounded-2xl p-6 sm:p-12">
         <div className="flex flex-col gap-6">
           {/* Nachricht von Jannis */}
-          <div className="chat-message flex items-center justify-center gap-4">
+          <div
+            className="flex items-center justify-center gap-4"
+            ref={(el) => {
+              if (el) messagesRef.current.push(el);
+            }}
+          >
             <div className="w-16 h-16 rounded-full overflow-hidden relative border-2 border-primary-500">
               <Image
                 src={"/assets/images/profile/slider/SON08701.jpg_web_sw.jpg"}
@@ -91,7 +94,12 @@ export function PersoenlicherAnsprechpartner() {
             </div>
           </div>
           {/* Nachricht vom Kunden */}
-          <div className="chat-message flex flex-row-reverse items-center justify-center gap-4">
+          <div
+            className="flex flex-row-reverse items-center justify-center gap-4"
+            ref={(el) => {
+              if (el) messagesRef.current.push(el);
+            }}
+          >
             <div className="min-w-16 min-h-16 max-w-16 max-h-16 p-4 flex items-center justify-center rounded-full overflow-hidden relative border-2 border-primary-500">
               <User size={"100%"} />
             </div>
@@ -101,7 +109,12 @@ export function PersoenlicherAnsprechpartner() {
             </div>
           </div>
           {/* Antwort von Jannis */}
-          <div className="chat-message flex items-center justify-center gap-4">
+          <div
+            className="flex items-center justify-center gap-4"
+            ref={(el) => {
+              if (el) messagesRef.current.push(el);
+            }}
+          >
             <div className="w-16 h-16 rounded-full overflow-hidden relative border-2 border-primary-500">
               <Image
                 src={"/assets/images/profile/slider/SON08701.jpg_web_sw.jpg"}
@@ -116,7 +129,12 @@ export function PersoenlicherAnsprechpartner() {
             </div>
           </div>
           {/* Weitere Nachricht vom Kunden */}
-          <div className="chat-message flex flex-row-reverse items-center justify-center gap-4">
+          <div
+            className="flex flex-row-reverse items-center justify-center gap-4"
+            ref={(el) => {
+              if (el) messagesRef.current.push(el);
+            }}
+          >
             <div className="min-w-16 min-h-16 max-w-16 max-h-16 p-4 flex items-center justify-center rounded-full overflow-hidden relative border-2 border-primary-500">
               <User size={"100%"} />
             </div>
@@ -126,7 +144,7 @@ export function PersoenlicherAnsprechpartner() {
           </div>
         </div>
       </div>
-      <div className="flex flex-col h-full justify-end items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
+      <div className="flex flex-col w-full h-full justify-end items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
         <div className="bg-primary-500 rounded-lg p-3 mb-8">
           <User size={32} />
         </div>
@@ -146,15 +164,18 @@ export function PersoenlicherAnsprechpartner() {
 // Schnell. Effizient. Erschwinglich.
 export function SchnellEffizientErschwinglich() {
   return (
-    <div className="relative w-full h-full group flex flex-col justify-end items-start z-20">
-      <div className="w-full h-full absolute left-0 top-0">
-        <Zap
-          stroke="none"
-          size={"100%"}
-          className="fill-primary-400 absolute -top-40 drop-shadow-[0_35px_35px_rgba(206,172,255,0.7)]"
-        />
+    <div className="relative w-full h-full group flex flex-col justify-end items-start z-20 overflow-hidden rounded-2xl">
+      <div className="w-full h-3/4 absolute left-0 top-0">
+        <video
+          src="/assets/videos/Zap.webm"
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        ></video>
       </div>
-      <div className="flex flex-col h-full justify-end items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
+      <div className="flex flex-col w-full h-full justify-end items-start p-6 sm:p-12 relative z-20 bg-gradient-to-b from-transparent to-darkBlue-400 to-60% rounded-2xl">
         <div className="bg-primary-500 rounded-lg p-3 mb-8">
           <Zap size={32} />
         </div>
@@ -179,47 +200,44 @@ export function ModernsteTechnologie() {
     { label: "Best Practices", value: 95 },
   ];
 
-  const [progressValues, setProgressValues] = useState([0, 0, 0]);
-  const benefitRef = useRef(null);
-  const progressAnims = useRef(data.map(() => ({ val: 0 })));
+  const [progressValues, setProgressValues] = useState<number[]>([0, 0, 0]);
+  const benefitRef = useRef<HTMLDivElement>(null);
+  const progressAnims = useRef<{ val: number }[]>(data.map(() => ({ val: 0 })));
 
-  useGSAP(
-    () => {
-      if (!benefitRef.current) return;
+  useGSAP(() => {
+    if (!benefitRef.current) return;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: benefitRef.current,
-          start: "top 100%",
-          toggleActions: "play pause resume reset",
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: benefitRef.current,
+        start: "top 100%",
+        toggleActions: "play pause resume reset",
+      },
+    });
 
-      tl.from("#circleBackground", {
-        scale: 0.6,
-        opacity: 0,
-        duration: 3,
+    tl.from("#circleBackground", {
+      scale: 0.6,
+      opacity: 0,
+      duration: 3,
+      ease: "power4.out",
+    });
+
+    tl.to(
+      progressAnims.current,
+      {
+        val: (index: number) => data[index].value,
+        duration: 1.5,
         ease: "power4.out",
-      });
-
-      tl.to(
-        progressAnims.current,
-        {
-          val: (index: number) => data[index].value,
-          duration: 1.5,
-          ease: "power4.out",
-          onUpdate: function () {
-            setProgressValues(
-              progressAnims.current.map((item) => Math.round(item.val))
-            );
-          },
-          stagger: 0.2,
+        onUpdate: function () {
+          setProgressValues(
+            progressAnims.current.map((item) => Math.round(item.val))
+          );
         },
-        "<"
-      );
-    },
-    { scope: benefitRef }
-  );
+        stagger: 0.2,
+      },
+      "<"
+    );
+  }, []);
 
   return (
     <div
@@ -255,7 +273,7 @@ export function ModernsteTechnologie() {
           ))}
         </div>
       </div>
-      <div className="flex flex-col items-start relative z-20 ">
+      <div className="flex w-full flex-col items-start relative z-20 ">
         <div className="bg-primary-500 rounded-lg p-3 mb-8">
           <Cpu size={32} />
         </div>
@@ -263,8 +281,8 @@ export function ModernsteTechnologie() {
           Modernste Technologie. Maximale Geschwindigkeit.
         </h2>
         <p className="text-xl text-gray-300 max-w-prose">
-          Ihre Website lädt blitzschnell, läuft reibungslos und stärkt Ihre
-          Präsenz in Suchmaschinen – für ein Erlebnis, das Ihre Kunden
+          Deine Website lädt blitzschnell, läuft reibungslos und stärkt deine
+          Präsenz in Suchmaschinen – für ein Erlebnis, das deine Kunden
           begeistert.
         </p>
       </div>
@@ -274,64 +292,61 @@ export function ModernsteTechnologie() {
 
 // BenefitCTA
 export const BenefitCTA = () => {
-  const ctaParent = useRef(null);
-  const firstColumnRef = useRef(null);
-  const secondColumnRef = useRef(null);
-  const thirdColumnRef = useRef(null);
+  const ctaParent = useRef<HTMLDivElement>(null);
+  const firstColumnRef = useRef<HTMLDivElement>(null);
+  const secondColumnRef = useRef<HTMLDivElement>(null);
+  const thirdColumnRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      if (
-        !ctaParent.current ||
-        !firstColumnRef.current ||
-        !secondColumnRef.current ||
-        !thirdColumnRef.current
-      )
-        return;
+  useGSAP(() => {
+    if (
+      !ctaParent.current ||
+      !firstColumnRef.current ||
+      !secondColumnRef.current ||
+      !thirdColumnRef.current
+    )
+      return;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ctaParent.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ctaParent.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-      tl.to(firstColumnRef.current, {
+    tl.to(firstColumnRef.current, {
+      y: "-20%",
+      ease: "none",
+    });
+
+    tl.to(
+      secondColumnRef.current,
+      {
+        y: "20%",
+        ease: "none",
+      },
+      "<"
+    );
+
+    tl.to(
+      thirdColumnRef.current,
+      {
         y: "-20%",
         ease: "none",
-      });
+      },
+      "<"
+    );
 
-      tl.to(
-        secondColumnRef.current,
-        {
-          y: "20%",
-          ease: "none",
-        },
-        "<"
-      );
-
-      tl.to(
-        thirdColumnRef.current,
-        {
-          y: "-20%",
-          ease: "none",
-        },
-        "<"
-      );
-
-      tl.from(
-        ctaParent.current,
-        {
-          rotateX: 20,
-          ease: "none",
-        },
-        "<"
-      );
-    },
-    { scope: ctaParent }
-  );
+    tl.from(
+      ctaParent.current,
+      {
+        rotateX: 20,
+        ease: "none",
+      },
+      "<"
+    );
+  }, []);
 
   return (
     <div className="w-full h-full flex flex-col justify-end items-start z-20 relative rounded-2xl overflow-hidden">

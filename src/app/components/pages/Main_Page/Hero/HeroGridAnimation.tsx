@@ -24,7 +24,7 @@ export default function HeroGridAnimation() {
         each: 0.1,
         ease: "power2.inOut",
       },
-      delay: 2.2,
+      delay: 0.3,
     });
 
     const gridMove = gsap.timeline();
