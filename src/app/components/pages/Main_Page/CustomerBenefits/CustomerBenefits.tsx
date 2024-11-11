@@ -1,13 +1,20 @@
 "use client";
-import React from "react";
-import BenefitCard from "./BenefitCard";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import ProjectText from "../../../shared/ui/SectionText";
+import { ScrollTrigger } from "gsap/all";
+import {
+  BenefitCTA,
+  KeineVerstecktenKosten,
+  ModernsteTechnologie,
+  PersoenlicherAnsprechpartner,
+  SchnellEffizientErschwinglich,
+} from "./BenefitLib";
 
 function CustomerBenefits() {
   const container = useRef(null);
+  const benefitRef = useRef(null);
+
   useGSAP(
     () => {
       gsap.from(".BenefitCard", {
@@ -17,10 +24,11 @@ function CustomerBenefits() {
         opacity: 0,
         stagger: 0.2,
         duration: 2,
-        ease: "elastic.out(1,0.8)",
+        ease: "elastic.out(1, 0.8)",
         scrollTrigger: {
           trigger: container.current,
           start: "top 70%",
+          markers: true,
         },
       });
     },
@@ -28,59 +36,47 @@ function CustomerBenefits() {
   );
 
   return (
-    <section className="py-32 page_padding bg-primary-900 overflow-x-hidden">
-      <div className=" max-w-[1600px] mx-auto">
-        <ul
-          ref={container}
-          className="flex flex-col xl:grid grid-cols-12 gap-4 justify-center min-h-[65vh]"
-        >
-          <div className="col-span-5">
-            <BenefitCard
-              imageSrc="/assets/images/main/Benefits/badge-euro.svg"
-              title={
-                <>
-                  Keine versteckten
-                  <wbr /> Kosten
-                </>
-              }
-              content="Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
-                       Kosten gibt. Du weißt genau, was du für dein Budget erhältst, ohne
-                       unangenehme Überraschungen."
-            />
-          </div>
-          <div className="col-span-7">
-            <BenefitCard
-              imageSrc="/assets/images/main/Benefits/phone-call.svg"
-              title={
-                <>
-                  Persönlicher
-                  <wbr /> Ansprechpartner
-                </>
-              }
-              content="Während des gesamten Projekts hast du stets einen festen Ansprechpartner – mich. Das garantiert klare Kommunikation, schnelle Antworten auf deine Fragen und individuelle Betreuung."
-            />
-          </div>
+    <section
+      className="py-32 page_padding min-h-screen overflow-x-hidden"
+      ref={container}
+    >
+      <div className="max-w-[1600px] mx-auto">
+        <div className="w-full grid grid-cols-12 grid-rows-2 gap-8">
+          {/* Erste Reihe */}
+          <article className="col-span-12 md:col-span-6 bg-darkBlue-400  min-h-[70vh] sm:min-h-[50vh] rounded-2xl relative BenefitCard">
+            <KeineVerstecktenKosten />
+            <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
+              <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute right-0"></div>
+            </div>
+          </article>
+          <article className="col-span-12 md:col-span-6 bg-darkBlue-400 min-h-[70vh] sm:min-h-[50vh] rounded-2xl BenefitCard">
+            <PersoenlicherAnsprechpartner />
+            <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
+              <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute left-0"></div>
+            </div>
+          </article>
 
-          <div className="col-span-8">
-            <BenefitCard
-              imageSrc="/assets/images/main/Benefits/chart-no-axes-combined.svg"
-              title={<>Kosteneffizienz</>}
-              content="Als Freelancer kann ich qualitativ hochwertige Webdesign-Dienstleistungen zu einem günstigeren Preis anbieten als größere Agenturen. Du sparst Geld, ohne Kompromisse bei der Qualität einzugehen."
-            />
-          </div>
-          <div className="col-span-4">
-            <BenefitCard
-              imageSrc="/assets/images/main/Benefits/brush.svg"
-              title={
-                <>
-                  Freiheit im
-                  <wbr /> Design
-                </>
-              }
-              content="Durch die Verwendung von Webflow als Plattform bin ich in der Lage, einzigartige und maßgeschneiderte Webseiten zu erstellen. Deine Seite wird sich von der Masse abheben und genau deine Vorstellungen entsprechen."
-            />
-          </div>
-        </ul>
+          {/* Zweite Reihe */}
+          <article className="col-span-12 md:col-span-6 2xl:col-span-4 xl:col-start-1 bg-darkBlue-400 min-h-[70vh] sm:min-h-[50vh] rounded-2xl BenefitCard">
+            <SchnellEffizientErschwinglich />
+            <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
+              <div className="bg-primary-500 w-full h-64 blur-[200px] absolute right-0 top-0"></div>
+            </div>
+          </article>
+          <article
+            ref={benefitRef}
+            className="col-span-12 md:row-start-2 2xl:col-span-4 xl:col-start-5 bg-darkBlue-400 min-h-[70vh] sm:min-h-[50vh] rounded-2xl BenefitCard"
+          >
+            <BenefitCTA />
+          </article>
+          <article className="col-span-12 md:col-span-6 2xl:col-span-4 bg-darkBlue-400 min-h-[70vh] sm:min-h-[60vh] rounded-2xl BenefitCard">
+            <ModernsteTechnologie />
+
+            <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
+              <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute left-0"></div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
   );
