@@ -44,7 +44,7 @@ export async function generateMetadata({
 export default function Home() {
   return (
     <main className="">
-      {/* <Preloader /> */}
+      <Preloader />
       <Hero />
       <Projects />
       <CustomerBenefits />
