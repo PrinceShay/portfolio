@@ -30,7 +30,7 @@ const BenefitCard = forwardRef<HTMLElement, BenefitCardProps>(
           }}
           className="w-72 h-72 blur-[128px] bg-primary-400 absolute group-hover:opacity-100 opacity-0 transition-opacity ease-out duration-300"
         ></div>
-        <div className="w-full h-full bg-darkBlue-400 relative z-10 rounded-xl">
+        <div className="w-full h-full bg-darkBlue-400 relative z-20 rounded-xl">
           {children}
         </div>
         {blurElement}
