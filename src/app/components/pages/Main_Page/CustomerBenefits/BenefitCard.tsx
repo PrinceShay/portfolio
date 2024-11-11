@@ -3,11 +3,10 @@ import React, { useState, forwardRef } from "react";
 type BenefitCardProps = {
   children: React.ReactNode;
   className?: string;
-  blurElement?: React.ReactNode;
 };
 
 const BenefitCard = forwardRef<HTMLElement, BenefitCardProps>(
-  ({ children, className = "", blurElement }, ref) => {
+  ({ children, className = "" }, ref) => {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
     const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
@@ -33,7 +32,6 @@ const BenefitCard = forwardRef<HTMLElement, BenefitCardProps>(
         <div className="w-full h-full bg-darkBlue-400 relative z-20 rounded-xl">
           {children}
         </div>
-        {blurElement}
       </article>
     );
   }

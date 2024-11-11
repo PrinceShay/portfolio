@@ -52,11 +52,6 @@ function CustomerBenefits() {
               if (el) benefitCards.current.push(el);
             }}
             className="col-span-12 md:col-span-6 min-h-[70vh] sm:min-h-[50vh]"
-            blurElement={
-              <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
-                <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute right-0"></div>
-              </div>
-            }
           >
             <KeineVerstecktenKosten />
           </BenefitCard>
@@ -66,11 +61,6 @@ function CustomerBenefits() {
               if (el) benefitCards.current.push(el);
             }}
             className="col-span-12 md:col-span-6 min-h-[70vh] sm:min-h-[50vh]"
-            blurElement={
-              <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
-                <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute left-0"></div>
-              </div>
-            }
           >
             <PersoenlicherAnsprechpartner />
           </BenefitCard>
@@ -81,11 +71,6 @@ function CustomerBenefits() {
               if (el) benefitCards.current.push(el);
             }}
             className="col-span-12 md:col-span-6 2xl:col-span-4 min-h-[70vh] sm:min-h-[50vh]"
-            blurElement={
-              <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
-                <div className="bg-primary-500 w-full h-64 blur-[200px] absolute right-0 top-0"></div>
-              </div>
-            }
           >
             <SchnellEffizientErschwinglich />
           </BenefitCard>
@@ -104,11 +89,6 @@ function CustomerBenefits() {
               if (el) benefitCards.current.push(el);
             }}
             className="col-span-12 md:col-span-6 2xl:col-span-4 min-h-[70vh] sm:min-h-[60vh] "
-            blurElement={
-              <div className="absolute w-full h-full left-0 top-0 rounded-2xl z-10 overflow-hidden pointer-events-none">
-                <div className="bg-primary-500 w-64 h-64 blur-[200px] absolute left-0"></div>
-              </div>
-            }
           >
             <ModernsteTechnologie />
           </BenefitCard>
