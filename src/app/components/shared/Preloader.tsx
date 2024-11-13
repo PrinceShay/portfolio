@@ -28,13 +28,16 @@ function Preloader() {
 
     return () => {
       window.removeEventListener("resize", updateGridSize);
+
+      console.log("Anzahl der Spalten (cols):", gridSize.columns);
+      console.log("Anzahl der Zeilen (rows):", gridSize.rows);
     };
   }, []);
 
   useGSAP(() => {
     if (bannerCount > 0) {
       const tl = gsap.timeline({
-        delay: 4, // 2 Sekunden Wartezeit vor Beginn der Animation
+        delay: 1, // 2 Sekunden Wartezeit vor Beginn der Animation
         onComplete: () => {
           if (loadingContainerRef.current) {
             loadingContainerRef.current.style.display = "none";
@@ -69,7 +72,7 @@ function Preloader() {
         }}
       >
         {Array.from({ length: bannerCount }).map((_, index) => (
-          <div key={index} className="Banner bg-darkBlue-500"></div>
+          <div key={index} className="Banner bg-darkBlue-500 opacity-100"></div>
         ))}
       </div>
     </div>
