@@ -1,22 +1,24 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function Preloader() {
   const [gridSize, setGridSize] = useState({ columns: 12, rows: 12 });
   const [bannerCount, setBannerCount] = useState(144);
   const loadingContainerRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // Funktion zur Berechnung der Grid-Größe basierend auf dem Bildschirm
   const updateGridSize = () => {
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
 
-    // Bestimmen der maximalen Anzahl an Spalten und Reihen, um quadratische Zellen zu gewährleisten
-    const maxColumns = 20; // Maximale Spaltenanzahl zur Begrenzung auf mobilen Geräten
-    const maxRows = 20; // Maximale Reihenanzahl zur Begrenzung auf mobilen Geräten
+    // Maximale Anzahl an Spalten und Reihen zur Begrenzung auf mobilen Geräten
+    const maxColumns = 20;
+    const maxRows = 20;
 
-    // Berechnung der Zellgröße basierend auf der Bildschirmgröße
+    // Berechnung der Zellgröße, um quadratische Zellen zu gewährleisten
     const cellSize = Math.floor(
       Math.min(screenWidth / maxColumns, screenHeight / maxRows)
     );
@@ -41,44 +43,53 @@ function Preloader() {
     };
   }, []);
 
-  useEffect(() => {
-    if (bannerCount > 0) {
-      const tl = gsap.timeline({
-        delay: 0.25,
-        onComplete: () => {
-          if (loadingContainerRef.current) {
-            gsap.to(loadingContainerRef.current, {
-              opacity: 0,
-              duration: 0.5,
-              onComplete: () => {
-                if (loadingContainerRef.current) {
-                  loadingContainerRef.current.style.display = "none";
-                }
-              },
-            });
-          }
-        },
-      });
+  // Verwenden des useGSAP Hooks für die Animation
+  useGSAP(
+    (context, contextSafe) => {
+      if (bannerCount > 0) {
+        const tl = gsap.timeline({
+          delay: 0.25,
+          onComplete: () => {
+            if (loadingContainerRef.current) {
+              gsap.to(loadingContainerRef.current, {
+                opacity: 0,
+                duration: 0.5,
+                onComplete: () => {
+                  if (loadingContainerRef.current) {
+                    loadingContainerRef.current.style.display = "none";
+                  }
+                },
+              });
+            }
+          },
+          context: context, // Kontext für saubere Aufräumung
+        });
 
-      tl.to(".Banner", {
-        opacity: 0,
-        backgroundColor: "#35254D",
-        ease: "power3.out",
-        stagger: {
-          amount: 0.95,
-          from: "random",
-          grid: [gridSize.columns, gridSize.rows],
-        },
-      });
+        tl.to(".Banner", {
+          opacity: 0,
+          backgroundColor: "#35254D",
+          ease: "power3.out",
+          stagger: {
+            amount: 0.95,
+            from: "random",
+            grid: [gridSize.columns, gridSize.rows],
+          },
+        });
+      }
+    },
+    {
+      dependencies: [bannerCount, gridSize.columns, gridSize.rows],
+      scope: gridRef,
     }
-  }, [bannerCount, gridSize.columns, gridSize.rows]);
+  );
 
   return (
     <div
       ref={loadingContainerRef}
-      className="w-full h-full flex justify-center items-center fixed left-0 top-0 z-50"
+      className="w-full h-full flex justify-center items-center fixed left-0 top-0 z-50 "
     >
       <div
+        ref={gridRef}
         className="w-full h-full grid"
         style={{
           gridTemplateColumns: `repeat(${gridSize.columns}, 1fr)`,
