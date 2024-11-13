@@ -42,7 +42,7 @@ function Preloader() {
       });
 
       // Anpassung der Grid-Animation an den Stil des MobileMenu
-      tl.set(".Banner", { opacity: 1, backgroundColor: "#35254D" }); // Sichtbar zu Beginn
+      tl.set(".Banner", { opacity: 1 }); // Sichtbar zu Beginn
       tl.to(".Banner", {
         opacity: 0,
         ease: "power3.in",
