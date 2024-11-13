@@ -193,8 +193,8 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
             className="touch-none pointer-events-none object-cover"
           />
         )}
-        <div className="w-full h-full bg-gradient-to-t bg-darkBlue-400 group-hover:bg-primary-600 transition-colors ease-out duration-300 opacity-60 absolute left-0 bottom-0"></div>
-        <div className="text-center flex flex-col gap-6 justify-end w-full h-full items-center group-hover:scale-[1.15] transition-transform duration-500 ease-out">
+        <div className="w-full h-full bg-gradient-to-t bg-darkBlue-400 group-hover:bg-primary-600 transition-colors ease-out duration-300 opacity-60 group-hover:opacity-30 absolute left-0 bottom-0"></div>
+        <div className="text-center flex flex-col gap-6 justify-end w-full h-full items-center group-hover:scale-[1.2] transition-transform duration-500 ease-out">
           <h2 ref={titleRef} className="ProjectCard-Heading mt-4 relative">
             {post.title}
           </h2>
