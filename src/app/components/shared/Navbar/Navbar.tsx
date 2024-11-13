@@ -44,6 +44,9 @@ function Navbar() {
 
   useGSAP(
     () => {
+      gsap.set(NavContainer.current, {
+        opacity: 1,
+      });
       var tl = gsap.timeline({ delay: 2, autoAlpha: 0 });
       tl.from(NavContainer.current, {
         width: 0,
@@ -83,7 +86,7 @@ function Navbar() {
       >
         <nav
           ref={NavContainer}
-          className="hidden items-center max-w-5xl mx-auto md:grid xl:grid-cols-3 border border-primary-700 border-opacity-50 bg-darkBlue-400 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
+          className="hidden opacity-0 items-center max-w-5xl mx-auto md:grid xl:grid-cols-3 border border-primary-700 border-opacity-50 bg-darkBlue-400 bg-opacity-50 backdrop-blur-md rounded-full p-2 overflow-hidden"
         >
           <ProfileNav />
           <ul className=" text-xl col-start-2 justify-self-center flex gap-1  items-center">

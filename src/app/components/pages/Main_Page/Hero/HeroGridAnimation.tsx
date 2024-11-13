@@ -13,6 +13,7 @@ export default function HeroGridAnimation() {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.set(heroScrollRef.current, { opacity: 1 });
 
     //animate in
     gsap.from(".js_heroGridItem", {
@@ -81,7 +82,7 @@ export default function HeroGridAnimation() {
   });
 
   return (
-    <div ref={heroScrollRef} className="h-[300vh] overflow-clip">
+    <div ref={heroScrollRef} className="h-[300vh] overflow-clip opacity-0">
       <div
         ref={heroGridRef}
         className="flex flex-row items-center justify-center gap-16 w-screen h-screen sticky top-0"
