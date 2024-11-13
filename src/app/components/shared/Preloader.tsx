@@ -1,6 +1,7 @@
 "use client";
 import React, { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 function Preloader() {
   const [gridSize, setGridSize] = useState({ columns: 12, rows: 12 });
@@ -30,7 +31,7 @@ function Preloader() {
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     if (bannerCount > 0) {
       const tl = gsap.timeline({
         delay: 4, // 2 Sekunden Wartezeit vor Beginn der Animation
