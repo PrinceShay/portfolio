@@ -86,11 +86,11 @@ function Preloader() {
   return (
     <div
       ref={loadingContainerRef}
-      className="w-full h-full flex justify-center items-center fixed left-0 top-0 z-50 "
+      className="w-screen h-screen flex justify-center items-center fixed left-0 top-0 z-50 "
     >
       <div
         ref={gridRef}
-        className="w-full h-full grid"
+        className="w-screen h-screen grid"
         style={{
           gridTemplateColumns: `repeat(${gridSize.columns}, 1fr)`,
           gridTemplateRows: `repeat(${gridSize.rows}, 1fr)`,
