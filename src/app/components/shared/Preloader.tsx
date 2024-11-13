@@ -5,7 +5,7 @@ import gsap from "gsap";
 function Preloader() {
   const [gridSize, setGridSize] = useState({ columns: 12, rows: 12 });
   const [bannerCount, setBannerCount] = useState(144);
-  const loadingContainerRef = useRef<HTMLDivElement>(null); // Typ für das Ref definiert
+  const loadingContainerRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const updateGridSize = () => {
@@ -33,20 +33,21 @@ function Preloader() {
   useLayoutEffect(() => {
     if (bannerCount > 0) {
       const tl = gsap.timeline({
-        delay: 0.25,
+        delay: 2, // 2 Sekunden Wartezeit vor Beginn der Animation
         onComplete: () => {
           if (loadingContainerRef.current) {
-            loadingContainerRef.current.style.display = "none"; // Kein Fehler mehr
+            loadingContainerRef.current.style.display = "none";
           }
         },
       });
 
+      // Anpassung der Grid-Animation an den Stil des MobileMenu
+      tl.set(".Banner", { opacity: 1, backgroundColor: "#35254D" }); // Sichtbar zu Beginn
       tl.to(".Banner", {
         opacity: 0,
-        backgroundColor: "#35254D",
-        ease: "power3.out",
+        ease: "power3.in",
         stagger: {
-          amount: 0.95,
+          amount: 0.75,
           from: "random",
           grid: [gridSize.columns, gridSize.rows],
         },
