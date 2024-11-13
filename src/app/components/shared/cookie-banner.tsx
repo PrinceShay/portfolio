@@ -54,7 +54,7 @@ export default function CookieBanner() {
         cookieConsent == null ? "visible" : "hidden"
       }`}
     >
-      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-2xl md:rounded-full p-8 max-w-7xl mx-auto relative ">
+      <div className="border border-primary-600 border-opacity-50 bg-primary-900 bg-opacity-50 backdrop-blur-md rounded-2xl p-8 max-w-7xl mx-auto relative ">
         <div className="flex flex-col items-center">
           <div className="text-center overflow-auto">
             <p className="text-2xl mb-4 font-semibold">Cookies</p>
