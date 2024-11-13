@@ -22,6 +22,13 @@ function Preloader() {
 
       setGridSize({ columns, rows });
       setBannerCount(columns * rows);
+
+      console.log(
+        `Screen Width: ${screenWidth}, Screen Height: ${screenHeight}`
+      );
+      console.log(
+        `Columns: ${columns}, Rows: ${rows}, Banner Count: ${columns * rows}`
+      );
     };
 
     updateGridSize();
