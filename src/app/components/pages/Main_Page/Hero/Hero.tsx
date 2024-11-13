@@ -48,7 +48,8 @@ export default function Hero() {
   useGSAP(
     () => {
       if (heroHeadline && isSplit) {
-        const heroIn = gsap.timeline({ delay: 0.7, autoAlpha: 0 });
+        gsap.set("#heroTextContainer", { opacity: 1 });
+        const heroIn = gsap.timeline({ delay: 0.7 });
         heroIn.from(heroHeadline.current!.querySelectorAll(".word"), {
           yPercent: 60,
           opacity: 0,
@@ -94,7 +95,10 @@ export default function Hero() {
           className="h-72 bg-primary-300 w-1/2 blur-[512px]"
         ></div>
       </div>
-      <div className="page_padding text-center flex flex-col items-center justify-center min-h-[70vh]">
+      <div
+        id="heroTextContainer"
+        className="page_padding text-center flex flex-col items-center justify-center min-h-[70vh] opacity-0"
+      >
         <h1
           ref={heroHeadline}
           className="split font-humane font-bold uppercase leading-[90%] text-[24vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
