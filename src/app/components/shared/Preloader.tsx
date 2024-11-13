@@ -5,30 +5,21 @@ import gsap from "gsap";
 function Preloader() {
   const [gridSize, setGridSize] = useState({ columns: 12, rows: 12 });
   const [bannerCount, setBannerCount] = useState(144);
-  const loadingContainerRef = useRef<HTMLDivElement>(null);
+  const loadingContainerRef = useRef<HTMLDivElement>(null); // Typ für das Ref definiert
 
   useLayoutEffect(() => {
     const updateGridSize = () => {
       const screenWidth = window.innerWidth;
       const screenHeight = window.innerHeight;
-      const desiredColumns = 12; // Festgelegte Anzahl von Spalten
-      const desiredRows = 12; // Festgelegte Anzahl von Reihen
       const cellSize = Math.min(
-        screenWidth / desiredColumns,
-        screenHeight / desiredRows
+        screenWidth / gridSize.columns,
+        screenHeight / gridSize.rows
       );
       const columns = Math.floor(screenWidth / cellSize);
       const rows = Math.floor(screenHeight / cellSize);
 
       setGridSize({ columns, rows });
       setBannerCount(columns * rows);
-
-      console.log(
-        `Screen Width: ${screenWidth}, Screen Height: ${screenHeight}`
-      );
-      console.log(
-        `Columns: ${columns}, Rows: ${rows}, Banner Count: ${columns * rows}`
-      );
     };
 
     updateGridSize();
@@ -45,7 +36,7 @@ function Preloader() {
         delay: 0.25,
         onComplete: () => {
           if (loadingContainerRef.current) {
-            loadingContainerRef.current.style.display = "none";
+            loadingContainerRef.current.style.display = "none"; // Kein Fehler mehr
           }
         },
       });
