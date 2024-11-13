@@ -43,7 +43,7 @@ export async function generateMetadata({
 
 export default function Home() {
   return (
-    <main className="">
+    <main className="min-h-screen">
       <Preloader />
       <Hero />
       <Projects />
