@@ -35,7 +35,6 @@ const ProjectList = async () => {
   );
 };
 
-// Adding the display name to the component
 ProjectList.displayName = "ProjectList";
 
 export default ProjectList;

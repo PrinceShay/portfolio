@@ -51,7 +51,8 @@ function MobileMenu() {
         MenuContainer.current?.classList.add("hidden");
         (gridContainerRef.current?.parentNode as HTMLElement)?.classList.add(
           "hidden"
-        ); // Äußeren Container ausblenden
+        );
+        document.body.style.overflow = ""; // Scrollen wieder aktivieren
       },
     });
 
@@ -87,7 +88,8 @@ function MobileMenu() {
           MenuContainer.current?.classList.remove("hidden");
           (
             gridContainerRef.current?.parentNode as HTMLElement
-          )?.classList.remove("hidden"); // Äußeren Container einblenden
+          )?.classList.remove("hidden");
+          document.body.style.overflow = "hidden"; // Scrollen deaktivieren
         },
       },
       "-=0.5" // Startet 0.5 Sekunden vor Ende der Grid-Animation
@@ -150,7 +152,7 @@ function MobileMenu() {
         MenuContainer.current?.classList.remove("hidden");
         (gridContainerRef.current?.parentNode as HTMLElement)?.classList.remove(
           "hidden"
-        ); // Äußeren Container einblenden
+        );
         menuTL.current.play(0);
       } else {
         menuTL.current.reverse();
