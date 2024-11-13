@@ -33,7 +33,7 @@ function Preloader() {
   useLayoutEffect(() => {
     if (bannerCount > 0) {
       const tl = gsap.timeline({
-        delay: 2, // 2 Sekunden Wartezeit vor Beginn der Animation
+        delay: 4, // 2 Sekunden Wartezeit vor Beginn der Animation
         onComplete: () => {
           if (loadingContainerRef.current) {
             loadingContainerRef.current.style.display = "none";
