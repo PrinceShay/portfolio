@@ -3,6 +3,7 @@ import React from "react";
 import CTAWindow from "@/app/components/shared/ui/CTAWindow";
 import { Metadata } from "next";
 import Biography from "@/app/components/pages/Profile/Biography";
+import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 
 export async function generateMetadata({
   params,
@@ -38,7 +39,7 @@ export async function generateMetadata({
 function Page() {
   return (
     <section className="min-h-screen pt-64  ">
-      <h1 className="Section_Headline page_padding">Profil</h1>
+      <HugeHeadline text="Profil" />
       <Biography />
 
       <section className="grid grid-cols-12 grid-flow-col grid-rows-2 page_padding mb-24 w-full">
