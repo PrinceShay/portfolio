@@ -21,15 +21,6 @@ export default function Hero() {
   const heroSection = useRef(null);
 
   useLayoutEffect(() => {
-    const elements = document.getElementsByClassName("split");
-    Array.from(elements).forEach((element) => {
-      new SplitType(element as HTMLElement, {
-        types: "words,chars",
-      });
-    });
-
-    setSplit(true);
-
     // Function to check screen size
     const handleResize = () => {
       setIsLargeScreen(window.innerWidth > 640);
@@ -47,6 +38,14 @@ export default function Hero() {
 
   useGSAP(
     () => {
+      const elements = document.getElementsByClassName("split");
+      Array.from(elements).forEach((element) => {
+        new SplitType(element as HTMLElement, {
+          types: "words,chars",
+        });
+      });
+
+      setSplit(true);
       if (heroHeadline && isSplit) {
         gsap.set("#heroTextContainer", { opacity: 1 });
         const heroIn = gsap.timeline({});

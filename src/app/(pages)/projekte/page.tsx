@@ -4,6 +4,7 @@ import { client } from "@/app/lib/sanity";
 import ProjectItem from "@/app/components/pages/Main_Page/Projects/ProjectItem";
 import ProjectText from "@/app/components/shared/ui/SectionText";
 import { Metadata } from "next";
+import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 
 async function getData() {
   const query = `
@@ -61,7 +62,10 @@ const ProjectSection = async () => {
 
   return (
     <section className="pt-64 page_padding">
-      <ProjectText title="Aktuelle Cases" text="" />
+      <div className="sticky top-48">
+        <HugeHeadline text="Projekte" />
+      </div>
+
       <div className="max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
         {data.map((post, idx) => (
           <ProjectItem key={post.id} post={post} idx={idx} />

@@ -18,17 +18,15 @@ function Biography() {
 
   const ScrollTextContainer = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const elements = document.getElementsByClassName("split");
     Array.from(elements).forEach((element) => {
       new SplitType(element as HTMLElement, { types: "words,chars" });
     });
 
     setSplit(true);
-  }, []);
-
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
 
     if (isSplit && ScrollText.current && ScrollTextContainer.current) {
       gsap.fromTo(
