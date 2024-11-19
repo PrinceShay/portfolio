@@ -3,7 +3,8 @@ import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
-import { notFound } from "next/navigation"; // importiere notFound
+import Image from "next/image";
+import Link from "next/link";
 
 export const revalidate = 30;
 
@@ -15,7 +16,7 @@ const ptComponents = {
           <img
             src={urlFor(value).url()}
             alt={value.alt || "Blog Image"}
-            className="w-full h-auto object-cover rounded-xl"
+            className="w-full h-auto object-cover rounded-xl shadow-lg"
           />
           {value.caption && (
             <figcaption className="text-center text-sm text-gray-300 mt-2">
@@ -25,20 +26,63 @@ const ptComponents = {
         </figure>
       );
     },
+    // Weitere benutzerdefinierte Typen können hier hinzugefügt werden
   },
   block: {
     h2: ({ children }: any) => {
-      return <h2 className="text-3xl md:text-5xl md:mb-12 mb-6">{children}</h2>;
+      return (
+        <h2 className="text-3xl md:text-3xl mb-8 font-bold first:mt-0 mt-24 text-primary-200">
+          {children}
+        </h2>
+      );
     },
     h3: ({ children }: any) => {
-      return <h3 className="md:text-4xl text-2xl mb-6 md:mb-8">{children}</h3>;
+      return (
+        <h3 className="text-xl first:mt-0 mt-12 mb-6 font-semibold">
+          {children}
+        </h3>
+      );
     },
     h4: ({ children }: any) => {
-      return <h4 className="md:text-3xl text-2xl md:mb-8 mb-4">{children}</h4>;
+      return <h4 className="text-lg md:mb-8 mb-4 font-medium">{children}</h4>;
     },
     normal: ({ children }: any) => {
-      return <p className="text-xl mb-24 md:mb-36 ">{children}</p>;
+      return <p className="text-lg">{children}</p>;
     },
+    blockquote: ({ children }: any) => {
+      return (
+        <blockquote className="border-l-4 border-primary-500 italic  pl-4 my-8">
+          {children}
+        </blockquote>
+      );
+    },
+    // Listen hinzufügen
+  },
+  marks: {
+    link: ({ children, value }: any) => {
+      return (
+        <Link
+          href={value.href}
+          className="text-primary-500 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {children}
+        </Link>
+      );
+    },
+  },
+  list: {
+    bullet: ({ children }: any) => (
+      <ul className="list-disc bg-darkBlue-400 bg-opacity-60 rounded-xl md:text-lg p-8 marker:text-primary-500 pl-8 my-8 flex flex-col gap-8">
+        {children}
+      </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="list-decimal marker:text-primary-500 list-inside md:text-lg">
+        {children}
+      </ol>
+    ),
   },
 };
 
@@ -48,6 +92,7 @@ async function getData(slug: string) {
     "currentSlug": slug.current,
     title,
     content,
+    "publishDate": _createdAt,
     titleImage,
     introText,
   } [0]
@@ -128,35 +173,51 @@ export default async function ProjectPage({
   const allPosts = await getAllPosts(data.currentSlug);
   const randomPosts = getRandomPosts(allPosts, 4);
 
+  const formatDate = (dateString: string): string => {
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString("de-DE", options);
+  };
+
   return (
-    <article className="min-h-screen pt-64 page_padding">
-      <section>
-        <h1 className="Section_Headline text-center">{data.title}</h1>
-        <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video">
-          <img
-            className="w-full h-full object-cover"
+    <article className="min-h-screen pt-8 md:pt-64 page_padding max-w-[1600px] mx-auto">
+      <header>
+        <h1 className="text-3xl md:text-5xl">{data.title}</h1>
+        <p className="text-lg opacity-80 mt-6">
+          {formatDate(data.publishDate)}
+        </p>
+        <div className="w-full  rounded-xl overflow-hidden mt-16 max-h-screen aspect-video relative border border-primary-800">
+          <Image
+            className="w-full h-full object-cover  "
             title={data.title}
+            fill
+            sizes="100vw"
             src={urlFor(data.titleImage).url()}
             alt={data.title}
           />
         </div>
-      </section>
+      </header>
 
-      <section className="grid grid-cols-1 xl:grid-cols-12 gap-8 relative">
-        <div className="mt-32 max-w-4xl md:col-span-9">
+      <section className="flex flex-col md:flex-row gap-32 relative ">
+        <div className="mt-32 md:basis-3/4">
           <PortableText
             value={data.content}
             components={ptComponents}
           ></PortableText>
         </div>
-        <div className="col-span-3 xl:mt-32 ">
+        <div className="basis-1/4 xl:mt-32 ">
           <div className="xl:sticky xl:top-48">
-            <p className="text-xl text-center">
+            <p className="text-xl text-center mb-8">
               Das könnte dich auch interessieren
             </p>
-            {randomPosts.map((post: any, idx: number) => (
-              <BlogItem key={post.currentSlug} post={post} idx={idx} />
-            ))}
+            <div className="flex flex-col gap-4">
+              {randomPosts.slice(0, 2).map((post: any, idx: number) => (
+                <BlogItem key={post.currentSlug} post={post} idx={idx} />
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -121,10 +121,14 @@ export default function Hero() {
       {isLargeScreen ? (
         <HeroGridAnimation />
       ) : (
-        // <video autoPlay muted loop className="w-full h-auto mt-12">
-        //   <source type="video/webm" src="/assets/videos/heroAnimNew.webm" />
-        // </video>
-        <div></div>
+        <video
+          poster="/assets/images/hero/thumbnail.jpg"
+          muted
+          controls
+          className="w-full h-[75vh] object-cover mt-12"
+        >
+          <source type="video/webm" src="/assets/videos/heroAnimNew.webm" />
+        </video>
       )}
     </section>
   );

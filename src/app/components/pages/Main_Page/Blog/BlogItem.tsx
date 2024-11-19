@@ -24,7 +24,7 @@ function BlogItem({ post, idx }: { post: any; idx: number }) {
 
   return (
     <Link href={`/blog/${post.currentSlug}`}>
-      <div className="cursor-pointer group border-primary-500 transition-all ease-out duration-200 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5">
+      <div className="js_blogItem cursor-pointer group border-primary-500 transition-all ease-out duration-200 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5">
         <div className="rounded-xl w-full aspect-video relative overflow-hidden">
           <Image
             alt={post.title}

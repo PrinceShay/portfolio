@@ -23,6 +23,8 @@ async function getDataItems(): Promise<ProjectCard[]> {
   return dataItem.slice(1);
 }
 
+export const revalidate = 60;
+
 export async function generateMetadata({
   params,
 }: {
@@ -89,7 +91,7 @@ export default async function BlogPage() {
 
         <BlogItemLarge post={dataFeature} idx={0} />
 
-        <div className="mt-12 grid grid-cols-12 w-full">
+        <div className="mt-12 grid grid-cols-12 w-full max-w-[1600px] mx-auto mb-24">
           <h2 className="text-4xl col-span-12 mb-6">Alle Beiträge</h2>
           <div className=" col-start-1 col-end-13 grid xl:grid-cols-3 grid-flow-row gap-16 xl:gap-8 relative">
             {dataItem.map((post: ProjectCard, idx: number) => (
