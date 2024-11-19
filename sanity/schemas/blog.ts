@@ -1,3 +1,6 @@
+import { title } from "process";
+import { Rule, validation } from "sanity";
+
 export default {
     name: 'blog',
     type: 'document',
@@ -20,6 +23,11 @@ export default {
         name: 'titleImage',
         type: 'image',
         title: 'Title Image',
+      },
+      {name: 'seoDescription',
+        type:'text',
+        title:'SEO Beschreibung',
+        validation: (rule:Rule) => rule.required().min(100).max(150),
       },
       {
         name: 'smallDescription',

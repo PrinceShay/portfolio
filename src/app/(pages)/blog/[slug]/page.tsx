@@ -1,3 +1,4 @@
+// Importiere notFound aus next/navigation
 import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
 import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
@@ -5,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation"; // <-- Hinzugefügt
 
 export const revalidate = 30;
 
@@ -94,6 +96,7 @@ async function getData(slug: string) {
     content,
     "publishDate": _createdAt,
     titleImage,
+    seoDescription,
     introText,
   } [0]
   `;
@@ -126,14 +129,21 @@ export async function generateMetadata({
   params: { slug: string };
 }): Promise<Metadata> {
   const data: FullProject = await getData(params.slug);
+
+  if (!data) {
+    notFound(); // <-- Hinzugefügt
+  }
+
   const titleImageUrl = urlFor(data.titleImage).url();
 
-  const metaDescription = `${data.smallDescription} - Erfahre mehr über ${data.title}, geschrieben von Jannis Röstel.`;
+  const metaDescription = `${data.seoDescription}`;
 
   return {
     title: `${data.title} - Blog von Jannis Röstel`,
     description: metaDescription,
-    keywords: `${data.title}, Blog, Jannis Röstel, ${params.slug.replace("-", " ")}, Artikel, ${data.smallDescription || "Zusammenfassung"}`,
+    keywords: `Blog, Jannis Röstel, ${params.slug.replace("-", " ")}, Artikel, ${
+      data.smallDescription || "Zusammenfassung"
+    }`,
     openGraph: {
       title: `${data.title} - Blog von Jannis Röstel`,
       description: metaDescription,
@@ -163,11 +173,7 @@ export default async function ProjectPage({
   const data: FullProject = await getData(params.slug);
 
   if (!data) {
-    return (
-      <section className="min-h-screen pt-64 page_padding">
-        <h1 className="Section_Headline text-center">Beitrag nicht gefunden</h1>
-      </section>
-    );
+    notFound(); // <-- Hinzugefügt
   }
 
   const allPosts = await getAllPosts(data.currentSlug);
@@ -191,7 +197,7 @@ export default async function ProjectPage({
         </p>
         <div className="w-full  rounded-xl overflow-hidden mt-16 max-h-screen aspect-video relative border border-primary-800">
           <Image
-            className="w-full h-full object-cover  "
+            className="w-full h-full object-cover"
             title={data.title}
             fill
             sizes="100vw"

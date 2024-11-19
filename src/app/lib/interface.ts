@@ -13,6 +13,7 @@ export interface FullProject {
   currentSlug: string;
   title: string;
   publishDate: string;
+  seoDescription: string;
   smallDescription: any;
   content: any; // Adjust this type based on your actual data structure
   titleImage: any; // Adjust this type based on your actual data structure
