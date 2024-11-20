@@ -5,6 +5,8 @@ import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
+import { Play } from "lucide-react";
+import Video from "./Video";
 
 const HeroGridAnimation = dynamic(() => import("./HeroGridAnimation"), {
   ssr: false,
@@ -118,18 +120,7 @@ export default function Hero() {
           <PrimaryButton title="Projekte anschauen" link="/projekte" />
         </div>
       </div>
-      {isLargeScreen ? (
-        <HeroGridAnimation />
-      ) : (
-        <video
-          poster="/assets/images/hero/thumbnail.jpg"
-          muted
-          controls
-          className="w-full h-[75vh] object-cover mt-12"
-        >
-          <source type="video/webm" src="/assets/videos/heroAnimNew.webm" />
-        </video>
-      )}
+      {isLargeScreen ? <HeroGridAnimation /> : <Video />}
     </section>
   );
 }
