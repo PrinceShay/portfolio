@@ -3,10 +3,9 @@ import BlogItem from "@/app/components/pages/Main_Page/Blog/BlogItem";
 import { FullProject } from "@/app/lib/interface";
 import { client, urlFor } from "@/app/lib/sanity";
 import { PortableText } from "@portabletext/react";
-import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation"; // <-- Hinzugefügt
+import { notFound } from "next/navigation";
 
 export const revalidate = 30;
 
@@ -53,7 +52,7 @@ const ptComponents = {
     },
     blockquote: ({ children }: any) => {
       return (
-        <blockquote className="border-l-4 border-primary-500 italic  pl-4 my-8">
+        <blockquote className="border-l-4 border-primary-500 italic pl-4 my-8">
           {children}
         </blockquote>
       );
@@ -90,15 +89,16 @@ const ptComponents = {
 
 async function getData(slug: string) {
   const query = `
-  *[_type == "blog" && slug.current == "${slug}"] {
-    "currentSlug": slug.current,
-    title,
-    content,
-    "publishDate": _createdAt,
-    titleImage,
-    seoDescription,
-    introText,
-  } [0]
+    *[_type == "blog" && slug.current == "${slug}"] {
+      "currentSlug": slug.current,
+      title,
+      content,
+      "publishDate": _createdAt,
+      titleImage,
+      seoDescription,
+      introText,
+      smallDescription,
+    } [0]
   `;
 
   const data = await client.fetch(query);
@@ -107,13 +107,13 @@ async function getData(slug: string) {
 
 async function getAllPosts(currentSlug: string) {
   const query = `
-  *[_type == 'blog' && slug.current != "${currentSlug}"] {
-    title,
-    smallDescription,
-    "currentSlug": slug.current,
-    titleImage,
-    "publishDate": _createdAt
-  }`;
+    *[_type == 'blog' && slug.current != "${currentSlug}"] {
+      title,
+      smallDescription,
+      "currentSlug": slug.current,
+      titleImage,
+      "publishDate": _createdAt
+    }`;
   const data = await client.fetch(query);
   return data;
 }
@@ -123,57 +123,14 @@ function getRandomPosts(posts: any[], count: number) {
   return shuffled.slice(0, count);
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+// Die generateMetadata-Funktion kannst du weiterhin für andere Metadaten nutzen
+// Wir entfernen die strukturierten Daten hier, da sie direkt in der Seite eingefügt werden
+
+export default async function Page({ params }: { params: { slug: string } }) {
   const data: FullProject = await getData(params.slug);
 
   if (!data) {
-    notFound(); // <-- Hinzugefügt
-  }
-
-  const titleImageUrl = urlFor(data.titleImage).url();
-
-  const metaDescription = `${data.seoDescription}`;
-
-  return {
-    title: `${data.title} - Blog von Jannis Röstel`,
-    description: metaDescription,
-    keywords: `Blog, Jannis Röstel, ${params.slug.replace("-", " ")}, Artikel, ${
-      data.smallDescription || "Zusammenfassung"
-    }`,
-    openGraph: {
-      title: `${data.title} - Blog von Jannis Röstel`,
-      description: metaDescription,
-      images: [
-        {
-          url: titleImageUrl,
-          alt: `${data.title} - Feature Image`,
-        },
-      ],
-      type: "article",
-      authors: ["Jannis Röstel"],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${data.title} - Blog von Jannis Röstel`,
-      description: metaDescription,
-      images: [titleImageUrl],
-    },
-  };
-}
-
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const data: FullProject = await getData(params.slug);
-
-  if (!data) {
-    notFound(); // <-- Hinzugefügt
+    notFound();
   }
 
   const allPosts = await getAllPosts(data.currentSlug);
@@ -188,45 +145,73 @@ export default async function ProjectPage({
     return new Date(dateString).toLocaleDateString("de-DE", options);
   };
 
-  return (
-    <article className="min-h-screen pt-8 md:pt-64 page_padding max-w-[1600px] mx-auto">
-      <header>
-        <h1 className="text-3xl md:text-5xl">{data.title}</h1>
-        <p className="text-lg opacity-80 mt-6">
-          {formatDate(data.publishDate)}
-        </p>
-        <div className="w-full  rounded-xl overflow-hidden mt-16 max-h-screen aspect-video relative border border-primary-800">
-          <Image
-            className="w-full h-full object-cover"
-            title={data.title}
-            fill
-            sizes="100vw"
-            src={urlFor(data.titleImage).url()}
-            alt={data.title}
-          />
-        </div>
-      </header>
+  // Strukturierte Daten erstellen
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title,
+    image: [urlFor(data.titleImage).url()],
+    datePublished: new Date(data.publishDate).toISOString(),
+    dateModified: new Date(data.publishDate).toISOString(), // Aktualisiere hier, falls du ein Änderungsdatum hast
+    author: {
+      "@type": "Person",
+      name: "Jannis Röstel",
+      url: "https://deinewebsite.de/ueber-mich", // Ersetze durch deine tatsächliche URL
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Jannis Röstel", // Ersetze durch deinen Firmennamen
+    },
+    description: data.seoDescription,
+  };
 
-      <section className="flex flex-col md:flex-row gap-32 relative ">
-        <div className="mt-32 md:basis-3/4">
-          <PortableText
-            value={data.content}
-            components={ptComponents}
-          ></PortableText>
-        </div>
-        <div className="basis-1/4 xl:mt-32 ">
-          <div className="xl:sticky xl:top-48">
-            <p className="text-xl text-center mb-8">
-              Das könnte dich auch interessieren
-            </p>
-            <div className="flex flex-col gap-4">
-              {randomPosts.slice(0, 2).map((post: any, idx: number) => (
-                <BlogItem key={post.currentSlug} post={post} idx={idx} />
-              ))}
+  return (
+    <>
+      {/* Strukturierte Daten hinzufügen */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
+      <article className="min-h-screen pt-8 md:pt-64 page_padding max-w-[1600px] mx-auto">
+        <header>
+          <h1 className="text-3xl md:text-5xl">{data.title}</h1>
+          <p className="text-lg opacity-80 mt-6">
+            {formatDate(data.publishDate)}
+          </p>
+          <div className="w-full rounded-xl overflow-hidden mt-16 max-h-screen aspect-video relative border border-primary-800">
+            <Image
+              className="w-full h-full object-cover"
+              title={data.title}
+              fill
+              sizes="100vw"
+              src={urlFor(data.titleImage).url()}
+              alt={data.title}
+            />
+          </div>
+        </header>
+
+        <section className="flex flex-col md:flex-row gap-32 relative ">
+          <div className="mt-32 md:basis-3/4">
+            <PortableText
+              value={data.content}
+              components={ptComponents}
+            ></PortableText>
+          </div>
+          <div className="basis-1/4 xl:mt-32 ">
+            <div className="xl:sticky xl:top-48">
+              <p className="text-xl text-center mb-8">
+                Das könnte dich auch interessieren
+              </p>
+              <div className="flex flex-col gap-4">
+                {randomPosts.slice(0, 2).map((post: any, idx: number) => (
+                  <BlogItem key={post.currentSlug} post={post} idx={idx} />
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </article>
+        </section>
+      </article>
+    </>
   );
 }
