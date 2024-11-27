@@ -39,3 +39,5 @@ export interface FullProject {
 export interface NextProjectProps {
   projects: ProjectCard[];
 }
+
+

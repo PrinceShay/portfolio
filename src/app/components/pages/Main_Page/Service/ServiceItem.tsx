@@ -4,12 +4,13 @@ import gsap from "gsap";
 import React, { useRef } from "react";
 import Image from "next/image";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link"; // Link-Komponente importieren
 
-// Define the props type
+// Definiere den Typ für die Props
 interface ServiceItemProps {
   title: string;
   description: string;
-  items: string[];
+  items: (string | { name: string; link: string })[]; // Items können Strings oder Objekte sein
   tools: { name: string; logo: string }[];
 }
 
@@ -66,15 +67,33 @@ function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
       </div>
       <div className="flex flex-col">
         <ul className="mt-24 flex flex-wrap justify-center gap-2 text-lg">
-          {items.map((item: string, index: number) => (
-            <li
-              key={index}
-              ref={itemRef}
-              className="py-3 px-4 bg-primary-800 bg-opacity-75 rounded-full listItemService "
-            >
-              {item}
-            </li>
-          ))}
+          {items.map((item: any, index: number) => {
+            // Prüfe, ob das Item ein Objekt mit 'name' und 'link' ist
+            if (typeof item === "object" && item.name && item.link) {
+              return (
+                <li
+                  key={index}
+                  ref={itemRef}
+                  className="py-3 px-4 bg-primary-800 hover:bg-primary-200 hover:text-darkBlue-500 transition-colors ease-out bg-opacity-75 rounded-full listItemService "
+                >
+                  <Link className="w-full h-full" href={item.link}>
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            } else {
+              // Item ist ein String
+              return (
+                <li
+                  key={index}
+                  ref={itemRef}
+                  className="py-3 px-4 bg-primary-800 bg-opacity-75 rounded-full listItemService "
+                >
+                  {item}
+                </li>
+              );
+            }
+          })}
         </ul>
         <div className="mt-12">
           <p className="text-center opacity-50 uppercase mb-3">Tools</p>

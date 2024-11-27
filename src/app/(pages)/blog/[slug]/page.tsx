@@ -6,6 +6,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
 export const revalidate = 30;
 
@@ -123,8 +124,46 @@ function getRandomPosts(posts: any[], count: number) {
   return shuffled.slice(0, count);
 }
 
-// Die generateMetadata-Funktion kannst du weiterhin für andere Metadaten nutzen
-// Wir entfernen die strukturierten Daten hier, da sie direkt in der Seite eingefügt werden
+// generateMetadata-Funktion hinzufügen
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const data: FullProject = await getData(params.slug);
+
+  if (!data) {
+    return {};
+  }
+
+  return {
+    title: data.title,
+    description: data.seoDescription,
+    openGraph: {
+      title: data.title,
+      description: data.seoDescription,
+      url: `https://jannisroestel.de/blog/${data.currentSlug}`,
+      type: "article",
+      images: [
+        {
+          url: urlFor(data.titleImage).url(),
+          alt: data.title,
+        },
+      ],
+      siteName: "Dein Webseitenname", // Ersetze mit deinem Webseitenname
+      publishedTime: new Date(data.publishDate).toISOString(),
+      // Weitere Open Graph Eigenschaften nach Bedarf hinzufügen
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.title,
+      description: data.seoDescription,
+      images: [urlFor(data.titleImage).url()],
+      // Weitere Twitter Card Eigenschaften nach Bedarf hinzufügen
+    },
+    // Weitere Meta-Daten nach Bedarf hinzufügen
+  };
+}
 
 export default async function Page({ params }: { params: { slug: string } }) {
   const data: FullProject = await getData(params.slug);
@@ -161,6 +200,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
     publisher: {
       "@type": "Organization",
       name: "Jannis Röstel", // Ersetze durch deinen Firmennamen
+      logo: {
+        "@type": "ImageObject",
+        url: "https://deinewebsite.de/logo.png", // Ersetze durch die URL deines Logos
+      },
     },
     description: data.seoDescription,
   };

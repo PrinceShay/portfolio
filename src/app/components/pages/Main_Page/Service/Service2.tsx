@@ -4,12 +4,13 @@ import ServiceItem from "./ServiceItem";
 
 function Service2() {
   const itemsWeb = [
-    "Webdesign",
-    "Webentwicklung",
-    "Landingpage",
-    "E-Commerce",
-    "Webflow",
+    { name: "Webdesign", link: "/leistungen/webdesign" },
+    { name: "Webentwicklung", link: "/leistungen/webentwicklung" },
+    { name: "Landingpage", link: "/leistungen/landingpage" },
+    { name: "E-Commerce", link: "/leistungen/e-commerce" },
+    { name: "Webflow", link: "/leistungen/webflow" },
   ];
+
   const itemsMotion = [
     "Animationsvideos",
     "Werbespots/ Ads",

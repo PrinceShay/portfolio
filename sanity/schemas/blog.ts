@@ -1,5 +1,4 @@
-import { title } from "process";
-import { Rule, validation } from "sanity";
+import { Rule } from "sanity";
 
 export default {
     name: 'blog',
