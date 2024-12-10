@@ -48,6 +48,7 @@ export default function Home() {
     <main className="">
       {/* <Preloader /> */}
       <Hero />
+      {/* @ts-expect-error Server Component */}
       <Projects />
       <CustomerBenefits />
       <Service2 />
@@ -55,6 +56,7 @@ export default function Home() {
         text="Schreib mir eine kurze Mail und ich melde mich bei dir."
         title="Bereit, wenn du es bist"
       />
+      {/* @ts-expect-error Server Component */}
       <BlogComponent />
       <Faq />
     </main>
