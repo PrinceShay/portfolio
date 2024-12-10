@@ -329,7 +329,7 @@ function CTAWindow({ title, text }: { title: string; text: string }) {
           <div className="TextTransform text-center">
             <h1
               ref={headline}
-              className="max-w-5xl mx-auto split Section_Headline"
+              className="max-w-5xl mx-auto split font-humane text-[6em] sm:text-[14em] font-bold uppercase leading-none"
             >
               {title}
             </h1>

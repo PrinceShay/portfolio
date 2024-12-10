@@ -62,7 +62,9 @@ function ServiceItem({ title, description, items, tools }: ServiceItemProps) {
       className="bg-primary-600 bg-gradient-to-br from-primary-600 to-[#543185] z-10 p-8 flex flex-col items-center justify-center rounded-2xl"
     >
       <div className="text-center ServiceItemText">
-        <h3 className="Section_Headline small">{title}</h3>
+        <h3 className="font-humane text-[10em] font-bold uppercase leading-none">
+          {title}
+        </h3>
         <p className="mt-4 text-lg">{description}</p>
       </div>
       <div className="flex flex-col">

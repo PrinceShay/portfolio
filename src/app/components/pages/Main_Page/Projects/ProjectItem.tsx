@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { urlFor } from "@/app/lib/sanity";
 import { useGSAP } from "@gsap/react";
-import { throttle } from "lodash";
 
 interface Post {
   title: string;
@@ -195,7 +194,10 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         )}
         <div className="w-full h-full bg-gradient-to-t bg-darkBlue-400 group-hover:bg-primary-600 transition-colors ease-out duration-500 opacity-60 group-hover:opacity-30 absolute left-0 bottom-0"></div>
         <div className="text-center flex flex-col gap-6 justify-end w-full h-full items-center group-hover:scale-[1.2] transition-transform duration-500 ease-out">
-          <h2 ref={titleRef} className="ProjectCard-Heading mt-4 relative">
+          <h2
+            ref={titleRef}
+            className=" font-humane text-[25vw] sm:text-[10vw] font-bold uppercase leading-none mt-4 relative"
+          >
             {post.title}
           </h2>
           <div className="flex justify-start gap-2">

@@ -41,10 +41,7 @@ function CV() {
 
   return (
     <div className="col-start-1 col-end-13 md:col-end-8 xl:col-end-6">
-      <h2
-        ref={HeadingRef}
-        className="Section_Headline small mb-12 TextTransform"
-      >
+      <h2 ref={HeadingRef} className="text-5xl mb-12 TextTransform">
         Erfahrung
       </h2>
       <ul>

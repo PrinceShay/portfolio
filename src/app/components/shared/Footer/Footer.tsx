@@ -60,7 +60,9 @@ function Footer() {
         </div>
       </div>
       <div>
-        <div className="Section_Headline text-nowrap">Jannis Röstel</div>
+        <div className="font-humane text-[25vw] sm:text-[12vw] font-bold uppercase leading-none text-nowrap">
+          Jannis Röstel
+        </div>
         <div className="flex flex-col gap-4 mb-12 mt-6 items-center sm:items-stretch sm:flex-row justify-between">
           <div>© Jannis Röstel 2024</div>
           <ul className="flex flex-row gap-4">
