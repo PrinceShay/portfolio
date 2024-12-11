@@ -10,7 +10,7 @@ import ProjectInfo from "@/app/components/pages/Project_Page/ProjectInfo";
 
 export const revalidate = 30;
 
-export async function getData(slug: string): Promise<FullProject> {
+async function getData(slug: string): Promise<FullProject> {
   const query = `
   *[_type == "project" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
