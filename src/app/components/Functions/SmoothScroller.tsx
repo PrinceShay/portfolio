@@ -1,14 +1,34 @@
 "use client";
+
+import { usePathname, useSearchParams } from "next/navigation";
+import { PropsWithChildren, useEffect } from "react";
 import { ReactLenis, useLenis } from "lenis/react";
 
-export default function SmoothScroller({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const lenis = useLenis(({ scroll }) => {
-    // called every scroll
-  });
+const SmoothScroller = ({ children }: PropsWithChildren) => {
+  const lenis = useLenis();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  return <ReactLenis root>{children}</ReactLenis>;
-}
+  useEffect(() => {
+    if (lenis) {
+      lenis.stop();
+    }
+
+    const handleScrollToTop = () => {
+      if (lenis) {
+        lenis.start();
+        window.scrollTo(0, 0);
+      }
+    };
+
+    handleScrollToTop();
+  }, [pathname, searchParams, lenis]);
+
+  return (
+    <ReactLenis className="h-full" options={{ lerp: 0.1 }} root>
+      {children}
+    </ReactLenis>
+  );
+};
+
+export default SmoothScroller;

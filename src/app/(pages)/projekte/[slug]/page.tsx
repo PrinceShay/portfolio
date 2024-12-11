@@ -7,6 +7,7 @@ import NextProject from "@/app/components/pages/Project_Page/NextProject";
 import { Metadata } from "next";
 import ProjectText from "@/app/components/shared/ui/SectionText";
 import ProjectInfo from "@/app/components/pages/Project_Page/ProjectInfo";
+import { useEffect } from "react";
 
 export const revalidate = 30;
 
