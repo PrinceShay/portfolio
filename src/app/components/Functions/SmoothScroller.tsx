@@ -7,7 +7,6 @@ import { ReactLenis, useLenis } from "lenis/react";
 const SmoothScroller = ({ children }: PropsWithChildren) => {
   const lenis = useLenis();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (lenis) {
@@ -22,7 +21,7 @@ const SmoothScroller = ({ children }: PropsWithChildren) => {
     };
 
     handleScrollToTop();
-  }, [pathname, searchParams, lenis]);
+  }, [pathname, lenis]);
 
   return (
     <ReactLenis className="h-full" options={{ lerp: 0.1 }} root>
