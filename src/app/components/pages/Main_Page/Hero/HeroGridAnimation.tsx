@@ -93,9 +93,7 @@ export default function HeroGridAnimation() {
         >
           <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
             <Image
-              src={
-                "/assets/images/hero/048dc6a2fc5a044ab70769fe86065cec13263c6d-1400x933.webp"
-              }
+              src={"/assets/images/hero/real-estate-green-beta.vercel2.jpg"}
               fill
               sizes="50vw"
               className="object-cover"
@@ -115,9 +113,7 @@ export default function HeroGridAnimation() {
           </div>
           <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
             <Image
-              src={
-                "/assets/images/hero/8ecd9545a05d9f6d52bade95fb693c3b90afc7b4-1600x1200.webp"
-              }
+              src={"/assets/images/hero/real-estate-green-beta.vercel5.jpg"}
               fill
               sizes="50vw"
               className="object-cover"
@@ -132,9 +128,7 @@ export default function HeroGridAnimation() {
         >
           <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
             <Image
-              src={
-                "/assets/images/hero/6d4d6f6ee6bc243ca71af9704dab92aff259633c-1600x1067.webp"
-              }
+              src={"/assets/images/hero/Landing-min.jpg"}
               fill
               sizes="50vw"
               className="object-cover"
@@ -181,9 +175,7 @@ export default function HeroGridAnimation() {
           </div>
           <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
             <Image
-              src={
-                "/assets/images/hero/88a4addf6ee65f5c7060bbfbefdcbc319906f8b9-1800x1350.webp"
-              }
+              src={"/assets/images/hero/real-estate-green-beta.vercel4.jpg"}
               fill
               sizes="50vw"
               className="object-cover"
@@ -192,9 +184,7 @@ export default function HeroGridAnimation() {
           </div>
           <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
             <Image
-              src={
-                "/assets/images/hero/77042f34ec5825357174e79cadd2074ad065bef5-1600x1067.webp"
-              }
+              src={"/assets/images/hero/Desktop - 2 Kopie.webp"}
               fill
               sizes="50vw"
               className="object-cover"
@@ -209,7 +199,7 @@ export default function HeroGridAnimation() {
               fill
               sizes="50vw"
               className="object-cover"
-              alt="Karl-Heinz Krause Webseite"
+              alt="Herobereich einer Immobilienmakler Webseite"
             ></Image>
           </div>
         </div>

@@ -5,7 +5,6 @@ import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
-import { Play } from "lucide-react";
 import Video from "./Video";
 
 const HeroGridAnimation = dynamic(() => import("./HeroGridAnimation"), {
