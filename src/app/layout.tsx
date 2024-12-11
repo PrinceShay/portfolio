@@ -19,33 +19,65 @@ import Script from "next/script";
 const Humane = localFont({
   src: [
     {
-      path: "fonts/Humane-Black.woff2",
+      path: "../../public/fonts/humaneblack.woff2",
       weight: "900",
       style: "normal",
     },
     {
-      path: "fonts/Humane-Bold.woff2",
+      path: "../../public/fonts/humanebold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "fonts/Humane-Medium.woff2",
+      path: "../../public/fonts/humanemedium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "fonts/Humane-Regular.woff2",
+      path: "../../public/fonts/humaneregular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "fonts/Humane-Light.woff2",
+      path: "../../public/fonts/humanelight.woff2",
       weight: "300",
       style: "normal",
     },
   ],
   variable: "--font-Humane",
   display: "swap", // Hinzugefügt, um font-display: swap zu verwenden
+});
+
+const SofiaPro = localFont({
+  src: [
+    {
+      path: "../../public/fonts/sofia/sofiaproblack.woff",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/sofia/sofiabold.woff",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/sofia/sofiamedium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/sofia/sofiaregular.woff",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/sofia/sofialight.woff",
+      weight: "300",
+      style: "normal",
+    },
+  ],
+  variable: "--font-SofiaPro",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -59,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={`${Humane.variable}`} lang="de">
+    <html className={`${Humane.variable} ${SofiaPro.variable}`} lang="de">
       <head>
         {/* Google Analytics asynchron laden */}
         <Script

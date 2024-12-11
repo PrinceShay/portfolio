@@ -1,45 +1,3 @@
-@import url("https://use.typekit.net/izz1exi.css");
-@font-face {
-  font-family: "Humane";
-  src: url("fonts/Humane-Light.woff2") format("woff2");
-  font-weight: Light;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: "Humane";
-  src: url("fonts/Humane-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: "Humane";
-  src: url("fonts/Humane-Medium.woff2") format("woff2");
-  font-weight: Medium;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: "Humane";
-  src: url("fonts/Humane-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-
-@font-face {
-  font-family: "Humane";
-  src: url("fonts/Humane-Black.woff2") format("woff2");
-  font-weight: black;
-  font-style: normal;
-  text-rendering: optimizeLegibility;
-}
-@import url("https://use.typekit.net/izz1exi.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -63,7 +21,7 @@
 }
 
 body {
-  font-family: "sofia-pro", sans-serif;
+  font-family: var(--font-SofiaPro), sans-serif;
   color: rgb(var(--foreground-rgb));
 }
 
