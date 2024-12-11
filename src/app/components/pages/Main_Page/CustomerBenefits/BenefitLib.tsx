@@ -33,7 +33,7 @@ export function KeineVerstecktenKosten() {
         </h2>
         <p className="text-xl text-gray-300 max-w-prose">
           Ich arbeite mit Festpreisen. Das bedeutet, dass es keine versteckten
-          Kosten gibt. Du weißt genau, was du für dein Budget erhältst, ohne
+          Kosten gibt. Du weisst genau, was du für dein Budget erhältst, ohne
           unangenehme Überraschungen.
         </p>
       </div>
@@ -505,7 +505,7 @@ export const BenefitCTA = () => {
       </div>
       <div className="h-full w-full p-6 sm:p-12 relative flex justify-end flex-col items-start z-20 bg-gradient-to-b from-[#46306625] to-darkBlue-400 to-80%">
         <h2 className="text-4xl mb-6 font-semibold">
-          Zusammen Großes erreichen.
+          Zusammen Grosses erreichen.
         </h2>
         <p className="text-xl text-gray-300 max-w-prose mb-8">
           Deine Website. Dein Stil. Lass uns starten.

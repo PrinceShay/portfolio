@@ -87,7 +87,7 @@ function Biography() {
             in Berührung kam. Kurz darauf entdeckte er Photoshop, das er nicht
             nur zur Bildbearbeitung, sondern auch für die Erstellung von Digital
             Art und Postern nutzte. Dieser kreative Prozess führte ihn zur
-            Typografie, wo er lernte, wie Überschriften und Fließtexte
+            Typografie, wo er lernte, wie Überschriften und Fliesstexte
             harmonisch zueinander stehen müssen, um eine hierarchisch stimmige
             und ästhetische Gestaltung zu erreichen. Dadurch entwickelte er ein
             Gespür dafür, Informationen so zu gestalten, dass sie sofort ins

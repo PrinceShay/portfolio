@@ -38,7 +38,7 @@ function NextProject({ projects }: NextProjectProps) {
 
   return (
     <section className="px-0 md:px-24 lg:px-48 py-24">
-      <h1 className="px-6 Section_Headline small mb-12">Nächstes Projekt</h1>
+      <h1 className="px-6 text-5xl mb-12">Nächstes Projekt</h1>
 
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}

@@ -18,12 +18,12 @@ function page() {
       <h1 className="Section_Headline mb-12">Impressum</h1>
       <div className="text-xl max-w-5xl">
         <h2 className="font-bold">
-          Verantwortlich für den Inhalt dieser Website gemäß § 5 TMG:
+          Verantwortlich für den Inhalt dieser Website gemäss § 5 TMG:
         </h2>
         <p className="mb-5">
           Jannis Röstel
           <br />
-          Nuitsstraße 10
+          Nuitsstrasse 10
           <br />
           76185 Karlsruhe
           <br />
@@ -50,7 +50,7 @@ function page() {
         </p>
 
         <h2 className="font-bold">
-          Umsatzsteuer-Identifikationsnummer gemäß §27a UStG:
+          Umsatzsteuer-Identifikationsnummer gemäss §27a UStG:
         </h2>
         <p className="mb-5">DE331277066</p>
 
@@ -58,14 +58,14 @@ function page() {
         <p className="mb-5">
           Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung
           für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten
-          sind ausschließlich deren Betreiber verantwortlich.
+          sind ausschliesslich deren Betreiber verantwortlich.
         </p>
 
         <h2 className="font-bold">Urheberrecht:</h2>
         <p className="mb-5">
           Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser
           Website unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
-          Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+          Bearbeitung, Verbreitung und jede Art der Verwertung ausserhalb der
           Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des
           jeweiligen Autors bzw. Erstellers.
         </p>

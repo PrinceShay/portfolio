@@ -1,32 +1,14 @@
 "use client";
+import { ReactLenis, useLenis } from "lenis/react";
 
-import React, { useEffect } from "react";
-import Lenis from "@studio-freight/lenis";
+export default function SmoothScroller({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  });
 
-const SmoothScroll: React.FC = () => {
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    const handleScroll = (e: Event) => {
-      // Add your custom smooth scrolling logic here
-    };
-
-    lenis.on("scroll", handleScroll);
-
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
-
-    requestAnimationFrame(raf);
-
-    // Clean up the event listener when the component is unmounted
-    return () => {
-      lenis.off("scroll", handleScroll);
-    };
-  }, []);
-
-  return null;
-};
-
-export default SmoothScroll;
+  return <ReactLenis root>{children}</ReactLenis>;
+}

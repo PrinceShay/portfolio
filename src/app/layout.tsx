@@ -87,8 +87,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html className={`${Humane.variable} ${SofiaPro.variable}`} lang="de">
@@ -107,13 +109,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <SmoothScroll />
       <body className="bg-darkBlue-500 text-white scroll-smooth">
         <CookieBanner />
         <Noise />
         <Grain />
         <Navbar />
-        {children}
+        {modal}
+        <SmoothScroll>{children}</SmoothScroll>
         <Footer />
         <Analytics />
         <SpeedInsights />

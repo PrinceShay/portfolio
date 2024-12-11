@@ -10,7 +10,7 @@ import ProjectInfo from "@/app/components/pages/Project_Page/ProjectInfo";
 
 export const revalidate = 30;
 
-async function getData(slug: string): Promise<FullProject> {
+export async function getData(slug: string): Promise<FullProject> {
   const query = `
   *[_type == "project" && slug.current == "${slug}"] {
     "currentSlug": slug.current,
@@ -94,11 +94,7 @@ async function getDataNext(currentSlug: string): Promise<ProjectCard[]> {
   return dataNext;
 }
 
-export default async function ProjectPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+export default async function page({ params }: { params: { slug: string } }) {
   const data: FullProject = await getData(params.slug);
   const nextProjects: ProjectCard[] = await getDataNext(params.slug);
 

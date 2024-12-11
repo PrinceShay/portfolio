@@ -6,10 +6,10 @@ import ProjectText from "@/app/components/shared/ui/SectionText";
 import { Metadata } from "next";
 import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 
-async function getData() {
+export async function getData() {
   const query = `
   *[_type == 'project'] | order(_createdAt desc) {
-    _id, // Make sure you're selecting an ID or unique identifier for the key
+    _id,
     title,
     smallDescription,
     "currentSlug": slug.current,

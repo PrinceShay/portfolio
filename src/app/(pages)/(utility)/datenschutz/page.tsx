@@ -24,7 +24,7 @@ function page() {
           gehören unter anderem Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs,
           aufgerufene Seiten, Art des Browsers, das Betriebssystem und der
           Domainname Ihres Internet Service Providers. Diese Daten werden
-          anonymisiert erhoben und dienen ausschließlich statistischen
+          anonymisiert erhoben und dienen ausschliesslich statistischen
           Auswertungen.
         </p>
 
@@ -65,7 +65,7 @@ function page() {
           Nutzung und Navigation zu geben. Die von Microsoft Clarity gesammelten
           Daten umfassen Informationen wie Mausklicks, Bildschirmaktivitäten und
           Tastatureingaben. Diese Daten werden in aggregierter Form ausgewertet
-          und dienen ausschließlich zur Optimierung unserer Website und zur
+          und dienen ausschliesslich zur Optimierung unserer Website und zur
           Verbesserung der Benutzerfreundlichkeit.
         </p>
         <p className="mb-12">

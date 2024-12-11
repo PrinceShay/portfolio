@@ -9,9 +9,9 @@ const faqData = [
     text: (
       <>
         Ein typisches Projekt beginnt mit einem ausführlichen Beratungsgespräch,
-        um deine Ziele und Anforderungen zu verstehen. Anschließend erstelle ich
-        ein Konzept und ein Angebot. Nach deiner Freigabe starte ich mit der
-        Gestaltung und Entwicklung, begleitet von regelmäßigen Updates und
+        um deine Ziele und Anforderungen zu verstehen. Anschliessend erstelle
+        ich ein Konzept und ein Angebot. Nach deiner Freigabe starte ich mit der
+        Gestaltung und Entwicklung, begleitet von regelmässigen Updates und
         Feedback-Runden. Nach Abschluss des Projekts erfolgt die Übergabe und
         gegebenenfalls eine Schulung zur Nutzung der Webseite.
       </>
@@ -41,7 +41,7 @@ const faqData = [
         <span className="font-bold text-primary-200">
           Ich arbeite mit Festpreisen
         </span>
-        , sodass du von Anfang an genau weißt, welches Investment auf dich
+        , sodass du von Anfang an genau weisst, welches Investment auf dich
         zukommt. Es gibt keine versteckten Kosten , und du kannst zwischen
         verschiedenen Paketen wählen, die auf deine Anforderungen zugeschnitten
         sind. Beachte: Ein One-Pager fängt bei mir ab{" "}

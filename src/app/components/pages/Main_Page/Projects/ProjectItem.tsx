@@ -172,7 +172,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
         {!isMobile && post.titleVideo && post.titleVideo.asset && (
           <video
             ref={ProjectvideoRef}
-            className="w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none group-hover:scale-125 transition-transform duration-500 ease-out"
+            className=" group-hover:brightness-125 w-full h-full absolute left-0 top-0 object-cover touch-none pointer-events-none group-hover:scale-125 transition-all duration-500 ease-out"
             muted
             playsInline
             loop

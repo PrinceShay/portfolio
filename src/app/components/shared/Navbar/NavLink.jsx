@@ -54,7 +54,7 @@ function NavLink({ url, title }) {
   return (
     <li ref={navlinkRef} className="p-2 text-lg">
       <Link href={url} className="flex relative overflow-hidden">
-        <p ref={titleRef} className="Navlink_Title text-gray-300">
+        <p ref={titleRef} className="Navlink_Title text-gray-100">
           {title}
         </p>
         <p

@@ -168,7 +168,7 @@ function MobileMenu() {
     setIsOpen(false);
   };
 
-  const menuText = isOpen ? "Schließen" : "Menü";
+  const menuText = isOpen ? "Schliessen" : "Menü";
 
   return (
     <div className="relative flex justify-center md:hidden">

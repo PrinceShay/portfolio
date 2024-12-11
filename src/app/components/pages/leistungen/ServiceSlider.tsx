@@ -35,7 +35,7 @@ export default function ServiceSlider({ blogArticles }: ServiceSliderProps) {
             slidesPerView: 1, // Auf kleinen Bildschirmen (z. B. Mobile)
           },
           768: {
-            slidesPerView: 2, // Ab Tablet-Größe (768px und größer)
+            slidesPerView: 2, // Ab Tablet-Grösse (768px und grösser)
           },
         }}
         className="mySwiper"

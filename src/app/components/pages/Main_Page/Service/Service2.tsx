@@ -56,7 +56,7 @@ function Service2() {
       <div className="grid max-w-2xl grid-cols-1 2xl:grid-cols-3 gap-8 min-h-[60vh] 2xl:max-w-[1600px] mx-auto relative">
         <ServiceItem
           title="Webdesign"
-          description="Professionelles Webdesign und maßgeschneiderte Webentwicklung"
+          description="Professionelles Webdesign und massgeschneiderte Webentwicklung"
           items={itemsWeb}
           tools={toolsWeb}
         />
