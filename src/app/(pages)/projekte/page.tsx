@@ -6,7 +6,7 @@ import ProjectText from "@/app/components/shared/ui/SectionText";
 import { Metadata } from "next";
 import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 
-export async function getData() {
+async function getData() {
   const query = `
   *[_type == 'project'] | order(_createdAt desc) {
     _id,
