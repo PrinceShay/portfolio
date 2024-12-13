@@ -47,7 +47,6 @@ export default function Home() {
     <main className="">
       {/* <Preloader /> */}
       <Hero />
-      <About />
       {/* @ts-expect-error Server Component */}
       <Projects />
       <CustomerBenefits />

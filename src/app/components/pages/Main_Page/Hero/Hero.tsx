@@ -17,7 +17,6 @@ export default function Hero() {
   const [isLargeScreen, setIsLargeScreen] = useState(false);
 
   const heroHeadline = useRef<HTMLHeadingElement>(null);
-  const heroParagraph = useRef(null);
   const heroButton = useRef(null);
   const heroHighlight = useRef(null);
   const heroSection = useRef(null);
@@ -71,7 +70,7 @@ export default function Hero() {
         );
       }
     },
-    { dependencies: [isSplit] }
+    { scope: heroSection, dependencies: [isSplit] }
   );
 
   return (
