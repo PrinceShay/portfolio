@@ -43,7 +43,7 @@ export default function Hero() {
       const elements = document.getElementsByClassName("split");
       Array.from(elements).forEach((element) => {
         new SplitType(element as HTMLElement, {
-          types: "words,chars",
+          types: "words",
         });
       });
 
@@ -91,7 +91,7 @@ export default function Hero() {
       >
         <h1
           ref={heroHeadline}
-          className="split font-humane font-bold mb-16 uppercase leading-[90%] text-[24vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
+          className="split font-humane font-bold mb-16 uppercase leading-[90%] text-[22vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
         >
           <span className="text-primary-400">Digitale Lösungen,</span>
           <br /> die dein Business voranbringen
