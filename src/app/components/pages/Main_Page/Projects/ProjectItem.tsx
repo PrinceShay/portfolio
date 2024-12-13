@@ -167,7 +167,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
     >
       <div
         ref={object}
-        className="will-change-transform relative rounded-xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl bg-darkBlue-400"
+        className="will-change-transform relative rounded-2xl min-h-[60vh] md:min-h-[80vh] overflow-hidden w-full h-auto p-8 md:p-14 flex items-center shadow-2xl bg-darkBlue-400"
       >
         {!isMobile && post.titleVideo && post.titleVideo.asset && (
           <video
@@ -200,11 +200,11 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
           >
             {post.title}
           </h2>
-          <div className="flex justify-start gap-2">
+          <div className="flex justify-start gap-4">
             {categories.map((category: string) => (
               <div
                 key={category}
-                className="category hidden md:block py-3 px-6 relative bg-darkBlue-400 shadow-xl rounded-full backdrop-blur-lg bg-opacity-10"
+                className="category hidden text-xl md:block py-3 px-6 relative bg-darkBlue-500 shadow-xl rounded-full backdrop-blur-lg bg-opacity-25"
               >
                 {category}
               </div>

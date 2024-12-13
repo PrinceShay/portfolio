@@ -6,6 +6,7 @@ import gsap from "gsap";
 import ProfileNav from "./ProfileNav";
 import MobileMenu from "./MobileMenu";
 import { useGSAP } from "@gsap/react";
+import ButtonPrimary from "./ButtonPrimary";
 import ButtonSecondary from "./ButtonSecondary";
 
 function Navbar() {
@@ -100,7 +101,7 @@ function Navbar() {
           </ul>
           <div className="self-center col-start-3 justify-self-end text-xl">
             <ButtonSecondary
-              firstTitle="Offen für Aufträge"
+              firstTitle="Kostenlose Beratung"
               secondTitle="Jetzt kontaktieren"
               link="/kontakt"
             />

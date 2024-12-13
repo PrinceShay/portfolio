@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import dynamic from "next/dynamic";
 import Video from "./Video";
+import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
 
 const HeroGridAnimation = dynamic(() => import("./HeroGridAnimation"), {
   ssr: false,
@@ -58,16 +59,16 @@ export default function Hero() {
           ease: "power4.out",
         });
 
-        heroIn.from(
-          heroParagraph.current,
-          {
-            yPercent: 100,
-            opacity: 0,
-            duration: 1.5,
-            ease: "power4.out",
-          },
-          "<25%"
-        );
+        // heroIn.from(
+        //   heroParagraph.current,
+        //   {
+        //     yPercent: 100,
+        //     opacity: 0,
+        //     duration: 1.5,
+        //     ease: "power4.out",
+        //   },
+        //   "<25%"
+        // );
 
         heroIn.from(
           heroButton.current,
@@ -101,12 +102,12 @@ export default function Hero() {
       >
         <h1
           ref={heroHeadline}
-          className="split font-humane font-bold uppercase leading-[90%] text-[24vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
+          className="split font-humane font-bold mb-16 uppercase leading-[90%] text-[24vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
         >
           <span className="text-primary-400">Digitale Lösungen,</span>
           <br /> die dein Business voranbringen
         </h1>
-        <p ref={heroParagraph} className="mt-8 text-2xl mb-16 opacity-80">
+        {/* <p ref={heroParagraph} className="mt-8 text-2xl mb-16 opacity-80">
           Hey🚀✌, mein Name ist{" "}
           <span className="font-bold text-primary-300"> Jannis Röstel</span>.
           Ich bin{" "}
@@ -114,9 +115,13 @@ export default function Hero() {
             Web- und Motiondesigner{" "}
           </span>
           aus Karlsruhe.
-        </p>
-        <div ref={heroButton}>
+        </p> */}
+        <div
+          className="flex flex-col md:flex-row items-center gap-4"
+          ref={heroButton}
+        >
           <PrimaryButton title="Projekte anschauen" link="/projekte" />
+          <ButtonSecondary firstTitle="Beratung vereinbaren" link="/kontakt" />
         </div>
       </div>
       {isLargeScreen ? <HeroGridAnimation /> : <Video />}

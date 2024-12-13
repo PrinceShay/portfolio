@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dribbble, Instagram, Linkedin } from "lucide-react";
 import Link from "next/link";
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import Slider from "./Slider";
 
@@ -17,6 +17,10 @@ function Biography() {
   const BioRef = useRef<HTMLDivElement>(null);
 
   const ScrollTextContainer = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  });
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);

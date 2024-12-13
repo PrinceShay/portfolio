@@ -50,7 +50,7 @@ function Hero({
           yPercent: 30,
           opacity: 0,
           rotateX: 80,
-          stagger: 0.05,
+          stagger: 0.01,
           rotate: 5,
           duration: 1.4,
           ease: "back.out(2)",
@@ -93,7 +93,7 @@ function Hero({
           </p>
           <h1
             ref={introTextRef}
-            className="mt-8 block text-center Section_Headline split"
+            className="mt-8 block text-center font-humane text-[5rem] md:text-[14rem] uppercase font-bold leading-none split"
           >
             {heroText}
           </h1>
@@ -106,9 +106,9 @@ function Hero({
           </div>
         </div>
       </header>
-      <div className="w-full h-screen relative">
+      <div className="md:w-full md:h-screen relative">
         <video
-          className="w-full h-full object-cover absolute top-0 object-top"
+          className="w-full md:h-full md:object-cover md:absolute md:top-0 md:object-top"
           autoPlay
           playsInline
           muted

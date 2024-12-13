@@ -7,6 +7,7 @@ import Service2 from "./components/pages/Main_Page/Service/Service2";
 import { Metadata } from "next";
 import Hero from "./components/pages/Main_Page/Hero/Hero";
 import Faq from "./components/pages/Main_Page/Faq/Faq";
+import About from "./components/pages/Main_Page/about/About";
 
 export async function generateMetadata({
   params,
@@ -46,6 +47,7 @@ export default function Home() {
     <main className="">
       {/* <Preloader /> */}
       <Hero />
+      <About />
       {/* @ts-expect-error Server Component */}
       <Projects />
       <CustomerBenefits />

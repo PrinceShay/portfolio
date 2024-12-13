@@ -44,7 +44,7 @@ function Page() {
 
       <section className="grid grid-cols-12 grid-flow-col page_padding mb-24 w-full gap-4">
         <CV />
-        <div className="col-end-13 col-start-1 xl:col-start-9 grid grid-rows-3 gap-4 mt-16">
+        <div className="col-end-13 col-start-1 xl:col-start-9 grid grid-rows-3 gap-4">
           <div className="">
             <h1 className="text-2xl mb-8">Sprachen</h1>
             <ul className="flex items-start flex-wrap gap-3">
