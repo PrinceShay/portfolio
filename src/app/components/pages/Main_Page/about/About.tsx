@@ -2,11 +2,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/all";
 
-export default function about() {
+export default function About() {
   const [isSplit, setSplit] = useState(false);
 
   const ScrollText = useRef<HTMLParagraphElement>(null);
