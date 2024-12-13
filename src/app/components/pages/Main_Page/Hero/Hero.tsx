@@ -59,17 +59,6 @@ export default function Hero() {
           ease: "power4.out",
         });
 
-        // heroIn.from(
-        //   heroParagraph.current,
-        //   {
-        //     yPercent: 100,
-        //     opacity: 0,
-        //     duration: 1.5,
-        //     ease: "power4.out",
-        //   },
-        //   "<25%"
-        // );
-
         heroIn.from(
           heroButton.current,
           {
@@ -107,15 +96,7 @@ export default function Hero() {
           <span className="text-primary-400">Digitale Lösungen,</span>
           <br /> die dein Business voranbringen
         </h1>
-        {/* <p ref={heroParagraph} className="mt-8 text-2xl mb-16 opacity-80">
-          Hey🚀✌, mein Name ist{" "}
-          <span className="font-bold text-primary-300"> Jannis Röstel</span>.
-          Ich bin{" "}
-          <span className="font-bold text-primary-300">
-            Web- und Motiondesigner{" "}
-          </span>
-          aus Karlsruhe.
-        </p> */}
+
         <div
           className="flex flex-col md:flex-row items-center gap-4"
           ref={heroButton}

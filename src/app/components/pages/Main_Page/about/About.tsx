@@ -53,10 +53,7 @@ export default function About() {
   return (
     <section ref={aboutSection} className="pt-32  relative">
       <div className=" page_padding flex flex-col items-center justify-center">
-        <div
-          ref={ScrollTextContainer}
-          className="h-[200vh] relative page_padding"
-        >
+        <div ref={ScrollTextContainer} className="h-[200vh] relative">
           <div className="min-h-screen sticky top-0 flex flex-col justify-center">
             <p className="text-sm sm:text-md md:text-lg lg:text-xl uppercase mb-8 tracking-wider split">
               Über mich
