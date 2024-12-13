@@ -115,9 +115,7 @@ export default function RootLayout({
         <Grain />
         <Navbar />
         {modal}
-        {/* <SmoothScroll> */}
-        {children}
-        {/* </SmoothScroll> */}
+        <SmoothScroll>{children}</SmoothScroll>
         <Footer />
         <Analytics />
         <SpeedInsights />

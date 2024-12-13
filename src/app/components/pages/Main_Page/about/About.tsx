@@ -2,7 +2,7 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/all";
 
@@ -12,6 +12,10 @@ export default function About() {
   const ScrollText = useRef<HTMLParagraphElement>(null);
   const ScrollTextContainer = useRef<HTMLDivElement>(null);
   const aboutSection = useRef(null);
+
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  });
 
   useGSAP(
     () => {
@@ -25,7 +29,6 @@ export default function About() {
       setSplit(true);
 
       if (isSplit && ScrollText.current && ScrollTextContainer.current) {
-        ScrollTrigger.refresh();
         gsap.fromTo(
           ScrollText.current.querySelectorAll(".char"),
           {
@@ -60,7 +63,7 @@ export default function About() {
             </p>
             <p
               ref={ScrollText}
-              className="text-[6.5vw] md:text-[3vw] lg:text-[3.25vw] xl:text-[3vw] split font-light leading-[120%] text-primary-200"
+              className="js-scrollText text-[6.5vw] md:text-[3vw] lg:text-[3.25vw] xl:text-[3vw] split font-light leading-[120%] text-primary-200"
             >
               Hi, ich bin Jannis Röstel – Designer & Developer aus Karlsruhe.
               Ich helfe Teams und Unternehmen, digitale Produkte zu schaffen,
