@@ -44,7 +44,6 @@ export default function About() {
               start: "20% center",
               scrub: true,
               end: "bottom bottom",
-              markers: true,
             },
           }
         );
