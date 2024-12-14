@@ -1,7 +1,6 @@
 "use client";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { ScrollTrigger } from "gsap/all";
@@ -23,10 +22,7 @@ export default function About() {
     () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      const elements = document.getElementsByClassName("split");
-      Array.from(elements).forEach((element) => {
-        new SplitType(element as HTMLElement, { types: "chars" });
-      });
+      new SplitType(ScrollText.current!, { types: "words,chars" });
 
       setSplit(true);
 
