@@ -48,11 +48,12 @@ async function getData(slug: string): Promise<FullProject> {
   return data;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<{ slug: string }>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const data: FullProject = await getData(params.slug);
   const titleImageUrl = urlFor(data.titleImage).url();
 
@@ -95,7 +96,8 @@ async function getDataNext(currentSlug: string): Promise<ProjectCard[]> {
   return dataNext;
 }
 
-export default async function page({ params }: { params: { slug: string } }) {
+export default async function page(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const data: FullProject = await getData(params.slug);
   const nextProjects: ProjectCard[] = await getDataNext(params.slug);
 
