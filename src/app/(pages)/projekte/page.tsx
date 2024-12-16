@@ -62,7 +62,7 @@ const ProjectSection = async () => {
 
       <div className="max-w-full md:max-w-[124em] mx-auto md:grid grid-cols-12 grid-flow-row gap-8 relative">
         {data.map((post, idx) => (
-          <ProjectItem key={post.id} post={post} idx={idx} />
+          <ProjectItem key={post._id} post={post} idx={idx} />
         ))}
       </div>
     </section>

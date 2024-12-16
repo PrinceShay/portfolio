@@ -5,6 +5,7 @@ import { urlFor } from "@/app/lib/sanity";
 import { ChevronRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import Image from "next/image";
 
 function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -72,10 +73,12 @@ function BlogItemLarge({ post, idx }: { post: any; idx: number }) {
         className=" w-full cursor-pointer flex flex-col sm:flex-row items-center gap-16 border-primary-500 transition-all ease-out duration-100 hover:border hover:bg-darkBlue-400 hover:bg-opacity-60 rounded-xl overflow-hidden p-5"
       >
         <div className=" basis-1/2 rounded-xl aspect-square sm:aspect-video relative overflow-hidden w-full sm:w-auto">
-          <img
+          <Image
             alt={post.title}
             src={urlFor(post.titleImage).url()}
-            className="object-cover absolute w-full h-full"
+            className="object-cover"
+            sizes="70vw"
+            fill
             ref={imageRef}
           />
         </div>

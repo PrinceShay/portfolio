@@ -3,7 +3,7 @@ export interface ProjectCard {
   smallDescription: string;
   currentSlug: string;
   titleImage: any;
-  id: string;
+  _id: string;
   categories: string[];
 }
 
