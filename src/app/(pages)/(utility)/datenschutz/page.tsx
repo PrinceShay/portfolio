@@ -1,16 +1,9 @@
 import { Metadata } from "next";
 import React from "react";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  return {
-    title: `Datenschutz – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
-    description: "",
-  };
-}
+export const metadata: Metadata = {
+  title: `Datenschutz – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+};
 
 function page() {
   return (

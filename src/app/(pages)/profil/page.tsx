@@ -5,36 +5,30 @@ import { Metadata } from "next";
 import Biography from "@/app/components/pages/Profile/Biography";
 import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  return {
-    metadataBase: new URL("https://www.jannisroestel.de"),
-    title: `Profil – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.jannisroestel.de"),
+  title: `Profil – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+  description:
+    "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
+  openGraph: {
+    title: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
     description:
       "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
-    openGraph: {
-      title: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
-      description:
-        "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
-      images: [
-        {
-          url: "/assets/images/Hero.jpg",
-          alt: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
-      description:
-        "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
-      images: "",
-    },
-  };
-}
+    images: [
+      {
+        url: "/assets/images/Hero.jpg",
+        alt: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Über Jannis Röstel – Designer & Entwickler aus Karlsruhe`,
+    description:
+      "Lerne Jannis Röstel, Designer und Entwickler aus Karlsruhe, kennen. Erfahre mehr über seine Reise von der Fotografie über Digital Art bis hin zu Webentwicklung und Motion Design.",
+    images: "",
+  },
+};
 
 function Page() {
   return (

@@ -5,36 +5,30 @@ import HugeHeadline from "@/app/components/shared/ui/HugeHeadline";
 import { Metadata } from "next";
 import React from "react";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  return {
+export const metadata: Metadata = {
+  title: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+  description:
+    "Nimm Kontakt mit Jannis Röstel auf. Fülle das Kontaktformular aus und starte dein nächstes kreatives Projekt mit einem erfahrenen Designer und Entwickler.",
+  openGraph: {
     title: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
     description:
       "Nimm Kontakt mit Jannis Röstel auf. Fülle das Kontaktformular aus und starte dein nächstes kreatives Projekt mit einem erfahrenen Designer und Entwickler.",
-    openGraph: {
-      title: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
-      description:
-        "Nimm Kontakt mit Jannis Röstel auf. Fülle das Kontaktformular aus und starte dein nächstes kreatives Projekt mit einem erfahrenen Designer und Entwickler.",
-      images: [
-        {
-          url: "/assets/images/Hero.jpg",
-          alt: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
-        },
-      ],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
-      description:
-        "Nimm Kontakt mit Jannis Röstel auf. Fülle das Kontaktformular aus und starte dein nächstes kreatives Projekt mit einem erfahrenen Designer und Entwickler.",
-      images: "",
-    },
-  };
-}
+    images: [
+      {
+        url: "/assets/images/Hero.jpg",
+        alt: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+      },
+    ],
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Kontakt – Jannis Röstel | Designer & Entwickler aus Karlsruhe`,
+    description:
+      "Nimm Kontakt mit Jannis Röstel auf. Fülle das Kontaktformular aus und starte dein nächstes kreatives Projekt mit einem erfahrenen Designer und Entwickler.",
+    images: "",
+  },
+};
 
 function page() {
   return (

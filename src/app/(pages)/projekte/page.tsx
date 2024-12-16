@@ -22,36 +22,30 @@ async function getData() {
   return data;
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}): Promise<Metadata> {
-  return {
+export const metadata: Metadata = {
+  title: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
+  description:
+    "Entdecke eine Sammlung von Webdesign- und Motiondesign-Projekten von Jannis Röstel. Inspirierende Designs und kreative Lösungen aus Karlsruhe.",
+  openGraph: {
     title: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
     description:
       "Entdecke eine Sammlung von Webdesign- und Motiondesign-Projekten von Jannis Röstel. Inspirierende Designs und kreative Lösungen aus Karlsruhe.",
-    openGraph: {
-      title: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
-      description:
-        "Entdecke eine Sammlung von Webdesign- und Motiondesign-Projekten von Jannis Röstel. Inspirierende Designs und kreative Lösungen aus Karlsruhe.",
-      images: [
-        {
-          url: "/assets/images/Hero.jpg",
-          alt: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
-        },
-      ],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
-      description:
-        "Entdecke eine Sammlung von Webdesign- und Motiondesign-Projekten von Jannis Röstel. Inspirierende Designs und kreative Lösungen aus Karlsruhe.",
-      images: "",
-    },
-  };
-}
+    images: [
+      {
+        url: "/assets/images/Hero.jpg",
+        alt: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
+      },
+    ],
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `Webdesign & Motiondesign Projekte - Jannis Röstel`,
+    description:
+      "Entdecke eine Sammlung von Webdesign- und Motiondesign-Projekten von Jannis Röstel. Inspirierende Designs und kreative Lösungen aus Karlsruhe.",
+    images: "",
+  },
+};
 
 const ProjectSection = async () => {
   const data: ProjectCard[] = await getData();
