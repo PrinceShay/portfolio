@@ -118,7 +118,6 @@ export default function FooterNew() {
             trigger: footerSection.current,
             start: "-10% 100%",
             scrub: true,
-            markers: true,
             end: "100% 90%",
           },
         });
