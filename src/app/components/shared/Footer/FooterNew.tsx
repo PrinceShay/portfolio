@@ -54,7 +54,6 @@ export default function FooterNew() {
             trigger: footerSection.current,
             start: "10% 75%",
             scrub: true,
-            markers: true,
             end: "bottom bottom",
           },
         });
@@ -65,7 +64,6 @@ export default function FooterNew() {
             trigger: footerSection.current,
             start: "-10% 100%",
             scrub: true,
-            markers: true,
             end: "100% 90%",
           },
         });
