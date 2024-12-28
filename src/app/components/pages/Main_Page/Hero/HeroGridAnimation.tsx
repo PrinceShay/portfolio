@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import gsap from "gsap";
-import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import AnimatedImage from "@/app/components/shared/ui/AnimatedImage";
 
 export default function HeroGridAnimation() {
   const heroScrollRef = useRef(null);
@@ -15,7 +15,7 @@ export default function HeroGridAnimation() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.set(heroScrollRef.current, { opacity: 1 });
 
-    //animate in
+    // animate in
     gsap.from(".js_heroGridItem", {
       yPercent: 80,
       duration: 1.6,
@@ -62,7 +62,7 @@ export default function HeroGridAnimation() {
       }
     );
 
-    //scale animation
+    // scale animation
     const heroScale = gsap.timeline();
     heroScale.fromTo(
       heroGridRef.current,
@@ -91,51 +91,39 @@ export default function HeroGridAnimation() {
           ref={heroGridRow1}
           className="js_heroGridRow flex flex-col items-center justify-center gap-16 w-screen"
         >
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={"/assets/images/hero/real-estate-green-beta.vercel2.jpg"}
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/real-estate-green-beta.vercel2.jpg"
               alt="Hero Screen von der Boss Lounge Bar Webseite"
-            ></Image>
+            />
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={
-                "/assets/images/hero/2ae7f393f79d6041a7bed5ee6cd3c779979e689a-1600x781.webp"
-              }
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/2ae7f393f79d6041a7bed5ee6cd3c779979e689a-1600x781.webp"
               alt="Screenshot vom Spline Interface von der 3D Flasche für die Alle Farben Wein Webseite"
-            ></Image>
+            />
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={"/assets/images/hero/real-estate-green-beta.vercel5.jpg"}
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/real-estate-green-beta.vercel5.jpg"
               alt="Hero Screen der Alle Farben Wein Webseite"
-            ></Image>
+            />
           </div>
         </div>
 
         <div
           ref={heroGridRow2}
-          className="js_heroGridRow flex flex-col items-center justify-center gap-16 w-screen "
+          className="js_heroGridRow flex flex-col items-center justify-center gap-16 w-screen"
         >
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={"/assets/images/hero/Landing-min.jpg"}
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/Landing-min.jpg"
               alt="Gallerie Ansicht Karl-Heinz Krause Webseite"
-            ></Image>
+            />
           </div>
-          <div className=" w-screen h-screen bg-primary-500 ">
+
+          {/* Video bleibt unverändert */}
+          <div className="w-screen h-screen bg-primary-500">
             <video
               src="/assets/videos/heroAnimNew.webm"
               className="w-full h-full object-cover"
@@ -145,62 +133,42 @@ export default function HeroGridAnimation() {
               playsInline
             ></video>
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={
-                "/assets/images/hero/366a5a11c87fa3418603a330fa785a6bc247499a-800x533.jpg"
-              }
-              fill
-              sizes="50vw"
-              className="object-cover"
+
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/366a5a11c87fa3418603a330fa785a6bc247499a-800x533.jpg"
               alt="Karl-Heinz Krause Webseite"
-            ></Image>
+            />
           </div>
         </div>
 
         <div
           ref={heroGridRow3}
-          className="js_heroGridRow flex flex-col items-center justify-center gap-16 w-screen "
+          className="js_heroGridRow flex flex-col items-center justify-center gap-16 w-screen"
         >
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={
-                "/assets/images/hero/dbce91a75a828b41423ed613354d14e721ba6b6a-1500x1125.webp"
-              }
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/dbce91a75a828b41423ed613354d14e721ba6b6a-1500x1125.webp"
               alt="Alle Farben Wein Hero Screen"
-            ></Image>
+            />
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={"/assets/images/hero/real-estate-green-beta.vercel4.jpg"}
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/real-estate-green-beta.vercel4.jpg"
               alt="Boss Lounge Webseite"
-            ></Image>
+            />
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={"/assets/images/hero/Desktop - 2 Kopie.webp"}
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/Desktop - 2 Kopie.webp"
               alt="Karl-Heinz Krause Webseite"
-            ></Image>
+            />
           </div>
-          <div className="js_heroGridItem w-screen h-screen bg-primary-700 relative ">
-            <Image
-              src={
-                "/assets/images/hero/59a64c496c6ce8afd54fb17652a7d089bf438738-1600x2400.webp"
-              }
-              fill
-              sizes="50vw"
-              className="object-cover"
+          <div className="js_heroGridItem w-screen h-screen  relative">
+            <AnimatedImage
+              src="/assets/images/hero/59a64c496c6ce8afd54fb17652a7d089bf438738-1600x2400.webp"
               alt="Herobereich einer Immobilienmakler Webseite"
-            ></Image>
+            />
           </div>
         </div>
       </div>
