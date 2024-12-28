@@ -31,7 +31,9 @@ export default function FooterNew() {
   const [isSplit, setSplit] = useState(false);
 
   useEffect(() => {
-    ScrollTrigger.refresh;
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 800);
   });
 
   useGSAP(
