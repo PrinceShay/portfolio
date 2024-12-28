@@ -146,3 +146,36 @@ body {
   -webkit-box-shadow: 0px 0px 20px 0px rgba(177, 122, 255, 0.3) inset;
   -moz-box-shadow: 0px 0px 20px 0px rgba(177, 122, 255, 0.3) inset;
 }
+
+/* Allgemeine Scrollbar-Stile */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6a4999;
+  border-radius: 25px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  transition: background-color 0.3s ease; /* Sanfter Übergang */
+}
+
+/* Track sichtbar machen bei Hover */
+::-webkit-scrollbar:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Hintergrundfarbe des Tracks bei Hover */
+}
+
+/* Für Firefox */
+@-moz-document url-prefix() {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #6a4999 transparent;
+  }
+}

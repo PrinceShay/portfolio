@@ -14,6 +14,7 @@ import Footer from "./components/shared/Footer/Footer";
 import CookieBanner from "./components/shared/cookie-banner";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import FooterNew from "./components/shared/Footer/FooterNew";
 
 // Humane Font mit fontDisplay: "swap"
 const Humane = localFont({
@@ -116,7 +117,7 @@ export default function RootLayout({
         <Navbar />
         {modal}
         <SmoothScroll>{children}</SmoothScroll>
-        <Footer />
+        <FooterNew />
         <Analytics />
         <SpeedInsights />
       </body>

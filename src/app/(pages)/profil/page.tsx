@@ -110,12 +110,6 @@ function Page() {
           </div>
         </div>
       </section>
-      <CTAWindow
-        title="Bereit wenn du es bist"
-        text="Schreib mir eine kurze Mail und ich melde mich bei dir.
-
-"
-      />
     </section>
   );
 }

@@ -9,6 +9,7 @@ async function getData() {
   const query = `
   *[_type == 'blog'] | order(_createdAt desc)[0..5] {
     title,
+    _id,
     smallDescription,
     "currentSlug": slug.current,
     titleImage,

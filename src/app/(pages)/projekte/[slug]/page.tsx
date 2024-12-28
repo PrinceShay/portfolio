@@ -7,8 +7,6 @@ import NextProject from "@/app/components/pages/Project_Page/NextProject";
 import { Metadata } from "next";
 import ProjectText from "@/app/components/shared/ui/SectionText";
 import ProjectInfo from "@/app/components/pages/Project_Page/ProjectInfo";
-import { useEffect } from "react";
-
 export const revalidate = 30;
 
 async function getData(slug: string): Promise<FullProject> {
@@ -48,11 +46,9 @@ async function getData(slug: string): Promise<FullProject> {
   return data;
 }
 
-export async function generateMetadata(
-  props: {
-    params: Promise<{ slug: string }>;
-  }
-): Promise<Metadata> {
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const params = await props.params;
   const data: FullProject = await getData(params.slug);
   const titleImageUrl = urlFor(data.titleImage).url();
@@ -96,7 +92,9 @@ async function getDataNext(currentSlug: string): Promise<ProjectCard[]> {
   return dataNext;
 }
 
-export default async function page(props: { params: Promise<{ slug: string }> }) {
+export default async function page(props: {
+  params: Promise<{ slug: string }>;
+}) {
   const params = await props.params;
   const data: FullProject = await getData(params.slug);
   const nextProjects: ProjectCard[] = await getDataNext(params.slug);
