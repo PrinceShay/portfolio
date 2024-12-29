@@ -4,6 +4,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import Image from "next/image";
 import dynamic from "next/dynamic";
 import Video from "./Video";
 import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
@@ -39,12 +40,7 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      const elements = document.getElementsByClassName("split");
-      Array.from(elements).forEach((element) => {
-        new SplitType(element as HTMLElement, {
-          types: "words",
-        });
-      });
+      const splitText = new SplitType(heroHeadline.current!);
 
       setSplit(true);
       if (heroHeadline && isSplit) {
@@ -92,7 +88,7 @@ export default function Hero() {
           ref={heroHeadline}
           className="split font-humane font-bold mb-16 uppercase leading-[90%] text-[22vw] sm:text-[18vw] md:text-[10vw] xl:text-[] 2xl:text-[12.5em]"
         >
-          <span className="text-primary-400">Digitale Lösungen,</span>
+          <span className="text-primary-400">Digitale Lösungen</span>,
           <br /> die dein Business voranbringen
         </h1>
 
