@@ -79,8 +79,8 @@ export default function Home() {
 
       {/* Lazy-loaded components */}
       <About />
-      <CustomerBenefits />
       <Projects />
+      <CustomerBenefits />
       <Service2 />
       <CTAWindow
         text="Schreib mir eine kurze Mail und ich melde mich bei dir."
