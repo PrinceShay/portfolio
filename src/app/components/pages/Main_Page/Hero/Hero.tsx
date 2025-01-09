@@ -4,7 +4,6 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import SplitType from "split-type";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import Image from "next/image";
 import dynamic from "next/dynamic";
 import Video from "./Video";
 import ButtonSecondary from "@/app/components/shared/Navbar/ButtonSecondary";
@@ -40,7 +39,9 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      const splitText = new SplitType(heroHeadline.current!);
+      const splitText = new SplitType(heroHeadline.current!, {
+        types: "words,chars",
+      });
 
       setSplit(true);
       if (heroHeadline && isSplit) {
