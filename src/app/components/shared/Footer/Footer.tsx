@@ -64,7 +64,7 @@ function Footer() {
           Jannis Röstel
         </div>
         <div className="flex flex-col gap-4 mb-12 mt-6 items-center sm:items-stretch sm:flex-row justify-between">
-          <div>© Jannis Röstel 2024</div>
+          <div>© Jannis Röstel 2025</div>
           <ul className="flex flex-row gap-4">
             <FooterLink url="/impressum" title="Impressum" />
             <FooterLink url="/datenschutz" title="Datenschutz" />
