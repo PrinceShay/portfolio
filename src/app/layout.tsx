@@ -8,9 +8,7 @@ import localFont from "next/font/local";
 
 import SmoothScroll from "./components/Functions/SmoothScroller";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import Noise from "./components/Functions/Noise";
 import Grain from "./components/Functions/Grain";
-import Footer from "./components/shared/Footer/Footer";
 import CookieBanner from "./components/shared/cookie-banner";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
@@ -112,11 +110,14 @@ export default function RootLayout({
       </head>
       <body className="bg-darkBlue-500 text-white scroll-smooth">
         <CookieBanner />
-        <Noise />
+        {/* <Noise /> */}
         <Grain />
         <Navbar />
-        {modal}
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          {modal}
+
+          {children}
+        </SmoothScroll>
         <FooterNew />
         <Analytics />
         <SpeedInsights />

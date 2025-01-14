@@ -162,6 +162,7 @@ function ProjectItem({ post, idx }: ProjectItemProps) {
 
   return (
     <Link
+      // scroll={false}
       href={`/projekte/${post.currentSlug}`}
       className="ProjectCard col-start-1 col-end-13 block sticky top-[10vh] max-w-full group hover:scale-90 transition-transform ease-out duration-500"
     >
