@@ -426,7 +426,7 @@ export default function FooterNew() {
               ref={footerMenu_3}
               className="row-start-3 col-start-3 lg:self-end justify-self-end flex lg:flex-row flex-col-reverse items-center gap-2 lg:gap-6 md:text-lg text-md"
             >
-              <div>© Jannis Röstel 2024</div>
+              <div>© Jannis Röstel {new Date().getFullYear()}</div>
               <span className="hidden lg:block">|</span>
               <ul className=" flex gap-4 ">
                 <FooterLink url="/impressum" title="Impressum" />
