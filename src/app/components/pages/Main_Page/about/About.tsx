@@ -65,7 +65,7 @@ export default function About() {
               die begeistern und funktionieren. Von der ersten Idee bis zum
               Launch bringe ich Design und Technik zusammen, um Erlebnisse zu
               entwickeln, die im Kopf bleiben. Wenn es darum geht, Kreativität
-              und Präzision zu vereinen, bin ich genau der Richtige.
+              und Code zu vereinen, bin ich genau der Richtige.
             </p>
           </div>
         </div>
