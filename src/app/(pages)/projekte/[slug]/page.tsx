@@ -107,13 +107,11 @@ export default async function page(props: {
         titleVideo={data.titleVideo.asset.url}
         publishDate={data.publishDate}
       />
-
       <ProjectInfo
         smallDescription={data.smallDescription}
         categories={data.categories}
         publishDate={data.publishDate}
       />
-
       <Challenge
         challengeTitle={data.challengeTitle}
         title={data.title}
@@ -129,8 +127,9 @@ export default async function page(props: {
           text={data.collectionBigText}
         />
       </div>
-
-      <ProjectContent mediaCollection={data.mediaCollection} />
+      {data.mediaCollection && (
+        <ProjectContent mediaCollection={data.mediaCollection} />
+      )}{" "}
       <NextProject projects={nextProjects} />
     </section>
   );
