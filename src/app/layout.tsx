@@ -110,12 +110,10 @@ export default function RootLayout({
       </head>
       <body className="bg-darkBlue-500 text-white scroll-smooth">
         <CookieBanner />
-        {/* <Noise /> */}
         <Grain />
         <Navbar />
         <SmoothScroll>
           {modal}
-
           {children}
         </SmoothScroll>
         <FooterNew />

@@ -6,7 +6,7 @@ import FooterLink from "./FooterLink";
 import { Dribbble, Instagram, Linkedin } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
-import gsap, { random } from "gsap";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 export default function FooterNew() {
