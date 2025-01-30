@@ -14,7 +14,7 @@ const ptComponents = {
       return <h4 className="text-3xl mb-10">{children}</h4>;
     },
     normal: ({ children }: any) => {
-      return <p className=" text-xl md:text-3xl">{children}</p>;
+      return <p className=" text-xl md:text-3xl mb-4 md:mb-8">{children}</p>;
     },
   },
   types: {
