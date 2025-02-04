@@ -123,9 +123,9 @@ export default function HeroGridAnimation() {
           </div>
 
           {/* Video bleibt unverändert */}
-          <div className="w-screen h-screen bg-primary-500">
+          <div className="w-screen h-screen border border-darkBlue-400">
             <video
-              src="/assets/videos/heroAnimNew.webm"
+              src="/assets/videos/heroAnim.webm"
               className="w-full h-full object-cover"
               loop
               autoPlay

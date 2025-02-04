@@ -33,7 +33,7 @@ export default function Video() {
         onEnded={handleVideoEnd}
         className="w-full h-[75vh] object-cover mt-12 border border-darkBlue-400"
       >
-        <source type="video/webm" src="/assets/videos/heroAnimNew.webm" />
+        <source type="video/webm" src="/assets/videos/heroAnim.webm" />
       </video>
     </div>
   );
