@@ -105,6 +105,12 @@ export default function FooterNew() {
         );
       }
       // Animation für die Bildspalten hinzufügen
+    },
+    { scope: footerSection, dependencies: [isSplit, ctaParentFooter] }
+  );
+
+  useGSAP(
+    () => {
       if (
         ctaParentFooter.current &&
         firstColumnRefFooter.current &&
@@ -171,7 +177,17 @@ export default function FooterNew() {
         );
       }
     },
-    { scope: footerSection, dependencies: [isSplit, ctaParentFooter] }
+    {
+      scope: footerSection,
+      dependencies: [
+        ctaParentFooter,
+        firstColumnRefFooter,
+        secondColumnRefFooter,
+        thirdColumnRefFooter,
+        fourthColumnRefFooter,
+        bgDarken,
+      ],
+    }
   );
 
   return (
