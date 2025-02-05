@@ -19,16 +19,17 @@ export default function FooterNew() {
   const footerMenu_3 = useRef<HTMLDivElement>(null);
 
   // Neue Refs für die Bildspalten
-  const ctaParent = useRef(null);
-  const firstColumnRef = useRef(null);
-  const secondColumnRef = useRef(null);
-  const thirdColumnRef = useRef(null);
-  const fourthColumnRef = useRef(null); // Vierte Spalte
+  const ctaParentFooter = useRef(null);
+  const firstColumnRefFooter = useRef(null);
+  const secondColumnRefFooter = useRef(null);
+  const thirdColumnRefFooter = useRef(null);
+  const fourthColumnRefFooter = useRef(null); // Vierte Spalte
   const bgDarken = useRef<HTMLDivElement>(null);
 
   const footerSection = useRef<HTMLDivElement>(null);
 
   const [isSplit, setSplit] = useState(false);
+  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     setTimeout(() => {
@@ -38,8 +39,6 @@ export default function FooterNew() {
 
   useGSAP(
     () => {
-      gsap.registerPlugin(ScrollTrigger);
-
       new SplitType(footerHeadline.current!, { types: "words,chars" });
       new SplitType(footerText.current!, { types: "words" });
 
@@ -107,13 +106,13 @@ export default function FooterNew() {
       }
       // Animation für die Bildspalten hinzufügen
       if (
-        ctaParent.current &&
-        firstColumnRef.current &&
-        secondColumnRef.current &&
-        thirdColumnRef.current &&
-        fourthColumnRef.current
+        ctaParentFooter.current &&
+        firstColumnRefFooter.current &&
+        secondColumnRefFooter.current &&
+        thirdColumnRefFooter.current &&
+        fourthColumnRefFooter.current
       ) {
-        const tl = gsap.timeline({
+        const tlt = gsap.timeline({
           scrollTrigger: {
             trigger: footerSection.current,
             start: "-10% 100%",
@@ -122,13 +121,13 @@ export default function FooterNew() {
           },
         });
 
-        tl.to(firstColumnRef.current, {
+        tlt.to(firstColumnRefFooter.current, {
           y: "-10%",
           ease: "none",
         });
 
-        tl.to(
-          secondColumnRef.current,
+        tlt.to(
+          secondColumnRefFooter.current,
           {
             y: "10%",
             ease: "none",
@@ -136,8 +135,8 @@ export default function FooterNew() {
           "<"
         );
 
-        tl.to(
-          thirdColumnRef.current,
+        tlt.to(
+          thirdColumnRefFooter.current,
           {
             y: "-10%",
             ease: "none",
@@ -145,8 +144,8 @@ export default function FooterNew() {
           "<"
         );
 
-        tl.to(
-          fourthColumnRef.current,
+        tlt.to(
+          fourthColumnRefFooter.current,
           {
             y: "10%",
             ease: "none",
@@ -154,8 +153,8 @@ export default function FooterNew() {
           "<"
         );
 
-        tl.from(
-          ctaParent.current,
+        tlt.from(
+          ctaParentFooter.current,
           {
             rotateX: 15,
             rotateZ: 5,
@@ -163,7 +162,7 @@ export default function FooterNew() {
           },
           "<"
         );
-        tl.from(
+        tlt.from(
           bgDarken.current,
           {
             opacity: 0,
@@ -172,7 +171,7 @@ export default function FooterNew() {
         );
       }
     },
-    { scope: footerSection, dependencies: [isSplit] }
+    { scope: footerSection, dependencies: [isSplit, ctaParentFooter] }
   );
 
   return (
@@ -192,11 +191,11 @@ export default function FooterNew() {
                 transform: "rotateY(12deg) rotateX(56deg) rotateY(347deg)",
               }}
               className="flex min-w-[150%] h-full items-center justify-center gap-4"
-              ref={ctaParent}
+              ref={ctaParentFooter}
             >
               {/* Erste Spalte */}
               <div
-                ref={firstColumnRef}
+                ref={firstColumnRefFooter}
                 className="relative flex flex-col basis-1/4 shrink-0 gap-4"
               >
                 {/* Bilder für die erste Spalte */}
@@ -229,7 +228,7 @@ export default function FooterNew() {
 
               {/* Zweite Spalte */}
               <div
-                ref={secondColumnRef}
+                ref={secondColumnRefFooter}
                 className="relative flex flex-col basis-1/4 gap-4 mt-48"
               >
                 {/* Bilder für die zweite Spalte */}
@@ -261,7 +260,7 @@ export default function FooterNew() {
 
               {/* Dritte Spalte */}
               <div
-                ref={thirdColumnRef}
+                ref={thirdColumnRefFooter}
                 className="relative flex flex-col basis-1/4 gap-4"
               >
                 {/* Bilder für die dritte Spalte */}
@@ -293,7 +292,7 @@ export default function FooterNew() {
 
               {/* Vierte Spalte */}
               <div
-                ref={fourthColumnRef}
+                ref={fourthColumnRefFooter}
                 className="relative flex flex-col basis-1/4 gap-4 mt-48"
               >
                 {/* Bilder für die vierte Spalte */}

@@ -33,6 +33,19 @@ body {
 
 /* Non TW Rules */
 
+@keyframes noise-animation {
+  0% { background-position: 0% 0%;
+       }
+  100% { background-position: 100% 100%; }
+}
+
+.noise-overlay {
+  background-image: url('/assets/noise.png'); /* Stelle sicher, dass noise.png in /public liegt */
+  width: calc(100% + 20rem);
+  height: calc(100% + 20rem);  
+  animation: noise-animation 1s steps(12) infinite;
+}
+
 .Section_Headline {
   font-family: "Humane";
   font-size: 12em;

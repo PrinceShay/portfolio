@@ -108,7 +108,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="bg-darkBlue-500 text-white scroll-smooth">
+      <body className="bg-darkBlue-500 text-white scroll-smooth relative">
         <CookieBanner />
         <Grain />
         <Navbar />
