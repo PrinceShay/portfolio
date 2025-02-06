@@ -13,7 +13,7 @@ function Grain() {
     //   ></video>
     // </div>
 
-    <div className="noise-overlay top-0 pointer-events-none fixed inset-[-10rem]  z-10 opacity-85" />
+    <div className="noise-overlay top-0 pointer-events-none fixed inset-[-10rem]  z-10 " />
   );
 }
 

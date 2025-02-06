@@ -73,17 +73,12 @@ export default function Hero() {
   return (
     <section
       ref={heroSection}
-      className="min-h-screen pt-12 sm:pt-48 overflow-x-clip"
+      className="min-h-screen pt-12 sm:pt-48 overflow-x-clip "
     >
-      <div className="w-full left-0 absolute -top-1/4 flex justify-center">
-        <div
-          ref={heroHighlight}
-          className="h-72 bg-primary-300 w-1/2 blur-[512px]"
-        ></div>
-      </div>
+      {/* <div className="w-full h-[70vh] left-0 top-0 bg-gradient-to-b from-[#cfacff2c] to-transparent absolute flex justify-center"></div> */}
       <div
         id="heroTextContainer"
-        className="page_padding text-center flex flex-col items-center justify-center min-h-[70vh] opacity-0"
+        className="page_padding text-center flex flex-col items-center justify-center min-h-[70vh] opacity-0 "
       >
         <h1
           ref={heroHeadline}
