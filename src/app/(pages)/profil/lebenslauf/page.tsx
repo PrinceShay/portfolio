@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <div
       id="cv"
-      className="flex mt-64 min-h-screen  page_padding max-w-[1600px] mx-auto w-full gap-12"
+      className="flex flex-col xl:flex-row mt-64 min-h-screen  page_padding max-w-[1600px] justify-between w-full gap-12 mb-16"
     >
       <div className="basis-1/2">
         <h2 ref={HeadingRef} className="text-5xl mb-12 TextTransform">
