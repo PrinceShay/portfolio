@@ -40,11 +40,16 @@ function CV() {
   }, [isSplit]);
 
   return (
-    <div className="col-start-1 col-end-13 md:col-end-8 xl:col-end-6">
+    <div id="cv" className="col-start-1 col-end-13 md:col-end-8 xl:col-end-6">
       <h2 ref={HeadingRef} className="text-5xl mb-12 TextTransform">
         Erfahrung
       </h2>
       <ul>
+        <JobItem
+          jobTitle="Webdesigner und Entwickler"
+          company="Freelance"
+          JobDate="Januar 2024 - Heute"
+        />
         <JobItem
           jobTitle="Webdesigner und Entwickler"
           company="Accenty"

@@ -31,83 +31,61 @@ export const metadata: Metadata = {
 };
 
 function Page() {
+  const languageItems = ["HTML", "CSS", "JavaScript", "TypeScript"];
+  const libraryItems = [
+    "React",
+    "Next.js",
+    "Vue.js",
+    "Nuxt",
+    "Tailwind CSS",
+    "GSAP",
+    "Three.js",
+    "Astro.js",
+    "React-Three-Fiber",
+  ];
+  const toolItems = [
+    "Git / GitHub",
+    "Vercel",
+    "Sanity",
+    "Figma",
+    "MongoDB",
+    "Webflow",
+    "Mongoose",
+    "Photoshop",
+    "After Effects",
+    "inDesign",
+    "Illustrator",
+  ];
+
+  const sections = [
+    { title: "Sprachen", items: languageItems },
+    { title: "Libraries & Frameworks", items: libraryItems },
+    { title: "Tools & Platformen", items: toolItems },
+  ];
+
   return (
-    <section className="min-h-screen pt-64  ">
+    <section className="min-h-screen pt-64">
       <HugeHeadline text="Profil" />
       <Biography />
 
       <section className="grid grid-cols-12 grid-flow-col page_padding mb-24 w-full gap-4">
         <CV />
-        <div className="col-end-13 col-start-1 xl:col-start-9 grid grid-rows-3 gap-4">
-          <div className="">
-            <h1 className="text-2xl mb-8">Sprachen</h1>
-            <ul className="flex items-start flex-wrap gap-3">
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                HTML
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                CSS
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                JavaScript
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                TypeScript
-              </li>
-            </ul>
-          </div>
-          <div className="">
-            <h1 className="text-2xl mb-8">Libraries & Frameworks</h1>
-            <ul className="flex items-start flex-wrap gap-3">
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                React
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Next.js
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Vue.js
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Nuxt
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Tailwind CSS
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                GSAP
-              </li>
-            </ul>
-          </div>
-          <div className="">
-            <h1 className="text-2xl mb-8">Tools & Platformen</h1>
-            <ul className="flex items-start flex-wrap gap-3">
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                GitHub
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Vercel
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Sanity
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Figma
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Photoshop
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                After Effects
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                inDesign
-              </li>
-              <li className="bg-primary-500 px-5 py-2 rounded-full text-lg">
-                Illustrator
-              </li>
-            </ul>
-          </div>
+        <div className="col-end-13 col-start-1 xl:col-start-9 flex flex-col gap-16">
+          {sections.map((section, idx) => (
+            <div key={idx}>
+              <h1 className="text-2xl mb-8">{section.title}</h1>
+              <ul className="flex items-start flex-wrap gap-3">
+                {section.items.map((item, index) => (
+                  <li
+                    key={index}
+                    className="bg-primary-500 px-5 py-2 rounded-full text-lg"
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
     </section>
