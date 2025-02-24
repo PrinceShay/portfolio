@@ -50,30 +50,6 @@ function Biography() {
         }
       );
     }
-
-    let tl = gsap.timeline({
-      paused: true,
-      scrollTrigger: {
-        trigger: ImageRef.current,
-        start: "top 75%",
-      },
-    });
-    tl.from(ImageRef.current, {
-      scale: 0.75,
-      opacity: 0,
-      ease: "power4.out",
-      duration: 1.4,
-    });
-
-    tl.from(
-      ".ImageProfile",
-      {
-        scale: 2,
-        ease: "power4.out",
-        duration: 1.4,
-      },
-      "<"
-    );
   }, [isSplit]);
 
   return (
@@ -143,18 +119,6 @@ function Biography() {
               </li>
             </ul>
           </div>
-        </div>
-        <div
-          ref={ImageRef}
-          className="bg-primary-500 w-full md:col-start-6 md:col-end-13 h-[80vh] mt-32 rounded-xl overflow-hidden relative"
-        >
-          <Image
-            className="ImageProfile absolute"
-            src="/assets/images/_MG_4682-cutout-bg-with-light-web.jpg"
-            alt="Jannis Röstel"
-            fill={true}
-            style={{ objectFit: "cover", objectPosition: "top" }}
-          />
         </div>
       </div>
 
