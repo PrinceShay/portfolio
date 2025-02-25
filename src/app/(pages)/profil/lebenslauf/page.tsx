@@ -1,17 +1,19 @@
-"use client";
-import React, { useRef } from "react";
+import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import JobItem from "@/app/components/pages/Profile/JobItem";
 import Image from "next/image";
 import { Cake, Mail, MapPin, Phone } from "lucide-react";
 import JobItemCV from "@/app/components/pages/Profile/JobItemCV";
+import { Metadata } from "next";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Page() {
-  const HeadingRef = useRef(null);
+export const metadata: Metadata = {
+  title: "Lebenslauf - Jannis Röstel",
+  robots: "noindex",
+};
 
+export default function Page() {
   const sections = [
     {
       title: "Programmiersprachen",
