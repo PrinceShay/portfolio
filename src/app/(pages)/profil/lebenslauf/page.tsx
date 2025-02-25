@@ -137,7 +137,7 @@ export default function Page() {
   const hobbies = ["Fotografie", "Bergsteigen", "Kraftsport", "Motorradfahren"];
 
   return (
-    <div className="md:mt-64 mt-12 min-h-screen page_padding max-w-[1600px] mx-auto  ">
+    <div className="md:mt-64 mt-12 mb-24 min-h-screen page_padding max-w-[1600px] mx-auto  ">
       <h1 className="text-5xl mb-16">Lebenslauf</h1>
 
       <div className="flex flex-col gap-16 xl:gap-4 xl:grid grid-cols-3 ">
